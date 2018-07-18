@@ -89,6 +89,14 @@
 		</dependency>
 
 
+<!-- https://mvnrepository.com/artifact/org.watertemplate/watertemplate-engine -->
+<dependency>
+    <groupId>org.watertemplate</groupId>
+    <artifactId>watertemplate-engine</artifactId>
+    <version>1.2.2</version>
+</dependency>
+
+
 	</dependencies>
 
 	<build>
