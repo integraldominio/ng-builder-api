@@ -13,5 +13,5 @@ package org.idomine.domain.crud.model.vo;
 
 public enum TipoArtefato
 {
-  Sidebar, Crud, Report, Dialogo;   
+  Menu, Crud, Report, Dialogo;   
 }

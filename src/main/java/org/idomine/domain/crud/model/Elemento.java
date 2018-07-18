@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +24,7 @@ public class Elemento
     @Id
     @GeneratedValue
     private Long id;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Artefato artefato;
     @Enumerated(EnumType.STRING)
@@ -29,11 +32,13 @@ public class Elemento
     @Enumerated(EnumType.STRING)
     private TipoField tipoField;;
     
-    private String name;
-    private String label;
-    private String initial;
-    private String mask;
+    private String nome;
+    private String rotulo;
+    private String inicial;
+    private String mascara;
     private String pipe;
-    private String hint;
+    private String dica;
+    
+    private boolean requerido;
     
 }

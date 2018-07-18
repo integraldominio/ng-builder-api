@@ -1,4 +1,4 @@
-package org.idomine;
+package com.idomine.ngbuilder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BuilderApplicationTest {
+public class NgBuilderApplicationTests {
 
-    @Test
-    public void contextLoads() {
-        // just test if the application context loads
-    }
+	@Test
+	public void contextLoads() {
+	}
+
 }

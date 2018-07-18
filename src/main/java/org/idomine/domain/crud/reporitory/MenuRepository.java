@@ -1,10 +1,10 @@
 package org.idomine.domain.crud.reporitory;
 
+import org.idomine.domain.crud.model.Menu;
 import org.idomine.domain.crud.model.Projeto;
 import org.springframework.data.repository.CrudRepository;
 
-
-public interface ProjetoRepository extends  CrudRepository<Projeto, Long>
+public interface MenuRepository extends CrudRepository<Menu, Long>
 {
     Projeto findByNome(String nome);
     
@@ -12,6 +12,5 @@ public interface ProjetoRepository extends  CrudRepository<Projeto, Long>
     
     Projeto findByNomeOrId(String nome, Long id);
     
-    Projeto findByNomeIgnoreCaseOrId(String nome, Long id);
+    Projeto findByNomeIgnoreCaseOrId(String nome, Long id); 
 }
-

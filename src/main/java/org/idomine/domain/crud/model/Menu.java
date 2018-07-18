@@ -23,6 +23,7 @@ public class Menu
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     private Projeto projeto;
+    private String nome;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Elemento> elementos;
 }
