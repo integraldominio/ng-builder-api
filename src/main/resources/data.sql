@@ -1,0 +1,1 @@
+insert into projeto (id,nome,use_login,use_roles) values (1,'Projeto 1',0,0);
