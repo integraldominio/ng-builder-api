@@ -1,4 +1,4 @@
-package org.idomine.domain.crud.service;
+package org.idomine.domain.crud.service.helper;
 
 import java.io.File;
 import java.io.IOException;
