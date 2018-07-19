@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.idomine</groupId>
-	<artifactId>ng-builder</artifactId>
+	<artifactId>${projeto.nomeBackendApp}</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 

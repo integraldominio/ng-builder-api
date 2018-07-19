@@ -13,12 +13,22 @@ import org.idomine.domain.crud.model.vo.TipoField;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = { "id" })
 public class Elemento
 {
     @Id

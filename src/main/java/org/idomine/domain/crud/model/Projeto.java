@@ -12,12 +12,22 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = { "id" })
 public class Projeto
 {
     @Id
@@ -26,20 +36,39 @@ public class Projeto
     private String nome;
     private String descricao;
     private String localGeracaoApp;
-    private String nomeApp;
-    private String nomeReduzidoApp;
+    private String nomeBackendApp;
+    private String nomeFrontendApp;
     private String iconeApp;
     private String backgroudApp;
+    private String serverPort;
+    private String frontPort;
+    private boolean useLogin;
+    private boolean useRoles;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Menu menu;
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
-    private boolean useLogin;
-    private boolean useRoles;
+
     
-    private String serverPort;
-    private String frontPort;
-  
+    public static Projeto getFake()
+    {
+        return new Projeto
+                    .ProjetoBuilder()
+                    .id(1L)
+                    .nome("Projeto 01")
+                    .descricao("Projeto 01")
+                    .localGeracaoApp("C:\temp")
+                    .nomeBackendApp("app-back")
+                    .nomeFrontendApp("app-front")
+                    .iconeApp("icone.icon")
+                    .backgroudApp("back.png")
+                    .serverPort("3000")
+                    .frontPort("5000")
+                    .useLogin(false)
+                    .useRoles(false)
+                    .build();
+    }
     
 }

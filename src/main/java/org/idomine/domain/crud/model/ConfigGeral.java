@@ -6,12 +6,22 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = { "id" })
 public class ConfigGeral
 {
     @Id
