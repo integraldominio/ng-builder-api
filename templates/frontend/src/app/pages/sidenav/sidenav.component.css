@@ -1,0 +1,43 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+.container {
+  display: block;
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+}
+.inner-sidenav-content {
+    padding-top: 50px;
+    overflow: auto;
+    position: top;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: 10px;
+    height: 90vh;
+
+}
+
+md-toolbar {
+  min-height: 32px !important;
+}
+md-toolbar md-toolbar-row {
+  height: 32px !important;
+}
