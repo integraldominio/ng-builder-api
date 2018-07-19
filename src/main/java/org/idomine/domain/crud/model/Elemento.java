@@ -1,5 +1,8 @@
 package org.idomine.domain.crud.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -41,14 +44,36 @@ public class Elemento
     private TipoElemento tipoElemento;
     @Enumerated(EnumType.STRING)
     private TipoField tipoField;;
-    
+
     private String nome;
     private String rotulo;
     private String inicial;
     private String mascara;
     private String pipe;
     private String dica;
-    
+
     private boolean requerido;
-    
+
+    public static List<Elemento> getFake()
+    {
+        List<Elemento> lista = new ArrayList<>();
+        lista.add(
+                Elemento.builder()
+                        .tipoElemento(TipoElemento.Field)
+                        .tipoField(TipoField.Integer)
+                        .nome("id")
+                        .rotulo("Id")
+                        .requerido(false)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .tipoElemento(TipoElemento.Field)
+                        .tipoField(TipoField.String)
+                        .nome("nome")
+                        .rotulo("Nome")
+                        .requerido(true)
+                        .build());
+        return lista;
+    }
+
 }

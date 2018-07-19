@@ -70,6 +70,7 @@ public class Projeto
                     .useLogin(false)
                     .useRoles(false)
                     .outputDirectory("output")
+                    .artefatos( Artefato.getFake())
                     .build();
     }
     
