@@ -44,6 +44,7 @@ public class Projeto
     private String frontPort;
     private boolean useLogin;
     private boolean useRoles;
+    private String outputDirectory;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Menu menu;
@@ -68,6 +69,7 @@ public class Projeto
                     .frontPort("5000")
                     .useLogin(false)
                     .useRoles(false)
+                    .outputDirectory("output")
                     .build();
     }
     

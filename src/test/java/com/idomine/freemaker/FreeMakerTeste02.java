@@ -2,7 +2,6 @@ package com.idomine.freemaker;
 
 import org.idomine.NgBuilderApplication;
 import org.idomine.domain.crud.model.Projeto;
-import org.idomine.domain.crud.model.vo.TipoTemplateBackend;
 import org.idomine.domain.crud.service.GenerationService;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.junit.Test;
@@ -13,19 +12,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = NgBuilderApplication.class) 
+@ContextConfiguration(classes = NgBuilderApplication.class)
 @ActiveProfiles("tdd")
 public class FreeMakerTeste02
 {
-    
+
     @Autowired
     private GenerationService generationService;
-    
+
     @Test
     public void teste()
     {
         GeradorCrudHelper.criarFolders();
-        String POM = generationService.back_POM( Projeto.getFake()  );
-        GeradorCrudHelper.output(TipoTemplateBackend.BACKEND_POM, POM);
+        generationService.backendAllToOutput(Projeto.getFake());
     }
 }

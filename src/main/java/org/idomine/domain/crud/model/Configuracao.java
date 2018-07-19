@@ -22,7 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "id" })
-public class ConfigGeral
+public class Configuracao
 {
     @Id
     private Long id;
@@ -61,5 +61,17 @@ public class ConfigGeral
 
     private String backClassesHelper;
     private String frontClassesHelper;
+    
+    private String outputDirectory;
+    
+    public static Configuracao getFake()
+    {
+        return new Configuracao
+                .ConfiguracaoBuilder()
+                .nomeEmpresa("Integraldominio")
+                .emailEmpresa("integraldominio@gmail.com")
+                .outputDirectory("output/")
+                .build();
+    }
     
 }

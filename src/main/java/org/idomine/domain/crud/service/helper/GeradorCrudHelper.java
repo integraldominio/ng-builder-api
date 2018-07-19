@@ -26,7 +26,6 @@ public class GeradorCrudHelper
     {
         criarDir("output/backend");
         criarDir("output/backend/src");
-        criarDir("output/backend/src/main");
         criarDir("output/backend/src/java");
         criarDir("output/backend/src/java/org");
         criarDir("output/backend/src/java/idomine");
@@ -35,8 +34,8 @@ public class GeradorCrudHelper
         criarDir("output/backend/src/java/idomine/domain/crud/model");
         criarDir("output/backend/src/java/idomine/domain/crud/repository");
         criarDir("output/backend/src/java/idomine/domain/crud/service");
-        criarDir("output/backend/src/java");
-        criarDir("output/backend/src/java/resources");
+        criarDir("output/backend/src/main");
+        criarDir("output/backend/src/main/resources");
 
         criarDir("output/frontend");
         criarDir("output/frontend/e2e");
