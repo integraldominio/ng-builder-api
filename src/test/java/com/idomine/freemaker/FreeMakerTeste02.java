@@ -2,7 +2,9 @@ package com.idomine.freemaker;
 
 import org.idomine.NgBuilderApplication;
 import org.idomine.domain.crud.model.Projeto;
+import org.idomine.domain.crud.model.vo.TipoTemplateBackend;
 import org.idomine.domain.crud.service.GenerationService;
+import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class FreeMakerTeste02
     @Test
     public void teste()
     {
-        generationService.back_POM( Projeto.getFake()  );
+        GeradorCrudHelper.criarFolders();
+        String POM = generationService.back_POM( Projeto.getFake()  );
+        GeradorCrudHelper.output(TipoTemplateBackend.BACKEND_POM, POM);
     }
 }

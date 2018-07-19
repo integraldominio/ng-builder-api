@@ -7,36 +7,43 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.StringJoiner;
 
-
-public class GeradorBuilderHelper
+public final class GeradorBuilderHelper
 {
-    
+
+    private GeradorBuilderHelper()
+    {
+    }
+
     public static void criarBuilder(Class<?> o)
     {
         String template = gerarBuilder(o);
-        String arquivo = o.getSimpleName()+"Builder";
-        try{
-            File file = new File("resources/xgen/builder/"+arquivo+".java");
-            if (!file.exists()) {
+        String arquivo = o.getSimpleName() + "Builder";
+        try
+        {
+            File file = new File("resources/xgen/builder/" + arquivo + ".java");
+            if (!file.exists())
+            {
                 file.createNewFile();
             }
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(template);
             bw.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println(e);
         }
     }
 
     public static String gerarBuilder(Class<?> o)
     {
-        String template="";
-        template+= "public class "+o.getSimpleName()+"Builder \n"+
-        "{ \n";
-        template+=atributosPrivados(o);
-        template+=metodoSet(o);
-        template+=metodoGetBuilder(o)+" \n}";
+        String template = "";
+        template += "public class " + o.getSimpleName() + "Builder \n" +
+                "{ \n";
+        template += atributosPrivados(o);
+        template += metodoSet(o);
+        template += metodoGetBuilder(o) + " \n}";
         return template;
     }
 
@@ -57,7 +64,7 @@ public class GeradorBuilderHelper
 
         for (Field field : o.getDeclaredFields())
         {
-            template.add( field.getType().getSimpleName()+" "+field.getName() );
+            template.add(field.getType().getSimpleName() + " " + field.getName());
         }
         return template.toString();
     }
@@ -80,16 +87,16 @@ public class GeradorBuilderHelper
 
     public static String metodoGetBuilder(Class<?> o)
     {
-        String nome= o.getSimpleName();
+        String nome = o.getSimpleName();
         String template =
 
-                "\npublic "+nome+" build() \n" +
+                "\npublic " + nome + " build() \n" +
                         "{ \n" +
-                        "  return new "+nome+"( "+listaAtributosParametros(o)+" ); \n" +
+                        "  return new " + nome + "( " + listaAtributosParametros(o) + " ); \n" +
                         "} \n" +
-                        "public static "+nome+"Builder getBuilder() \n" +
+                        "public static " + nome + "Builder getBuilder() \n" +
                         "{ \n" +
-                        "return new "+nome+"Builder(); \n" +
+                        "return new " + nome + "Builder(); \n" +
                         "} \n";
         return template;
     }
