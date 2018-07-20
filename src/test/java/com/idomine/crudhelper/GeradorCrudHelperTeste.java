@@ -1,7 +1,7 @@
 package com.idomine.crudhelper;
 
-import org.idomine.domain.crud.model.vo.TipoTemplateBackend;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
+import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 import org.junit.Test;
 
 public class GeradorCrudHelperTeste
@@ -23,7 +23,7 @@ public class GeradorCrudHelperTeste
         // assertTrue(GeradorCrudHelper.criarDir(output + "frontend"));
 
         GeradorCrudHelper.criarFolders();
-        GeradorCrudHelper.output("output/"+TipoTemplateBackend.BACKEND_POM, "pom");
+        GeradorCrudHelper.output("output/"+TemplateBackendHelper.BACKEND_POM, "pom");
         
     }
 

@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class TemplateImports
+public class TemplateImportsHelper
 {
    private boolean ilist;
    private boolean idate;

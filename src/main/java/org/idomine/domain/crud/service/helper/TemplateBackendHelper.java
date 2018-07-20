@@ -1,6 +1,6 @@
-package org.idomine.domain.crud.model.vo;
+package org.idomine.domain.crud.service.helper;
 
-public final class TipoTemplateBackend
+public final class TemplateBackendHelper
 {
     public static final String BACKEND_DOMAIN = "src/main/java/org/idomine/";
     
