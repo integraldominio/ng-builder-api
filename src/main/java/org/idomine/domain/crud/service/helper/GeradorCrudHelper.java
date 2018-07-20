@@ -3,9 +3,12 @@ package org.idomine.domain.crud.service.helper;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 public class GeradorCrudHelper
 {
@@ -32,6 +35,7 @@ public class GeradorCrudHelper
         criarDir("output/frontend/src/app");
         criarDir("output/frontend/src/app/erp");
         criarDir("output/frontend/src/app/infra");
+        criarDir("output/frontend/src/app/infra/security");
         criarDir("output/frontend/src/app/pages");
         criarDir("output/frontend/src/app/shared");
         criarDir("output/frontend/src/assets");
@@ -129,4 +133,26 @@ public class GeradorCrudHelper
         return temp;
     }
 
+    @SuppressWarnings("resource")
+    public static void copyFile(File source, File destination) throws IOException
+    {
+        if (destination.exists())
+            destination.delete();
+        FileChannel sourceChannel = null;
+        FileChannel destinationChannel = null;
+        try
+        {
+            sourceChannel = new FileInputStream(source).getChannel();
+            destinationChannel = new FileOutputStream(destination).getChannel();
+            sourceChannel.transferTo(0, sourceChannel.size(),
+                    destinationChannel);
+        }
+        finally
+        {
+            if (sourceChannel != null && sourceChannel.isOpen())
+                sourceChannel.close();
+            if (destinationChannel != null && destinationChannel.isOpen())
+                destinationChannel.close();
+        }
+    }
 }

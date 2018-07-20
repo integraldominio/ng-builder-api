@@ -41,7 +41,9 @@ public class Projeto
     private String iconeApp;
     private String backgroudApp;
     private String serverPort;
+    private String serverHost;
     private String frontPort;
+    private String frontHost;
     private boolean useLogin;
     private boolean useRoles;
     private String outputDirectory;
@@ -66,7 +68,9 @@ public class Projeto
                     .iconeApp("icone.icon")
                     .backgroudApp("back.png")
                     .serverPort("3000")
+                    .serverHost("http://localhost")
                     .frontPort("5000")
+                    .frontHost("http://localhost")
                     .useLogin(false)
                     .useRoles(false)
                     .outputDirectory("output")

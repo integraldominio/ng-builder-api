@@ -7,6 +7,8 @@ import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKE
 import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_REPOSITORY;
 import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_RESOURCE;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +46,7 @@ public class GenerationService
         backendAppPropertiesToOutput(projeto);
         backendApplicationToOutput(projeto);
         backendEntityToOutput(projeto);
-        //
+        
         frontReadmeToOutput(projeto);
         frontJsonsToOutput(projeto);
     }
@@ -64,6 +66,32 @@ public class GenerationService
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
+
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", model(projeto) ));
+
+        frontendSecurityFiles(projeto);
+    }
+
+    private void frontendSecurityFiles(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
+        try
+        {
+            GeradorCrudHelper.copyFile( new File(o+"admin.guard.ts"), new File(d+"admin.guard.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"auth.guard.ts"), new File(d+"auth.guard.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"authentication.service.ts"), new File(d+"authentication.service.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"guest.guard.ts"), new File(d+"guest.guard.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"index.ts"), new File(d+"index.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"jwt.interceptor.ts"), new File(d+"jwt.interceptor.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"message.service.ts"), new File(d+"message.service.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"resource.service.ts"), new File(d+"resource.service.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"user.service.ts"), new File(d+"user.service.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void frontReadmeToOutput(Projeto projeto)

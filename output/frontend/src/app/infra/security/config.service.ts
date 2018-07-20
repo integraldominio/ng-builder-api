@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ConfigService {
 
-  private _api_url = '${projeto.serverHost}:${projeto.serverPort}';
+  private _api_url = 'http://localhost:3000';
   private _refresh_token_url = this._api_url + '/refresh';
   private _login_url = this._api_url + '/auth';
   private _logout_url = this._api_url + '/logout';
