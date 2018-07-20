@@ -1,5 +1,10 @@
 /target/
 /target/**
+
+outout/backend/target/
+outout/backend//target/**
+
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
