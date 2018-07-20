@@ -24,4 +24,23 @@ public final class TemplateBackendHelper
     
     public static final String BACKEND_RESOURCE = BACKEND + BACKEND_DOMAIN + "domain/crud/resource/Resource.java";
     public static final String BACKEND_RESOURCE_PATH = BACKEND + BACKEND_DOMAIN + "domain/crud/resource/";
+    
+    public static final String FRONTEND_README = FRONTEND + "README.md";
+    public static final String FRONTEND_ANGULAR_JSON = FRONTEND + "angular.json";
+    public static final String FRONTEND_PACKAGE_JSON = FRONTEND + "package.json";
+    public static final String FRONTEND_TSLINT_JSON = FRONTEND + "tslint.json";
+    public static final String FRONTEND_TSCONFIG_JSON = FRONTEND + "tsconfig.json";
+    public static final String FRONTEND_DBJSON = FRONTEND + "db.json";
+    
+    public static final String FRONTEND_SRC = FRONTEND + "src/";
+    
+    public static final String FRONTEND_SRC_TSLINT = FRONTEND_SRC + "tslint.json";
+    public static final String FRONTEND_SRC_TSCONFIG_SPEC = FRONTEND_SRC + "tsconfig.spec.json";
+    public static final String FRONTEND_SRC_TSCONFIG_APP = FRONTEND_SRC + "tsconfig.app.json";
+    public static final String FRONTEND_SRC_TEST = FRONTEND_SRC + "test.ts";
+    public static final String FRONTEND_SRC_STYLE = FRONTEND_SRC + "styles.css";
+    public static final String FRONTEND_SRC_INDEX = FRONTEND_SRC + "index.html";
+    public static final String FRONTEND_SRC_MAIN = FRONTEND_SRC + "main.ts";
+    
+    
 }

@@ -11,17 +11,6 @@ public class GeradorCrudHelper
 {
     public String output = "output";
 
-    public static void cerarCrud(String entity)
-    {
-
-        gerarRepository(entity);
-        gerarService(entity);
-        gerarControllerConsulta(entity);
-        gerarControllerCadastro(entity);
-        gerarValidation(entity);
-
-    }
-
     public static void criarFolders()
     {
         criarDir("output/backend");
@@ -47,7 +36,7 @@ public class GeradorCrudHelper
         criarDir("output/frontend/src/app/shared");
         criarDir("output/frontend/src/assets");
         criarDir("output/frontend/src/enviroments");
-        
+
     }
 
     public static boolean criarDir(String nome)
@@ -55,12 +44,11 @@ public class GeradorCrudHelper
         return (new File(nome)).mkdir();
     }
 
-    
     public static void output(String arquivo, String template)
     {
         try
         {
-            File file = new File( arquivo);
+            File file = new File(arquivo);
             if (!file.exists())
             {
                 file.createNewFile();
@@ -75,7 +63,7 @@ public class GeradorCrudHelper
             System.out.println(e);
         }
     }
-    
+
     public static void criar(String arquivo, String template)
     {
         try
@@ -94,76 +82,6 @@ public class GeradorCrudHelper
         {
             System.out.println(e);
         }
-    }
-
-    public static void criarValidation(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String v = "validation/" + e + "Validation.java";
-            criar(v, gerarValidation(e));
-        }
-
-    }
-
-    public static void criarView(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String v = "web/" + e + ".xhtml";
-            criar(v, gerarView(e));
-        }
-
-    }
-
-    public static void criarCadastro(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String c = "cadastro/" + e + "cadastro.java";
-            criar(c, gerarControllerCadastro(e));
-        }
-
-    }
-
-    public static void criarConsulta(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String c = "consulta/" + e + "Consulta.java";
-            criar(c, gerarControllerConsulta(e));
-        }
-
-    }
-
-    public static void criarService(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String s = "service/" + e + "Service.java";
-            criar(s, gerarService(e));
-        }
-
-    }
-
-    public static void criarRepository(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String r = "repository/" + e + "Repository.java";
-            criar(r, gerarRepository(e));
-        }
-
-    }
-
-    public static void criarRule(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String r = "rule/" + e + "Rule.java";
-            criar(r, gerarRule(e));
-        }
-
     }
 
     @SuppressWarnings("resource")
@@ -211,75 +129,4 @@ public class GeradorCrudHelper
         return temp;
     }
 
-    public static String gerarRepository(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/repository.template");
-        return replace(gerarHeader(entity + "Repository") + template, entity);
-    }
-
-    public static String gerarRule(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/rule.template");
-        return replace(gerarHeader(entity + "Rule") + template, entity);
-    }
-
-    public static String gerarControllerConsulta(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/consulta.template");
-        return replace(gerarHeader(entity + "ConsultaMB") + template, entity);
-
-    }
-
-    public static String gerarControllerCadastro(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/cadastro.template");
-        return replace(gerarHeader(entity + "MB") + template, entity);
-
-    }
-
-    public static String gerarService(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/service.template");
-        return replace(gerarHeader(entity + "Service") + template, entity);
-    }
-
-    public static String gerarValidation(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/rule.template");
-        return replace(gerarHeader(entity + "Rule") + template, entity);
-    }
-
-    public static String gerarHeader(String string)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/header.template");
-        return template.replace("%s", string);
-    }
-
-    public static String gerarView(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/view.template");
-        return replace(template, entity);
-    }
-
-    public static void criarCadastroFaturaNormal(String[] entitys)
-    {
-        for (String e : entitys)
-        {
-            String r = "cadastro/" + e + "MB.java";
-            criar(r, gerarRepository(e));
-        }
-    }
-
-    public static String gerarCadastroFatura(String entity)
-    {
-        String template = lerTemplate("resources/xgen/xtemplate/fatura.template");
-        return replace(template, entity);
-    }
-
-    private static String replace(String template, String string)
-    {
-        return template.replace("%n", string)
-                .replace("%s", string.toLowerCase())
-                .replace("%S", string.toUpperCase());
-    }
 }

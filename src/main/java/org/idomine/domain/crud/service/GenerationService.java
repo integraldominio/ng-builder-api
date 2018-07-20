@@ -38,7 +38,6 @@ public class GenerationService
 
     public void backendAllToOutput(Projeto projeto)
     {
-        //
         readmeToOutput(projeto);
         backendPomToOutput(projeto);
         backendReadmeToOutput(projeto);
@@ -47,11 +46,34 @@ public class GenerationService
         backendEntityToOutput(projeto);
         //
         frontReadmeToOutput(projeto);
+        frontJsonsToOutput(projeto);
+    }
+
+    private void frontJsonsToOutput(Projeto projeto)
+    {
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_DBJSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, null));
+        
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TEST, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TEST, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
     }
 
     private void frontReadmeToOutput(Projeto projeto)
     {
-        
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README, frontendReadmeToString(projeto));
+    }
+
+    private String frontendReadmeToString(Projeto projeto)
+    {
+        return freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_README, model(projeto));
     }
 
     private void backendApplicationToOutput(Projeto projeto)
