@@ -2,8 +2,8 @@ package org.idomine.domain.crud.resource;
 
 import javax.transaction.Transactional;
 
-import org.idomine.domain.crud.model.Projeto;
-import org.idomine.domain.crud.reporitory.ProjetoRepository;
+import org.idomine.domain.crud.model.${artefato.className};
+import org.idomine.domain.crud.reporitory.${artefato.className}Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,57 +18,57 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class ProjetoResource
+public class ${artefato.className}Resource
 {
     @Autowired
-    private ProjetoRepository projetoRepository;
+    private ${artefato.className}Repository ${artefato.classFolder}Repository;
 
-    @GetMapping("/projetos")
-    public Iterable<Projeto> listaAll()
+    @GetMapping("/${artefato.resourceName}")
+    public Iterable<${artefato.className}> listaAll()
     {
-        return projetoRepository.findAll();
+        return ${artefato.classFolder}Repository.findAll();
     }
 
-    @PostMapping("/projetos/add")
+    @PostMapping("/${artefato.resourceName}/add")
     @Transactional
-    public ResponseEntity<Projeto> add(@RequestBody Projeto projeto)
+    public ResponseEntity<${artefato.className}> add(@RequestBody ${artefato.className} obj)
     {
-        Projeto proj = projetoRepository.save(projeto);
-        return new ResponseEntity<>(proj, HttpStatus.OK);
+        ${artefato.className} newObj = ${artefato.classFolder}Repository.save(obj);
+        return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
 
-    @PutMapping("/projetos/put")
+    @PutMapping("/${artefato.resourceName}/put")
     @Transactional
-    public ResponseEntity<Projeto> update(@RequestBody Projeto projeto)
+    public ResponseEntity<${artefato.className}> update(@RequestBody ${artefato.className} obj)
     {
-        Projeto proj = projetoRepository.save(projeto);
-        return new ResponseEntity<>(proj, HttpStatus.OK);
+        ${artefato.className} newObj = ${artefato.classFolder}Repository.save(obj);
+        return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
 
-    @DeleteMapping("/projetos/{id}")
+    @DeleteMapping("/${artefato.resourceName}/{id}")
     @Transactional
     public ResponseEntity<?> delete(@PathVariable Long id)
     {
-        projetoRepository.deleteById(id);
+        ${artefato.classFolder}Repository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/projetos/search/id/{id}")
+    @GetMapping("/${artefato.resourceName}/search/id/{id}")
     public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
     {
-        return new ResponseEntity<>(projetoRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(${artefato.classFolder}Repository.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/projetos/search/nome/{nome}")
+    @GetMapping("/${artefato.resourceName}/search/nome/{nome}")
     public ResponseEntity<?> searchPathVariable(@PathVariable String nome)
     {
-        return new ResponseEntity<>(projetoRepository.findByNome(nome), HttpStatus.OK);
+        return new ResponseEntity<>(${artefato.classFolder}Repository.findByNome(nome), HttpStatus.OK);
     }
 
-    @GetMapping("/projetos/search")
+    @GetMapping("/${artefato.resourceName}/search")
     public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
     {
-        return new ResponseEntity<>(projetoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
+        return new ResponseEntity<>(${artefato.classFolder}Repository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }
 
 }

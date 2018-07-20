@@ -26,15 +26,15 @@ public class GeradorCrudHelper
     {
         criarDir("output/backend");
         criarDir("output/backend/src");
-        criarDir("output/backend/src/java");
-        criarDir("output/backend/src/java/org");
-        criarDir("output/backend/src/java/idomine");
-        criarDir("output/backend/src/java/idomine/domain");
-        criarDir("output/backend/src/java/idomine/domain/crud");
-        criarDir("output/backend/src/java/idomine/domain/crud/model");
-        criarDir("output/backend/src/java/idomine/domain/crud/repository");
-        criarDir("output/backend/src/java/idomine/domain/crud/service");
         criarDir("output/backend/src/main");
+        criarDir("output/backend/src/main/java");
+        criarDir("output/backend/src/main/java/org");
+        criarDir("output/backend/src/main/java/org/idomine");
+        criarDir("output/backend/src/main/java/org/idomine/domain");
+        criarDir("output/backend/src/main/java/org/idomine/domain/crud");
+        criarDir("output/backend/src/main/java/org/idomine/domain/crud/model");
+        criarDir("output/backend/src/main/java/org/idomine/domain/crud/repository");
+        criarDir("output/backend/src/main/java/org/idomine/domain/crud/resource");
         criarDir("output/backend/src/main/resources");
 
         criarDir("output/frontend");

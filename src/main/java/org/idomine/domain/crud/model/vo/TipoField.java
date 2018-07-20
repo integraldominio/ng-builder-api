@@ -2,5 +2,5 @@ package org.idomine.domain.crud.model.vo;
 
 public enum TipoField
 {
-  String, Integer, Decimal, Date, Boolean, Binario;
+    String, Integer, Long, Decimal, Date, DateTime, Time, Boolean, Binario, Log, BigDecimal, BigInteger;
 }

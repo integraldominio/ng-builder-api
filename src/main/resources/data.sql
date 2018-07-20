@@ -11,5 +11,5 @@ insert into projeto ( id, nome, use_login, use_roles ) values ( 10, 'projeto 10'
 
 insert into artefato( id, projeto_id, nome, resource_name, class_name, tipo ) values ( 1, 1, 'Cadastro de Clientes' , 'clientes', 'Cliente',  'Crud' );
 
-insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido ) values ( 1, 1, 'id','id', 'Field', 'Integer', 0 );
-insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido ) values ( 2, 1, 'nome','Nome', 'Field', 'String' , 1);
+insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 1, 1, 'id','id', 'Field', 'Integer', 0,0,0 );
+insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 2, 1, 'nome','Nome', 'Field', 'String' , 1,0,0);

@@ -25,5 +25,11 @@ public class FreeMakerTeste02
     {
         GeradorCrudHelper.criarFolders();
         generationService.backendAllToOutput(Projeto.getFake());
+        
+ 
+        //System.out.println(">>>");
+        //System.out.println( generationService.backendEntityToString(Projeto.getFake(), 0L) );
+        
+        
     }
 }
