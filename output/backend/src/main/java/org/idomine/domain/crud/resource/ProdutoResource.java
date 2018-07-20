@@ -2,8 +2,8 @@ package org.idomine.domain.crud.resource;
 
 import javax.transaction.Transactional;
 
-import org.idomine.domain.crud.model.Cliente;
-import org.idomine.domain.crud.repository.ClienteRepository;
+import org.idomine.domain.crud.model.Produto;
+import org.idomine.domain.crud.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,57 +18,57 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class ClienteResource
+public class ProdutoResource
 {
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ProdutoRepository produtoRepository;
 
-    @GetMapping("/clientes")
-    public Iterable<Cliente> listaAll()
+    @GetMapping("/produtos")
+    public Iterable<Produto> listaAll()
     {
-        return clienteRepository.findAll();
+        return produtoRepository.findAll();
     }
 
-    @PostMapping("/clientes/add")
+    @PostMapping("/produtos/add")
     @Transactional
-    public ResponseEntity<Cliente> add(@RequestBody Cliente obj)
+    public ResponseEntity<Produto> add(@RequestBody Produto obj)
     {
-        Cliente newObj = clienteRepository.save(obj);
+        Produto newObj = produtoRepository.save(obj);
         return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
 
-    @PutMapping("/clientes/put")
+    @PutMapping("/produtos/put")
     @Transactional
-    public ResponseEntity<Cliente> update(@RequestBody Cliente obj)
+    public ResponseEntity<Produto> update(@RequestBody Produto obj)
     {
-        Cliente newObj = clienteRepository.save(obj);
+        Produto newObj = produtoRepository.save(obj);
         return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
 
-    @DeleteMapping("/clientes/{id}")
+    @DeleteMapping("/produtos/{id}")
     @Transactional
     public ResponseEntity<?> delete(@PathVariable Long id)
     {
-        clienteRepository.deleteById(id);
+        produtoRepository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/clientes/search/id/{id}")
+    @GetMapping("/produtos/search/id/{id}")
     public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
     {
-        return new ResponseEntity<>(clienteRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(produtoRepository.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/clientes/search/nome/{nome}")
+    @GetMapping("/produtos/search/nome/{nome}")
     public ResponseEntity<?> searchPathVariable(@PathVariable String nome)
     {
-        return new ResponseEntity<>(clienteRepository.findByNome(nome), HttpStatus.OK);
+        return new ResponseEntity<>(produtoRepository.findByNome(nome), HttpStatus.OK);
     }
 
-    @GetMapping("/clientes/search")
+    @GetMapping("/produtos/search")
     public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
     {
-        return new ResponseEntity<>(clienteRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
+        return new ResponseEntity<>(produtoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }
 
 }

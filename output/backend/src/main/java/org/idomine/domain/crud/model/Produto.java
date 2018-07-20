@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "id" })
-public class Cliente
+public class Produto
 {
     @Id
     @GeneratedValue

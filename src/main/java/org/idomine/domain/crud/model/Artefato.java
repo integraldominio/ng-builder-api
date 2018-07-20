@@ -69,6 +69,16 @@ public class Artefato
                         .classFolder("cliente")
                         .elementos( Elemento.getFake())
                         .build());
+        lista.add(
+                Artefato.builder()
+                        .id(2L)
+                        .tipo(TipoArtefato.Crud)
+                        .nome("Cad.Produtos")
+                        .resourceName("produtos")
+                        .className("Produto")
+                        .classFolder("produto")
+                        .elementos( Elemento.getFake())
+                        .build());        
         return lista;
     }
 

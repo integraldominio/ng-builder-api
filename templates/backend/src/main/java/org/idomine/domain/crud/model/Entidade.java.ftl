@@ -47,7 +47,7 @@ public class ${artefato.className}
     @Trasient
     </#if>
     <#if el.tipoElemento == "Field">
-    @Comlumn<#if el.tamanho != 0 >(length=${el.tamanho})</#if>
+    @Column<#if el.tamanho != 0 >(length=${el.tamanho})</#if>
     </#if>
     private ${el.tipoField} ${el.nome};
     

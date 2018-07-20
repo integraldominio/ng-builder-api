@@ -3,7 +3,7 @@ package org.idomine.domain.crud.resource;
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.${artefato.className};
-import org.idomine.domain.crud.reporitory.${artefato.className}Repository;
+import org.idomine.domain.crud.repository.${artefato.className}Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
