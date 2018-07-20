@@ -70,6 +70,91 @@ public class GenerationService
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", model(projeto) ));
 
         frontendSecurityFiles(projeto);
+        frontendPages(projeto);
+        frontendShared(projeto);
+        fromendAppModule(projeto);
+        
+        frontendErp(projeto);
+    }
+
+    private void frontendErp(Projeto projeto)
+    {
+        if (projeto.getArtefatos() != null)
+        {
+            for (Artefato artefato : projeto.getArtefatos())
+            {
+                String art = artefato.getClassName();
+                String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + art+"/"+art + ".ts";
+                //criar dir ante de criar arq...
+                //GeradorCrudHelper.output(arq, backendEntityToString(artefato));
+            }
+        } 
+        
+    }
+
+    private void fromendAppModule(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP;
+        try
+        {
+            GeradorCrudHelper.copyFile( new File(o+"app.module.ts"), new File(d+"app.module.ts"));
+            GeradorCrudHelper.copyFile( new File(o+"app-rotas.module.ts"), new File(d+"app-rotas.module.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        
+    }
+
+    private void frontendShared(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
+        try
+        {
+            GeradorCrudHelper.copyFile( new File(o+"material.module.ts"), new File(d+"material.module.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void frontendPages(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
+        try
+        {
+            GeradorCrudHelper.copyFile( new File(o+"base/base.component.html"), new File(d+"base/base.component.html"));
+            GeradorCrudHelper.copyFile( new File(o+"base/base.component.ts"), new File(d+"base/base.component.ts"));
+
+            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.html"), new File(d+"erro/erro.component.html"));
+            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.css"), new File(d+"erro/erro.component.css"));
+            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.ts"), new File(d+"erro/erro.component.ts"));
+
+            GeradorCrudHelper.copyFile( new File(o+"home/home.component.html"), new File(d+"home/home.component.html"));
+            GeradorCrudHelper.copyFile( new File(o+"home/home.component.css"), new File(d+"home/home.component.css"));
+            GeradorCrudHelper.copyFile( new File(o+"home/home.component.ts"), new File(d+"home/home.component.ts"));
+
+            GeradorCrudHelper.copyFile( new File(o+"login/login.component.html"), new File(d+"login/login.component.html"));
+            GeradorCrudHelper.copyFile( new File(o+"login/login.component.scss"), new File(d+"login/login.component.scss"));
+            GeradorCrudHelper.copyFile( new File(o+"login/login.component.ts"), new File(d+"login/login.component.ts"));
+
+            GeradorCrudHelper.copyFile( new File(o+"sidenav/sidenav.component.css"), new File(d+"sidenav/sidenav.component.css"));
+            GeradorCrudHelper.copyFile( new File(o+"sidenav/sidenav.component.ts"), new File(d+"sidenav/sidenav.component.ts"));
+
+            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.html"), new File(d+"sobre/sobre.component.html"));
+            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.css"), new File(d+"sobre/login.component.css"));
+            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.ts"), new File(d+"sobre/sobre.component.ts"));
+}
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     private void frontendSecurityFiles(Projeto projeto)
