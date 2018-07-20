@@ -2,15 +2,22 @@ package org.idomine.domain.crud.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient; 
 
-import lombok.Getter; 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
 
 @Entity
 @Getter
@@ -38,12 +45,12 @@ public class Cliente
     @Column(length=1)
     private String situacao;
     
-    @Trasient
+    @Transient
     private String situacaoToString;
     
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column
-    private DateTime registerDate;
+    private Date registerDate;
     
     
 }

@@ -7,17 +7,24 @@ import java.util.List;
 import java.util.Date;
 </#if>
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 <#if import.idate >
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient; 
 </#if>
 
-import lombok.Getter; 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
 
 @Entity
 @Getter
@@ -44,7 +51,7 @@ public class ${artefato.className}
     @Temporal(TemporalType.TIME)
     </#if>
     <#if el.tipoElemento == "Transient">
-    @Trasient
+    @Transient
     </#if>
     <#if el.tipoElemento == "Field">
     @Column<#if el.tamanho != 0 >(length=${el.tamanho})</#if>

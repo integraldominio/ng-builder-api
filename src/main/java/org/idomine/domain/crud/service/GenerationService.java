@@ -42,7 +42,18 @@ public class GenerationService
         backendPomToOutput(projeto);
         backendReadmeToOutput(projeto);
         backendAppPropertiesToOutput(projeto);
+        backendApplicationToOutput(projeto);
         backendEntityToOutput(projeto);
+    }
+
+    private void backendApplicationToOutput(Projeto projeto)
+    {
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TipoTemplateBackend.BACKEND_APPLICATION, backendApplicationToString(projeto));
+    }
+    
+    public String backendApplicationToString(Projeto projeto)
+    {
+        return freeMarkerEngine.process(TipoTemplateBackend.BACKEND_APPLICATION, model(projeto));
     }
 
     public void backendEntityToOutput(Projeto projeto)

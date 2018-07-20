@@ -113,7 +113,7 @@ public class Elemento
         lista.add(
                 Elemento.builder()
                         .tipoElemento(TipoElemento.Field)
-                        .tipoField(TipoField.DateTime)
+                        .tipoField(TipoField.Date)
                         .nome("registerDate")
                         .tamanho(0L)
                         .rotulo("Data Registro")

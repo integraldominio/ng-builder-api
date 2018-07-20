@@ -1,4 +1,4 @@
-spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.open-in-view=true
 spring.h2.console.enabled=true
 server.port=${projeto.serverPort}
