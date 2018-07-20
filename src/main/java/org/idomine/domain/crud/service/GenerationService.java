@@ -38,9 +38,10 @@ public class GenerationService
 
     public void backendAllToOutput(Projeto projeto)
     {
-       // backendPomToOutput(projeto);
-       // backendReadmeToOutput(projeto);
-       // backendAppPropertiesToOutput(projeto);
+        readmeToOutput(projeto);
+        backendPomToOutput(projeto);
+        backendReadmeToOutput(projeto);
+        backendAppPropertiesToOutput(projeto);
         backendEntityToOutput(projeto);
     }
 
@@ -53,9 +54,9 @@ public class GenerationService
                 String arq = projeto.getOutputDirectory() + "/" + TipoTemplateBackend.BACKEND_ENTITY_PATH + artefato.getClassName() + ".java";
                 String rep = projeto.getOutputDirectory() + "/" + TipoTemplateBackend.BACKEND_REPOSITORY_PATH + artefato.getClassName() + "Repository.java";
                 String res = projeto.getOutputDirectory() + "/" + TipoTemplateBackend.BACKEND_RESOURCE_PATH + artefato.getClassName() + "Resource.java";
-                GeradorCrudHelper.output( arq , backendEntityToString(artefato));
-                GeradorCrudHelper.output( rep , backendRepositoryToString(artefato));
-                GeradorCrudHelper.output( res , backendResourceToString(artefato));
+                GeradorCrudHelper.output(arq, backendEntityToString(artefato));
+                GeradorCrudHelper.output(rep, backendRepositoryToString(artefato));
+                GeradorCrudHelper.output(res, backendResourceToString(artefato));
             }
         }
     }
@@ -107,6 +108,18 @@ public class GenerationService
         return freeMarkerEngine.process(BACKEND_POM, model(projeto));
     }
 
+    
+    public void readmeToOutput(Projeto projeto)
+    {
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TipoTemplateBackend.README, readmeToString(projeto));
+    }
+
+    public String readmeToString(Projeto projeto)
+    {
+        return freeMarkerEngine.process(TipoTemplateBackend.README, model(projeto));
+    }
+
+    
     public void backendReadmeToOutput(Projeto projeto)
     {
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TipoTemplateBackend.BACKEND_README, backendReadmeToString(projeto));
