@@ -1,10 +1,10 @@
 /target/
 /target/**
 
-output/backend/target/
-output/backend/target/**
-output/backend/target/classes
-output/backend/target/classes/**
+/output/backend/target/
+/output/backend/target/**
+/output/backend/target/classes
+/output/backend/target/classes/**
 
 
 !.mvn/wrapper/maven-wrapper.jar
