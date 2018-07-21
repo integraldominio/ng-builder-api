@@ -21,12 +21,25 @@ export class ProdutoComponent implements OnInit {
   model = {};
 
   // table
-  displayedColumns = [   ];
+  displayedColumns = [
+  'nome',
+  'email',
+  'telefone',
+  'situacao',
+  'situacaoToString',
+  'registerDate',
+  ];
+  
   dataSource: Array<Produto> = [];
 
   fields: FormlyFieldConfig[] =
   [
-     
+   { key: 'nome', type: 'input', templateOptions: { type: 'text', label: 'Nome', placeholder: 'Informe Nome', required: true } },
+   { key: 'email', type: 'input', templateOptions: { type: 'text', label: 'e-mail', placeholder: 'Informe e-mail', required: true } },
+   { key: 'telefone', type: 'input', templateOptions: { type: 'text', label: 'Telefone', placeholder: 'Informe Telefone', required: true } },
+   { key: 'situacao', type: 'input', templateOptions: { type: 'text', label: 'Situacao', placeholder: 'Informe Situacao', required: true } },
+   { key: 'situacaoToString', type: 'input', templateOptions: { type: 'text', label: 'Situacao', placeholder: 'Informe Situacao', required: false } },
+   { key: 'registerDate', type: 'input', templateOptions: { type: 'text', label: 'Data Registro', placeholder: 'Informe Data Registro', required: false } },
   ] ;
 
   constructor (

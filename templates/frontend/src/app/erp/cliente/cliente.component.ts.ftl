@@ -21,12 +21,19 @@ export class ${artefato.className}Component implements OnInit {
   model = {};
 
   // table
-  displayedColumns = [   ];
+  displayedColumns = [
+  <#list artefato.elementos as e >
+  '${e.nome}',
+  </#list> 
+  ];
+  
   dataSource: Array<${artefato.className}> = [];
 
   fields: FormlyFieldConfig[] =
   [
-     
+  <#list artefato.elementos as e >  
+   { key: '${e.nome}', type: 'input', templateOptions: { type: 'text', label: '${e.rotulo}', placeholder: 'Informe ${e.rotulo}', required: <#if e.requerido>true<#else>false</#if> } },
+  </#list> 
   ] ;
 
   constructor (

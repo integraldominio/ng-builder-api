@@ -5,7 +5,7 @@ import { MessageService, ConfigService, ResourceService } from '../../infra/secu
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService extends ResourceService<Cliente> {
+export class ${artefato.className}Service extends ResourceService<${artefato.className}> {
 
   constructor(
     httpClient: HttpClient,
@@ -15,26 +15,21 @@ export class ClienteService extends ResourceService<Cliente> {
       super(
       httpClient,
       configService.getApiUrl(),
-      'clientes',
+      '${artefato.resourceName}',
       messageService);
   }
 }
 
-export class Cliente {
+export class ${artefato.className} {
   id: number;
-  nome: string;
-  endereco: string;
-  cidade: string;
-  telefone: string;
-  email: string;
-  situacao: Situacao;
-  limiteSaldo: number;
+  <#list artefato.elementos as e >
+  <#if e.tipoElemento == "Field" >
+  ${e.nome}: ${e.tipoField?lower_case};
+  </#if>
+  </#list>
 }
 
-export enum Situacao {
-  Ativo,
-  Inativo
-}
+ 
 
 // usando json-server
 // npm install -g json-server

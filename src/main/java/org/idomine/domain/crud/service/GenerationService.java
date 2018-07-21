@@ -65,8 +65,6 @@ public class GenerationService
         {
             GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
             GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
-            // GeradorCrudHelper.copyFile(new File(o + "environment.prod.ts.ftl"), new File(d + "environment.prod.ts"));
-            // GeradorCrudHelper.copyFile(new File(o + "environment.ts.ftl"), new File(d + "environment.ts"));
         }
         catch (Exception e)
         {
@@ -236,6 +234,8 @@ public class GenerationService
                     new File(d + "sidenav/sidenav.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.ts"),
                     new File(d + "sidenav/sidenav.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.service.ts"),
+                    new File(d + "sidenav/sidenav.service.ts"));
             
             GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
             
@@ -243,7 +243,7 @@ public class GenerationService
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),
                     new File(d + "sobre/sobre.component.html"));
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.css"),
-                    new File(d + "sobre/login.component.css"));
+                    new File(d + "sobre/sobre.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.ts"),
                     new File(d + "sobre/sobre.component.ts"));
         }

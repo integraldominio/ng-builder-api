@@ -23,18 +23,13 @@ export class ClienteService extends ResourceService<Cliente> {
 export class Cliente {
   id: number;
   nome: string;
-  endereco: string;
-  cidade: string;
-  telefone: string;
   email: string;
-  situacao: Situacao;
-  limiteSaldo: number;
+  telefone: string;
+  situacao: string;
+  registerDate: date;
 }
 
-export enum Situacao {
-  Ativo,
-  Inativo
-}
+ 
 
 // usando json-server
 // npm install -g json-server

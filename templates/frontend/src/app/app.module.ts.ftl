@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 
@@ -32,6 +31,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     SobreComponent,
     ErroComponent,
     LoginComponent,
+    HomeComponent,
     
  	<#list projeto.artefatos as artefato >  
     ${artefato.className}Component,
@@ -48,8 +48,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     FormlyMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRotasModule,
-    NgSelectModule
+    AppRotasModule
   ],
   providers: [
     AuthGuard,

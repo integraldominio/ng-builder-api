@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-@import "~@ng-select/ng-select/themes/material.theme.css";
 
 body{
   margin: 0;

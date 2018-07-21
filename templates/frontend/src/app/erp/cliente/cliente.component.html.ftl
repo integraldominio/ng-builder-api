@@ -11,37 +11,14 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
+  <#list artefato.elementos as e >
     <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+    <ng-container matColumnDef="${e.nome}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>${e.rotulo}</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.${e.nome}}}</mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="nome">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.nome}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="state">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Endereço</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.endereco}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="cidade">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Cidade</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.cidade}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="telefone">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.telefone}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
-    </ng-container>
-
+</#list>
+  
     <!-- actions -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
