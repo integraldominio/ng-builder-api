@@ -5,9 +5,8 @@ import { SidenaveComponent } from './pages/sidenav/sidenav.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ErroComponent } from './pages/erro/erro.component';
 
-<#list projeto.artefatos as artefato >  
-import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
-</#list>
+import { ClienteComponent } from './erp/cliente/cliente.component';
+import { ProdutoComponent } from './erp/produto/produto.component';
 
 import { AuthGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
@@ -28,9 +27,8 @@ const routes: Routes =
   children: [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
-    <#list projeto.artefatos as artefato >
-    { path: '${artefato.classFolder}',  component: ${artefato.className}Component, canActivate: [AuthGuard] },
-    </#list> 
+    { path: 'cliente',  component: ClienteComponent, canActivate: [AuthGuard] },
+    { path: 'produto',  component: ProdutoComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
 },

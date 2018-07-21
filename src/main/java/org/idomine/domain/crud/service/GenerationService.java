@@ -59,17 +59,16 @@ public class GenerationService
 
     public void frontEnviroment(Projeto projeto)
     {
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
+        String o = TemplateBackendHelper.FRONTEND_SRC_ENV;
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
         try
         {
-            // GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts",
-            // model(projeto)));
-            // GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
-            GeradorCrudHelper.copyFile(new File(o + "environment.prod.ts.ftl"), new File(d + "environment.prod.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "environment.ts.ftl"), new File(d + "environment.ts"));
+            GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
+            GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
+            // GeradorCrudHelper.copyFile(new File(o + "environment.prod.ts.ftl"), new File(d + "environment.prod.ts"));
+            // GeradorCrudHelper.copyFile(new File(o + "environment.ts.ftl"), new File(d + "environment.ts"));
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -176,7 +175,7 @@ public class GenerationService
     public void fromendAppModule(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP;
+        String o = TemplateBackendHelper.FRONTEND_SRC_APP;
         try
         {
             GeradorCrudHelper.output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
@@ -237,6 +236,9 @@ public class GenerationService
                     new File(d + "sidenav/sidenav.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.ts"),
                     new File(d + "sidenav/sidenav.component.ts"));
+            
+            GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
+            
 
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),
                     new File(d + "sobre/sobre.component.html"));

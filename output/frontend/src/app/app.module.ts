@@ -21,9 +21,8 @@ import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
 
-<#list projeto.artefatos as artefato >  
-import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
-</#list>
+import { ClienteComponent } from './erp/cliente/cliente.component';
+import { ProdutoComponent } from './erp/produto/produto.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +32,8 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     ErroComponent,
     LoginComponent,
     
- 	<#list projeto.artefatos as artefato >  
-    ${artefato.className}Component,
-	</#list>   
+    ClienteComponent,
+    ProdutoComponent,
     
     ],
   imports: [
