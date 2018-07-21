@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 public class GenerationService
 {
     @Autowired
-    private FreeMarkerEngine freeMarkerEngine;
+    private FreeMarkerEngine fm;
     @Autowired
     private ProjetoRepository projetoRepository;
 
@@ -46,75 +46,144 @@ public class GenerationService
         backendAppPropertiesToOutput(projeto);
         backendApplicationToOutput(projeto);
         backendEntityToOutput(projeto);
-        
         frontReadmeToOutput(projeto);
         frontJsonsToOutput(projeto);
+        frontAssets(projeto);
+        frontEnviroment(projeto);
     }
 
-    private void frontJsonsToOutput(Projeto projeto)
+    public void frontEnviroment(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_DBJSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, null));
-        
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TEST, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_TEST, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN, freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
+        try
+        {
+            GeradorCrudHelper.copyFile(new File(o + "environment.prod.ts.ftl"), new File(d + "environment.prod.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "environment.ts.ftl"), new File(d + "environment.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
+        // GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
+    }
 
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY+"config.service.ts", model(projeto) ));
+    public void frontAssets(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ASSETS;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_ASSETS;
+        try
+        {
+            GeradorCrudHelper.copyFile(new File(o + "icon/auth.svg"), new File(d + "icon/auth.svg"));
+            GeradorCrudHelper.copyFile(new File(o + "icon/facebook.svg"), new File(d + "icon/facebook.svg"));
+            GeradorCrudHelper.copyFile(new File(o + "icon/github-logo.svg"), new File(d + "icon/github-logo.svg"));
+            GeradorCrudHelper.copyFile(new File(o + "icon/github-plus.png"), new File(d + "icon/github-plus.png"));
+            GeradorCrudHelper.copyFile(new File(o + "icon/google-plus.svg"), new File(d + "icon/google-plus.svg"));
+            GeradorCrudHelper.copyFile(new File(o + "images/face-7.jpg"), new File(d + "images/face-7.jpg"));
+            GeradorCrudHelper.copyFile(new File(o + "images/logo.svg"), new File(d + "images/logo.svg"));
+            GeradorCrudHelper.copyFile(new File(o + "svg-loaders/puff.svg"), new File(d + "svg-loaders/puff.svg"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void frontJsonsToOutput(Projeto projeto)
+    {
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON,
+                fm.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON,
+                fm.process(TemplateBackendHelper.FRONTEND_DBJSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON,
+                fm.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON,
+                fm.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON,
+                fm.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, null));
+
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TEST,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_TEST, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN,
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
+
+        GeradorCrudHelper.output(
+                projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY
+                        + "config.service.ts",
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
+                        model(projeto)));
 
         frontendSecurityFiles(projeto);
         frontendPages(projeto);
         frontendShared(projeto);
         fromendAppModule(projeto);
-        
+
         frontendErp(projeto);
     }
 
-    private void frontendErp(Projeto projeto)
+    public void frontendErp(Projeto projeto)
     {
         if (projeto.getArtefatos() != null)
         {
             for (Artefato artefato : projeto.getArtefatos())
             {
-                String art = artefato.getClassName();
-                String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + art+"/"+art + ".ts";
-                //criar dir ante de criar arq...
-                //GeradorCrudHelper.output(arq, backendEntityToString(artefato));
+                String folder = artefato.getClassFolder();
+                String dir = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
+                        + "/";
+                GeradorCrudHelper.criarDir(
+                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder + "/");
+                GeradorCrudHelper.output(dir + folder + ".component.ts", fm.process(
+                        TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.ts", model(artefato)));
+                GeradorCrudHelper.output(dir + folder + ".component.css",
+                        fm.process(
+                                TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.css",
+                                model(artefato)));
+                GeradorCrudHelper.output(dir + folder + ".component.html",
+                        fm.process(
+                                TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.html",
+                                model(artefato)));
+                GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(
+                        TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.service.ts", model(artefato)));
             }
-        } 
-        
+        }
+
     }
 
-    private void fromendAppModule(Projeto projeto)
+    public void fromendAppModule(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP;
         try
         {
-            GeradorCrudHelper.copyFile( new File(o+"app.module.ts"), new File(d+"app.module.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"app-rotas.module.ts"), new File(d+"app-rotas.module.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "app.module.ts"), new File(d + "app.module.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "app-rotas.module.ts"), new File(d + "app-rotas.module.ts"));
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-        
+
     }
 
-    private void frontendShared(Projeto projeto)
+    public void frontendShared(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
         try
         {
-            GeradorCrudHelper.copyFile( new File(o+"material.module.ts"), new File(d+"material.module.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
         }
         catch (IOException e)
         {
@@ -122,34 +191,47 @@ public class GenerationService
         }
     }
 
-    private void frontendPages(Projeto projeto)
+    public void frontendPages(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
         try
         {
-            GeradorCrudHelper.copyFile( new File(o+"base/base.component.html"), new File(d+"base/base.component.html"));
-            GeradorCrudHelper.copyFile( new File(o+"base/base.component.ts"), new File(d+"base/base.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "base/base.component.html"),
+                    new File(d + "base/base.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"), new File(d + "base/base.component.ts"));
 
-            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.html"), new File(d+"erro/erro.component.html"));
-            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.css"), new File(d+"erro/erro.component.css"));
-            GeradorCrudHelper.copyFile( new File(o+"erro/erro.component.ts"), new File(d+"erro/erro.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.html"),
+                    new File(d + "erro/erro.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"),
+                    new File(d + "erro/erro.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
 
-            GeradorCrudHelper.copyFile( new File(o+"home/home.component.html"), new File(d+"home/home.component.html"));
-            GeradorCrudHelper.copyFile( new File(o+"home/home.component.css"), new File(d+"home/home.component.css"));
-            GeradorCrudHelper.copyFile( new File(o+"home/home.component.ts"), new File(d+"home/home.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "home/home.component.html"),
+                    new File(d + "home/home.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "home/home.component.css"),
+                    new File(d + "home/home.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "home/home.component.ts"), new File(d + "home/home.component.ts"));
 
-            GeradorCrudHelper.copyFile( new File(o+"login/login.component.html"), new File(d+"login/login.component.html"));
-            GeradorCrudHelper.copyFile( new File(o+"login/login.component.scss"), new File(d+"login/login.component.scss"));
-            GeradorCrudHelper.copyFile( new File(o+"login/login.component.ts"), new File(d+"login/login.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "login/login.component.html"),
+                    new File(d + "login/login.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "login/login.component.scss"),
+                    new File(d + "login/login.component.scss"));
+            GeradorCrudHelper.copyFile(new File(o + "login/login.component.ts"),
+                    new File(d + "login/login.component.ts"));
 
-            GeradorCrudHelper.copyFile( new File(o+"sidenav/sidenav.component.css"), new File(d+"sidenav/sidenav.component.css"));
-            GeradorCrudHelper.copyFile( new File(o+"sidenav/sidenav.component.ts"), new File(d+"sidenav/sidenav.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.css"),
+                    new File(d + "sidenav/sidenav.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.ts"),
+                    new File(d + "sidenav/sidenav.component.ts"));
 
-            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.html"), new File(d+"sobre/sobre.component.html"));
-            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.css"), new File(d+"sobre/login.component.css"));
-            GeradorCrudHelper.copyFile( new File(o+"sobre/sobre.component.ts"), new File(d+"sobre/sobre.component.ts"));
-}
+            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),
+                    new File(d + "sobre/sobre.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.css"),
+                    new File(d + "sobre/login.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.ts"),
+                    new File(d + "sobre/sobre.component.ts"));
+        }
         catch (IOException e)
         {
             e.printStackTrace();
@@ -157,21 +239,22 @@ public class GenerationService
 
     }
 
-    private void frontendSecurityFiles(Projeto projeto)
+    public void frontendSecurityFiles(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         try
         {
-            GeradorCrudHelper.copyFile( new File(o+"admin.guard.ts"), new File(d+"admin.guard.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"auth.guard.ts"), new File(d+"auth.guard.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"authentication.service.ts"), new File(d+"authentication.service.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"guest.guard.ts"), new File(d+"guest.guard.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"index.ts"), new File(d+"index.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"jwt.interceptor.ts"), new File(d+"jwt.interceptor.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"message.service.ts"), new File(d+"message.service.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"resource.service.ts"), new File(d+"resource.service.ts"));
-            GeradorCrudHelper.copyFile( new File(o+"user.service.ts"), new File(d+"user.service.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "auth.guard.ts"), new File(d + "auth.guard.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "authentication.service.ts"),
+                    new File(d + "authentication.service.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "guest.guard.ts"), new File(d + "guest.guard.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "index.ts"), new File(d + "index.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "jwt.interceptor.ts"), new File(d + "jwt.interceptor.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "message.service.ts"), new File(d + "message.service.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "resource.service.ts"), new File(d + "resource.service.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "user.service.ts"), new File(d + "user.service.ts"));
         }
         catch (IOException e)
         {
@@ -179,24 +262,26 @@ public class GenerationService
         }
     }
 
-    private void frontReadmeToOutput(Projeto projeto)
+    public void frontReadmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README, frontendReadmeToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README,
+                frontendReadmeToString(projeto));
     }
 
-    private String frontendReadmeToString(Projeto projeto)
+    public String frontendReadmeToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(TemplateBackendHelper.FRONTEND_README, model(projeto));
+        return fm.process(TemplateBackendHelper.FRONTEND_README, model(projeto));
     }
 
-    private void backendApplicationToOutput(Projeto projeto)
+    public void backendApplicationToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APPLICATION, backendApplicationToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APPLICATION,
+                backendApplicationToString(projeto));
     }
 
     public String backendApplicationToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(TemplateBackendHelper.BACKEND_APPLICATION, model(projeto));
+        return fm.process(TemplateBackendHelper.BACKEND_APPLICATION, model(projeto));
     }
 
     public void backendEntityToOutput(Projeto projeto)
@@ -205,9 +290,12 @@ public class GenerationService
         {
             for (Artefato artefato : projeto.getArtefatos())
             {
-                String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH + artefato.getClassName() + ".java";
-                String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH + artefato.getClassName() + "Repository.java";
-                String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH + artefato.getClassName() + "Resource.java";
+                String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH
+                        + artefato.getClassName() + ".java";
+                String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH
+                        + artefato.getClassName() + "Repository.java";
+                String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH
+                        + artefato.getClassName() + "Resource.java";
                 GeradorCrudHelper.output(arq, backendEntityToString(artefato));
                 GeradorCrudHelper.output(rep, backendRepositoryToString(artefato));
                 GeradorCrudHelper.output(res, backendResourceToString(artefato));
@@ -219,7 +307,7 @@ public class GenerationService
     {
         Map<String, Object> model = model(artefato);
         model.put("import", imports(artefato));
-        return freeMarkerEngine.process(BACKEND_ENTITY, model);
+        return fm.process(BACKEND_ENTITY, model);
     }
 
     public String backendEntityToString(Projeto projeto, Long artefatoId)
@@ -227,86 +315,91 @@ public class GenerationService
         Artefato artefato = projeto.getArtefatos().get(artefatoId.intValue());
         Map<String, Object> model = model(artefato);
         model.put("import", imports(artefato));
-        return freeMarkerEngine.process(BACKEND_ENTITY, model);
+        return fm.process(BACKEND_ENTITY, model);
     }
 
     public String backendRepositoryToString(Artefato artefato)
     {
-        return freeMarkerEngine.process(BACKEND_REPOSITORY, model(artefato));
+        return fm.process(BACKEND_REPOSITORY, model(artefato));
     }
 
     public String backendRepositoryToString(Projeto projeto, Long artefatoId)
     {
         Artefato artefato = projeto.getArtefatos().get(artefatoId.intValue());
-        return freeMarkerEngine.process(BACKEND_REPOSITORY, model(artefato));
+        return fm.process(BACKEND_REPOSITORY, model(artefato));
     }
 
     public String backendResourceToString(Artefato artefato)
     {
-        return freeMarkerEngine.process(BACKEND_RESOURCE, model(artefato));
+        return fm.process(BACKEND_RESOURCE, model(artefato));
     }
 
     public String backendResourceToString(Projeto projeto, Long artefatoId)
     {
         Artefato artefato = projeto.getArtefatos().get(artefatoId.intValue());
-        return freeMarkerEngine.process(BACKEND_RESOURCE, model(artefato));
+        return fm.process(BACKEND_RESOURCE, model(artefato));
     }
 
     public void backendPomToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_POM, backendPomToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_POM,
+                backendPomToString(projeto));
     }
 
     public String backendPomToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(BACKEND_POM, model(projeto));
+        return fm.process(BACKEND_POM, model(projeto));
     }
 
     public void readmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.README, readmeToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.README,
+                readmeToString(projeto));
     }
 
     public String readmeToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(TemplateBackendHelper.README, model(projeto));
+        return fm.process(TemplateBackendHelper.README, model(projeto));
     }
 
     public void backendReadmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_README, backendReadmeToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_README,
+                backendReadmeToString(projeto));
     }
 
     public String backendReadmeToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(BACKEND_README, model(projeto));
+        return fm.process(BACKEND_README, model(projeto));
     }
 
     public void backendAppPropertiesToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_PROPERTIES, backendAppPropertiesToString(projeto));
+        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_PROPERTIES,
+                backendAppPropertiesToString(projeto));
     }
 
     public String backendAppPropertiesToString(Projeto projeto)
     {
-        return freeMarkerEngine.process(BACKEND_APP_PROPERTIES, model(projeto));
+        return fm.process(BACKEND_APP_PROPERTIES, model(projeto));
     }
 
-    private Map<String, Object> model(Object o)
+    public Map<String, Object> model(Object o)
     {
         Map<String, Object> model = new HashMap<>();
         model.put(o.getClass().getSimpleName().toLowerCase(), o);
         return model;
     }
 
-    private Object imports(Artefato artefato)
+    public Object imports(Artefato artefato)
     {
         boolean iDate = false;
 
         if (artefato.getElementos() != null)
             for (Elemento e : artefato.getElementos())
             {
-                iDate = (e.getTipoField() == TipoField.Date || e.getTipoField() == TipoField.Time || e.getTipoField() == TipoField.DateTime);
+                iDate = (e.getTipoField() == TipoField.Date || e.getTipoField() == TipoField.Time
+                        || e.getTipoField() == TipoField.DateTime);
             }
 
         TemplateImportsHelper importe = TemplateImportsHelper

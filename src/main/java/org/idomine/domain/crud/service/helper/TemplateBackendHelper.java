@@ -42,6 +42,8 @@ public final class TemplateBackendHelper
     public static final String FRONTEND_SRC_INDEX = FRONTEND_SRC + "index.html";
     public static final String FRONTEND_SRC_MAIN = FRONTEND_SRC + "main.ts";
 
+    public static final String FRONTEND_SRC_ASSETS = FRONTEND_SRC + "assets/";
+    public static final String FRONTEND_SRC_ENV = FRONTEND_SRC + "environments/";
     public static final String FRONTEND_SRC_APP = FRONTEND_SRC + "app/";
     public static final String FRONTEND_SRC_APP_ERP = FRONTEND_SRC_APP + "erp/";
     public static final String FRONTEND_SRC_APP_INFRA = FRONTEND_SRC_APP + "infra/";

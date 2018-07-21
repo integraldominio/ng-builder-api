@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ${className}Service, ${className} } from './${classFolder}.service';
+import { ClienteService, Cliente } from './cliente.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  selector: 'app-${classFolder}',
-  templateUrl: './${classFolder}.component.html',
-  styleUrls: ['./${classFolder}.component.css']
+  selector: 'app-cliente',
+  templateUrl: './cliente.component.html',
+  styleUrls: ['./cliente.component.css']
 })
-export class ${className}Component implements OnInit {
+export class ClienteComponent implements OnInit {
 
   // form
   form = new FormGroup({});
@@ -21,16 +21,16 @@ export class ${className}Component implements OnInit {
   model = {};
 
   // table
-  displayedColumns = [ ${colunas} ];
+  displayedColumns = [   ];
   dataSource: Array<Cliente> = [];
 
   fields: FormlyFieldConfig[] =
   [
-    ${inputs}
+     
   ] ;
 
   constructor (
-    private ${classFolder}Service: ${className}Service,
+    private clienteService: ClienteService,
     private messageService: MessageService
   ) { }
 
@@ -40,8 +40,8 @@ export class ${className}Component implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-      this.${classFolder}Service
-        .create( model as ${className} )
+      this.clienteService
+        .create( model as Cliente )
         .subscribe(  _ => { console.log(model); this.listAll(); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
@@ -49,9 +49,9 @@ export class ${className}Component implements OnInit {
   }
 
   listAll() {
-    this.${classFolder}Service.listAll().subscribe(
+    this.clienteService.listAll().subscribe(
       data => {
-        this.dataSource  = data as Array<${className}>;
+        this.dataSource  = data as Array<Cliente>;
         console.log( this.dataSource );
       }
     );
@@ -63,8 +63,8 @@ export class ${className}Component implements OnInit {
   startEdit(cliente) {
   }
 
-  deleteItem(o: ${className}) {
-    this.${classFolder}Service.delete(o.id)
+  deleteItem(o: Cliente) {
+    this.clienteService.delete(o.id)
     .subscribe( _ => this.listAll() );
   }
 }

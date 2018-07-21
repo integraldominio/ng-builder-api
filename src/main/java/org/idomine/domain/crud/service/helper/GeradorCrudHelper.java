@@ -45,7 +45,10 @@ public class GeradorCrudHelper
         criarDir("output/frontend/src/app/pages/sobre");
         criarDir("output/frontend/src/app/shared");
         criarDir("output/frontend/src/assets");
-        criarDir("output/frontend/src/enviroments");
+        criarDir("output/frontend/src/assets/icon");
+        criarDir("output/frontend/src/assets/images");
+        criarDir("output/frontend/src/assets/svg-loaders");
+        criarDir("output/frontend/src/environments");
 
     }
 
