@@ -7,6 +7,8 @@ import org.idomine.domain.crud.repository.${artefato.className}Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+@CrossOrigin("*")
 @RestController
 public class ${artefato.className}Resource
 {
@@ -29,7 +32,7 @@ public class ${artefato.className}Resource
         return ${artefato.classFolder}Repository.findAll();
     }
 
-    @PostMapping("/${artefato.resourceName}/add")
+    @PostMapping("/${artefato.resourceName}")
     @Transactional
     public ResponseEntity<${artefato.className}> add(@RequestBody ${artefato.className} obj)
     {
@@ -37,7 +40,7 @@ public class ${artefato.className}Resource
         return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
 
-    @PutMapping("/${artefato.resourceName}/put")
+    @PutMapping("/${artefato.resourceName}")
     @Transactional
     public ResponseEntity<${artefato.className}> update(@RequestBody ${artefato.className} obj)
     {

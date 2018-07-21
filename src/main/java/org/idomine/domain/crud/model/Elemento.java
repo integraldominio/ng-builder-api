@@ -58,6 +58,12 @@ public class Elemento
     private String dica;
 
     private boolean requerido;
+    
+    public String tipoAngular()
+    {
+        return TipoField.angular( getTipoField() );
+    }
+
 
     public static List<Elemento> getFake()
     {
@@ -121,6 +127,8 @@ public class Elemento
                         .requerido(false)
                         .build());        
         return lista;
+        
+        
     }
 
 }

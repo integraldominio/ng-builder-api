@@ -13,6 +13,7 @@ public final class TemplateBackendHelper
     public static final String BACKEND_README = BACKEND + "README.md";
 
     public static final String BACKEND_APP_PROPERTIES = BACKEND + "src/main/resources/application.properties";
+    public static final String BACKEND_APP_RESOURCE = BACKEND + "src/main/resources/";
 
     public static final String BACKEND_APPLICATION = BACKEND + BACKEND_DOMAIN + "Application.java";
 

@@ -24,7 +24,7 @@ export class ${artefato.className} {
   id: number;
   <#list artefato.elementos as e >
   <#if e.tipoElemento == "Field" >
-  ${e.nome}: ${e.tipoField?lower_case};
+  ${e.nome}: ${e.tipoAngular()};
   </#if>
   </#list>
 }

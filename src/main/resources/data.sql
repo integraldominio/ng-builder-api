@@ -13,3 +13,9 @@ insert into artefato( id, projeto_id, nome, resource_name, class_name, tipo ) va
 
 insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 1, 1, 'id','id', 'Field', 'Integer', 0,0,0 );
 insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 2, 1, 'nome','Nome', 'Field', 'String' , 1,0,0);
+
+
+insert into artefato( id, projeto_id, nome, resource_name, class_name, tipo ) values ( 2, 1, 'Cadastro de Produtos' , 'produtos', 'Produto',  'Crud' );
+
+insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 3, 2, 'id','id', 'Field', 'Integer', 0,0,0 );
+insert into elemento( id, artefato_id, nome, rotulo, tipo_elemento, tipo_field, requerido, tamanho, decimais ) values ( 4, 2, 'nome','Nome', 'Field', 'String' , 1,0,0);

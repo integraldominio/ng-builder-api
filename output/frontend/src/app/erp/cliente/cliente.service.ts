@@ -26,7 +26,7 @@ export class Cliente {
   email: string;
   telefone: string;
   situacao: string;
-  registerDate: date;
+  registerDate: Date;
 }
 
  

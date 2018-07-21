@@ -236,9 +236,9 @@ public class GenerationService
                     new File(d + "sidenav/sidenav.component.ts"));
             GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.service.ts"),
                     new File(d + "sidenav/sidenav.service.ts"));
-            
-            GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
-            
+
+            GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process(
+                    TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
 
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),
                     new File(d + "sobre/sobre.component.html"));
@@ -392,6 +392,20 @@ public class GenerationService
     {
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_PROPERTIES,
                 backendAppPropertiesToString(projeto));
+        
+        
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE+"data.sql";
+        String o = "templates/" + TemplateBackendHelper.BACKEND_APP_RESOURCE+"data.sql";
+        try
+        {
+           // GeradorCrudHelper.copyFile(new File(o), new File(d));
+        }
+        catch (Exception e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }
 
     public String backendAppPropertiesToString(Projeto projeto)
