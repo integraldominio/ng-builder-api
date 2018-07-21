@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
-import {FormlyModule} from '@ngx-formly/core';
-import {FormlyMaterialModule} from '@ngx-formly/material';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { AuthGuard, GuestGuard, AdminGuard, AuthenticationService,
           ConfigService, JwtInterceptor, MessageService, UserService } from './infra/security';
@@ -20,8 +20,10 @@ import { ErroComponent } from './pages/erro/erro.component';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
- 
-import { ClienteComponent } from './erp/cliente/cliente.component';
+
+<#list projeto.artefatos as artefato >  
+import { ${artefato.className}Component } from './erp/${artefato.folderNameName}/${artefato.folderName}.component';
+</#list>
 
 @NgModule({
   declarations: [
@@ -30,7 +32,11 @@ import { ClienteComponent } from './erp/cliente/cliente.component';
     SobreComponent,
     ErroComponent,
     LoginComponent,
-    ClienteComponent,
+    
+ 	<#list projeto.artefatos as artefato >  
+    import { ${artefato.className}Component },
+	</#list>   
+    
     ],
   imports: [
     BrowserModule,

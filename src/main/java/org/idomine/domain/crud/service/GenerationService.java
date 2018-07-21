@@ -50,6 +50,11 @@ public class GenerationService
         frontJsonsToOutput(projeto);
         frontAssets(projeto);
         frontEnviroment(projeto);
+        frontendSecurityFiles(projeto);
+        frontendPages(projeto);
+        frontendShared(projeto);
+        fromendAppModule(projeto);
+        frontendErp(projeto);
     }
 
     public void frontEnviroment(Projeto projeto)
@@ -58,6 +63,9 @@ public class GenerationService
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
         try
         {
+            // GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts",
+            // model(projeto)));
+            // GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
             GeradorCrudHelper.copyFile(new File(o + "environment.prod.ts.ftl"), new File(d + "environment.prod.ts"));
             GeradorCrudHelper.copyFile(new File(o + "environment.ts.ftl"), new File(d + "environment.ts"));
         }
@@ -65,8 +73,6 @@ public class GenerationService
         {
             e.printStackTrace();
         }
-        // GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
-        // GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
     }
 
     public void frontAssets(Projeto projeto)
@@ -106,12 +112,6 @@ public class GenerationService
 
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_SPEC, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_TSCONFIG_APP, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_TEST,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_TEST, null));
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
@@ -125,12 +125,24 @@ public class GenerationService
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
                         model(projeto)));
 
-        frontendSecurityFiles(projeto);
-        frontendPages(projeto);
-        frontendShared(projeto);
-        fromendAppModule(projeto);
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC;
+        try
+        {
+            GeradorCrudHelper.copyFile(new File(o + "favicon.ico"), new File(d + "favicon.ico"));
+            GeradorCrudHelper.copyFile(new File(o + "browserslist"), new File(d + "browserslist"));
+            GeradorCrudHelper.copyFile(new File(o + "karma.conf.js"), new File(d + "karma.conf.js"));
+            GeradorCrudHelper.copyFile(new File(o + "polyfills.ts"), new File(d + "polyfills.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "test.ts"), new File(d + "test.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "tsconfig.app.json"), new File(d + "tsconfig.app.json"));
+            GeradorCrudHelper.copyFile(new File(o + "tsconfig.spec.json"), new File(d + "tsconfig.spec.json"));
+            GeradorCrudHelper.copyFile(new File(o + "tslint.json"), new File(d + "tslint.json"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
-        frontendErp(projeto);
     }
 
     public void frontendErp(Projeto projeto)
@@ -167,14 +179,15 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "app.module.ts"), new File(d + "app.module.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "app-rotas.module.ts"), new File(d + "app-rotas.module.ts"));
+            GeradorCrudHelper.output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
+            GeradorCrudHelper.output(d + "app.module.ts", fm.process(o + "app.module.ts", model(projeto)));
+            // GeradorCrudHelper.copyFile(new File(o + "app.module.ts"), new File(d + "app.module.ts"));
+            // GeradorCrudHelper.copyFile(new File(o + "app-rotas.module.ts"), new File(d + "app-rotas.module.ts"));
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
-
     }
 
     public void frontendShared(Projeto projeto)

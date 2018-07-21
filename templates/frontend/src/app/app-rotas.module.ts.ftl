@@ -4,7 +4,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { SidenaveComponent } from './pages/sidenav/sidenav.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ErroComponent } from './pages/erro/erro.component';
-import { ClienteComponent } from './erp/cliente/cliente.component';
+
+<#list projeto.artefatos as artefato >  
+import { ${artefato.className}Component } from './erp/${artefato.folderNameName}/${artefato.folderName}.component';
+</#list>
+
 import { AuthGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -24,7 +28,9 @@ const routes: Routes =
   children: [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
-    { path: 'cliente',  component: ClienteComponent, canActivate: [AuthGuard] },
+    <#list projeto.artefatos as artefato >
+    { path: '${artefato.folderName}',  component: ${artefato.className}Component, canActivate: [AuthGuard] },
+    </#list> 
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
 },

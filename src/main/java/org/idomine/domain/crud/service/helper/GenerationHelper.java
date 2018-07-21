@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.StringJoiner;
 
-public final class GeradorBuilderHelper
+public final class GenerationHelper
 {
 
-    private GeradorBuilderHelper()
+    private GenerationHelper()
     {
     }
 
