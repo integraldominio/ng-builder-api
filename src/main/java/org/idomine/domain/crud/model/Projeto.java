@@ -60,9 +60,9 @@ public class Projeto
         return new Projeto
                     .ProjetoBuilder()
                     .id(1L)
-                    .nome("Projeto 01")
-                    .descricao("Projeto 01")
-                    .localGeracaoApp("C:\temp")
+                    .nome("ngbuilder")
+                    .descricao("NG Builder")
+                    .localGeracaoApp("C:\\temp\\ng-builder")
                     .nomeBackendApp("app-back")
                     .nomeFrontendApp("app-front")
                     .iconeApp("icone.icon")

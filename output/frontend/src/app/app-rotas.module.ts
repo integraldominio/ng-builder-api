@@ -5,8 +5,11 @@ import { SidenaveComponent } from './pages/sidenav/sidenav.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ErroComponent } from './pages/erro/erro.component';
 
-import { ClienteComponent } from './erp/cliente/cliente.component';
-import { ProdutoComponent } from './erp/produto/produto.component';
+import { ProjetoComponent } from './erp/projeto/projeto.component';
+import { ArtefatoComponent } from './erp/artefato/artefato.component';
+import { ElementoComponent } from './erp/elemento/elemento.component';
+import { ConfiguracaoComponent } from './erp/configuracao/configuracao.component';
+import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
 import { AuthGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
@@ -27,8 +30,11 @@ const routes: Routes =
   children: [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
-    { path: 'cliente',  component: ClienteComponent, canActivate: [AuthGuard] },
-    { path: 'produto',  component: ProdutoComponent, canActivate: [AuthGuard] },
+    { path: 'projeto',  component: ProjetoComponent, canActivate: [AuthGuard] },
+    { path: 'artefato',  component: ArtefatoComponent, canActivate: [AuthGuard] },
+    { path: 'elemento',  component: ElementoComponent, canActivate: [AuthGuard] },
+    { path: 'configuracao',  component: ConfiguracaoComponent, canActivate: [AuthGuard] },
+    { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
 },

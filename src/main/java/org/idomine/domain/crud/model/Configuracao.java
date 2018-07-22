@@ -62,6 +62,8 @@ public class Configuracao
     private String backClassesHelper;
     private String frontClassesHelper;
     
+    
+    private String appProperties;
     private String outputDirectory;
     
     public static Configuracao getFake()

@@ -20,8 +20,11 @@ import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
 
-import { ClienteComponent } from './erp/cliente/cliente.component';
-import { ProdutoComponent } from './erp/produto/produto.component';
+import { ProjetoComponent } from './erp/projeto/projeto.component';
+import { ArtefatoComponent } from './erp/artefato/artefato.component';
+import { ElementoComponent } from './erp/elemento/elemento.component';
+import { ConfiguracaoComponent } from './erp/configuracao/configuracao.component';
+import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,11 @@ import { ProdutoComponent } from './erp/produto/produto.component';
     LoginComponent,
     HomeComponent,
     
-    ClienteComponent,
-    ProdutoComponent,
+    ProjetoComponent,
+    ArtefatoComponent,
+    ElementoComponent,
+    ConfiguracaoComponent,
+    BuildAppComponent,
     
     ],
   imports: [

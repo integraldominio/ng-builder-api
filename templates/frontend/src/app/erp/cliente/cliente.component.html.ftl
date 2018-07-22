@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" class="form-group">
   <div fxFlex.gt-sm="50" class="divide">
     <mat-card>
-      <mat-card-title>Clientes</mat-card-title>
+      <mat-card-title>${artefato.nome}</mat-card-title>
       <mat-card-content>
 
 

@@ -51,6 +51,9 @@ public class Artefato
     private String resourceName;
     private String className;
     private String classFolder;
+    private String templateTs;
+    private String templateCss;
+    private String templateHtml;
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
@@ -63,23 +66,83 @@ public class Artefato
                 Artefato.builder()
                         .id(1L)
                         .tipo(TipoArtefato.Crud)
-                        .nome("Cad.Clientes")
-                        .resourceName("clientes")
-                        .className("Cliente")
-                        .classFolder("cliente")
-                        .elementos( Elemento.getFake())
-                        .build());
+                        .nome("Projetos")
+                        .resourceName("projetos")
+                        .className("Projeto")
+                        .classFolder("projeto")
+                        .elementos( Elemento.getFake1())
+                        .build());        
         lista.add(
                 Artefato.builder()
                         .id(2L)
                         .tipo(TipoArtefato.Crud)
-                        .nome("Cad.Produtos")
-                        .resourceName("produtos")
-                        .className("Produto")
-                        .classFolder("produto")
-                        .elementos( Elemento.getFake())
+                        .nome("Artefatos")
+                        .resourceName("artefatos")
+                        .className("Artefato")
+                        .classFolder("artefato")
+                        .elementos( Elemento.getFake2())
+                        .build());
+        lista.add(
+                Artefato.builder()
+                        .id(3L)
+                        .tipo(TipoArtefato.Crud)
+                        .nome("Elementos")
+                        .resourceName("elementos")
+                        .className("Elemento")
+                        .classFolder("elemento")
+                        .elementos( Elemento.getFake3())
+                        .build());
+        
+        lista.add(
+                Artefato.builder()
+                        .id(3L)
+                        .tipo(TipoArtefato.Crud)
+                        .nome("Configuração") // não pode usar config, pois já declarado no template
+                        .resourceName("configuracao")
+                        .className("Configuracao")
+                        .classFolder("configuracao")
+                        .elementos( Elemento.getFake4())
                         .build());        
+        lista.add(
+                Artefato.builder()
+                        .id(3L)
+                        .tipo(TipoArtefato.Template)
+                        .nome("Gerar App!") // não pode usar config, pois já declarado no template
+                        .className("BuildApp")
+                        .classFolder("buildapp")
+                        .templateTs(template())
+                        .templateCss(templateCSS())
+                        .elementos( new ArrayList<>() )
+                        .build());        
+        
         return lista;
+    }
+
+    private static String templateCSS()
+    { 
+        return ".centro {\r\n" + 
+                "  vertical-align: middle;\r\n" + 
+                "  align-items: center;\r\n" + 
+                "\r\n" + 
+                "}\r\n" +"";
+    }
+
+    private static String template()
+    {
+        return 
+"                import { Component, OnInit } from '@angular/core';"+
+"                @Component({  "+
+"                  selector: 'app-buildapp', "+
+"                  styleUrls: ['./buildapp.component.css'],"+
+"                  template: ` <button mat-button (click)='build()'>Gerar App !</button> <br/> {{app}}  `,"+
+"                })"+
+"                export class BuildAppComponent implements OnInit {" +
+"                  app='';     "+
+"                  constructor() { } "+
+"                 ngOnInit() {       "+
+"                  }                 "+
+"                 build() { this.app= 'works!';  }"+
+"               }                    ";
     }
 
 }

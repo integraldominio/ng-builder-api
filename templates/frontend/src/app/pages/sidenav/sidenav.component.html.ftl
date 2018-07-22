@@ -8,7 +8,7 @@
     [opened]="!(isHandset | async)!.matches">
 
     <mat-toolbar color="primary" class="mat-elevation-z6" style="height:56px;"  >
-      <img src="./../../../assets/images/logo.svg" style="width: 32px;" /> NgERP
+      <img src="./../../../assets/images/logo.svg" style="width: 32px;" /> NgBuilder
     </mat-toolbar>
 
     <mat-nav-list>

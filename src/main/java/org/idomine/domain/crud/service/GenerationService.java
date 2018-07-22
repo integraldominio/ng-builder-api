@@ -15,6 +15,7 @@ import java.util.Map;
 import org.idomine.domain.crud.model.Artefato;
 import org.idomine.domain.crud.model.Elemento;
 import org.idomine.domain.crud.model.Projeto;
+import org.idomine.domain.crud.model.vo.TipoArtefato;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.idomine.domain.crud.service.helper.FreeMarkerEngine;
@@ -151,20 +152,39 @@ public class GenerationService
                 String folder = artefato.getClassFolder();
                 String dir = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
                         + "/";
+
                 GeradorCrudHelper.criarDir(
-                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder + "/");
-                GeradorCrudHelper.output(dir + folder + ".component.ts", fm.process(
-                        TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.ts", model(artefato)));
-                GeradorCrudHelper.output(dir + folder + ".component.css",
-                        fm.process(
-                                TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.css",
-                                model(artefato)));
-                GeradorCrudHelper.output(dir + folder + ".component.html",
-                        fm.process(
-                                TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.html",
-                                model(artefato)));
-                GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(
-                        TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.service.ts", model(artefato)));
+                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
+                                + "/");
+
+                if (TipoArtefato.Crud.equals(artefato.getTipo()))
+                {
+                    GeradorCrudHelper.output(dir + folder + ".component.ts", fm.process(
+                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.ts",
+                            model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + ".component.css",
+                            fm.process(
+                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.css",
+                                    model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + ".component.html",
+                            fm.process(
+                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.html",
+                                    model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(
+                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.service.ts",
+                            model(artefato)));
+                }
+                else if (TipoArtefato.Template.equals(artefato.getTipo()))
+                {
+                    if (artefato.getTemplateTs() != null)
+                        GeradorCrudHelper.output(dir + folder + ".component.ts", artefato.getTemplateTs());
+
+                    if (artefato.getTemplateCss() != null)
+                        GeradorCrudHelper.output(dir + folder + ".component.css", artefato.getTemplateCss());
+                    
+                    if (artefato.getTemplateHtml() != null)
+                        GeradorCrudHelper.output(dir + folder + ".component.html", artefato.getTemplateHtml());
+                }
             }
         }
 
@@ -305,15 +325,20 @@ public class GenerationService
         {
             for (Artefato artefato : projeto.getArtefatos())
             {
-                String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH
-                        + artefato.getClassName() + ".java";
-                String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH
-                        + artefato.getClassName() + "Repository.java";
-                String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH
-                        + artefato.getClassName() + "Resource.java";
-                GeradorCrudHelper.output(arq, backendEntityToString(artefato));
-                GeradorCrudHelper.output(rep, backendRepositoryToString(artefato));
-                GeradorCrudHelper.output(res, backendResourceToString(artefato));
+
+                if (TipoArtefato.Crud.equals(artefato.getTipo()))
+                {
+
+                    String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH
+                            + artefato.getClassName() + ".java";
+                    String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH
+                            + artefato.getClassName() + "Repository.java";
+                    String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH
+                            + artefato.getClassName() + "Resource.java";
+                    GeradorCrudHelper.output(arq, backendEntityToString(artefato));
+                    GeradorCrudHelper.output(rep, backendRepositoryToString(artefato));
+                    GeradorCrudHelper.output(res, backendResourceToString(artefato));
+                }
             }
         }
     }
@@ -392,20 +417,19 @@ public class GenerationService
     {
         GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_PROPERTIES,
                 backendAppPropertiesToString(projeto));
-        
-        
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE+"data.sql";
-        String o = "templates/" + TemplateBackendHelper.BACKEND_APP_RESOURCE+"data.sql";
+
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE + "data.sql";
+        String o = "templates/" + TemplateBackendHelper.BACKEND_APP_RESOURCE + "data.sql";
         try
         {
-           // GeradorCrudHelper.copyFile(new File(o), new File(d));
+            // GeradorCrudHelper.copyFile(new File(o), new File(d));
         }
         catch (Exception e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
     }
 
     public String backendAppPropertiesToString(Projeto projeto)
