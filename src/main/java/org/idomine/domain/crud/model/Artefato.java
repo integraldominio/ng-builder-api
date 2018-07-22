@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.idomine.domain.crud.model.vo.TipoArtefato;
+import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
+import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -129,43 +131,10 @@ public class Artefato
 
     private static String template()
     {
-        return "import { ConfigService } from './../../infra/security/config.service';                                " +
-                "import { Component, OnInit } from '@angular/core';                                                    " +
-                "import { HttpClient, HttpHeaders } from '@angular/common/http';                                       " +
-                "@Component({                                                                                          " +
-                "  selector: 'app-buildapp',                                                                           " +
-                "  styleUrls: ['./buildapp.component.css'],                                                            " +
-                "  template: `                                                                                         " +
-                "  <h2> NG builder </h2>                                                                               " +
-                "  <p> Gerador de app.Será criado estrutura de fontend e backend a partir da pasta output. </p>        " +
-                "  <form class=\"example-form\">                                                                         " +
-                "                                                                                                      " +
-                "  <mat-form-field style=\"min-width: 150px; max-width: 500px;width: 100%;\">                            "  +
-                "    <input matInput placeholder=\"Projeto Id\" [(ngModel)]=\"id\" [ngModelOptions]=\"{standalone: true}\" > " +
-                "  </mat-form-field>                                                                                   "  +
-                "  </form>                                                                                             "  +
-                "                                                                                                      "  +
-                "  <button mat-button (click)='build()'> Gerar App !</button> <br/> {{app}} `,                         "  +
-                "})                                                                                                    "  +
-                "export class BuildAppComponent implements OnInit {                                                    "  +
-                "                                                                                                      "  +
-                "    app = '';                                                                                         "  +
-                "    id = '';                                                                                          "  +
-                "                                                                                                      "  +
-                "    constructor(private httpClient: HttpClient, private  configService: ConfigService) { }            "  +
-                "                                                                                                      "  +
-                "    ngOnInit() {                                                                                      "  +
-                "    }                                                                                                 "  +
-                "                                                                                                      "  +
-                "    build() {                                                                                         "  +
-                "    this.httpClient.get<any>(                                                                         "  +
-                "        this.configService.getApiUrl() + '/projetos/build/' + this.id, { observe: 'response' })       "  +
-                "        .subscribe(resp => {                                                                          "  +
-                "            this.app = 'resp';                                                                        "  +
-                "        });                                                                                           "  +
-                "    }                                                                                                 "  +
-                "}";
-
+         
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
+        
+        return  GeradorCrudHelper.lerTemplate("templates/example/buildapp.component.ts");
     }
 
 }

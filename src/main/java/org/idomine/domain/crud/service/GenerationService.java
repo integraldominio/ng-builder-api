@@ -198,8 +198,6 @@ public class GenerationService
         {
             GeradorCrudHelper.output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
             GeradorCrudHelper.output(d + "app.module.ts", fm.process(o + "app.module.ts", model(projeto)));
-            // GeradorCrudHelper.copyFile(new File(o + "app.module.ts"), new File(d + "app.module.ts"));
-            // GeradorCrudHelper.copyFile(new File(o + "app-rotas.module.ts"), new File(d + "app-rotas.module.ts"));
         }
         catch (Exception e)
         {
