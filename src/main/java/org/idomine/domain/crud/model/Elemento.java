@@ -217,9 +217,9 @@ public class Elemento
                         .artefato(Artefato.builder().id(2L).build())
                         .tipoElemento(TipoElemento.Field)
                         .tipoField(TipoField.String)
-                        .nome("template")
-                        .tamanho(1000L)
-                        .rotulo("TemplateTs")
+                        .nome("tmplateTs")
+                        .tamanho(999L)
+                        .rotulo("Template Ts")
                         .requerido(true)
                         .build());
         lista.add(
@@ -228,9 +228,9 @@ public class Elemento
                         .artefato(Artefato.builder().id(2L).build())
                         .tipoElemento(TipoElemento.Field)
                         .tipoField(TipoField.String)
-                        .nome("template")
-                        .tamanho(1000L)
-                        .rotulo("TemplateHtml")
+                        .nome("templateHtml")
+                        .tamanho(999L)
+                        .rotulo("Template Html")
                         .requerido(true)
                         .build());
         lista.add(
@@ -239,9 +239,9 @@ public class Elemento
                         .artefato(Artefato.builder().id(2L).build())
                         .tipoElemento(TipoElemento.Field)
                         .tipoField(TipoField.String)
-                        .nome("template")
-                        .tamanho(1000L)
-                        .rotulo("TemplateCss")
+                        .nome("templateCss")
+                        .tamanho(999L)
+                        .rotulo("Template Css")
                         .requerido(true)
                         .build());
 

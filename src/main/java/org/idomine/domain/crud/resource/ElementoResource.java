@@ -7,6 +7,7 @@ import org.idomine.domain.crud.reporitory.ElementoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin("*")
 @RestController
 public class ElementoResource
 {
@@ -29,7 +30,7 @@ public class ElementoResource
         return elementoRepository.findAll();
     }
 
-    @PostMapping("/elementos/add")
+    @PostMapping("/elementos")
     @Transactional
     public ResponseEntity<Elemento> add(@RequestBody Elemento elemento)
     {
@@ -37,7 +38,7 @@ public class ElementoResource
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
-    @PutMapping("/elementos/put")
+    @PutMapping("/elementos")
     @Transactional
     public ResponseEntity<Elemento> update(@RequestBody Elemento elemento)
     {
@@ -66,7 +67,8 @@ public class ElementoResource
     }
 
     @GetMapping("/elementos/search")
-    public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
+    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "nome", required = false) String nome)
     {
         return new ResponseEntity<>(elementoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }

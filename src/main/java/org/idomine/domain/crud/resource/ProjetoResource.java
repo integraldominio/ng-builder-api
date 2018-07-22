@@ -4,9 +4,11 @@ import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
+import org.idomine.domain.crud.service.GenerationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,20 +18,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin("*")
 @RestController
 public class ProjetoResource
 {
     @Autowired
     private ProjetoRepository projetoRepository;
+    @Autowired
+    private GenerationService generationService;
 
+    
+    @GetMapping("/projetos/build/{id}")
+    public ResponseEntity<?> buildAll(@PathVariable Long id)
+    {
+        generationService.backendAllToOutput(id);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+    
     @GetMapping("/projetos")
     public Iterable<Projeto> listaAll()
     {
         return projetoRepository.findAll();
     }
 
-    @PostMapping("/projetos/add")
+    @PostMapping("/projetos/")
     @Transactional
     public ResponseEntity<Projeto> add(@RequestBody Projeto projeto)
     {
@@ -37,7 +49,7 @@ public class ProjetoResource
         return new ResponseEntity<>(proj, HttpStatus.OK);
     }
 
-    @PutMapping("/projetos/put")
+    @PutMapping("/projetos")
     @Transactional
     public ResponseEntity<Projeto> update(@RequestBody Projeto projeto)
     {
