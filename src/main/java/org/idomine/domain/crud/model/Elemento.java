@@ -56,6 +56,17 @@ public class Elemento
     private String mascara;
     private String pipe;
     private String dica;
+    
+    // se tipo elemento SelectOne ou SelectMulti, então os valores são persistidos do campo values:
+    // Ex:
+    // [{value: 'steak-0', viewValue: 'Steak'},
+    // {value: 'pizza-1', viewValue: 'Pizza'},
+    // {value: 'tacos-2', viewValue: 'Tacos'}]
+  
+    private String selectValues;
+    
+    // se tipo elemento SelectDB, então funciona como FK. A busca é feita no artefato indicado pelo id 
+    private long selectId;
 
     private boolean requerido;
 

@@ -22,10 +22,7 @@ public enum TipoField
         {
             return "boolean";
         }
-        else
-        {
-            return "string";
-        }
+        return "string";
     }
 
 }
