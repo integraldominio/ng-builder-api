@@ -56,22 +56,15 @@ public class ${artefato.className}Resource
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/${artefato.resourceName}/search/id/{id}")
-    public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
+  <#list artefato.elementos as field >
+  	<#if field.tipoElemento == "Field">
+    @GetMapping("/${artefato.resourceName}/search/${field.nome}/{${field.nome}}")
+    public ResponseEntity<?> searchPathVariable${field.nome?cap_first}(@PathVariable ${field.tipoField} ${field.nome})
     {
-        return new ResponseEntity<>(${artefato.classFolder}Repository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(${artefato.classFolder}Repository.findBy${field.nome?cap_first}(${field.nome}), HttpStatus.OK);
     }
+    </#if>
 
-    @GetMapping("/${artefato.resourceName}/search/nome/{nome}")
-    public ResponseEntity<?> searchPathVariable(@PathVariable String nome)
-    {
-        return new ResponseEntity<>(${artefato.classFolder}Repository.findByNome(nome), HttpStatus.OK);
-    }
-
-    @GetMapping("/${artefato.resourceName}/search")
-    public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
-    {
-        return new ResponseEntity<>(${artefato.classFolder}Repository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
-    }
+  </#list>	
 
 }

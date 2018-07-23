@@ -217,7 +217,7 @@ public class Elemento
                         .artefato(Artefato.builder().id(2L).build())
                         .tipoElemento(TipoElemento.Field)
                         .tipoField(TipoField.String)
-                        .nome("tmplateTs")
+                        .nome("templateTs")
                         .tamanho(999L)
                         .rotulo("Template Ts")
                         .requerido(true)

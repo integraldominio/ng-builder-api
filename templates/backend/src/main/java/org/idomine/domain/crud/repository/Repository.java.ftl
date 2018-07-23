@@ -7,14 +7,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(exported=false)
 public interface ${artefato.className}Repository extends  CrudRepository<${artefato.className}, Long>
 {
-
-    ${artefato.className} findByNome(String nome);
-    
-    ${artefato.className} findByNomeIgnoreCase(String nome);
-    
-    ${artefato.className} findByNomeOrId(String nome, Long id);
-    
-    ${artefato.className} findByNomeIgnoreCaseOrId(String nome, Long id);
+  <#list artefato.elementos as field >
+	<#if field.tipoElemento == "Field">
+    ${artefato.className} findBy${field.nome?cap_first}(${field.tipoField} ${field.nome});
+    </#if>
+  </#list>	
  
 }
 
