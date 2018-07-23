@@ -342,7 +342,7 @@ public class Elemento
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Field)
                         .tipoField(TipoField.Long)
-                        .nome("Decimais")
+                        .nome("decimais")
                         .tamanho(20L)
                         .rotulo("Deciamais")
                         .requerido(true)
