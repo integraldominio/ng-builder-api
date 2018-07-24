@@ -13,15 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.idomine.domain.crud.model.Artefato;
-import org.idomine.domain.crud.model.Elemento;
 import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.model.vo.TipoArtefato;
-import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.idomine.domain.crud.service.helper.FreeMarkerEngine;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
-import org.idomine.domain.crud.service.helper.TemplateImportsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -345,7 +342,6 @@ public class GenerationService
     public String backendEntityToString(Artefato artefato)
     {
         Map<String, Object> model = model(artefato);
-        model.put("import", imports(artefato));
         return fm.process(BACKEND_ENTITY, model);
     }
 
@@ -353,7 +349,6 @@ public class GenerationService
     {
         Artefato artefato = projeto.getArtefatos().get(artefatoId.intValue());
         Map<String, Object> model = model(artefato);
-        model.put("import", imports(artefato));
         return fm.process(BACKEND_ENTITY, model);
     }
 
@@ -443,22 +438,6 @@ public class GenerationService
         return model;
     }
 
-    public Object imports(Artefato artefato)
-    {
-        boolean iDate = false;
-
-        if (artefato.getElementos() != null)
-            for (Elemento e : artefato.getElementos())
-            {
-                iDate = (e.getTipoField() == TipoField.Date || e.getTipoField() == TipoField.Time
-                        || e.getTipoField() == TipoField.DateTime);
-            }
-
-        TemplateImportsHelper importe = TemplateImportsHelper
-                .builder()
-                .idate(iDate)
-                .ilist(false).build();
-        return importe;
-    }
+ 
 
 }

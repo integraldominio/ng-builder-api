@@ -1,9 +1,7 @@
 package org.idomine.domain.crud.model;
 
-<#if import.ilist >
 import java.util.List;
-</#if>
-<#if import.idate >
+<#if artefato.hasDateType() >
 import java.util.Date;
 </#if>
 
@@ -11,10 +9,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-<#if import.idate >
+<#if artefato.hasDateType() >
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient; 
+</#if>
+<#if artefato.hasTransientType()>
+import javax.persistence.Transient;
 </#if>
 
 import lombok.AllArgsConstructor;

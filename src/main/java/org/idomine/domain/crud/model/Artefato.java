@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.idomine.domain.crud.model.vo.TipoArtefato;
+import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 
@@ -48,11 +49,11 @@ public class Artefato
 
     private TipoArtefato tipo;
     private String nome;
-    
+
     private String resourceName;
     private String className;
     private String classFolder;
-    
+
     private String templateTs;
     private String templateCss;
     private String templateHtml;
@@ -67,6 +68,36 @@ public class Artefato
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
     private List<Elemento> elementos;
+
+    public boolean hasDateType()
+    {
+        boolean iDate = false;
+
+        if (getElementos() != null)
+            for (Elemento e : getElementos())
+            {
+                iDate = (e.getTipoField() == TipoField.Date || e.getTipoField() == TipoField.Time
+                        || e.getTipoField() == TipoField.DateTime);
+                if (iDate)
+                    break;
+            }
+        return iDate;
+    }
+    
+    public boolean hasTransientType()
+    {
+        boolean transientField = false;
+
+        if (getElementos() != null)
+            for (Elemento e : getElementos())
+            {
+                transientField = !e.isPersistence();
+                if (transientField)
+                    break;
+            }
+        return transientField;
+    }
+    
 
     public static List<Artefato> getFake()
     {
@@ -117,13 +148,13 @@ public class Artefato
                 Artefato.builder()
                         .id(4L)
                         .tipo(TipoArtefato.Crud)
-                        .nome("formly-js.github.io") 
+                        .nome("formly-js.github.io")
                         .resourceName("formly")
                         .className("Formly")
                         .classFolder("formly")
                         .elementos(Elemento.getFake5())
                         .build());
-        
+
         lista.add(
                 Artefato.builder()
                         .id(5L)
@@ -150,10 +181,10 @@ public class Artefato
 
     private static String template()
     {
-         
+
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
-        
-        return  GeradorCrudHelper.lerTemplate("templates/example/buildapp.component.ts");
+
+        return GeradorCrudHelper.lerTemplate("templates/example/buildapp.component.ts");
     }
 
 }
