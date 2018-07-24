@@ -33,6 +33,10 @@ public final class FormlyHelper
         {
             return "select";
         }
+        else if (TipoElemento.TextArea.equals(tipoElemento))
+        {
+            return "textarea";
+        }        
         else if (TipoField.Integer.equals(tipoField) ||
                 TipoField.String.equals(tipoField) ||
                 TipoField.Long.equals(tipoField) ||
@@ -42,10 +46,7 @@ public final class FormlyHelper
         {
             return "input";
         }
-        else if (TipoElemento.TextArea.equals(tipoElemento))
-        {
-            return "textarea";
-        }
+
 
         return "input";
     }

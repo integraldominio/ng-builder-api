@@ -57,7 +57,7 @@ public class Elemento
     private String mascara;
     private String pipe;
     private String dica;
-    private long order;
+    private long ordenation;
     private boolean showcolumn;
 
     public String tipoAngular()
@@ -578,6 +578,17 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Campo RadioGroup")
                         .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .persistence(true)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(32L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.ButtonToggle)
+                        .tipoField(TipoField.String)
+                        .nome("campoToggle")
+                        .tamanho(100L)
+                        .rotulo("Campo Toggle")
                         .persistence(true)
                         .build());
 
