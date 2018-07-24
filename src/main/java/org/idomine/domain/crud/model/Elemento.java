@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 
 import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
+import org.idomine.domain.crud.service.helper.FormlyHelper;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -37,44 +38,59 @@ public class Elemento
     @Id
     @GeneratedValue
     private Long id;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Artefato artefato;
-
     @Enumerated(EnumType.STRING)
     private TipoElemento tipoElemento;
-
     @Enumerated(EnumType.STRING)
     private TipoField tipoField;
+    private boolean persistence;
+    private boolean requerido;
+    private long artrefatoId; // selectDB
+    private String options;
     private long tamanho;
     private long decimais;
-
     private String nome;
     private String rotulo;
     private String inicial;
     private String mascara;
     private String pipe;
     private String dica;
-    
-    // se tipo elemento SelectOne ou SelectMulti, então os valores são persistidos do campo values:
-    // Ex:
-    // [{value: 'steak-0', viewValue: 'Steak'},
-    // {value: 'pizza-1', viewValue: 'Pizza'},
-    // {value: 'tacos-2', viewValue: 'Tacos'}]
-  
-    private String selectValues;
-    
-    // se tipo elemento SelectDB, então funciona como FK. A busca é feita no artefato indicado pelo id 
-    private long selectId;
-
-    private boolean requerido;
+    private long order;
+    private boolean showcolumn;
 
     public String tipoAngular()
     {
         return TipoField.angular(getTipoField());
     }
 
+    public boolean toForm()
+    {
+        return TipoElemento.Input.equals(tipoElemento) ||
+                TipoElemento.TextArea.equals(tipoElemento) ||
+                TipoElemento.Autocomplete.equals(tipoElemento) ||
+                TipoElemento.Checkbox.equals(tipoElemento) ||
+                TipoElemento.ButtonToggle.equals(tipoElemento) ||
+                TipoElemento.Select.equals(tipoElemento) ||
+                TipoElemento.Datepicker.equals(tipoElemento) ||
+                TipoElemento.RadioButton.equals(tipoElemento);
+    }
+    
+    public String toFormly()
+    {
+        return FormlyHelper.toFormly(tipoElemento, tipoField);
+    }
+    
+    public String requiredToString()
+    {
+        return requerido?"true":"false";
+    }
+
+    public boolean hasOptions()
+    {
+        return options==null || options.trim().length()==0?false:true;
+    }
     public static List<Elemento> getFake1()
     {
         List<Elemento> lista = new ArrayList<>();
@@ -84,7 +100,7 @@ public class Elemento
                 Elemento.builder()
                         .id(1L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .rotulo("Nome")
@@ -95,7 +111,7 @@ public class Elemento
                 Elemento.builder()
                         .id(2L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("descricao")
                         .tamanho(100L)
@@ -106,7 +122,7 @@ public class Elemento
                 Elemento.builder()
                         .id(3L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("serverHost")
                         .tamanho(100L)
@@ -117,7 +133,7 @@ public class Elemento
                 Elemento.builder()
                         .id(4L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("serverPort")
                         .tamanho(4L)
@@ -128,7 +144,7 @@ public class Elemento
                 Elemento.builder()
                         .id(4L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("frontHost")
                         .tamanho(100L)
@@ -139,7 +155,7 @@ public class Elemento
                 Elemento.builder()
                         .id(5L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("frontPort")
                         .tamanho(4L)
@@ -150,7 +166,7 @@ public class Elemento
                 Elemento.builder()
                         .id(6L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nomeBackendApp")
                         .tamanho(100L)
@@ -161,7 +177,7 @@ public class Elemento
                 Elemento.builder()
                         .id(8L)
                         .artefato(Artefato.builder().id(1L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nomeFrontEndApp")
                         .tamanho(100L)
@@ -181,7 +197,7 @@ public class Elemento
                 Elemento.builder()
                         .id(9L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .tamanho(50L)
@@ -192,7 +208,7 @@ public class Elemento
                 Elemento.builder()
                         .id(10L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("resourceName")
                         .tamanho(50L)
@@ -203,7 +219,7 @@ public class Elemento
                 Elemento.builder()
                         .id(11L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("className")
                         .tamanho(50L)
@@ -214,7 +230,7 @@ public class Elemento
                 Elemento.builder()
                         .id(12L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("classFolder")
                         .tamanho(50L)
@@ -226,7 +242,7 @@ public class Elemento
                 Elemento.builder()
                         .id(12L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("templateTs")
                         .tamanho(999L)
@@ -237,7 +253,7 @@ public class Elemento
                 Elemento.builder()
                         .id(12L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("templateHtml")
                         .tamanho(999L)
@@ -248,7 +264,7 @@ public class Elemento
                 Elemento.builder()
                         .id(12L)
                         .artefato(Artefato.builder().id(2L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("templateCss")
                         .tamanho(999L)
@@ -268,7 +284,7 @@ public class Elemento
                 Elemento.builder()
                         .id(13L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .tamanho(50L)
@@ -280,7 +296,7 @@ public class Elemento
                 Elemento.builder()
                         .id(14L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("rotulo")
                         .tamanho(50L)
@@ -292,7 +308,7 @@ public class Elemento
                 Elemento.builder()
                         .id(15L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("inicial")
                         .tamanho(50L)
@@ -304,7 +320,7 @@ public class Elemento
                 Elemento.builder()
                         .id(16L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("mascara")
                         .tamanho(100L)
@@ -316,7 +332,7 @@ public class Elemento
                 Elemento.builder()
                         .id(17L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("pipe")
                         .tamanho(50L)
@@ -328,7 +344,7 @@ public class Elemento
                 Elemento.builder()
                         .id(18L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("dica")
                         .tamanho(200L)
@@ -340,7 +356,7 @@ public class Elemento
                 Elemento.builder()
                         .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("tamanho")
                         .tamanho(20L)
@@ -351,7 +367,7 @@ public class Elemento
                 Elemento.builder()
                         .id(20L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("decimais")
                         .tamanho(20L)
@@ -363,7 +379,7 @@ public class Elemento
                 Elemento.builder()
                         .id(21L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("tipoElemento")
                         .tamanho(50L)
@@ -374,7 +390,7 @@ public class Elemento
                 Elemento.builder()
                         .id(22L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("tipoField")
                         .tamanho(50L)
@@ -395,7 +411,7 @@ public class Elemento
                 Elemento.builder()
                         .id(23L)
                         .artefato(Artefato.builder().id(4L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("nomeEmpresa")
                         .tamanho(100L)
@@ -407,7 +423,7 @@ public class Elemento
                 Elemento.builder()
                         .id(23L)
                         .artefato(Artefato.builder().id(4L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("siteEmpresa")
                         .tamanho(100L)
@@ -419,7 +435,7 @@ public class Elemento
                 Elemento.builder()
                         .id(25L)
                         .artefato(Artefato.builder().id(4L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("emailEmpresa")
                         .tamanho(100L)
@@ -431,7 +447,7 @@ public class Elemento
                 Elemento.builder()
                         .id(26L)
                         .artefato(Artefato.builder().id(4L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("outputDirectory")
                         .tamanho(100L)
@@ -443,7 +459,7 @@ public class Elemento
                 Elemento.builder()
                         .id(27L)
                         .artefato(Artefato.builder().id(4L).build())
-                        .tipoElemento(TipoElemento.Field)
+                        .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("appProperties")
                         .tamanho(100L)
@@ -453,5 +469,83 @@ public class Elemento
 
         return lista;
     }
-    
+
+    // Tipo Elemento Component Formly
+    public static List<Elemento> getFake5()
+    {
+        List<Elemento> lista = new ArrayList<>();
+
+        lista.add(
+                Elemento.builder()
+                        .id(28L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.String)
+                        .nome("campoText")
+                        .tamanho(100L)
+                        .showcolumn(true)
+                        .rotulo("Campo Texto")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(28L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
+                        .nome("campoTextArea")
+                        .tamanho(100L)
+                        .showcolumn(true)
+                        .rotulo("Campo Text Area")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(29L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.Datepicker)
+                        .tipoField(TipoField.Date)
+                        .nome("campoData")
+                        .tamanho(100L)
+                        .showcolumn(true)
+                        .rotulo("Campo Data")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(29L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.Checkbox)
+                        .tipoField(TipoField.Boolean)
+                        .nome("campoCheckbox")
+                        .tamanho(100L)
+                        .rotulo("Campo Checkbox")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(30L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("campoSelectOne")
+                        .tamanho(100L)
+                        .rotulo("Campo SelectOne")
+                        .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(31L)
+                        .artefato(Artefato.builder().id(5L).build())
+                        .tipoElemento(TipoElemento.RadioButton)
+                        .tipoField(TipoField.String)
+                        .nome("campoRadioGroup")
+                        .tamanho(100L)
+                        .rotulo("Campo RadioGroup")
+                        .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .build());
+
+        return lista;
+    }
+
 }

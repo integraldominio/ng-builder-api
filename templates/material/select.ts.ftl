@@ -1,4 +1,5 @@
-foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
+<#--  {value: 'steak-0', viewValue: 'Steak'}, -->
+foods: I${elemento.nome}Food[] = [
+   ${elemento.selectValues}
   ];
 }

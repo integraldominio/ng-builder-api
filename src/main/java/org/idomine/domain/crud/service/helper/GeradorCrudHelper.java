@@ -44,6 +44,7 @@ public class GeradorCrudHelper
         criarDir("output/frontend/src/app/pages/sidenav");
         criarDir("output/frontend/src/app/pages/sobre");
         criarDir("output/frontend/src/app/shared");
+        criarDir("output/frontend/src/app/shared/autocomplete");
         criarDir("output/frontend/src/assets");
         criarDir("output/frontend/src/assets/icon");
         criarDir("output/frontend/src/assets/images");

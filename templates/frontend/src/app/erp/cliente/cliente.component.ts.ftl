@@ -10,8 +10,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
   styleUrls: ['./${artefato.classFolder}.component.css']
 })
 export class ${artefato.className}Component implements OnInit {
-
-  // form
+  // Form
   form = new FormGroup({});
   options: FormlyFormOptions = {
     formState: {
@@ -19,22 +18,31 @@ export class ${artefato.className}Component implements OnInit {
     },
   };
   model = {};
-
-  // table
+  // Datatable
   displayedColumns = [
   <#list artefato.elementos as e >
+  <#if e.showcolumn>
   '${e.nome}',
+  </#if>
   </#list> 
   ];
-  
   dataSource: Array<${artefato.className}> = [];
-
-  fields: FormlyFieldConfig[] =
-  [
-  <#list artefato.elementos as e >  
-   { key: '${e.nome}', type: 'input', templateOptions: { type: 'text', label: '${e.rotulo}', placeholder: 'Informe ${e.rotulo}', required: <#if e.requerido>true<#else>false</#if> } },
-  </#list> 
-  ] ;
+  // Fieds
+  fields: FormlyFieldConfig[] = [
+  <#list artefato.elementos as e >
+  <#if e.toForm()>{
+     key: '${e.nome}', type: '${e.toFormly()}',
+     templateOptions: { label: '${e.rotulo}', placeholder: 'Informe ${e.rotulo}', required: ${e.requiredToString()},
+     <#if e.hasOptions()>
+        options: [
+        ${e.options}
+        ]
+     </#if>
+     }
+     },
+  </#if>
+  </#list>
+  ];
 
   constructor (
     private ${artefato.classFolder}Service: ${artefato.className}Service,

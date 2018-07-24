@@ -41,21 +41,28 @@ public class Artefato
     @Id
     @GeneratedValue
     private Long id;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Projeto projeto;
-
     @Enumerated(EnumType.STRING)
-    private TipoArtefato tipo;
 
+    private TipoArtefato tipo;
     private String nome;
+    
     private String resourceName;
     private String className;
     private String classFolder;
+    
     private String templateTs;
     private String templateCss;
     private String templateHtml;
+
+    private String templateBeforeInsert;
+    private String templateBeforeUpdate;
+    private String templateBeforeDelete;
+    private String templateAfterInsert;
+    private String templateAfterUpdate;
+    private String templateAfterDelete;
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
@@ -105,9 +112,21 @@ public class Artefato
                         .classFolder("configuracao")
                         .elementos(Elemento.getFake4())
                         .build());
+
         lista.add(
                 Artefato.builder()
-                        .id(3L)
+                        .id(4L)
+                        .tipo(TipoArtefato.Crud)
+                        .nome("formly-js.github.io") 
+                        .resourceName("formly")
+                        .className("Formly")
+                        .classFolder("formly")
+                        .elementos(Elemento.getFake5())
+                        .build());
+        
+        lista.add(
+                Artefato.builder()
+                        .id(5L)
                         .tipo(TipoArtefato.Template)
                         .nome("Gerar App!") // não pode usar config, pois já declarado no template
                         .className("BuildApp")

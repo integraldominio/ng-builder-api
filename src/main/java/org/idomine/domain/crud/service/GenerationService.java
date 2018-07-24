@@ -212,6 +212,7 @@ public class GenerationService
         try
         {
             GeradorCrudHelper.copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"), new File(d + "autocomplete/autocomplete-type.component.ts"));
         }
         catch (IOException e)
         {
