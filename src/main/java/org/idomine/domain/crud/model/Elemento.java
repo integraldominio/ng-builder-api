@@ -106,6 +106,7 @@ public class Elemento
                         .rotulo("Nome")
                         .tamanho(100L)
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -117,6 +118,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Descrição")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -128,6 +130,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Server Host")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -139,6 +142,7 @@ public class Elemento
                         .tamanho(4L)
                         .rotulo("Server port")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -150,6 +154,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("front Host")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -161,6 +166,7 @@ public class Elemento
                         .tamanho(4L)
                         .rotulo("Front port")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -172,6 +178,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Nome Backend App")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -183,6 +190,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Nome Frontend App")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         return lista;
@@ -203,6 +211,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Nome")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -214,6 +223,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Resource Name")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -225,6 +235,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Class Name")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -236,6 +247,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Class Folder")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -248,6 +260,7 @@ public class Elemento
                         .tamanho(999L)
                         .rotulo("Template Ts")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -259,6 +272,7 @@ public class Elemento
                         .tamanho(999L)
                         .rotulo("Template Html")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -270,6 +284,7 @@ public class Elemento
                         .tamanho(999L)
                         .rotulo("Template Css")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         return lista;
@@ -290,6 +305,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Nome")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -302,6 +318,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Rótulo")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -314,6 +331,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Valor Inicial")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -326,6 +344,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Máscara Edição")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -338,6 +357,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Máscara Display")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -350,6 +370,7 @@ public class Elemento
                         .tamanho(200L)
                         .rotulo("Hint(dica)")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -362,6 +383,7 @@ public class Elemento
                         .tamanho(20L)
                         .rotulo("Tamanho")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -373,6 +395,7 @@ public class Elemento
                         .tamanho(20L)
                         .rotulo("Deciamais")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -385,6 +408,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Tipo Elemento")
                         .requerido(true)
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -396,6 +420,7 @@ public class Elemento
                         .tamanho(50L)
                         .rotulo("Tipo Field")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         return lista;
@@ -417,6 +442,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Nome Empresa")
                         .requerido(true)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -429,6 +455,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Site Empresa")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -441,6 +468,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Email Empresa")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -453,6 +481,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Output Directory")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -465,6 +494,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Application Properties")
                         .requerido(false)
+                        .persistence(true)
                         .build());
 
         return lista;
@@ -485,6 +515,7 @@ public class Elemento
                         .tamanho(100L)
                         .showcolumn(true)
                         .rotulo("Campo Texto")
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -497,6 +528,7 @@ public class Elemento
                         .tamanho(100L)
                         .showcolumn(true)
                         .rotulo("Campo Text Area")
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -509,6 +541,7 @@ public class Elemento
                         .tamanho(100L)
                         .showcolumn(true)
                         .rotulo("Campo Data")
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -520,6 +553,7 @@ public class Elemento
                         .nome("campoCheckbox")
                         .tamanho(100L)
                         .rotulo("Campo Checkbox")
+                        .persistence(true)
                         .build());
 
         lista.add(
@@ -532,6 +566,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Campo SelectOne")
                         .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .persistence(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -543,6 +578,7 @@ public class Elemento
                         .tamanho(100L)
                         .rotulo("Campo RadioGroup")
                         .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .persistence(true)
                         .build());
 
         return lista;

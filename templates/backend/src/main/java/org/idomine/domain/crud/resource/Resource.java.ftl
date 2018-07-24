@@ -1,5 +1,9 @@
 package org.idomine.domain.crud.resource;
 
+<#if artefato.hasDateType() >
+import java.util.Date;
+</#if>
+
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.${artefato.className};
@@ -57,14 +61,13 @@ public class ${artefato.className}Resource
     }
 
   <#list artefato.elementos as field >
-  	<#if field.tipoElemento == "Field">
+  	<#if field.persistence >
     @GetMapping("/${artefato.resourceName}/search/${field.nome}/{${field.nome}}")
     public ResponseEntity<?> searchPathVariable${field.nome?cap_first}(@PathVariable ${field.tipoField} ${field.nome})
     {
         return new ResponseEntity<>(${artefato.classFolder}Repository.findBy${field.nome?cap_first}(${field.nome}), HttpStatus.OK);
     }
     </#if>
-
   </#list>	
 
 }
