@@ -1,4 +1,4 @@
-# NG-Builder v 1.0
+# NGX-Builder v ${ngxbuilder}
 
 ## ${projeto.nome}
 

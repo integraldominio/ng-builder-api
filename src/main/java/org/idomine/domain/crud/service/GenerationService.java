@@ -25,6 +25,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class GenerationService
 {
+    
+    private String ngxbuilder="0.0.1";
+    
     @Autowired
     private FreeMarkerEngine fm;
     @Autowired
@@ -435,6 +438,7 @@ public class GenerationService
     {
         Map<String, Object> model = new HashMap<>();
         model.put(o.getClass().getSimpleName().toLowerCase(), o);
+        model.put("ngxbuilder", ngxbuilder);
         return model;
     }
 
