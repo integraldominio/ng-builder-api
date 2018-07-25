@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.idomine.domain.crud.model.vo.TipoArtefato;
+import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
@@ -96,6 +97,20 @@ public class Artefato
                     break;
             }
         return transientField;
+    }
+
+    public boolean hasSelectDB()
+    {
+        boolean selDb = false;
+
+        if (getElementos() != null)
+            for (Elemento e : getElementos())
+            {
+                selDb = TipoElemento.SelectDB.equals( e.getTipoElemento() );
+                if (selDb)
+                    break;
+            }
+        return selDb;
     }
     
 

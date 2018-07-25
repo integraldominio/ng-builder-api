@@ -1,12 +1,16 @@
 package org.idomine.domain.crud.service.helper;
 
+import org.idomine.domain.crud.model.Elemento;
 import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 
 public final class FormlyHelper
 {
-    public static String toFormly(TipoElemento tipoElemento, TipoField tipoField)
+    public static String toFormly(Elemento elemento)
     {
+        TipoField tipoField =  elemento.getTipoField();
+        TipoElemento tipoElemento = elemento.getTipoElemento();
+        
         if (TipoField.Date.equals(tipoField) ||
                 TipoField.DateTime.equals(tipoField) ||
                 TipoField.Time.equals(tipoField))
@@ -36,7 +40,12 @@ public final class FormlyHelper
         else if (TipoElemento.TextArea.equals(tipoElemento))
         {
             return "textarea";
-        }        
+        }
+        else if (TipoElemento.Select.equals(tipoElemento))
+        {
+            return elemento.getNome();
+        }
+
         else if (TipoField.Integer.equals(tipoField) ||
                 TipoField.String.equals(tipoField) ||
                 TipoField.Long.equals(tipoField) ||

@@ -1,3 +1,4 @@
+
 package org.idomine.domain.crud.model;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class Elemento
     private TipoField tipoField;
     private boolean persistence;
     private boolean requerido;
-    private long artrefatoId; // selectDB
+    private String artefatoFK; // selectDB
     private String options;
     private long tamanho;
     private long decimais;
@@ -62,7 +63,12 @@ public class Elemento
 
     public String tipoAngular()
     {
-        return TipoField.angular(getTipoField());
+        return TipoElemento.SelectDB.equals(tipoElemento) ? nome : TipoField.angular(getTipoField()).toString();
+    }
+
+    public String tipoJava()
+    {
+        return TipoElemento.SelectDB.equals(tipoElemento) ? nome : tipoField.toString();
     }
 
     public boolean toForm()
@@ -76,21 +82,27 @@ public class Elemento
                 TipoElemento.Datepicker.equals(tipoElemento) ||
                 TipoElemento.RadioButton.equals(tipoElemento);
     }
-    
+
     public String toFormly()
     {
-        return FormlyHelper.toFormly(tipoElemento, tipoField);
+        return FormlyHelper.toFormly(this);
     }
-    
+
     public String requiredToString()
     {
-        return requerido?"true":"false";
+        return requerido ? "true" : "false";
+    }
+    
+    public boolean selectDB()
+    {
+        return TipoElemento.SelectDB.equals(tipoElemento);
     }
 
     public boolean hasOptions()
     {
-        return options==null || options.trim().length()==0?false:true;
+        return options == null || options.trim().length() == 0 ? false : true;
     }
+
     public static List<Elemento> getFake1()
     {
         List<Elemento> lista = new ArrayList<>();
@@ -306,8 +318,8 @@ public class Elemento
                         .rotulo("Nome")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
-
         lista.add(
                 Elemento.builder()
                         .id(14L)
@@ -319,6 +331,7 @@ public class Elemento
                         .rotulo("Rótulo")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         lista.add(
@@ -375,6 +388,87 @@ public class Elemento
 
         lista.add(
                 Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.SelectDB)
+                        .tipoField(TipoField.String)
+                        .nome("Artefato")
+                        .tamanho(10L)
+                        .rotulo("Artefato")
+                        .requerido(true)
+                        .persistence(true)
+                        .options("{ value: 1, label: 'Arterfato 1'}, {value: 2, label: 'Artefato 2'}")
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("tipoElemento")
+                        .tamanho(10L)
+                        .rotulo("Tipo Elemento")
+                        .requerido(true)
+                        .persistence(true)
+                        .options(
+                                "{ value: 1, label: 'Input'}, {value: 2, label: 'TextArea'}, {value: 3, label: 'Datepicker'}, {value: 4, label: 'Select'}, {value: 5, label: 'Checkbox'}")
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("tipoField")
+                        .tamanho(10L)
+                        .rotulo("Tipo Field")
+                        .requerido(true)
+                        .persistence(true)
+                        .options(
+                                "{ value: 1, label: 'NotAvailable'}, {value: 2, label: 'String'}, {value: 3, label: 'Long'}, {value: 4, label: 'Date'}, {value: 5, label: 'Boolean'}")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Checkbox)
+                        .tipoField(TipoField.String)
+                        .nome("requerido")
+                        .tamanho(1L)
+                        .rotulo("Requerido")
+                        .requerido(true)
+                        .persistence(true)
+                        .nome("showColumn")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Checkbox)
+                        .tipoField(TipoField.String)
+                        .nome("persistence")
+                        .tamanho(1L)
+                        .rotulo("Persistence")
+                        .requerido(true)
+                        .persistence(true)
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(13L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
+                        .nome("options")
+                        .tamanho(1L)
+                        .rotulo("Opções")
+                        .persistence(true)
+                        .build());
+
+        lista.add(
+                Elemento.builder()
                         .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Input)
@@ -387,39 +481,26 @@ public class Elemento
                         .build());
         lista.add(
                 Elemento.builder()
-                        .id(20L)
+                        .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("decimais")
                         .tamanho(20L)
-                        .rotulo("Deciamais")
+                        .rotulo("Decimais")
                         .requerido(true)
                         .persistence(true)
                         .build());
 
         lista.add(
                 Elemento.builder()
-                        .id(21L)
+                        .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.String)
-                        .nome("tipoElemento")
-                        .tamanho(50L)
-                        .rotulo("Tipo Elemento")
-                        .requerido(true)
-                        .persistence(true)
-                        .build());
-        lista.add(
-                Elemento.builder()
-                        .id(22L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.String)
-                        .nome("tipoField")
-                        .tamanho(50L)
-                        .rotulo("Tipo Field")
-                        .requerido(true)
+                        .tipoField(TipoField.Long)
+                        .nome("ordenation")
+                        .tamanho(5L)
+                        .rotulo("Ordem")
                         .persistence(true)
                         .build());
 
@@ -565,7 +646,8 @@ public class Elemento
                         .nome("campoSelectOne")
                         .tamanho(100L)
                         .rotulo("Campo SelectOne")
-                        .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .options(
+                                "{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
                         .persistence(true)
                         .build());
         lista.add(
@@ -577,7 +659,8 @@ public class Elemento
                         .nome("campoRadioGroup")
                         .tamanho(100L)
                         .rotulo("Campo RadioGroup")
-                        .options("{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
+                        .options(
+                                "{ value: 1, label: 'Option 1'}, {value: 2, label: 'Option 2'}, {value: 3, label: 'Option 3'}")
                         .persistence(true)
                         .build());
         lista.add(
