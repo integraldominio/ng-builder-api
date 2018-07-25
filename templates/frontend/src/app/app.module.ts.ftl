@@ -21,7 +21,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './shared/material.module';
@@ -43,7 +43,7 @@ import { ErroComponent } from './pages/erro/erro.component';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
-import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type,component';
+import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
 
 <#list projeto.artefatos as artefato >  
 import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
@@ -58,7 +58,6 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     LoginComponent,
     HomeComponent,
     AutocompleteTypeComponent,
-	// Artefatos    
  	<#list projeto.artefatos as artefato >  
     ${artefato.className}Component,
 	</#list>   
@@ -82,7 +81,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
         wrappers: ['form-field'],
       }],
       validationMessages: [
-        { name: 'required', message: 'Campo rewquerido' },
+        { name: 'required', message: 'Campo requerido' },
       ],
     }),
   ],

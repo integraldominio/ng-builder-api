@@ -41,9 +41,9 @@ public final class FormlyHelper
         {
             return "textarea";
         }
-        else if (TipoElemento.Select.equals(tipoElemento))
+        else if (TipoElemento.SelectDB.equals(tipoElemento))
         {
-            return elemento.getNome();
+            return "autocomplete";
         }
 
         else if (TipoField.Integer.equals(tipoField) ||

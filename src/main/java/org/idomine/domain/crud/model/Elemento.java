@@ -79,6 +79,7 @@ public class Elemento
                 TipoElemento.Checkbox.equals(tipoElemento) ||
                 TipoElemento.ButtonToggle.equals(tipoElemento) ||
                 TipoElemento.Select.equals(tipoElemento) ||
+                TipoElemento.SelectDB.equals(tipoElemento) ||
                 TipoElemento.Datepicker.equals(tipoElemento) ||
                 TipoElemento.RadioButton.equals(tipoElemento);
     }
