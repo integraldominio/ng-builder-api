@@ -43,7 +43,7 @@ public final class FormlyHelper
         }
         else if (TipoElemento.SelectDB.equals(tipoElemento))
         {
-            return "autocomplete";
+            return "select";
         }
 
         else if (TipoField.Integer.equals(tipoField) ||

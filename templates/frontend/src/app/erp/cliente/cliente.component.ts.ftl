@@ -28,6 +28,12 @@ import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
+<#list artefato.elementos as e >
+<#if e.selectDB() >
+import { ${e.nome}Service } from '../${e.nome?lower_case}/${e.nome?lower_case}.service';
+</#if>
+</#list>
+
 @Component({
   selector: 'app-${artefato.classFolder}',
   templateUrl: './${artefato.classFolder}.component.html',
@@ -56,21 +62,31 @@ export class ${artefato.className}Component implements OnInit {
   <#list artefato.elementos as e >
   <#if e.toForm()>{
      key: '${e.nome}', type: '${e.toFormly()}',
-     templateOptions: { label: '${e.rotulo}', placeholder: 'Informe ${e.rotulo}', required: ${e.requiredToString()},
-     <#if e.hasOptions()>
-        options: [
-        ${e.options}
-        ]
-     </#if>
+     templateOptions: { 
+        label: '${e.rotulo}', 
+        placeholder: 'Informe ${e.rotulo}', 
+        required: ${e.requiredToString()},
+        <#if e.selectDB() >
+        valueProp: '${e.valueProp}',
+        labelProp: '${e.labelProp}',
+        options: this.${e.nome?lower_case}Service.listAll(),
+        <#elseif e.hasOptions() >
+        options: ${e.options}
+        </#if>
      }
-     },
+  },
   </#if>
   </#list>
   ];
 
   constructor (
     private ${artefato.classFolder}Service: ${artefato.className}Service,
-    private messageService: MessageService
+    private messageService: MessageService,
+	<#list artefato.elementos as e >
+    <#if e.selectDB() >
+    private ${e.nome?lower_case}Service: ${e.nome}Service,
+	</#if>
+	</#list>    
   ) { }
 
   ngOnInit() {
