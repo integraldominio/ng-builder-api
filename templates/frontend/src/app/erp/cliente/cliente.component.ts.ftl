@@ -96,12 +96,13 @@ export class ${artefato.className}Component implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-      this.model = model as ${artefato.className};
-	  <#list artefato.elementos as e >
-      <#if e.selectDB() >      
-      this.model.${e.nome} = { id: this.model.${e.nome} };
-	  </#if>
-	  </#list>          
+       <#list artefato.elementos as e >
+       <#if e.toForm()>
+       <#if e.selectDB() >
+       model = this.artefatoToElemento(model);
+	   </#if>
+	   </#if>
+	   </#list>          
       this.${artefato.classFolder}Service
         .create( model as ${artefato.className} )
         .subscribe(  _ => { console.log(model); this.listAll(); });
@@ -109,6 +110,16 @@ export class ${artefato.className}Component implements OnInit {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }
   }
+  
+  <#list artefato.elementos as e >
+  <#if e.toForm()>
+  <#if e.selectDB() >
+  ${e.nome?lower_case}To${artefato.className}(m: any): ${artefato.className} {
+      m.${e.nome} = { id: m.${e.nome} };
+      return m as ${artefato.className};
+  }
+  </#if>
+  </#list>
 
   listAll() {
     this.${artefato.classFolder}Service.listAll().subscribe(
