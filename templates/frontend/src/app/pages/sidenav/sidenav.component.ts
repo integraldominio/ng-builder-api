@@ -27,7 +27,7 @@ export class SidenaveComponent implements OnInit {
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   ngOnInit(): void {
-
+      this.sidenavService.setSidenav(this.sidenav);
   }
 
   logout() {
@@ -44,9 +44,9 @@ export class SidenaveComponent implements OnInit {
           if ( arg.matches ) {
             this.sidenavService.toggle();
           }
-        });
-    }
+      });
   }
+  
 
 }
 
