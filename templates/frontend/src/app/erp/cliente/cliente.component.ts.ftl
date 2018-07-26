@@ -63,9 +63,9 @@ export class ${artefato.className}Component implements OnInit {
   <#list artefato.elementos as e >
   <#if e.toForm()>{
      key: '${e.nome}', type: '${e.toFormly()}',
-     templateOptions: { 
-        label: '${e.rotulo}', 
-        placeholder: 'Informe ${e.rotulo}', 
+     templateOptions: {
+        label: '${e.rotulo}',
+        placeholder: 'Informe ${e.rotulo}',
         required: ${e.requiredToString()},
         <#if e.selectDB() >
         valueProp: '${e.valueProp}',
@@ -110,7 +110,7 @@ export class ${artefato.className}Component implements OnInit {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }
   }
-  
+
   <#list artefato.elementos as e >
   <#if e.toForm()>
   <#if e.selectDB() >
@@ -118,6 +118,7 @@ export class ${artefato.className}Component implements OnInit {
       m.${e.nome} = { id: m.${e.nome} };
       return m as ${artefato.className};
   }
+  </#if>
   </#if>
   </#list>
 
