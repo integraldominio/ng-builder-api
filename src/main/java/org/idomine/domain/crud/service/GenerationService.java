@@ -52,10 +52,26 @@ public class GenerationService
         frontAssets(projeto);
         frontEnviroment(projeto);
         frontendSecurityFiles(projeto);
+        frontendInfraPipes(projeto);
         frontendPages(projeto);
         frontendShared(projeto);
         fromendAppModule(projeto);
         frontendErp(projeto);
+    }
+
+    private void frontendInfraPipes(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
+        try
+        {
+            GeradorCrudHelper.copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        
     }
 
     public void frontEnviroment(Projeto projeto)

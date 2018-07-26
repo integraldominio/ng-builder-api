@@ -35,6 +35,7 @@ public class GeradorCrudHelper
         criarDir("output/frontend/src/app");
         criarDir("output/frontend/src/app/erp");
         criarDir("output/frontend/src/app/infra");
+        criarDir("output/frontend/src/app/infra/pipes");
         criarDir("output/frontend/src/app/infra/security");
         criarDir("output/frontend/src/app/pages");
         criarDir("output/frontend/src/app/pages/base");

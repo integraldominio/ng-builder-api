@@ -13,9 +13,9 @@
 
     <mat-nav-list>
     <#list projeto.artefatos as artefato > 
-        <a mat-list-item  (click)="sidenav.toggle()" [routerLink]="['/${artefato.classFolder}']"  >${artefato.nome}</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/${artefato.classFolder}']"  >${artefato.nome}</a>
 	</#list>        
-        <a mat-list-item  (click)="sidenav.toggle()" [routerLink]="['/sobre']" >Sobre</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
         <a mat-list-item  (click)="logout()" >Logout</a>
     </mat-nav-list>
   </mat-sidenav>

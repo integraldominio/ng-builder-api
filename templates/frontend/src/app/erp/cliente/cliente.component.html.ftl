@@ -21,31 +21,27 @@
   
     <!-- actions -->
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-        </button>
-      </mat-header-cell>
-
-      <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="primary" (click)="startEdit(row)">
+      <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row"  >
+ 
+        <button mat-mini-fab color="primary"routerLink="/artefato/edit/{{row.id}}">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-
-        <button mat-icon-button   (click)="deleteItem(row)">
+        <button  mat-mini-fab   (click)="deleteItem(row)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
+
       </mat-cell>
-    </ng-container>
+    </ng-container> 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
 
-  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+ <!-- <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
       No results
-    </div>
+  </div> -->
 
   <mat-paginator #paginator
                  [length]="dataSource.length"

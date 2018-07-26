@@ -53,15 +53,15 @@ public class Elemento
     private boolean requerido;
     private String artefatoFK; // selectDB
     private String options;
-    private long tamanho;
-    private long decimais;
+    private Long tamanho;
+    private Long decimais;
     private String nome;
     private String rotulo;
     private String inicial;
     private String mascara;
     private String pipe;
     private String dica;
-    private long ordenation;
+    private Long ordenation;
     private boolean showcolumn;
 
     private String valueProp;
@@ -140,6 +140,7 @@ public class Elemento
                         .tamanho(100L)
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -152,6 +153,7 @@ public class Elemento
                         .rotulo("Descrição")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -245,6 +247,7 @@ public class Elemento
                         .rotulo("Nome")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -257,6 +260,7 @@ public class Elemento
                         .rotulo("Resource Name")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -269,6 +273,7 @@ public class Elemento
                         .rotulo("Class Name")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
         lista.add(
                 Elemento.builder()

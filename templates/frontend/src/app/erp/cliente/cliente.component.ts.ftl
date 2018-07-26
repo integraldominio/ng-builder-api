@@ -55,6 +55,7 @@ export class ${artefato.className}Component implements OnInit {
   '${e.nome}',
   </#if>
   </#list> 
+  'actions'
   ];
   dataSource: Array<${artefato.className}> = [];
   // Fieds

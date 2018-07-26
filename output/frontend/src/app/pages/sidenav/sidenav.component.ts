@@ -31,9 +31,21 @@ export class SidenaveComponent implements OnInit {
   }
 
   logout() {
-    this.sidenav.toggle();
+    this.toggle();
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggle() {
+    this.isHandset
+      .subscribe(
+        arg => {
+          console.log( arg );
+          if ( arg.matches ) {
+            this.sidenavService.toggle();
+          }
+        });
+    }
   }
 
 }

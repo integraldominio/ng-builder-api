@@ -44,6 +44,7 @@ import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
 import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
+import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
 
 import { ProjetoComponent } from './erp/projeto/projeto.component';
 import { ArtefatoComponent } from './erp/artefato/artefato.component';
@@ -61,6 +62,7 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     LoginComponent,
     HomeComponent,
     AutocompleteTypeComponent,
+    MaxCharPipe,
     ProjetoComponent,
     ArtefatoComponent,
     ElementoComponent,
