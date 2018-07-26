@@ -29,8 +29,13 @@ import { SidenaveComponent } from './pages/sidenav/sidenav.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ErroComponent } from './pages/erro/erro.component';
 
-<#list projeto.artefatos as artefato >  
+<#list projeto.artefatos as artefato >
+<#if artefato.tipo == 'Crud' >  
+import { ${artefato.className}GridComponent } from './erp/${artefato.classFolder}/${artefato.classFolder}-grid.component';
+import { ${artefato.className}FormComponent } from './erp/${artefato.classFolder}/${artefato.classFolder}-form.component';
+<#elseif artefato.tipo == 'Template' >
 import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
+</#if>
 </#list>
 
 import { AuthGuard } from './infra/security';
@@ -53,7 +58,13 @@ const routes: Routes =
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
     <#list projeto.artefatos as artefato >
+    <#if artefato.tipo == 'Template' >
     { path: '${artefato.classFolder}',  component: ${artefato.className}Component, canActivate: [AuthGuard] },
+    <#elseif artefato.tipo == 'Crud' >
+    { path: '${artefato.classFolder}', component: ${artefato.className}GridComponent, canActivate: [AuthGuard] },
+    { path: '${artefato.classFolder}/edit/:id', component: ${artefato.className}FormComponent, canActivate: [AuthGuard] },
+    { path: '${artefato.classFolder}/add',  component: ${artefato.className}FormComponent, canActivate: [AuthGuard] },
+    </#if>
     </#list> 
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]

@@ -46,12 +46,23 @@ import { SidenavService } from './pages/sidenav/sidenav.service';
 import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
 import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
 
-import { ProjetoComponent } from './erp/projeto/projeto.component';
-import { ArtefatoComponent } from './erp/artefato/artefato.component';
-import { ElementoComponent } from './erp/elemento/elemento.component';
-import { ConfiguracaoComponent } from './erp/configuracao/configuracao.component';
-import { FormlyComponent } from './erp/formly/formly.component';
+import { ProjetoGridComponent } from './erp/projeto/projeto-grid.component';
+import { ProjetoFormComponent } from './erp/projeto/projeto-form.component';
+
+import { ArtefatoGridComponent } from './erp/artefato/artefato-grid.component';
+import { ArtefatoFormComponent } from './erp/artefato/artefato-form.component';
+
+import { ElementoGridComponent } from './erp/elemento/elemento-grid.component';
+import { ElementoFormComponent } from './erp/elemento/elemento-form.component';
+
+import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.component';
+import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
+
+import { FormlyGridComponent } from './erp/formly/formly-grid.component';
+import { FormlyFormComponent } from './erp/formly/formly-form.component';
+
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
+
 
 @NgModule({
   declarations: [
@@ -63,11 +74,16 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     HomeComponent,
     AutocompleteTypeComponent,
     MaxCharPipe,
-    ProjetoComponent,
-    ArtefatoComponent,
-    ElementoComponent,
-    ConfiguracaoComponent,
-    FormlyComponent,
+    ProjetoGridComponent,
+    ProjetoFormComponent,
+    ArtefatoGridComponent,
+    ArtefatoFormComponent,
+    ElementoGridComponent,
+    ElementoFormComponent,
+    ConfiguracaoGridComponent,
+    ConfiguracaoFormComponent,
+    FormlyGridComponent,
+    FormlyFormComponent,
     BuildAppComponent,
     ],
   imports: [

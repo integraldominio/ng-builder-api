@@ -31,6 +31,15 @@ import java.util.Date;
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.${artefato.className};
+
+<#list artefato.elementos as field >
+<#if field.persistence >
+<#if field.selectDB() >
+import org.idomine.domain.crud.model.${field.nome};
+</#if>
+</#if>
+</#list>	
+
 import org.idomine.domain.crud.repository.${artefato.className}Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -86,11 +95,13 @@ public class ${artefato.className}Resource
 
   <#list artefato.elementos as field >
   	<#if field.persistence >
+  	<#if field.notSelectDB() >
     @GetMapping("/${artefato.resourceName}/search/${field.nome}/{${field.nome}}")
-    public ResponseEntity<?> searchPathVariable${field.nome?cap_first}(@PathVariable ${field.tipoField} ${field.nome})
+    public ResponseEntity<?> searchPathVariable${field.nome?cap_first}(@PathVariable <#if field.selectDB() > ${field.nome} <#else> ${field.tipoField} </#if> ${field.nome})
     {
         return new ResponseEntity<>(${artefato.classFolder}Repository.findBy${field.nome?cap_first}(${field.nome}), HttpStatus.OK);
     }
+    </#if>
     </#if>
   </#list>	
 

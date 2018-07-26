@@ -100,6 +100,10 @@ public class Elemento
     {
         return requerido ? "true" : "false";
     }
+    public boolean notSelectDB()
+    {
+        return !selectDB(); 
+    }
 
     public boolean selectDB()
     {

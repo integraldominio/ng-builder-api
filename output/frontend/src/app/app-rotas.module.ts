@@ -29,11 +29,16 @@ import { SidenaveComponent } from './pages/sidenav/sidenav.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ErroComponent } from './pages/erro/erro.component';
 
-import { ProjetoComponent } from './erp/projeto/projeto.component';
-import { ArtefatoComponent } from './erp/artefato/artefato.component';
-import { ElementoComponent } from './erp/elemento/elemento.component';
-import { ConfiguracaoComponent } from './erp/configuracao/configuracao.component';
-import { FormlyComponent } from './erp/formly/formly.component';
+import { ProjetoGridComponent } from './erp/projeto/projeto-grid.component';
+import { ProjetoFormComponent } from './erp/projeto/projeto-form.component';
+import { ArtefatoGridComponent } from './erp/artefato/artefato-grid.component';
+import { ArtefatoFormComponent } from './erp/artefato/artefato-form.component';
+import { ElementoGridComponent } from './erp/elemento/elemento-grid.component';
+import { ElementoFormComponent } from './erp/elemento/elemento-form.component';
+import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.component';
+import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
+import { FormlyGridComponent } from './erp/formly/formly-grid.component';
+import { FormlyFormComponent } from './erp/formly/formly-form.component';
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
 import { AuthGuard } from './infra/security';
@@ -55,11 +60,21 @@ const routes: Routes =
   children: [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
-    { path: 'projeto',  component: ProjetoComponent, canActivate: [AuthGuard] },
-    { path: 'artefato',  component: ArtefatoComponent, canActivate: [AuthGuard] },
-    { path: 'elemento',  component: ElementoComponent, canActivate: [AuthGuard] },
-    { path: 'configuracao',  component: ConfiguracaoComponent, canActivate: [AuthGuard] },
-    { path: 'formly',  component: FormlyComponent, canActivate: [AuthGuard] },
+    { path: 'projeto', component: ProjetoGridComponent, canActivate: [AuthGuard] },
+    { path: 'projeto/edit/:id', component: ProjetoFormComponent, canActivate: [AuthGuard] },
+    { path: 'projeto/add',  component: ProjetoFormComponent, canActivate: [AuthGuard] },
+    { path: 'artefato', component: ArtefatoGridComponent, canActivate: [AuthGuard] },
+    { path: 'artefato/edit/:id', component: ArtefatoFormComponent, canActivate: [AuthGuard] },
+    { path: 'artefato/add',  component: ArtefatoFormComponent, canActivate: [AuthGuard] },
+    { path: 'elemento', component: ElementoGridComponent, canActivate: [AuthGuard] },
+    { path: 'elemento/edit/:id', component: ElementoFormComponent, canActivate: [AuthGuard] },
+    { path: 'elemento/add',  component: ElementoFormComponent, canActivate: [AuthGuard] },
+    { path: 'configuracao', component: ConfiguracaoGridComponent, canActivate: [AuthGuard] },
+    { path: 'configuracao/edit/:id', component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
+    { path: 'configuracao/add',  component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
+    { path: 'formly', component: FormlyGridComponent, canActivate: [AuthGuard] },
+    { path: 'formly/edit/:id', component: FormlyFormComponent, canActivate: [AuthGuard] },
+    { path: 'formly/add',  component: FormlyFormComponent, canActivate: [AuthGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]

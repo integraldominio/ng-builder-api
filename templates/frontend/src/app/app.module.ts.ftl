@@ -46,8 +46,14 @@ import { SidenavService } from './pages/sidenav/sidenav.service';
 import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
 import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
 
-<#list projeto.artefatos as artefato >  
+<#list projeto.artefatos as artefato >
+<#if artefato.tipo == 'Crud' >  
+import { ${artefato.className}GridComponent } from './erp/${artefato.classFolder}/${artefato.classFolder}-grid.component';
+import { ${artefato.className}FormComponent } from './erp/${artefato.classFolder}/${artefato.classFolder}-form.component';
+<#elseif artefato.tipo == 'Template' >
 import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
+</#if>
+
 </#list>
 
 @NgModule({
@@ -61,7 +67,12 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     AutocompleteTypeComponent,
     MaxCharPipe,
  	<#list projeto.artefatos as artefato >  
+    <#if artefato.tipo == 'Crud' >  
+    ${artefato.className}GridComponent,
+    ${artefato.className}FormComponent,
+    <#elseif artefato.tipo == 'Template' >
     ${artefato.className}Component,
+    </#if>
 	</#list>   
     ],
   imports: [

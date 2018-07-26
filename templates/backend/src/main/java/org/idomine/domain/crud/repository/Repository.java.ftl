@@ -28,6 +28,14 @@ package org.idomine.domain.crud.repository;
 import java.util.Date;
 </#if>
 
+<#list artefato.elementos as field >
+<#if field.persistence >
+<#if field.selectDB() >
+import org.idomine.domain.crud.model.${field.nome};
+</#if>
+</#if>
+</#list>	
+
 import org.idomine.domain.crud.model.${artefato.className};
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -37,7 +45,11 @@ public interface ${artefato.className}Repository extends  CrudRepository<${artef
 {
   <#list artefato.elementos as field >
 	<#if field.persistence >
+	<#if field.selectDB() >
+    // ${artefato.className} findBy${field.nome?cap_first}(${field.nome} ${field.nome});
+    <#else>
     ${artefato.className} findBy${field.nome?cap_first}(${field.tipoField} ${field.nome});
+    </#if>
     </#if>
   </#list>	
  

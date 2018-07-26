@@ -175,20 +175,15 @@ public class GenerationService
 
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    GeradorCrudHelper.output(dir + folder + ".component.ts", fm.process(
-                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.ts",
-                            model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + ".component.css",
-                            fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.css",
-                                    model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + ".component.html",
-                            fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.component.html",
-                                    model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(
-                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "/cliente/cliente.service.ts",
-                            model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.css",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.html",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",model(artefato)));
+
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.css",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.html",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",model(artefato)));
+
+                    GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",model(artefato)));
                 }
                 else if (TipoArtefato.Template.equals(artefato.getTipo()))
                 {
@@ -242,14 +237,10 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "base/base.component.html"),
-                    new File(d + "base/base.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"), new File(d + "base/base.component.ts"));
-
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.html"),
-                    new File(d + "erro/erro.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"),
-                    new File(d + "erro/erro.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "base/base.component.html"), new File(d + "base/base.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"),   new File(d + "base/base.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.html"), new File(d + "erro/erro.component.html"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"),  new File(d + "erro/erro.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
 
             GeradorCrudHelper.copyFile(new File(o + "home/home.component.html"),

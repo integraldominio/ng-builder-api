@@ -27,6 +27,7 @@ import { ${artefato.className}Service, ${artefato.className} } from './${artefat
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 <#list artefato.elementos as e >
 <#if e.selectDB() >
@@ -35,11 +36,14 @@ import { ${e.nome}Service } from '../${e.nome?lower_case}/${e.nome?lower_case}.s
 </#list>
 
 @Component({
-  selector: 'app-${artefato.classFolder}',
-  templateUrl: './${artefato.classFolder}.component.html',
-  styleUrls: ['./${artefato.classFolder}.component.css']
+  selector: 'app-${artefato.classFolder}-form',
+  templateUrl: './${artefato.classFolder}-form.component.html',
+  styleUrls: ['./${artefato.classFolder}-form.component.css']
 })
-export class ${artefato.className}Component implements OnInit {
+export class ${artefato.className}FormComponent implements OnInit {
+
+  id: string;
+  title: string;
   // Form
   form = new FormGroup({});
   options: FormlyFormOptions = {
@@ -81,6 +85,8 @@ export class ${artefato.className}Component implements OnInit {
   ];
 
   constructor (
+    private router: Router,
+    private route: ActivatedRoute,
     private ${artefato.classFolder}Service: ${artefato.className}Service,
     private messageService: MessageService,
 	<#list artefato.elementos as e >
@@ -91,7 +97,17 @@ export class ${artefato.className}Component implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.listAll();
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.setFormTitle( this.id );
+  }
+
+  setFormTitle( id: any  ) {
+    this.title = '${artefato.className}';
+    if ( this.id === null ) {
+       this.title = 'Novo ' + this.title;
+    } else {
+       this.title = 'Editar ' + this.title;
+    }
   }
 
   onSubmit(model) {
@@ -105,7 +121,7 @@ export class ${artefato.className}Component implements OnInit {
 	   </#list>          
       this.${artefato.classFolder}Service
         .create( model as ${artefato.className} )
-        .subscribe(  _ => { console.log(model); this.listAll(); });
+        .subscribe(  _ => { console.log(model); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }
@@ -122,23 +138,10 @@ export class ${artefato.className}Component implements OnInit {
   </#if>
   </#list>
 
-  listAll() {
-    this.${artefato.classFolder}Service.listAll().subscribe(
-      data => {
-        this.dataSource  = data as Array<${artefato.className}>;
-        console.log( this.dataSource );
-      }
-    );
+  load${artefato.className}(id: number)  {
+    this.${artefato.classFolder}Service.read(id).subscribe(
+      data => {this.model  = data as ${artefato.className};
+    });
   }
 
-  addNew () {
-  }
-
-  startEdit(cliente) {
-  }
-
-  deleteItem(o: ${artefato.className}) {
-    this.${artefato.classFolder}Service.delete(o.id)
-    .subscribe( _ => this.listAll() );
-  }
 }
