@@ -96,6 +96,12 @@ export class ${artefato.className}Component implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
+      this.model = model as ${artefato.className};
+	  <#list artefato.elementos as e >
+      <#if e.selectDB() >      
+      this.model.${e.nome} = { id: this.model.${e.nome} };
+	  </#if>
+	  </#list>          
       this.${artefato.classFolder}Service
         .create( model as ${artefato.className} )
         .subscribe(  _ => { console.log(model); this.listAll(); });

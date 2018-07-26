@@ -1,9 +1,7 @@
 
 package org.idomine.domain.crud.model;
 
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -40,7 +39,7 @@ import lombok.ToString;
 public class Elemento
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
