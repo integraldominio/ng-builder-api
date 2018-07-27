@@ -23,3 +23,4 @@ insert into elemento
 values 
 	(3,3,'nome','Nome','Input', 'String',1,1,1);
 	
+insert into Configuracao ( id, nome_empresa ) values (1, 'Integra ldominio')	
