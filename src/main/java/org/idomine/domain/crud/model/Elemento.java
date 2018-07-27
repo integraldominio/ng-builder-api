@@ -328,7 +328,7 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options("[{ value: 1, label: 'Crud'}, {value: 2, label: 'Template'}]")
+                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'Template', label: 'Template'}]")
                         .build());
         
         

@@ -115,7 +115,7 @@ export class ${artefato.className}FormComponent implements OnInit {
        <#list artefato.elementos as e >
        <#if e.toForm()>
        <#if e.selectDB() >
-       model = this.artefatoToElemento(model);
+       model = this.${e.nome?lower_case}To${artefato.className}(model);
 	   </#if>
 	   </#if>
 	   </#list>          
