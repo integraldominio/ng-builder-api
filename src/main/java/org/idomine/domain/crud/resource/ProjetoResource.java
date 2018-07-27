@@ -41,7 +41,7 @@ public class ProjetoResource
         return projetoRepository.findAll();
     }
 
-    @PostMapping("/projetos/")
+    @PostMapping("/projetos")
     @Transactional
     public ResponseEntity<Projeto> add(@RequestBody Projeto projeto)
     {
