@@ -121,7 +121,7 @@ export class ${artefato.className}FormComponent implements OnInit {
 	   </#list>          
       this.${artefato.classFolder}Service
         .create( model as ${artefato.className} )
-        .subscribe(  _ => { console.log(model); });
+        .subscribe(  _ => { console.log(model);  this.router.navigate(['/${artefato.classFolder}']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }
