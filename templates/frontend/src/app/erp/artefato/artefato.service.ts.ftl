@@ -54,7 +54,11 @@ export class ${artefato.className} {
   id: number;
   <#list artefato.elementos as e >
   <#if e.persistence >
+  <#if e.selectDB() >
+  ${e.nome?cap_first}: ${e.tipoAngular()};
+  <#else>
   ${e.nome}: ${e.tipoAngular()};
+  </#if>
   </#if>
   </#list>
 }
