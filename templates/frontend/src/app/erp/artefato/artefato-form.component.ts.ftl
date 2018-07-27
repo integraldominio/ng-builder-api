@@ -132,7 +132,7 @@ export class ${artefato.className}FormComponent implements OnInit {
   <#if e.toForm()>
   <#if e.selectDB() >
   ${e.nome?lower_case}To${artefato.className}(m: any): ${artefato.className} {
-      m.${e.nome} = { id: m.${e.nome} };
+      m.${e.nome?uncap_first} = { id: m.${e.nome?uncap_first} };
       return m as ${artefato.className};
   }
   </#if>
