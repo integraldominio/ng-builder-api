@@ -458,8 +458,8 @@ public class Elemento
                         .persistence(true)
                         .options(
                                 "[{ value: 1, label: 'Autocomplete'} , {value: 2, label: 'Checkbox'}, {value: 3, label: 'Chips'} ,"+
-                                " { value: 4, label: 'Datepicker'} , {value: 5, label: 'Input'} , {value: 6, label: 'RadioButton'} "+
-                                " { value: 7, label: 'RadioButton'} , { value: 8, label: 'Select'} , {value: 9, label: 'SelectMultiple'} , {value:10, label: 'SelectDB' }] "+
+                                " { value: 4, label: 'Datepicker'} , {value: 5, label: 'Input'} , {value: 6, label: 'RadioButton'} ,"+
+                                " { value: 7, label: 'RadioButton'} , { value: 8, label: 'Select'} , {value: 9, label: 'SelectMultiple'} , {value:10, label: 'SelectDB' } ,"+
                                 " { value: 11, label: 'Slidetoggle'} , {value: 12, label: 'TextArea'} , {value: 13, label: 'Tooltip' }] " 
                                 )
                         
@@ -687,6 +687,7 @@ public class Elemento
                         .rotulo("Nome Empresa")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         lista.add(
@@ -700,6 +701,7 @@ public class Elemento
                         .rotulo("Site Empresa")
                         .requerido(false)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         lista.add(
@@ -713,6 +715,7 @@ public class Elemento
                         .rotulo("Email Empresa")
                         .requerido(false)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         lista.add(
@@ -726,6 +729,7 @@ public class Elemento
                         .rotulo("Output Directory")
                         .requerido(false)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         lista.add(
@@ -739,6 +743,7 @@ public class Elemento
                         .rotulo("Application Properties")
                         .requerido(false)
                         .persistence(true)
+                        .showcolumn(true)
                         .build());
 
         return lista;

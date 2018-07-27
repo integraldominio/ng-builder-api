@@ -72,7 +72,7 @@ public class ${artefato.className}
     
     <#list artefato.elementos as el>
     <#if el.tipoElemento == "SelectDB">
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
     </#if>
     <#if el.tipoField == "DateTime">
     @Temporal(TemporalType.TIMESTAMP)
