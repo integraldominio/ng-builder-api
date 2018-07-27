@@ -32,6 +32,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 <#if artefato.hasDateType() >
 import javax.persistence.Temporal;
@@ -67,7 +68,7 @@ import lombok.ToString;
 public class ${artefato.className}
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     <#list artefato.elementos as el>

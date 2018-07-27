@@ -4,13 +4,13 @@
         <mat-card-title> {{title}}  </mat-card-title>
         <mat-card-content>
 
-        <form [formGroup]="form" >
+        <form [formGroup]="form" (ngSubmit)="onSubmit(model)" >
           <formly-form
             [form]="form"
             [options]="options"
             [fields]="fields"
             [model]="model">
-            <button mat-button (click)="onSubmit(model)" >Salvar</button>
+            <button mat-button type="submit">Salvar</button>
             <button mat-button (click)="options.resetModel()">Limpar</button>
           </formly-form>
         </form>

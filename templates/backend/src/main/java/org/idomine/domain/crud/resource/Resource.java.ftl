@@ -119,6 +119,12 @@ public class ${artefato.className}Resource
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    @GetMapping("/${artefato.resourceName}/{id}")
+    public ${artefato.className} searchId(@PathVariable Long id)
+    {
+        return ${artefato.classFolder}Repository.findById(id).get();
+    }
+
   <#list artefato.elementos as field >
   	<#if field.persistence >
   	<#if field.notSelectDB() >

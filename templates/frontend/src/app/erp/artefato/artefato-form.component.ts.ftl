@@ -99,6 +99,7 @@ export class ${artefato.className}FormComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.setFormTitle( this.id );
+    this.load${artefato.className}( parseInt( this.id ) );
   }
 
   setFormTitle( id: any  ) {
@@ -139,9 +140,11 @@ export class ${artefato.className}FormComponent implements OnInit {
   </#list>
 
   load${artefato.className}(id: number)  {
-    this.${artefato.classFolder}Service.read(id).subscribe(
-      data => {this.model  = data as ${artefato.className};
+    if ( this.id !== null ) {
+       this.${artefato.classFolder}Service.read(id).subscribe(
+       data => {this.model  = data as ${artefato.className};
     });
+    }
   }
 
 }
