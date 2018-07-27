@@ -28,7 +28,7 @@
       <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
       <mat-cell *matCellDef="let row"  >
  
-        <button mat-mini-fab color="primary"routerLink="/${artefato}/edit/{{row.id}}">
+        <button mat-mini-fab color="primary"routerLink="/${artefato.classFolder}/edit/{{row.id}}">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
         <button  mat-mini-fab   (click)="deleteItem(row)">
