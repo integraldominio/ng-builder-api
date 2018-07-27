@@ -3,6 +3,7 @@ package org.idomine.domain.crud.resource;
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.Elemento;
+import org.idomine.domain.crud.reporitory.ArtefatoRepository;
 import org.idomine.domain.crud.reporitory.ElementoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,8 @@ public class ElementoResource
 {
     @Autowired
     private ElementoRepository elementoRepository;
+    @Autowired
+    private ArtefatoRepository artefatoRepository;
 
     @GetMapping("/elementos")
     public Iterable<Elemento> listaAll()
@@ -34,6 +37,7 @@ public class ElementoResource
     @Transactional
     public ResponseEntity<Elemento> add(@RequestBody Elemento elemento)
     {
+        elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
         Elemento e = elementoRepository.save(elemento);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
@@ -42,6 +46,7 @@ public class ElementoResource
     @Transactional
     public ResponseEntity<Elemento> update(@RequestBody Elemento elemento)
     {
+        elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
         Elemento e = elementoRepository.save(elemento);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }

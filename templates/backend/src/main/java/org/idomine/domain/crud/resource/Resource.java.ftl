@@ -36,6 +36,7 @@ import org.idomine.domain.crud.model.${artefato.className};
 <#if field.persistence >
 <#if field.selectDB() >
 import org.idomine.domain.crud.model.${field.nome};
+import org.idomine.domain.crud.repository.${field.nome}Repository;
 </#if>
 </#if>
 </#list>	
@@ -63,6 +64,15 @@ public class ${artefato.className}Resource
     @Autowired
     private ${artefato.className}Repository ${artefato.classFolder}Repository;
 
+    <#list artefato.elementos as field >
+    <#if field.persistence >
+    <#if field.selectDB() >
+    @Autowired
+    private ${field.nome}Repository ${field.nome?lower_case}Repository;
+    </#if>
+    </#if>
+    </#list>	    
+
     @GetMapping("/${artefato.resourceName}")
     public Iterable<${artefato.className}> listaAll()
     {
@@ -73,6 +83,13 @@ public class ${artefato.className}Resource
     @Transactional
     public ResponseEntity<${artefato.className}> add(@RequestBody ${artefato.className} obj)
     {
+        <#list artefato.elementos as field >
+        <#if field.persistence >
+        <#if field.selectDB() >
+        obj.set${field.nome}(${field.nome?lower_case }Repository.findById(obj.get${field.nome}().getId()).get());
+        </#if>
+        </#if>
+        </#list>	    
         ${artefato.className} newObj = ${artefato.classFolder}Repository.save(obj);
         return new ResponseEntity<>(newObj, HttpStatus.OK);
     }
@@ -81,6 +98,13 @@ public class ${artefato.className}Resource
     @Transactional
     public ResponseEntity<${artefato.className}> update(@RequestBody ${artefato.className} obj)
     {
+        <#list artefato.elementos as field >
+        <#if field.persistence >
+        <#if field.selectDB() >
+        obj.set${field.nome}(${field.nome?lower_case}Repository.findById(obj.get${field.nome}().getId()).get());
+        </#if>
+        </#if>
+        </#list>	    
         ${artefato.className} newObj = ${artefato.classFolder}Repository.save(obj);
         return new ResponseEntity<>(newObj, HttpStatus.OK);
     }

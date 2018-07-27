@@ -1,9 +1,9 @@
 <div fxLayout="row wrap" class="form-group">
   <div fxFlex.gt-sm="100" class="divide">
     <mat-card>
-      <mat-card-title>Artefatos</mat-card-title>
+      <mat-card-title>${artefato.nome}</mat-card-title>
 
-      <a mat-fab color="accent" routerLink="/artefato/add" >
+      <a mat-fab color="accent" routerLink="/${artefato.classFolder}/add" >
         <mat-icon aria-label="add">add</mat-icon>
       </a>
     <mat-card-content>

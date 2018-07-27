@@ -102,7 +102,7 @@ export class ${artefato.className}FormComponent implements OnInit {
   }
 
   setFormTitle( id: any  ) {
-    this.title = '${artefato.className}';
+    this.title = '${artefato.nome}';
     if ( this.id === null ) {
        this.title = 'Novo ' + this.title;
     } else {

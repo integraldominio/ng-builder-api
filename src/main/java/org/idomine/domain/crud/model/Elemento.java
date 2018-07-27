@@ -581,7 +581,7 @@ public class Elemento
                         .id(13L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Checkbox)
-                        .tipoField(TipoField.String)
+                        .tipoField(TipoField.Boolean)
                         .nome("persistence")
                         .tamanho(1L)
                         .rotulo("Persistence")
