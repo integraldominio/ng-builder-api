@@ -25,9 +25,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class GenerationService
 {
-    
-    private String ngxbuilder="0.0.1";
-    
+
+    private String ngxbuilder = "0.0.1";
+
     @Autowired
     private FreeMarkerEngine fm;
     @Autowired
@@ -36,7 +36,11 @@ public class GenerationService
     public void backendAllToOutput(Long id)
     {
         Projeto projeto = projetoRepository.findById(id).get();
-        backendAllToOutput(projeto);
+        if (projeto != null)
+        {
+            GeradorCrudHelper.criarFolders();
+            backendAllToOutput(projeto);
+        }
     }
 
     public void backendAllToOutput(Projeto projeto)
@@ -71,7 +75,7 @@ public class GenerationService
         {
             e.printStackTrace();
         }
-        
+
     }
 
     public void frontEnviroment(Projeto projeto)
@@ -175,15 +179,15 @@ public class GenerationService
 
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    GeradorCrudHelper.output(dir + folder + "-form.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-form.component.css",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-form.component.html",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts", model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.css", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css", model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-form.component.html", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html", model(artefato)));
 
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.css",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.html",fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts", model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.css", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css", model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + "-grid.component.html", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html", model(artefato)));
 
-                    GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",model(artefato)));
+                    GeradorCrudHelper.output(dir + folder + ".service.ts", fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts", model(artefato)));
                 }
                 else if (TipoArtefato.Template.equals(artefato.getTipo()))
                 {
@@ -192,7 +196,7 @@ public class GenerationService
 
                     if (artefato.getTemplateCss() != null)
                         GeradorCrudHelper.output(dir + folder + ".component.css", artefato.getTemplateCss());
-                    
+
                     if (artefato.getTemplateHtml() != null)
                         GeradorCrudHelper.output(dir + folder + ".component.html", artefato.getTemplateHtml());
                 }
@@ -238,9 +242,9 @@ public class GenerationService
         try
         {
             GeradorCrudHelper.copyFile(new File(o + "base/base.component.html"), new File(d + "base/base.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"),   new File(d + "base/base.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"), new File(d + "base/base.component.ts"));
             GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.html"), new File(d + "erro/erro.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"),  new File(d + "erro/erro.component.css"));
+            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"), new File(d + "erro/erro.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
 
             GeradorCrudHelper.copyFile(new File(o + "home/home.component.html"),
@@ -448,7 +452,5 @@ public class GenerationService
         model.put("ngxbuilder", ngxbuilder);
         return model;
     }
-
- 
 
 }

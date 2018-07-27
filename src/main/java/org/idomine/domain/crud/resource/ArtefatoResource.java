@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.Artefato;
 import org.idomine.domain.crud.reporitory.ArtefatoRepository;
+import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,8 @@ public class ArtefatoResource
 {
     @Autowired
     private ArtefatoRepository artefatoRepository;
+    @Autowired
+    private ProjetoRepository projetoRepository;
 
     @GetMapping("/artefatos")
     public Iterable<Artefato> listaAll()
@@ -34,6 +37,8 @@ public class ArtefatoResource
     @Transactional
     public ResponseEntity<Artefato> add(@RequestBody Artefato artefato)
     {
+        if (artefato.getProjeto() != null)
+            artefato.setProjeto(projetoRepository.findById(artefato.getProjeto().getId()).get());
         Artefato a = artefatoRepository.save(artefato);
         return new ResponseEntity<>(a, HttpStatus.OK);
     }
@@ -42,6 +47,8 @@ public class ArtefatoResource
     @Transactional
     public ResponseEntity<Artefato> update(@RequestBody Artefato artefato)
     {
+        if (artefato.getProjeto() != null)
+            artefato.setProjeto(projetoRepository.findById(artefato.getProjeto().getId()).get());
         Artefato a = artefatoRepository.save(artefato);
         return new ResponseEntity<>(a, HttpStatus.OK);
     }
@@ -67,7 +74,7 @@ public class ArtefatoResource
     }
 
     @GetMapping("/artefatos/search")
-    public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
+    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "nome", required = false) String nome)
     {
         return new ResponseEntity<>(artefatoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }

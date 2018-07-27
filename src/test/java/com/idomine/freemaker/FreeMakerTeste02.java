@@ -26,7 +26,6 @@ public class FreeMakerTeste02
     @Test
     public void teste()
     {
-        GeradorCrudHelper.criarFolders();
         generationService.backendAllToOutput(Projeto.getFake());
         copiarDataSql();
     }
