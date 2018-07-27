@@ -3,7 +3,19 @@ package org.idomine.domain.crud.model.vo;
 public enum TipoField
 {
     
-    NotAvailable, String, Integer, Long, Decimal, Date, DateTime, Time, Boolean, Binario, Log, BigDecimal, BigInteger;
+    BigDecimal, 
+    BigInteger,
+    Binario, 
+    Boolean, 
+    Date, 
+    DateTime, 
+    Decimal, 
+    Integer, 
+    Long, 
+    NotAvailable,
+    String, 
+    Time; 
+
 
     public static String angular(TipoField t)
     {

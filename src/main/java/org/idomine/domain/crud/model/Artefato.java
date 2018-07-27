@@ -43,11 +43,12 @@ public class Artefato
     @Id
     @GeneratedValue
     private Long id;
+    
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Projeto projeto;
-    @Enumerated(EnumType.STRING)
 
+    @Enumerated(EnumType.STRING)
     private TipoArtefato tipo;
     private String nome;
 
@@ -159,16 +160,16 @@ public class Artefato
                         .elementos(Elemento.getFake4())
                         .build());
 
-        lista.add(
-                Artefato.builder()
-                        .id(4L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("formly-js.github.io")
-                        .resourceName("formly")
-                        .className("Formly")
-                        .classFolder("formly")
-                        .elementos(Elemento.getFake5())
-                        .build());
+//        lista.add(
+//                Artefato.builder()
+//                        .id(4L)
+//                        .tipo(TipoArtefato.Crud)
+//                        .nome("formly-js.github.io")
+//                        .resourceName("formly")
+//                        .className("Formly")
+//                        .classFolder("formly")
+//                        .elementos(Elemento.getFake5())
+//                        .build());
 
         lista.add(
                 Artefato.builder()

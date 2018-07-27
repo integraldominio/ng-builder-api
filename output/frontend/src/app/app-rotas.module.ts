@@ -37,8 +37,6 @@ import { ElementoGridComponent } from './erp/elemento/elemento-grid.component';
 import { ElementoFormComponent } from './erp/elemento/elemento-form.component';
 import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.component';
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
-import { FormlyGridComponent } from './erp/formly/formly-grid.component';
-import { FormlyFormComponent } from './erp/formly/formly-form.component';
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
 import { AuthGuard } from './infra/security';
@@ -72,9 +70,6 @@ const routes: Routes =
     { path: 'configuracao', component: ConfiguracaoGridComponent, canActivate: [AuthGuard] },
     { path: 'configuracao/edit/:id', component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
     { path: 'configuracao/add',  component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
-    { path: 'formly', component: FormlyGridComponent, canActivate: [AuthGuard] },
-    { path: 'formly/edit/:id', component: FormlyFormComponent, canActivate: [AuthGuard] },
-    { path: 'formly/add',  component: FormlyFormComponent, canActivate: [AuthGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]

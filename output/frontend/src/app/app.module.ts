@@ -58,9 +58,6 @@ import { ElementoFormComponent } from './erp/elemento/elemento-form.component';
 import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.component';
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
 
-import { FormlyGridComponent } from './erp/formly/formly-grid.component';
-import { FormlyFormComponent } from './erp/formly/formly-form.component';
-
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
 
@@ -82,8 +79,6 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     ElementoFormComponent,
     ConfiguracaoGridComponent,
     ConfiguracaoFormComponent,
-    FormlyGridComponent,
-    FormlyFormComponent,
     BuildAppComponent,
     ],
   imports: [
