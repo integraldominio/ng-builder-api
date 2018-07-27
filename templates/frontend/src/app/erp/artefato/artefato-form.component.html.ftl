@@ -10,8 +10,8 @@
             [options]="options"
             [fields]="fields"
             [model]="model">
-            <button mat-button type="submit">Salvar</button>
-            <button mat-button (click)="options.resetModel()">Limpar</button>
+            <button mat-raised-button color="primary"  type="submit">Salvar</button>
+            <button mat-raised-button (click)="options.resetModel()">Limpar</button>
           </formly-form>
         </form>
 

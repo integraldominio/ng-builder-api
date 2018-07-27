@@ -100,9 +100,10 @@ public class Elemento
     {
         return requerido ? "true" : "false";
     }
+
     public boolean notSelectDB()
     {
-        return !selectDB(); 
+        return !selectDB();
     }
 
     public boolean selectDB()
@@ -125,6 +126,19 @@ public class Elemento
                     .filter(a -> a.getNome().equals(this.getNome()) && !a.getId().equals(this.getId()))
                     .collect(Collectors.toList());
         return irmao;
+    }
+
+    public String getDefault()
+    {
+        if (TipoField.BigDecimal.equals(tipoField) || TipoField.BigInteger.equals(tipoField) || TipoField.Integer.equals(tipoField) || TipoField.Long.equals(tipoField))
+        {
+            return inicial;
+        }
+        else if (TipoElemento.Input.equals(tipoElemento) || TipoElemento.TextArea.equals(tipoElemento) || TipoElemento.Select.equals(tipoElemento))
+        {
+            return "'" + inicial + "'";
+        }
+        return inicial;
     }
 
     public static List<Elemento> getFake1()
@@ -154,6 +168,7 @@ public class Elemento
                         .nome("descricao")
                         .tamanho(100L)
                         .rotulo("Descrição")
+                        .inicial("Sistema muito legal, gerado com o ngx-buider")
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -167,6 +182,7 @@ public class Elemento
                         .nome("nomeBackendApp")
                         .tamanho(100L)
                         .rotulo("Nome Backend App")
+                        .inicial("app-backend")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -179,6 +195,7 @@ public class Elemento
                         .nome("nomeFrontEndApp")
                         .tamanho(100L)
                         .rotulo("Nome Frontend App")
+                        .inicial("app-frontend")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -191,6 +208,7 @@ public class Elemento
                         .nome("iconeApp")
                         .tamanho(100L)
                         .rotulo("Ícone App")
+                        .inicial("/assets/icon.svg")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -203,6 +221,7 @@ public class Elemento
                         .nome("imageApp")
                         .tamanho(100L)
                         .rotulo("Image App")
+                        .inicial("assets/back-image.svg")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -216,6 +235,7 @@ public class Elemento
                         .nome("serverHost")
                         .tamanho(100L)
                         .rotulo("Server Host")
+                        .inicial("localhost")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -228,6 +248,7 @@ public class Elemento
                         .nome("serverPort")
                         .tamanho(4L)
                         .rotulo("Server port")
+                        .inicial("3000")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -240,6 +261,7 @@ public class Elemento
                         .nome("frontHost")
                         .tamanho(100L)
                         .rotulo("Front Host")
+                        .inicial("localhost")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -252,6 +274,7 @@ public class Elemento
                         .nome("frontPort")
                         .tamanho(4L)
                         .rotulo("Front port")
+                        .inicial("5000")
                         .requerido(true)
                         .persistence(true)
                         .build());
@@ -264,7 +287,7 @@ public class Elemento
                         .nome("useLogin")
                         .tamanho(1L)
                         .rotulo("Use Login")
-                        .requerido(false)
+                        .requerido(true)
                         .persistence(true)
                         .build());
         lista.add(
@@ -276,7 +299,7 @@ public class Elemento
                         .nome("useRoles")
                         .tamanho(1L)
                         .rotulo("Use Roles")
-                        .requerido(false)
+                        .requerido(true)
                         .persistence(true)
                         .build());
         lista.add(
@@ -287,6 +310,7 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("outputDirectory")
                         .rotulo("Output Directory")
+                        .inicial("output")
                         .requerido(false)
                         .persistence(true)
                         .tamanho(100L)
@@ -331,8 +355,7 @@ public class Elemento
                         .showcolumn(true)
                         .options("[{ value: 'Crud', label: 'Crud'}, {value: 'Template', label: 'Template'}]")
                         .build());
-        
-        
+
         lista.add(
                 Elemento.builder()
                         .id(9L)
@@ -458,12 +481,11 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 1, label: 'Autocomplete'} , {value: 2, label: 'Checkbox'}, {value: 3, label: 'Chips'} ,"+
-                                " { value: 4, label: 'Datepicker'} , {value: 5, label: 'Input'} , {value: 6, label: 'RadioButton'} ,"+
-                                " { value: 7, label: 'RadioButton'} , { value: 8, label: 'Select'} , {value: 9, label: 'SelectMultiple'} , {value:10, label: 'SelectDB' } ,"+
-                                " { value: 11, label: 'Slidetoggle'} , {value: 12, label: 'TextArea'} , {value: 13, label: 'Tooltip' }] " 
-                                )
-                        
+                                "[{ value: 1, label: 'Autocomplete'} , {value: 2, label: 'Checkbox'}, {value: 3, label: 'Chips'} ," +
+                                        " { value: 4, label: 'Datepicker'} , {value: 5, label: 'Input'} , {value: 6, label: 'RadioButton'} ," +
+                                        " { value: 7, label: 'RadioButton'} , { value: 8, label: 'Select'} , {value: 9, label: 'SelectMultiple'} , {value:10, label: 'SelectDB' } ," +
+                                        " { value: 11, label: 'Slidetoggle'} , {value: 12, label: 'TextArea'} , {value: 13, label: 'Tooltip' }] ")
+
                         .build());
         lista.add(
                 Elemento.builder()
@@ -477,12 +499,11 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 1, label: 'BigDecimal'}, {value: 2, label: 'BigInteger'}, {value: 3, label: 'Binario'}, {value: 4, label: 'Boolean'},"+
-                                " {value: 5, label: 'Date'} , {value: 5, label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 5, label: 'Integer'} ,"+
-                                 " {value: 5, label: 'Long'} , {value: 5, label: 'NotAvailable'} , {value: 5, label: 'String'} , {value: 5, label: 'Time'}]" )
+                                "[{ value: 1, label: 'BigDecimal'}, {value: 2, label: 'BigInteger'}, {value: 3, label: 'Binario'}, {value: 4, label: 'Boolean'}," +
+                                        " {value: 5, label: 'Date'} , {value: 5, label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 5, label: 'Integer'} ," +
+                                        " {value: 5, label: 'Long'} , {value: 5, label: 'NotAvailable'} , {value: 5, label: 'String'} , {value: 5, label: 'Time'}]")
                         .build());
 
-        
         lista.add(
                 Elemento.builder()
                         .id(13L)
@@ -562,7 +583,6 @@ public class Elemento
                         .persistence(true)
                         .build());
 
-
         lista.add(
                 Elemento.builder()
                         .id(13L)
@@ -589,7 +609,6 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .build());
-
 
         lista.add(
                 Elemento.builder()
@@ -640,7 +659,7 @@ public class Elemento
                         .requerido(false)
                         .persistence(true)
                         .build());
-        
+
         lista.add(
                 Elemento.builder()
                         .id(13L)
@@ -653,7 +672,6 @@ public class Elemento
                         .persistence(true)
                         .requerido(false)
                         .build());
-        
 
         lista.add(
                 Elemento.builder()

@@ -66,13 +66,13 @@ export class ${artefato.className}FormComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
   <#list artefato.elementos as e >
   <#if e.toForm()>{
-     key: '${e.nome}', type: '${e.toFormly()}',
+     key: '${e.nome}', type: '${e.toFormly()}', <#if e.inicial??>defaultValue: ${e.getDefault()},</#if>
      templateOptions: {
         label: '${e.rotulo}',
         placeholder: 'Informe ${e.rotulo}',
         required: ${e.requiredToString()},
         <#if e.selectDB() >
-        valueProp: '${e.valueProp}',
+		valueProp: '${e.valueProp}',
         labelProp: '${e.labelProp}',
         options: this.${e.nome?lower_case}Service.listAll(),
         <#elseif e.hasOptions() >
