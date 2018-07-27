@@ -68,7 +68,7 @@ import lombok.ToString;
 public class ${artefato.className}
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     <#list artefato.elementos as el>

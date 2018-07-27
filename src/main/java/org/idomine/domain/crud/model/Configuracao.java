@@ -3,6 +3,8 @@ package org.idomine.domain.crud.model;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
@@ -25,7 +27,9 @@ import lombok.ToString;
 public class Configuracao
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String nomeEmpresa;
     private String siteEmpresa;
     private String emailEmpresa;

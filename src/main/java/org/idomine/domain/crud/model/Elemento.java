@@ -41,6 +41,7 @@ public class Elemento
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Artefato artefato;
@@ -640,9 +641,9 @@ public class Elemento
                         .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
+                        .tipoField(TipoField.String)
                         .nome("valueProp")
-                        .tamanho(20L)
+                        .tamanho(100L)
                         .rotulo("Value Prop")
                         .requerido(false)
                         .persistence(true)
@@ -654,7 +655,7 @@ public class Elemento
                         .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.Long)
                         .nome("labelProp")
-                        .tamanho(20L)
+                        .tamanho(100L)
                         .rotulo("Label Prop")
                         .requerido(false)
                         .persistence(true)
