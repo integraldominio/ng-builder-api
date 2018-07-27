@@ -40,7 +40,6 @@ export class SidenaveComponent implements OnInit {
     this.isHandset
       .subscribe(
         arg => {
-          console.log( arg );
           if ( arg.matches ) {
             this.sidenavService.toggle();
           }
