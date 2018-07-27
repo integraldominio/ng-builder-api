@@ -286,10 +286,11 @@ public class Elemento
                         .tipoElemento(TipoElemento.Input)
                         .tipoField(TipoField.String)
                         .nome("outputDirectory")
-                        .rotulo("outputDirectory")
+                        .rotulo("Output Directory")
                         .requerido(false)
                         .persistence(true)
                         .tamanho(100L)
+                        .showcolumn(true)
                         .build());
 
         return lista;

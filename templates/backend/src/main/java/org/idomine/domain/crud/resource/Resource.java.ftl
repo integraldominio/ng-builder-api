@@ -86,6 +86,7 @@ public class ${artefato.className}Resource
         <#list artefato.elementos as field >
         <#if field.persistence >
         <#if field.selectDB() >
+        ${"if"} ( obj.get${field.nome}() != null )
         obj.set${field.nome}(${field.nome?lower_case }Repository.findById(obj.get${field.nome}().getId()).get());
         </#if>
         </#if>
@@ -101,6 +102,7 @@ public class ${artefato.className}Resource
         <#list artefato.elementos as field >
         <#if field.persistence >
         <#if field.selectDB() >
+        ${"if"} ( obj.get${field.nome}() != null )
         obj.set${field.nome}(${field.nome?lower_case}Repository.findById(obj.get${field.nome}().getId()).get());
         </#if>
         </#if>
