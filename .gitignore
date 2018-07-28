@@ -34,3 +34,5 @@
 /nbdist/
 /.nb-gradle/
 output-original/
+*.md
+xxx/
