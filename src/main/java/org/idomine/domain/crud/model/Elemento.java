@@ -514,7 +514,7 @@ public class Elemento
                         .tipoField(TipoField.Boolean)
                         .nome("paginaHome")
                         .tamanho(1L)
-                        .rotulo("Página Home?")
+                        .rotulo("Página Home")
                         .requerido(false)
                         .persistence(true)
                         .showcolumn(false)
@@ -529,7 +529,7 @@ public class Elemento
                         .nome("templateTs")
                         .tamanho(999L)
                         .rotulo("Template Ts")
-                        .requerido(true)
+                        .requerido(false)
                         .persistence(true)
                         .build());
         lista.add(
@@ -541,7 +541,7 @@ public class Elemento
                         .nome("templateHtml")
                         .tamanho(999L)
                         .rotulo("Template Html")
-                        .requerido(true)
+                        .requerido(false)
                         .persistence(true)
                         .build());
         lista.add(
@@ -553,7 +553,7 @@ public class Elemento
                         .nome("templateCss")
                         .tamanho(999L)
                         .rotulo("Template Css")
-                        .requerido(true)
+                        .requerido(false)
                         .persistence(true)
                         .build());
 

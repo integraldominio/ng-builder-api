@@ -4,7 +4,7 @@
       <mat-card-title>${artefato.nome}</mat-card-title>
 
       <a mat-fab color="accent" routerLink="/${artefato.classFolder}/add" >
-        <mat-icon aria-label="add">add</mat-icon>
+        <mat-icon>add</mat-icon>
       </a>
     <mat-card-content>
     <div class="table-header">

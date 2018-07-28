@@ -1,7 +1,12 @@
 <div fxLayout="row wrap" class="form-group">
     <div fxFlex.gt-sm="100" class="divide">
       <mat-card>
-        <mat-card-title> {{title}}  </mat-card-title>
+        
+        <mat-card-title>{{title}}</mat-card-title>
+        <a mat-fab color="accent"  routerLink="/${artefato.classFolder}" >
+          <mat-icon>chevron_left</mat-icon>
+        </a>
+        
         <mat-card-content>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit(model)" >
