@@ -36,7 +36,7 @@ public class ArtefatoResource
     @PostMapping("/artefatos")
     @Transactional
     public ResponseEntity<Artefato> add(@RequestBody Artefato artefato)
-    {
+    {       
         if (artefato.getProjeto() != null)
             artefato.setProjeto(projetoRepository.findById(artefato.getProjeto().getId()).get());
         Artefato a = artefatoRepository.save(artefato);

@@ -73,18 +73,7 @@ export class ${artefato.className}GridComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  <#list artefato.elementos as e >
-  <#if e.toForm()>
-  <#if e.selectDB() >
-  ${e.nome?lower_case}To${artefato.className}(m: any): ${artefato.className} {
-      m.${e.nome?uncap_first} = { id: m.${e.nome?uncap_first} };
-      return m as ${artefato.className};
-  }
-  </#if>
-  </#if>
-  </#list>
-
+ 
   listAll() {
     this.${artefato.classFolder}Service.listAll().subscribe(
       data => {
@@ -93,12 +82,6 @@ export class ${artefato.className}GridComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     );
-  }
-
-  addNew () {
-  }
-
-  startEdit(cliente) {
   }
 
   deleteItem(o: ${artefato.className}) {
