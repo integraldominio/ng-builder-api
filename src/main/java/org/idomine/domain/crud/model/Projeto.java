@@ -4,14 +4,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -30,6 +28,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "id" })
+
 public class Projeto
 {
     @Id
@@ -48,35 +47,34 @@ public class Projeto
     private boolean useLogin;
     private boolean useRoles;
     private String outputDirectory;
-    
-    @JsonBackReference
+
+    @JsonManagedReference
     @ManyToOne
     private Portal portal;
-    
+
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
-    
+
     public static Projeto getFake()
     {
-        return new Projeto
-                    .ProjetoBuilder()
-                    .id(1L)
-                    .nome("ngbuilder")
-                    .descricao("NG Builder")
-                    .nomeBackendApp("app-back")
-                    .nomeFrontendApp("app-front")
-                    .iconeApp("icone.icon")
-                    .imageApp("back.png")
-                    .serverPort("3000")
-                    .serverHost("http://localhost")
-                    .frontPort("5000")
-                    .frontHost("http://localhost")
-                    .useLogin(false)
-                    .useRoles(false)
-                    .outputDirectory("output")
-                    .artefatos( Artefato.getFake())
-                    .build();
+        return new Projeto.ProjetoBuilder()
+                .id(1L)
+                .nome("ngbuilder")
+                .descricao("NG Builder")
+                .nomeBackendApp("app-back")
+                .nomeFrontendApp("app-front")
+                .iconeApp("icone.icon")
+                .imageApp("back.png")
+                .serverPort("3000")
+                .serverHost("http://localhost")
+                .frontPort("5000")
+                .frontHost("http://localhost")
+                .useLogin(false)
+                .useRoles(false)
+                .outputDirectory("output")
+                .artefatos(Artefato.getFake())
+                .build();
     }
-    
+
 }

@@ -30,19 +30,17 @@ public class ProjetoResource
     @Autowired
     private GenerationService generationService;
 
-    
     @GetMapping("/projetos/build/{id}")
     public ResponseEntity<?> buildAll(@PathVariable Long id)
     {
         generationService.backendAllToOutput(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     @GetMapping("/projetos")
     public Iterable<Projeto> listaAll()
     {
-        Iterable<Projeto> x =  projetoRepository.findAll();
-        return x;
+        return projetoRepository.findAll();
     }
 
     @PostMapping("/projetos")
@@ -72,13 +70,13 @@ public class ProjetoResource
         projetoRepository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     @GetMapping("/projetos/{id}")
     public ResponseEntity<?> searchId(@PathVariable Long id)
     {
         return new ResponseEntity<>(projetoRepository.findById(id), HttpStatus.OK);
     }
-    
+
     @GetMapping("/projetos/search/id/{id}")
     public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
     {
@@ -92,7 +90,8 @@ public class ProjetoResource
     }
 
     @GetMapping("/projetos/search")
-    public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
+    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "nome", required = false) String nome)
     {
         return new ResponseEntity<>(projetoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }

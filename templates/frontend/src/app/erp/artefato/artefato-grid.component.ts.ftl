@@ -44,7 +44,7 @@ export class ${artefato.className}GridComponent implements OnInit {
   displayedColumns = [
   <#list artefato.elementos as e >
   <#if e.showcolumn>
-  '${e.nome}',
+  '${e.nome?uncap_first}',
   </#if>
   </#list> 
   'actions'

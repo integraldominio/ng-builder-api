@@ -5,16 +5,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   selector: 'app-buildapp',
   styleUrls: ['./buildapp.component.css'],
   template: `
-  <h2> NG builder </h2>
-  <p> Gerador de app.Será criado estrutura de fontend e backend a partir da pasta output. </p>
-  <form class="example-form">
+  <div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title> NG builder  </mat-card-title>
+      <mat-card-content>
+      <p> Gerador de app.Será criado estrutura de fontend e backend a partir da pasta outputDirectory, informada em Projetos: </p>
+      <form class="example-form">
+          <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
+          <input matInput placeholder="Projeto Id" [(ngModel)]="id" [ngModelOptions]="{standalone: true}" >
+      </mat-form-field>
+      </form>
 
-  <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
-    <input matInput placeholder="Projeto Id" [(ngModel)]="id" [ngModelOptions]="{standalone: true}" >
-  </mat-form-field>
-  </form>
+      <button mat-raised-button color="primary" (click)='build()'> Gerar App !</button> <br/> {{app}} 
 
-  <button mat-button (click)='build()'> Gerar App !</button> <br/> {{app}} `,
+  </mat-card-content>
+  </mat-card>
+  </div>
+  </div>  `,
 })
 export class BuildAppComponent implements OnInit {
 
