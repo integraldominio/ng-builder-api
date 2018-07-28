@@ -50,11 +50,11 @@ public class Projeto
     private String outputDirectory;
     
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Portal portal;
     
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
     
     public static Projeto getFake()

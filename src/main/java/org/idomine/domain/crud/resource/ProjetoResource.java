@@ -41,7 +41,8 @@ public class ProjetoResource
     @GetMapping("/projetos")
     public Iterable<Projeto> listaAll()
     {
-        return projetoRepository.findAll();
+        Iterable<Projeto> x =  projetoRepository.findAll();
+        return x;
     }
 
     @PostMapping("/projetos")
