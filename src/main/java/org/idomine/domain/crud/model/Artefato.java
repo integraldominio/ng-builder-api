@@ -56,6 +56,8 @@ public class Artefato
     private String resourceName;
     private String className;
     private String classFolder;
+   
+    private boolean paginaHome;
 
     private String templateTs;
     private String templateCss;
