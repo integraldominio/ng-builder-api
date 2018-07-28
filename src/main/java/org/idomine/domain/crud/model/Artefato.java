@@ -155,7 +155,7 @@ public class Artefato
                         .id(3L)
                         .tipo(TipoArtefato.Crud)
                         .nome("Configuração") // não pode usar config, pois já declarado no template
-                        .resourceName("configuracao")
+                        .resourceName("configuracoes")
                         .className("Configuracao")
                         .classFolder("configuracao")
                         .elementos(Elemento.getFake4())
