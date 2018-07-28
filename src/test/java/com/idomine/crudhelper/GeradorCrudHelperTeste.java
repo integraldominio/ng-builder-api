@@ -22,7 +22,7 @@ public class GeradorCrudHelperTeste
         // assertTrue(GeradorCrudHelper.criarDir(output + "backend"));
         // assertTrue(GeradorCrudHelper.criarDir(output + "frontend"));
 
-        GeradorCrudHelper.criarFolders();
+        GeradorCrudHelper.criarFolders("");
         GeradorCrudHelper.output("output/"+TemplateBackendHelper.BACKEND_POM, "pom");
         
     }

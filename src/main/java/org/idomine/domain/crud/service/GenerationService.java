@@ -38,7 +38,7 @@ public class GenerationService
         Projeto projeto = projetoRepository.findById(id).get();
         if (projeto != null)
         {
-            GeradorCrudHelper.criarFolders();
+            GeradorCrudHelper.criarFolders(projeto.getOutputDirectory());
             backendAllToOutput(projeto);
         }
     }
@@ -47,7 +47,7 @@ public class GenerationService
     {
         if (projeto != null)
         {
-            GeradorCrudHelper.criarFolders();
+            GeradorCrudHelper.criarFolders(projeto.getOutputDirectory());
             readmeToOutput(projeto);
             backendPomToOutput(projeto);
             backendReadmeToOutput(projeto);

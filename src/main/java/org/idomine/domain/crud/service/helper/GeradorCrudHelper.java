@@ -12,48 +12,50 @@ import java.nio.channels.FileChannel;
 
 public class GeradorCrudHelper
 {
-    public String output = "output";
-
-    public static void criarFolders()
+    public static void criarFolders(String base)
     {
-        criarDir("output/backend");
-        criarDir("output/backend/src");
-        criarDir("output/backend/src/main");
-        criarDir("output/backend/src/main/java");
-        criarDir("output/backend/src/main/java/org");
-        criarDir("output/backend/src/main/java/org/idomine");
-        criarDir("output/backend/src/main/java/org/idomine/domain");
-        criarDir("output/backend/src/main/java/org/idomine/domain/crud");
-        criarDir("output/backend/src/main/java/org/idomine/domain/crud/model");
-        criarDir("output/backend/src/main/java/org/idomine/domain/crud/repository");
-        criarDir("output/backend/src/main/java/org/idomine/domain/crud/resource");
-        criarDir("output/backend/src/main/resources");
+        base=base.trim();
+        if ( "".equals(base))
+            base="output";
+        
+        criarDir(base+"/backend");
+        criarDir(base+"/backend/src");
+        criarDir(base+"/backend/src/main");
+        criarDir(base+"/backend/src/main/java");
+        criarDir(base+"/backend/src/main/java/org");
+        criarDir(base+"/backend/src/main/java/org/idomine");
+        criarDir(base+"/backend/src/main/java/org/idomine/domain");
+        criarDir(base+"/backend/src/main/java/org/idomine/domain/crud");
+        criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/model");
+        criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/repository");
+        criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/resource");
+        criarDir(base+"/backend/src/main/resources");
 
-        criarDir("output/frontend");
-        criarDir("output/frontend/e2e");
-        criarDir("output/frontend/src");
-        criarDir("output/frontend/src/app");
-        criarDir("output/frontend/src/app/erp");
-        criarDir("output/frontend/src/app/infra");
-        criarDir("output/frontend/src/app/infra/pipes");
-        criarDir("output/frontend/src/app/infra/security");
-        criarDir("output/frontend/src/app/pages");
-        criarDir("output/frontend/src/app/pages/base");
-        criarDir("output/frontend/src/app/pages/erro");
-        criarDir("output/frontend/src/app/pages/home");
-        criarDir("output/frontend/src/app/pages/login");
-        criarDir("output/frontend/src/app/pages/sidenav");
-        criarDir("output/frontend/src/app/pages/sobre");
-        criarDir("output/frontend/src/app/shared");
-        criarDir("output/frontend/src/app/shared/autocomplete");
-        criarDir("output/frontend/src/assets");
-        criarDir("output/frontend/src/assets/icon");
-        criarDir("output/frontend/src/assets/images");
-        criarDir("output/frontend/src/assets/svg-loaders");
-        criarDir("output/frontend/src/environments");
+        criarDir(base+"/frontend");
+        criarDir(base+"/frontend/e2e");
+        criarDir(base+"/frontend/src");
+        criarDir(base+"/frontend/src/app");
+        criarDir(base+"/frontend/src/app/erp");
+        criarDir(base+"/frontend/src/app/infra");
+        criarDir(base+"/frontend/src/app/infra/pipes");
+        criarDir(base+"/frontend/src/app/infra/security");
+        criarDir(base+"/frontend/src/app/pages");
+        criarDir(base+"/frontend/src/app/pages/base");
+        criarDir(base+"/frontend/src/app/pages/erro");
+        criarDir(base+"/frontend/src/app/pages/home");
+        criarDir(base+"/frontend/src/app/pages/login");
+        criarDir(base+"/frontend/src/app/pages/sidenav");
+        criarDir(base+"/frontend/src/app/pages/sobre");
+        criarDir(base+"/frontend/src/app/shared");
+        criarDir(base+"/frontend/src/app/shared/autocomplete");
+        criarDir(base+"/frontend/src/assets");
+        criarDir(base+"/frontend/src/assets/icon");
+        criarDir(base+"/frontend/src/assets/images");
+        criarDir(base+"/frontend/src/assets/svg-loaders");
+        criarDir(base+"/frontend/src/environments");
 
     }
-
+    
     public static boolean criarDir(String nome)
     {
         return (new File(nome)).mkdir();
