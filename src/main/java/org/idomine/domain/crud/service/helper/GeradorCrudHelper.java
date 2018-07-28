@@ -18,6 +18,7 @@ public class GeradorCrudHelper
         if ( "".equals(base))
             base="output";
         
+        criarDir(base);
         criarDir(base+"/backend");
         criarDir(base+"/backend/src");
         criarDir(base+"/backend/src/main");
