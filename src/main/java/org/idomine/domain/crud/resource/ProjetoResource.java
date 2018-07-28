@@ -3,6 +3,7 @@ package org.idomine.domain.crud.resource;
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.Projeto;
+import org.idomine.domain.crud.reporitory.PortalRepository;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.idomine.domain.crud.service.GenerationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class ProjetoResource
     @Autowired
     private ProjetoRepository projetoRepository;
     @Autowired
+    private PortalRepository portalRepository;
+    @Autowired
     private GenerationService generationService;
 
     
@@ -45,6 +48,8 @@ public class ProjetoResource
     @Transactional
     public ResponseEntity<Projeto> add(@RequestBody Projeto projeto)
     {
+        if (projeto.getPortal() != null)
+            projeto.setPortal(portalRepository.findById(projeto.getPortal().getId()).get());
         Projeto proj = projetoRepository.save(projeto);
         return new ResponseEntity<>(proj, HttpStatus.OK);
     }
@@ -53,6 +58,8 @@ public class ProjetoResource
     @Transactional
     public ResponseEntity<Projeto> update(@RequestBody Projeto projeto)
     {
+        if (projeto.getPortal() != null)
+            projeto.setPortal(portalRepository.findById(projeto.getPortal().getId()).get());
         Projeto proj = projetoRepository.save(projeto);
         return new ResponseEntity<>(proj, HttpStatus.OK);
     }
@@ -64,7 +71,13 @@ public class ProjetoResource
         projetoRepository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-
+    
+    @GetMapping("/projetos/{id}")
+    public ResponseEntity<?> searchId(@PathVariable Long id)
+    {
+        return new ResponseEntity<>(projetoRepository.findById(id), HttpStatus.OK);
+    }
+    
     @GetMapping("/projetos/search/id/{id}")
     public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
     {
