@@ -119,6 +119,18 @@ public class Artefato
     public static List<Artefato> getFake()
     {
         List<Artefato> lista = new ArrayList<>();
+
+        lista.add(
+                Artefato.builder()
+                        .id(1L)
+                        .tipo(TipoArtefato.Crud)
+                        .nome("Portais")
+                        .resourceName("portais")
+                        .className("Portal")
+                        .classFolder("portal")
+                        .elementos(Elemento.getFake0())
+                        .build());
+        
         lista.add(
                 Artefato.builder()
                         .id(1L)

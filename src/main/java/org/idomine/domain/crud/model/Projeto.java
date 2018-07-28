@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -47,13 +48,14 @@ public class Projeto
     private boolean useLogin;
     private boolean useRoles;
     private String outputDirectory;
-
+    
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    private Menu menu;
+    private Portal portal;
+    
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
-
     
     public static Projeto getFake()
     {

@@ -12,6 +12,7 @@
     </mat-toolbar>
 
     <mat-nav-list>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/home']" >Home</a>
     <#list projeto.artefatos as artefato > 
         <a mat-list-item  (click)="toggle()" [routerLink]="['/${artefato.classFolder}']"  >${artefato.nome}</a>
 	</#list>        

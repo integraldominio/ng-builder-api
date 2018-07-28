@@ -39,7 +39,7 @@ import lombok.ToString;
 public class Elemento
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @JsonBackReference
@@ -142,11 +142,108 @@ public class Elemento
         return inicial;
     }
 
+    public static List<Elemento> getFake0()
+    {
+        List<Elemento> lista = new ArrayList<>();
+
+        //portal
+        lista.add(
+                Elemento.builder()
+                        .id(1L)
+                        .artefato(Artefato.builder().id(1L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.String)
+                        .nome("nome")
+                        .rotulo("Nome")
+                        .tamanho(100L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());       
+        //portal
+        lista.add(
+                Elemento.builder()
+                        .id(1L)
+                        .artefato(Artefato.builder().id(1L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.String)
+                        .nome("descricao")
+                        .rotulo("descricao")
+                        .tamanho(100L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());       
+        //portal
+        lista.add(
+                Elemento.builder()
+                        .id(1L)
+                        .artefato(Artefato.builder().id(1L).build())
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
+                        .nome("templateTs")
+                        .rotulo("template Ts")
+                        .tamanho(100L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());       
+        //portal
+        lista.add(
+                Elemento.builder()
+                        .id(1L)
+                        .artefato(Artefato.builder().id(1L).build())
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
+                        .nome("templateCss")
+                        .rotulo("template Css")
+                        .tamanho(100L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());       
+        //portal
+        lista.add(
+                Elemento.builder()
+                        .id(1L)
+                        .artefato(Artefato.builder().id(1L).build())
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
+                        .nome("templateHtml")
+                        .rotulo("template Html")
+                        .tamanho(100L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());       
+        
+        return lista;
+    }
+
+    
     public static List<Elemento> getFake1()
     {
         List<Elemento> lista = new ArrayList<>();
 
         // projeto
+        lista.add(
+                Elemento.builder()
+                        .id(9L)
+                        .artefato(Artefato.builder().id(2L).build())
+                        .tipoElemento(TipoElemento.SelectDB)
+                        .valueProp("id")
+                        .labelProp("nome")
+                        .options("portais")
+                        .tipoField(TipoField.String)
+                        .nome("Portal")
+                        .tamanho(50L)
+                        .rotulo("Portal")
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .build());        
+        
+        
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -311,7 +408,7 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("outputDirectory")
                         .rotulo("Output Directory")
-                        .inicial("output")
+                        .inicial("sistemax")
                         .requerido(false)
                         .persistence(true)
                         .tamanho(100L)
@@ -354,7 +451,7 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'Template', label: 'Template'}]")
+                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
                         .build());
 
         lista.add(
@@ -482,10 +579,10 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 1, label: 'Autocomplete'} , {value: 2, label: 'Checkbox'}, {value: 3, label: 'Chips'} ," +
-                                        " { value: 4, label: 'Datepicker'} , {value: 5, label: 'Input'} , {value: 6, label: 'RadioButton'} ," +
-                                        " { value: 7, label: 'RadioButton'} , { value: 8, label: 'Select'} , {value: 9, label: 'SelectMultiple'} , {value:10, label: 'SelectDB' } ," +
-                                        " { value: 11, label: 'Slidetoggle'} , {value: 12, label: 'TextArea'} , {value: 13, label: 'Tooltip' }] ")
+                                "[{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} ," +
+                                        " { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} ," +
+                                        " { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } ," +
+                                        " { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] ")
 
                         .build());
         lista.add(
@@ -500,9 +597,9 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 1, label: 'BigDecimal'}, {value: 2, label: 'BigInteger'}, {value: 3, label: 'Binario'}, {value: 4, label: 'Boolean'}," +
-                                        " {value: 5, label: 'Date'} , {value: 5, label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 5, label: 'Integer'} ," +
-                                        " {value: 5, label: 'Long'} , {value: 5, label: 'NotAvailable'} , {value: 5, label: 'String'} , {value: 5, label: 'Time'}]")
+                                "[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'}," +
+                                        " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ," +
+                                        " {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]")
                         .build());
 
         lista.add(
@@ -865,5 +962,6 @@ public class Elemento
 
         return lista;
     }
+
 
 }
