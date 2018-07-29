@@ -60,8 +60,8 @@ public class Projeto
     {
         return new Projeto.ProjetoBuilder()
                 .id(1L)
-                .nome("ngbuilder")
-                .descricao("NG Builder")
+                .nome("ngx-builder")
+                .descricao("ngx-builder")
                 .nomeBackendApp("app-back")
                 .nomeFrontendApp("app-front")
                 .iconeApp("icone.icon")
@@ -72,7 +72,7 @@ public class Projeto
                 .frontHost("http://localhost")
                 .useLogin(false)
                 .useRoles(false)
-                .outputDirectory("output")
+                .outputDirectory("sistemax")
                 .artefatos(Artefato.getFake())
                 .build();
     }

@@ -11,13 +11,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
       <mat-card-title> NG builder  </mat-card-title>
       <mat-card-content>
       <p> Gerador de app.Será criado estrutura de fontend e backend a partir da pasta outputDirectory, informada em Projetos: </p>
+
       <form class="example-form">
+	      <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
+	          <input matInput placeholder="Portal Id" [(ngModel)]="idPortal" [ngModelOptions]="{standalone: true}" >
+	      </mat-form-field>
+
+	      <button mat-raised-button color="primary" (click)='build()'> Gerar Portal </button> <br/> 
+
           <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
-          <input matInput placeholder="Projeto Id" [(ngModel)]="id" [ngModelOptions]="{standalone: true}" >
-      </mat-form-field>
+	          <input matInput placeholder="Projeto Id" [(ngModel)]="idProjeto" [ngModelOptions]="{standalone: true}" >
+	      </mat-form-field>
+	      
+    	  <button mat-raised-button color="primary" (click)='build()'> Gerar Portal </button> <br/>  
       </form>
 
-      <button mat-raised-button color="primary" (click)='build()'> Gerar App !</button> <br/> {{app}} 
 
   </mat-card-content>
   </mat-card>
@@ -27,7 +35,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BuildAppComponent implements OnInit {
 
     app = '';
-    id = '';
+    idPortal = '';
+    idProjeto = '';
 
     constructor(private httpClient: HttpClient, private  configService: ConfigService) { }
 

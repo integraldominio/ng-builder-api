@@ -51,7 +51,15 @@ export class ${artefato.className}FormComponent implements OnInit {
       awesomeIsForced: false,
     },
   };
-  model = {};
+  model = {
+  <#list artefato.elementos as e >
+  <#if e.toForm()>
+  <#if e.selectDB() >
+  ${${e.nome?uncap_first}:null,
+  </#if>
+  </#if>
+  </#list>
+  };
   // Datatable
   displayedColumns = [
   <#list artefato.elementos as e >
@@ -119,7 +127,7 @@ export class ${artefato.className}FormComponent implements OnInit {
        model = this.${e.nome?lower_case}To${artefato.className}(model);
 	   </#if>
 	   </#if>
-	   </#list>          
+	   </#list>
       this.${artefato.classFolder}Service
         .create( model as ${artefato.className} )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/${artefato.classFolder}']); });
