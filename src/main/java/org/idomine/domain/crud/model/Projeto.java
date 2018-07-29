@@ -72,7 +72,7 @@ public class Projeto
                 .frontHost("http://localhost")
                 .useLogin(false)
                 .useRoles(false)
-                .outputDirectory("sistemax")
+                .outputDirectory("output")
                 .artefatos(Artefato.getFake())
                 .build();
     }

@@ -53,10 +53,8 @@ export class ${artefato.className}FormComponent implements OnInit {
   };
   model = {
   <#list artefato.elementos as e >
-  <#if e.toForm()>
   <#if e.selectDB() >
-  ${${e.nome?uncap_first}:null,
-  </#if>
+  ${e.nome?uncap_first}: null,
   </#if>
   </#list>
   };

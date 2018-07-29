@@ -45,7 +45,7 @@ export class BuildAppComponent implements OnInit {
 
     build() {
     this.httpClient.get<any>(
-        this.configService.getApiUrl() + '/projetos/build/' + this.id, { observe: 'response' })
+        this.configService.getApiUrl() + '/projetos/build/' + this.idProjeto, { observe: 'response' })
         .subscribe(resp => {
             this.app = 'resp';
         });
