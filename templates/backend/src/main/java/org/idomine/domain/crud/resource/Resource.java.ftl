@@ -79,6 +79,12 @@ public class ${artefato.className}Resource
         return ${artefato.classFolder}Repository.findAll();
     }
 
+    @GetMapping("/${artefato.resourceName}/count")
+    public Long count()
+    {
+        return ${artefato.classFolder}Repository.count();
+    }
+
     @PostMapping("/${artefato.resourceName}")
     @Transactional
     public ResponseEntity<${artefato.className}> add(@RequestBody ${artefato.className} obj)

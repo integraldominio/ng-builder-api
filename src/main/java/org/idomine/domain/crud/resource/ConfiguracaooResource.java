@@ -3,7 +3,6 @@ package org.idomine.domain.crud.resource;
 import javax.transaction.Transactional;
 
 import org.idomine.domain.crud.model.Configuracao;
-import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.reporitory.ConfiguracaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,15 +28,21 @@ public class ConfiguracaooResource
     {
         return configuracaoRepository.findAll();
     }
- 
+
+    @GetMapping("/configuracoes/count")
+    public Long count()
+    {
+        return configuracaoRepository.count();
+    }
+
     @PutMapping("/configuracoes")
     @Transactional
-    public ResponseEntity<Configuracao> update(@RequestBody Configuracao configuracao) 
+    public ResponseEntity<Configuracao> update(@RequestBody Configuracao configuracao)
     {
         Configuracao c = configuracaoRepository.save(configuracao);
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
-    
+
     @PostMapping("/configuracoes")
     @Transactional
     public ResponseEntity<Configuracao> add(@RequestBody Configuracao config)

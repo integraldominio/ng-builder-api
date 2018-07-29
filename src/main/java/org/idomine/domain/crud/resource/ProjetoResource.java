@@ -43,6 +43,12 @@ public class ProjetoResource
         return projetoRepository.findAll();
     }
 
+    @GetMapping("/projetos/count")
+    public Long count()
+    {
+        return projetoRepository.count();
+    }
+
     @PostMapping("/projetos")
     @Transactional
     public ResponseEntity<Projeto> add(@RequestBody Projeto projeto)

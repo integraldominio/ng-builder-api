@@ -4,7 +4,7 @@
         <mat-card-title>Sobre</mat-card-title>
         <mat-card-content>
 
-        ngx-bulider v 0.0.1   
+        ngx-bulider v ${ngxbuilder}   
 
         </mat-card-content>
 </mat-card>

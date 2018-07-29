@@ -28,6 +28,9 @@
     "@ngx-formly/material": "^4.6.6",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
+    "html2canvas": "^1.0.0-alpha.12",
+    "jspdf": "^1.4.1",
+    "ng2-odometer": "^1.1.3",    
     "rxjs": "^6.2.2",
     "zone.js": "~0.8.26"
   },

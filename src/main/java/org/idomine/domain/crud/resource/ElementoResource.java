@@ -33,12 +33,18 @@ public class ElementoResource
         return elementoRepository.findAll();
     }
 
+    @GetMapping("/elementos/count")
+    public Long count()
+    {
+        return elementoRepository.count();
+    }
+
     @PostMapping("/elementos")
     @Transactional
     public ResponseEntity<Elemento> add(@RequestBody Elemento elemento)
     {
-        if ( elemento.getArtefato() != null )
-        elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
+        if (elemento.getArtefato() != null)
+            elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
         Elemento e = elementoRepository.save(elemento);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
@@ -47,8 +53,8 @@ public class ElementoResource
     @Transactional
     public ResponseEntity<Elemento> update(@RequestBody Elemento elemento)
     {
-        if ( elemento.getArtefato() != null )
-        elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
+        if (elemento.getArtefato() != null)
+            elemento.setArtefato(artefatoRepository.findById(elemento.getArtefato().getId()).get());
         Elemento e = elementoRepository.save(elemento);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }

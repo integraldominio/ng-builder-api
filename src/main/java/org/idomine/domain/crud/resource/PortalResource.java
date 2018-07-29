@@ -23,29 +23,34 @@ import org.springframework.web.bind.annotation.RestController;
 public class PortalResource
 {
     @Autowired
-    private PortalRepository projetoRepository;
+    private PortalRepository portalRepository;
     @Autowired
     private GenerationService generationService;
 
-    
     @GetMapping("/portais/build/{id}")
     public ResponseEntity<?> buildAll(@PathVariable Long id)
     {
         generationService.backendAllToOutput(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
+    @GetMapping("/portais/count")
+    public Long count()
+    {
+        return portalRepository.count();
+    }
+
     @GetMapping("/portais")
     public Iterable<Portal> listaAll()
     {
-        return projetoRepository.findAll();
+        return portalRepository.findAll();
     }
 
     @PostMapping("/portais")
     @Transactional
     public ResponseEntity<Portal> add(@RequestBody Portal portal)
     {
-        Portal newPortal = projetoRepository.save(portal);
+        Portal newPortal = portalRepository.save(portal);
         return new ResponseEntity<>(newPortal, HttpStatus.OK);
     }
 
@@ -53,7 +58,7 @@ public class PortalResource
     @Transactional
     public ResponseEntity<Portal> update(@RequestBody Portal portal)
     {
-        Portal newPortal = projetoRepository.save(portal);
+        Portal newPortal = portalRepository.save(portal);
         return new ResponseEntity<>(newPortal, HttpStatus.OK);
     }
 
@@ -61,26 +66,27 @@ public class PortalResource
     @Transactional
     public ResponseEntity<?> delete(@PathVariable Long id)
     {
-        projetoRepository.deleteById(id);
+        portalRepository.deleteById(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     @GetMapping("/portais/search/id/{id}")
     public ResponseEntity<?> searchPathVariable(@PathVariable Long id)
     {
-        return new ResponseEntity<>(projetoRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(portalRepository.findById(id), HttpStatus.OK);
     }
 
     @GetMapping("/portais/search/nome/{nome}")
     public ResponseEntity<?> searchPathVariable(@PathVariable String nome)
     {
-        return new ResponseEntity<>(projetoRepository.findByNome(nome), HttpStatus.OK);
+        return new ResponseEntity<>(portalRepository.findByNome(nome), HttpStatus.OK);
     }
 
     @GetMapping("/portais/search")
-    public ResponseEntity<?> searchByParam( @RequestParam(value="id" ,required=false) Long id, @RequestParam(value="nome" ,required=false) String nome)
+    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "nome", required = false) String nome)
     {
-        return new ResponseEntity<>(projetoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
+        return new ResponseEntity<>(portalRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }
 
 }

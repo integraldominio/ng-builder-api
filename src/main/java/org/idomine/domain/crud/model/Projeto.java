@@ -58,7 +58,7 @@ public class Projeto
 
     public static Projeto getFake()
     {
-        return new Projeto.ProjetoBuilder()
+        Projeto p = new Projeto.ProjetoBuilder()
                 .id(1L)
                 .nome("ngx-builder")
                 .descricao("ngx-builder")
@@ -75,6 +75,10 @@ public class Projeto
                 .outputDirectory("output")
                 .artefatos(Artefato.getFake())
                 .build();
+
+        p.artefatos.stream().forEach(a -> a.setProjeto(p));
+
+        return p;
     }
 
 }

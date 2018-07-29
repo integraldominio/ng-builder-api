@@ -33,6 +33,12 @@ public class ArtefatoResource
         return artefatoRepository.findAll();
     }
 
+    @GetMapping("/artefatos/count")
+    public Long count()
+    {
+        return artefatoRepository.count();
+    }
+
     @PostMapping("/artefatos")
     @Transactional
     public ResponseEntity<Artefato> add(@RequestBody Artefato artefato)

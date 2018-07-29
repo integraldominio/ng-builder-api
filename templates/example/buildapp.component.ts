@@ -17,14 +17,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 	          <input matInput placeholder="Portal Id" [(ngModel)]="idPortal" [ngModelOptions]="{standalone: true}" >
 	      </mat-form-field>
 
-	      <button mat-raised-button color="primary" (click)='build()'> Gerar Portal </button> <br/> 
+	      <br/><button mat-raised-button color="primary" (click)='build()'> Gerar Portal </button> <br/> 
 
           <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
 	          <input matInput placeholder="Projeto Id" [(ngModel)]="idProjeto" [ngModelOptions]="{standalone: true}" >
 	      </mat-form-field>
-	      
-    	  <button mat-raised-button color="primary" (click)='build()'> Gerar Projeto </button> <br/>  
-      </form>
+
+    	  <br/><button mat-raised-button color="primary" (click)='build()'> Gerar Projeto </button> <br/>  
+
+          <mat-form-field style="min-width: 150px; max-width: 500px;width: 100%;">
+	          <input matInput placeholder="Artefato Id" [(ngModel)]="idArtefato" [ngModelOptions]="{standalone: true}" >
+	      </mat-form-field>
+
+    	  <br/> <button mat-raised-button color="primary" (click)='build()'> Gerar Artefato </button> <br/>  
+
+          </form>
 
 
   </mat-card-content>
@@ -37,6 +44,7 @@ export class BuildAppComponent implements OnInit {
     app = '';
     idPortal = '';
     idProjeto = '';
+    idArtefato = '';
 
     constructor(private httpClient: HttpClient, private  configService: ConfigService) { }
 

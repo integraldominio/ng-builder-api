@@ -2,6 +2,7 @@ package org.idomine.domain.crud.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Artefato
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @JsonBackReference
     @ManyToOne
     private Projeto projeto;
@@ -56,7 +57,7 @@ public class Artefato
     private String resourceName;
     private String className;
     private String classFolder;
-   
+
     private boolean paginaHome;
 
     private String templateTs;
@@ -88,7 +89,7 @@ public class Artefato
             }
         return iDate;
     }
-    
+
     public boolean hasTransientType()
     {
         boolean transientField = false;
@@ -110,13 +111,27 @@ public class Artefato
         if (getElementos() != null)
             for (Elemento e : getElementos())
             {
-                selDb = TipoElemento.SelectDB.equals( e.getTipoElemento() );
+                selDb = TipoElemento.SelectDB.equals(e.getTipoElemento());
                 if (selDb)
                     break;
             }
         return selDb;
     }
-    
+
+    public boolean lastCrud()
+    {
+        boolean res = false;
+        if (projeto.getArtefatos() != null)
+        {
+            List<Artefato> lista = projeto.getArtefatos()
+                    .stream()
+                    .filter(a -> a.tipo.equals(TipoArtefato.Crud))
+                    .collect(Collectors.toList());
+            if (lista != null)
+                return this.nome.equals(lista.stream().skip(lista.size() - 1).findFirst().get().getNome());
+        }
+        return res;
+    }
 
     public static List<Artefato> getFake()
     {
@@ -132,7 +147,7 @@ public class Artefato
                         .classFolder("portal")
                         .elementos(Elemento.getFake0())
                         .build());
-        
+
         lista.add(
                 Artefato.builder()
                         .id(1L)
@@ -175,16 +190,16 @@ public class Artefato
                         .elementos(Elemento.getFake4())
                         .build());
 
-//        lista.add(
-//                Artefato.builder()
-//                        .id(4L)
-//                        .tipo(TipoArtefato.Crud)
-//                        .nome("formly-js.github.io")
-//                        .resourceName("formly")
-//                        .className("Formly")
-//                        .classFolder("formly")
-//                        .elementos(Elemento.getFake5())
-//                        .build());
+        // lista.add(
+        // Artefato.builder()
+        // .id(4L)
+        // .tipo(TipoArtefato.Crud)
+        // .nome("formly-js.github.io")
+        // .resourceName("formly")
+        // .className("Formly")
+        // .classFolder("formly")
+        // .elementos(Elemento.getFake5())
+        // .build());
 
         lista.add(
                 Artefato.builder()

@@ -93,15 +93,23 @@ export class ResourceService<T extends Resource> {
       );
   }
 
-    public listAll() {
+  public listAll() {
       return this.http.get<T[]>(`${this.url}/${this.endpoint}`)
       .pipe(
         tap( _ => (console.log(''))) /* tap( _ => this.log(`List All...`)) */,
         catchError(this.handleError<T[]>('Erro Busando...', []))
       );
   }
+  
+  public count() {
+    return this.http.get<T[]>(`${this.url}/${this.endpoint}/count`)
+    .pipe(
+      tap( _ => (console.log(''))) /* tap( _ => this.log(`List All...`)) */,
+      catchError(this.handleError<T[]>('Erro Busando...', []))
+    );
+  }  
 
-    public delete(id: number) {
+  public delete(id: number) {
       if ( id as number > 0 ) {
       return this.http.delete<T>(`${this.url}/${this.endpoint}/${id}`, httpOptions)
       .pipe(
@@ -114,9 +122,9 @@ export class ResourceService<T extends Resource> {
 
     private log(message: string, acao?: string) {
       this.messageService.info( message, acao );
-    }
+  }
 
-    private handleError<S> (operation = 'operation', result?: S) {
+  private handleError<S> (operation = 'operation', result?: S) {
       return (error: any): Observable<S> => {
         // TODO: send the error to remote logging infrastructure
         console.log('>>> Erro capturado...');

@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class GenerationService
 {
 
-    private String ngxbuilder = "0.0.1";
+    private String ngxbuilder = "0.0.2";
 
     @Autowired
     private FreeMarkerEngine fm;
@@ -59,6 +59,7 @@ public class GenerationService
             frontAssets(projeto);
             frontEnviroment(projeto);
             frontendSecurityFiles(projeto);
+            frontendInfraComps(projeto);
             frontendInfraPipes(projeto);
             frontendPages(projeto);
             frontendShared(projeto);
@@ -67,13 +68,31 @@ public class GenerationService
         }
     }
 
-    private void frontendInfraPipes(Projeto projeto)
+    private void frontendInfraComps(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         try
         {
             GeradorCrudHelper.copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    
+    
+    private void frontendInfraPipes(Projeto projeto)
+    {
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
+        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
+        try
+        {
+            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
+            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.componentthml"));
+            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scs"));
         }
         catch (IOException e)
         {
@@ -277,8 +296,10 @@ public class GenerationService
                     new File(d + "home/home.component.html"));
             GeradorCrudHelper.copyFile(new File(o + "home/home.component.css"),
                     new File(d + "home/home.component.css"));
-            GeradorCrudHelper.copyFile(new File(o + "home/home.component.ts"), new File(d + "home/home.component.ts"));
-
+            
+            // fm.process pricura arquivos aprtir de templates. 
+            GeradorCrudHelper.output(d + "home/home.component.ts", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
+            
             GeradorCrudHelper.copyFile(new File(o + "login/login.component.html"),
                     new File(d + "login/login.component.html"));
             GeradorCrudHelper.copyFile(new File(o + "login/login.component.scss"),
@@ -296,8 +317,10 @@ public class GenerationService
             GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process(
                     TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
 
-            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),
-                    new File(d + "sobre/sobre.component.html"));
+             // GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),                new File(d + "sobre/sobre.component.html"));
+            GeradorCrudHelper.output(d + "sobre/sobre.component.html", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
+
+            
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.css"),
                     new File(d + "sobre/sobre.component.css"));
             GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.ts"),

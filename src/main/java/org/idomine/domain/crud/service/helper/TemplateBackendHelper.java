@@ -49,6 +49,7 @@ public final class TemplateBackendHelper
     public static final String FRONTEND_SRC_APP_ERP = FRONTEND_SRC_APP + "erp/";
     public static final String FRONTEND_SRC_APP_INFRA = FRONTEND_SRC_APP + "infra/";
     public static final String FRONTEND_SRC_APP_INFRA_PIPES = FRONTEND_SRC_APP + "infra/pipes/";
+    public static final String FRONTEND_SRC_APP_INFRA_COMPS = FRONTEND_SRC_APP + "infra/comps/";
     public static final String FRONTEND_SRC_APP_PAGES = FRONTEND_SRC_APP + "pages/";
     public static final String FRONTEND_SRC_APP_SHARED = FRONTEND_SRC_APP + "shared/";
     

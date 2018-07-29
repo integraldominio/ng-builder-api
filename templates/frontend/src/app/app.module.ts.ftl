@@ -44,7 +44,10 @@ import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavService } from './pages/sidenav/sidenav.service';
 import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
+
 import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
+import { DashcardComponent } from './infra/comps/dashcard/dashcard.component';
+import { Ng2OdometerModule } from 'ng2-odometer';
 
 <#list projeto.artefatos as artefato >
 <#if artefato.tipo == 'Crud' >  
@@ -66,6 +69,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     HomeComponent,
     AutocompleteTypeComponent,
     MaxCharPipe,
+    DashcardComponent,
  	<#list projeto.artefatos as artefato >  
     <#if artefato.tipo == 'Crud' >  
     ${artefato.className}GridComponent,
@@ -97,6 +101,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
         { name: 'required', message: 'Campo requerido' },
       ],
     }),
+    Ng2OdometerModule.forRoot(),
   ],
   providers: [
     AuthGuard,
