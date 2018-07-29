@@ -46,6 +46,8 @@ import javax.persistence.Transient;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 </#if>
 
 import lombok.AllArgsConstructor;
