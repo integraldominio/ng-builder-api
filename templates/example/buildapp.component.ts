@@ -23,7 +23,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 	          <input matInput placeholder="Projeto Id" [(ngModel)]="idProjeto" [ngModelOptions]="{standalone: true}" >
 	      </mat-form-field>
 	      
-    	  <button mat-raised-button color="primary" (click)='build()'> Gerar Portal </button> <br/>  
+    	  <button mat-raised-button color="primary" (click)='build()'> Gerar Projeto </button> <br/>  
       </form>
 
 
