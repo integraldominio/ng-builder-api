@@ -142,7 +142,15 @@ export class ${artefato.className}FormComponent implements OnInit {
   load${artefato.className}(id: number)  {
     if ( this.id !== null ) {
        this.${artefato.classFolder}Service.read(id).subscribe(
-       data => {this.model  = data as ${artefato.className};
+       data => {
+       this.model  = data as ${artefato.className};
+       <#list artefato.elementos as e >
+       <#if e.toForm()>
+       <#if e.selectDB() >
+       this.model.${e.nome?uncap_first} = data.${e.nome?uncap_first}.id;
+       </#if>
+       </#if>
+       </#list>
     });
     }
   }
