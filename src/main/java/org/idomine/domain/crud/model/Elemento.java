@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.FormlyHelper;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,13 +41,16 @@ public class Elemento
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @ManyToOne
     private Artefato artefato;
+    
     @Enumerated(EnumType.STRING)
     private TipoElemento tipoElemento;
+    
     @Enumerated(EnumType.STRING)
     private TipoField tipoField;
+    
     private boolean persistence;
     private boolean requerido;
     private String artefatoFK; // selectDB

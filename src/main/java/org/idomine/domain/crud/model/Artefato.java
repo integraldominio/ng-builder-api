@@ -46,7 +46,7 @@ public class Artefato
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     private Projeto projeto;
 
@@ -71,7 +71,7 @@ public class Artefato
     private String templateAfterUpdate;
     private String templateAfterDelete;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
     private List<Elemento> elementos;
 

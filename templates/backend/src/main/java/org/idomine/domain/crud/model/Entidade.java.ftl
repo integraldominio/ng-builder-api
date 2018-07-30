@@ -76,7 +76,7 @@ public class ${artefato.className}
     
     <#list artefato.elementos as el>
     <#if el.tipoElemento == "SelectDB">
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     </#if>
     <#if el.tipoField == "DateTime">

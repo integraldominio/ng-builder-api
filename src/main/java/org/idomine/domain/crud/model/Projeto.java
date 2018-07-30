@@ -49,11 +49,11 @@ public class Projeto
     private boolean useRoles;
     private String outputDirectory;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     private Portal portal;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
 
