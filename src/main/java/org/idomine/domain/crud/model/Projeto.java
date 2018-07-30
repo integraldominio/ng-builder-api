@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -48,7 +49,7 @@ public class Projeto
     private boolean useRoles;
     private String outputDirectory;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     private Portal portal;
 

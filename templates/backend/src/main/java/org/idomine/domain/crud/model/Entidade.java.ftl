@@ -47,6 +47,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 </#if>
 
@@ -75,7 +76,7 @@ public class ${artefato.className}
     
     <#list artefato.elementos as el>
     <#if el.tipoElemento == "SelectDB">
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     </#if>
     <#if el.tipoField == "DateTime">

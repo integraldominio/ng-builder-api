@@ -19,7 +19,7 @@
 	    <!-- ID Column -->
 	    <ng-container matColumnDef="${e.nome?uncap_first}">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>${e.rotulo}</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.${e.nome?uncap_first}<#if e.selectDB()>.${e.labelProp}</#if>}}</mat-cell>
+	      <mat-cell *matCellDef="let row" >{{row.${e.nome?uncap_first}<#if e.selectDB()>?.${e.labelProp}</#if>}}</mat-cell>
 	    </ng-container>
 	  </#list>
   
