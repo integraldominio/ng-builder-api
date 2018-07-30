@@ -91,8 +91,8 @@ export class ${artefato.className}GridComponent implements OnInit {
     this.${artefato.classFolder}Service.delete(o.id)
     .subscribe( _ => this.listAll() );
   }
-  
-  public print()  {
+
+  print()  {
     const data = document.getElementById('convert');
     html2canvas(data).then( canvas => {
       const imgWidth = 208;
@@ -103,8 +103,15 @@ export class ${artefato.className}GridComponent implements OnInit {
       const  pdf = new jspdf('p', 'mm', 'a4');
       const  position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('MYPdf.pdf');
+      pdf.save('${artefato.nome}.pdf');
   });
   }
-  
+
+  screenshot() {
+    html2canvas(document.getElementById('convert')).then(function(canvas) {
+      const generatedImage = canvas.toDataURL( 'image/png' ).replace( 'image/png', 'image/octet-stream');
+      window.location.href = generatedImage;
+    });
+  }
+
 }

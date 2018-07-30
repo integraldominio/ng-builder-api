@@ -8,8 +8,13 @@
       <a mat-fab color="accent" routerLink="/${artefato.classFolder}/add" >
         <mat-icon>add</mat-icon>
       </a>
+      
       <a mat-fab color="accent" (click)="print()" > 
         <mat-icon>print</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="screenshot()" > 
+        <mat-icon>photo_camera</mat-icon>
       </a>
             
     <mat-card-content>
