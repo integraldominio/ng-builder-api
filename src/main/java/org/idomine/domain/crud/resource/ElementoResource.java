@@ -49,6 +49,12 @@ public class ElementoResource
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
+    @GetMapping("/elementos/{id}")
+    public Elemento searchId(@PathVariable Long id)
+    {
+        return elementoRepository.findById(id).get();
+    }
+    
     @PutMapping("/elementos")
     @Transactional
     public ResponseEntity<Elemento> update(@RequestBody Elemento elemento)

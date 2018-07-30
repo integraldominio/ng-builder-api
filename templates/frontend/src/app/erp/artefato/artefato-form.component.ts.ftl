@@ -72,7 +72,7 @@ export class ${artefato.className}FormComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
   <#list artefato.elementos as e >
   <#if e.toForm()>{
-     key: '${e.nome?uncap_first}', type: '${e.toFormly()}', <#if e.inicial??>defaultValue: ${e.getDefault()},</#if>
+     key: '${e.nome?uncap_first}', type: '${e.toFormly()}',<#if e.inicial??>defaultValue: ${e.getDefault()},</#if>
      templateOptions: {
         label: '${e.rotulo}',
         placeholder: 'Informe ${e.rotulo}',
