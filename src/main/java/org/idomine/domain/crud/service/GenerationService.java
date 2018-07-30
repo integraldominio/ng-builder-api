@@ -57,6 +57,7 @@ public class GenerationService
             backendAppPropertiesToOutput(projeto);
             backendApplicationToOutput(projeto);
             backendEntityToOutput(projeto);
+            backendSecurity(projeto);
             frontReadmeToOutput(projeto);
             frontJsonsToOutput(projeto);
             frontAssets(projeto);
@@ -68,6 +69,25 @@ public class GenerationService
             frontendShared(projeto);
             fromendAppModule(projeto);
             frontendErp(projeto);
+        }
+    }
+
+    private void backendSecurity(Projeto projeto)
+    {
+        String o = TemplateBackendHelper.BACKEND_SECURITY;
+        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_SECURITY;
+        try
+        {
+            copyFile(new File(o + "exception/AuthenticationException.java"), new File(d + "exception/AuthenticationException.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationEntryPoint.java"), new File(d + "jwt/JwtAuthenticationEntryPoint.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationRequest.java"), new File(d + "jwt/JwtAuthenticationRequest.java"));
+            copyFile(new File(o + "jwt/JwtAuthorizationTokenFilter.java"), new File(d + "jwt/JwtAuthorizationTokenFilter.java"));
+            copyFile(new File(o + "jwt/JwtTokenUtil.java"), new File(d + "jwt/JwtTokenUtil.java"));
+            copyFile(new File(o + "jwt/JwtUser.java"), new File(d + "jwt/JwtUser.java"));
+            copyFile(new File(o + "jwt/JwtUserFactory.java"), new File(d + "jwt/JwtUserFactory.java"));
+        }
+        catch (IOException e)
+        {
         }
     }
 

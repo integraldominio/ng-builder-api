@@ -1,0 +1,143 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BI",
+		"_postman_id": "e49e3a66-a7d0-4de2-4254-6eafbece1e49",
+		"description": "sisadmin-bi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/report",
+			"request": {
+				"url": "http://localhost:8080/api/report",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "w3423423432",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth",
+			"request": {
+				"url": "http://localhost:8080/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"username\":\"admin\",\n \t\"password\":\"admin\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth/whoami",
+			"request": {
+				"url": "http://localhost:8080/auth/whoami",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUzMDEyNjY4OSwiaWF0IjoxNTI5NTIxODg5fQ.rfZQWe3YuFwDInxBjWSpgxNXOHiepp7vqSUhfN8pOnZ_zIoX7aev2nLEh1BcqELKgZXeB1K2aDhCkCh4fxYQDw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth/refresh",
+			"request": {
+				"url": "http://localhost:8080/auth/refresh",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUzMDEyNjY4OSwiaWF0IjoxNTI5NTIxODg5fQ.rfZQWe3YuFwDInxBjWSpgxNXOHiepp7vqSUhfN8pOnZ_zIoX7aev2nLEh1BcqELKgZXeB1K2aDhCkCh4fxYQDw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/authorities",
+			"request": {
+				"url": "http://localhost:8080/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUzMDEyNjY4OSwiaWF0IjoxNTI5NTIxODg5fQ.rfZQWe3YuFwDInxBjWSpgxNXOHiepp7vqSUhfN8pOnZ_zIoX7aev2nLEh1BcqELKgZXeB1K2aDhCkCh4fxYQDw",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"username\":\"lyndon\",\n \t\"password\":\"1234\",\n \t\"firstname\":\"lyndon\",\n \t\"lastname\":\"tavares\",\n \t\"phone\":\"(45)99990000\",\n \t\"email\":\"integraldominio@gmail.com\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/user",
+			"request": {
+				"url": "http://localhost:8080/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUzMDE0NzkyMywiaWF0IjoxNTI5NTQzMTIzfQ.XycohVg7g4nS-DGYn6Mc6UmcImM9lOqpRnUF_h1QbKcXDR5tRW3hQDuz88E0cSdeH5tBXJvzwTrBMOHMmEsuWA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"username\":\"lyndon2\",\n \t\"password\":\"1234\",\n \t\"firstname\":\"lyndon\",\n \t\"lastname\":\"tavares\",\n \t\"phone\":\"(45)99990000\",\n \t\"email\":\"integraldominio@gmail.com\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

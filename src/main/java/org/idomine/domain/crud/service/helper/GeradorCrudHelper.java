@@ -30,6 +30,15 @@ public class GeradorCrudHelper
         criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/model");
         criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/repository");
         criarDir(base+"/backend/src/main/java/org/idomine/domain/crud/resource");
+        criarDir(base+"/backend/src/main/java/org/idomine/security");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/exceptions");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/jwt");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/model");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/repository");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/rest/auth");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/rest/protecteds");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/rest/user");
+        criarDir(base+"/backend/src/main/java/org/idomine/security/service");
         criarDir(base+"/backend/src/main/resources");
 
         criarDir(base+"/frontend");

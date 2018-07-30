@@ -23,7 +23,6 @@ public class FreeMarkerEngine {
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
         cfg.setWrapUncheckedExceptions(true); 
-
     }
 
     public String process(String templateName, Object model) {

@@ -15,3 +15,10 @@ spring.jpa.properties.hibernate.use_sql_comments=false
 
 server.port=3000
 
+jwt.header=Authorization
+jwt.secret=mySecret
+jwt.expiration=604800
+jwt.route.authentication.path=/auth
+jwt.route.authentication.refresh=/refresh
+ 
+
