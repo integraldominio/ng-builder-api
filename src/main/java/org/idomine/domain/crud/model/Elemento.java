@@ -17,8 +17,6 @@ import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.FormlyHelper;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -41,7 +39,7 @@ public class Elemento
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @JsonManagedReference
+ 
     @ManyToOne
     private Artefato artefato;
     

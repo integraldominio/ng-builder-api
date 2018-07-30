@@ -10,8 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,11 +48,11 @@ public class Projeto
     private boolean useRoles;
     private String outputDirectory;
 
-    @JsonManagedReference
+    
     @ManyToOne
     private Portal portal;
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto")
     private List<Artefato> artefatos;
 

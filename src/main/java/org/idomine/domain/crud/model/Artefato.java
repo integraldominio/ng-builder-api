@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,8 +20,7 @@ import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,7 +44,7 @@ public class Artefato
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonManagedReference
+ 
     @ManyToOne
     private Projeto projeto;
 
@@ -71,8 +69,8 @@ public class Artefato
     private String templateAfterUpdate;
     private String templateAfterDelete;
 
-    @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
     private List<Elemento> elementos;
 
     public boolean hasDateType()
