@@ -8,7 +8,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE `authority` (
@@ -19,7 +19,7 @@ CREATE TABLE `authority` (
 
 CREATE TABLE `user_authority` (
   `user_id` bigint(20) NOT NULL,
-  `authority_id` bigint(20) NOT NULL,
+  `authority_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user_group` (
@@ -31,7 +31,7 @@ CREATE TABLE `user_group` (
 
 CREATE TABLE `group_authority` (
   `user_group_id` bigint(20) NOT NULL,
-  `authority_id` bigint(20) NOT NULL,
+  `authority_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 

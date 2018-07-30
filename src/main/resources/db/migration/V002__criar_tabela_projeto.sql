@@ -14,5 +14,5 @@ CREATE TABLE `projeto` (
   `use_login` bit(1) NOT NULL,
   `use_roles` bit(1) NOT NULL,
   `portal_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
