@@ -1,3 +1,5 @@
+<div id="convert"> 
+
 <div fxLayout="row wrap" class="form-group">
   <div fxFlex.gt-sm="100" class="divide">
     <mat-card>
@@ -6,6 +8,10 @@
       <a mat-fab color="accent" routerLink="/${artefato.classFolder}/add" >
         <mat-icon>add</mat-icon>
       </a>
+      <a mat-fab color="accent" (click)="print()" > 
+        <mat-icon>print</mat-icon>
+      </a>
+            
     <mat-card-content>
     <div class="table-header">
         <mat-form-field>
@@ -55,3 +61,4 @@
 </div>
 </div>
  
+</div>

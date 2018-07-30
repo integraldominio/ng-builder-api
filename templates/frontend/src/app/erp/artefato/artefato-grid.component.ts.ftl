@@ -22,10 +22,12 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit, AfterViewInit,  ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
 import { ${artefato.className}Service, ${artefato.className} } from './${artefato.classFolder}.service';
 import { MessageService } from '../../infra/security';
 import {MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 <#list artefato.elementos as e >
 <#if e.selectDB() >
@@ -50,6 +52,7 @@ export class ${artefato.className}GridComponent implements OnInit {
   'actions'
   ];
 
+  @ViewChild('content') content: ElementRef;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -73,7 +76,7 @@ export class ${artefato.className}GridComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
- 
+
   listAll() {
     this.${artefato.classFolder}Service.listAll().subscribe(
       data => {
@@ -88,4 +91,20 @@ export class ${artefato.className}GridComponent implements OnInit {
     this.${artefato.classFolder}Service.delete(o.id)
     .subscribe( _ => this.listAll() );
   }
+  
+  public print()  {
+    const data = document.getElementById('convert');
+    html2canvas(data).then( canvas => {
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const  imgHeight = canvas.height * imgWidth / canvas.width;
+      const  heightLeft = imgHeight;
+      const  contentDataURL = canvas.toDataURL('image/png');
+      const  pdf = new jspdf('p', 'mm', 'a4');
+      const  position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('MYPdf.pdf');
+  });
+  }
+  
 }
