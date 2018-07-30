@@ -45,6 +45,12 @@ public class PortalResource
     {
         return portalRepository.findAll();
     }
+    
+    @GetMapping("/portais/{id}")
+    public Portal searchId(@PathVariable Long id)
+    {
+        return portalRepository.findById(id).get();
+    }
 
     @PostMapping("/portais")
     @Transactional

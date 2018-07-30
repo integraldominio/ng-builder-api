@@ -39,10 +39,16 @@ public class ArtefatoResource
         return artefatoRepository.count();
     }
 
+    @GetMapping("/artefatos/{id}")
+    public Artefato searchId(@PathVariable Long id)
+    {
+        return artefatoRepository.findById(id).get();
+    }
+
     @PostMapping("/artefatos")
     @Transactional
     public ResponseEntity<Artefato> add(@RequestBody Artefato artefato)
-    {       
+    {
         if (artefato.getProjeto() != null)
             artefato.setProjeto(projetoRepository.findById(artefato.getProjeto().getId()).get());
         Artefato a = artefatoRepository.save(artefato);
@@ -80,7 +86,8 @@ public class ArtefatoResource
     }
 
     @GetMapping("/artefatos/search")
-    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "nome", required = false) String nome)
+    public ResponseEntity<?> searchByParam(@RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "nome", required = false) String nome)
     {
         return new ResponseEntity<>(artefatoRepository.findByNomeIgnoreCaseOrId(nome, id), HttpStatus.OK);
     }
