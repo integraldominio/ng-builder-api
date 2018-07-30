@@ -92,8 +92,8 @@ public class GenerationService
         try
         {
             copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
-            copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.componentthml"));
-            copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scs"));
+            copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.component.html"));
+            copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scss"));
         }
         catch (IOException e)
         {
