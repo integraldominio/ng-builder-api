@@ -74,6 +74,14 @@ Módulos:
 
 ![](docs/00.PNG)
 
+### Dashboard
+
+![](docs/01.PNG)
+
+### Dashboard
+
+![](docs/01.PNG)
+
 ### Portal:
 
 ![](docs/02.PNG)
