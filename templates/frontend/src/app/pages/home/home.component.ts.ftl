@@ -70,9 +70,7 @@ export class HomeComponent implements OnInit {
     this.${a.className?uncap_first}Service.count().subscribe(
       data => {
         this.n${a.className} = data;
-        <#if a.lastCrud() >
         this.updateDash();
-        </#if>
       }
     );
   }
