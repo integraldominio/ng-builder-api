@@ -142,24 +142,22 @@ public class GenerationService
     public void frontJsonsToOutput(Projeto projeto)
     {
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, null));
+                fm.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON,
-                fm.process(TemplateBackendHelper.FRONTEND_DBJSON, null));
+                fm.process(TemplateBackendHelper.FRONTEND_DBJSON, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, null));
+                fm.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, null));
+                fm.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, null));
+                fm.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, model(projeto)));
 
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
+                fm.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, model(projeto)));
 
         output(
                 projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY

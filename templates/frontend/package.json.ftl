@@ -1,6 +1,7 @@
 {
-  "name": "ngmaterial2",
-  "version": "0.0.0",
+  "name": "${projeto.nome}",
+  "descriptioin": "${projeto.descricao}",
+  "version": "${ngxbuilder}",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

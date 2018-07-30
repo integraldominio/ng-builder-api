@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Ngmaterial2</title>
+  <title>${projeto.nome}</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
