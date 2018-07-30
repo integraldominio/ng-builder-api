@@ -579,6 +579,7 @@ public class Elemento
                         .rotulo("Artefato")
                         .requerido(true)
                         .persistence(true)
+                        .showcolumn(false)
                         .build());
 
         lista.add(

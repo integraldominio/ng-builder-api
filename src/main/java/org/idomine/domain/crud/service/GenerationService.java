@@ -1,5 +1,9 @@
 package org.idomine.domain.crud.service;
 
+import static org.idomine.domain.crud.service.helper.GeradorCrudHelper.copyFile;
+import static org.idomine.domain.crud.service.helper.GeradorCrudHelper.criarDir;
+import static org.idomine.domain.crud.service.helper.GeradorCrudHelper.criarFolders;
+import static org.idomine.domain.crud.service.helper.GeradorCrudHelper.output;
 import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_APP_PROPERTIES;
 import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_ENTITY;
 import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_POM;
@@ -17,7 +21,6 @@ import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.model.vo.TipoArtefato;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.idomine.domain.crud.service.helper.FreeMarkerEngine;
-import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +41,7 @@ public class GenerationService
         Projeto projeto = projetoRepository.findById(id).get();
         if (projeto != null)
         {
-            GeradorCrudHelper.criarFolders(projeto.getOutputDirectory());
+            criarFolders(projeto.getOutputDirectory());
             backendAllToOutput(projeto);
         }
     }
@@ -47,7 +50,7 @@ public class GenerationService
     {
         if (projeto != null)
         {
-            GeradorCrudHelper.criarFolders(projeto.getOutputDirectory());
+            criarFolders(projeto.getOutputDirectory());
             readmeToOutput(projeto);
             backendPomToOutput(projeto);
             backendReadmeToOutput(projeto);
@@ -74,25 +77,23 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
+            copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-
     }
-    
-    
+
     private void frontendInfraPipes(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.componentthml"));
-            GeradorCrudHelper.copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scs"));
+            copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
+            copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.componentthml"));
+            copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scs"));
         }
         catch (IOException e)
         {
@@ -107,8 +108,8 @@ public class GenerationService
         String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
         try
         {
-            GeradorCrudHelper.output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
-            GeradorCrudHelper.output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
+            output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
+            output(d + "environment.ts", fm.process(o + "environment.ts", model(projeto)));
         }
         catch (Exception e)
         {
@@ -122,14 +123,14 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_ASSETS;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "icon/auth.svg"), new File(d + "icon/auth.svg"));
-            GeradorCrudHelper.copyFile(new File(o + "icon/facebook.svg"), new File(d + "icon/facebook.svg"));
-            GeradorCrudHelper.copyFile(new File(o + "icon/github-logo.svg"), new File(d + "icon/github-logo.svg"));
-            GeradorCrudHelper.copyFile(new File(o + "icon/github-plus.png"), new File(d + "icon/github-plus.png"));
-            GeradorCrudHelper.copyFile(new File(o + "icon/google-plus.svg"), new File(d + "icon/google-plus.svg"));
-            GeradorCrudHelper.copyFile(new File(o + "images/face-7.jpg"), new File(d + "images/face-7.jpg"));
-            GeradorCrudHelper.copyFile(new File(o + "images/logo.svg"), new File(d + "images/logo.svg"));
-            GeradorCrudHelper.copyFile(new File(o + "svg-loaders/puff.svg"), new File(d + "svg-loaders/puff.svg"));
+            copyFile(new File(o + "icon/auth.svg"), new File(d + "icon/auth.svg"));
+            copyFile(new File(o + "icon/facebook.svg"), new File(d + "icon/facebook.svg"));
+            copyFile(new File(o + "icon/github-logo.svg"), new File(d + "icon/github-logo.svg"));
+            copyFile(new File(o + "icon/github-plus.png"), new File(d + "icon/github-plus.png"));
+            copyFile(new File(o + "icon/google-plus.svg"), new File(d + "icon/google-plus.svg"));
+            copyFile(new File(o + "images/face-7.jpg"), new File(d + "images/face-7.jpg"));
+            copyFile(new File(o + "images/logo.svg"), new File(d + "images/logo.svg"));
+            copyFile(new File(o + "svg-loaders/puff.svg"), new File(d + "svg-loaders/puff.svg"));
         }
         catch (IOException e)
         {
@@ -140,27 +141,27 @@ public class GenerationService
 
     public void frontJsonsToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON,
                 fm.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON,
                 fm.process(TemplateBackendHelper.FRONTEND_DBJSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON,
                 fm.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON,
                 fm.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON,
                 fm.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, null));
 
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, null));
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN,
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, null));
 
-        GeradorCrudHelper.output(
+        output(
                 projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY
                         + "config.service.ts",
                 fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
@@ -170,14 +171,14 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "favicon.ico"), new File(d + "favicon.ico"));
-            GeradorCrudHelper.copyFile(new File(o + "browserslist"), new File(d + "browserslist"));
-            GeradorCrudHelper.copyFile(new File(o + "karma.conf.js"), new File(d + "karma.conf.js"));
-            GeradorCrudHelper.copyFile(new File(o + "polyfills.ts"), new File(d + "polyfills.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "test.ts"), new File(d + "test.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "tsconfig.app.json"), new File(d + "tsconfig.app.json"));
-            GeradorCrudHelper.copyFile(new File(o + "tsconfig.spec.json"), new File(d + "tsconfig.spec.json"));
-            GeradorCrudHelper.copyFile(new File(o + "tslint.json"), new File(d + "tslint.json"));
+            copyFile(new File(o + "favicon.ico"), new File(d + "favicon.ico"));
+            copyFile(new File(o + "browserslist"), new File(d + "browserslist"));
+            copyFile(new File(o + "karma.conf.js"), new File(d + "karma.conf.js"));
+            copyFile(new File(o + "polyfills.ts"), new File(d + "polyfills.ts"));
+            copyFile(new File(o + "test.ts"), new File(d + "test.ts"));
+            copyFile(new File(o + "tsconfig.app.json"), new File(d + "tsconfig.app.json"));
+            copyFile(new File(o + "tsconfig.spec.json"), new File(d + "tsconfig.spec.json"));
+            copyFile(new File(o + "tslint.json"), new File(d + "tslint.json"));
         }
         catch (IOException e)
         {
@@ -196,50 +197,49 @@ public class GenerationService
                 String dir = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
                         + "/";
 
-                GeradorCrudHelper.criarDir(
-                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
-                                + "/");
+                criarDir(
+                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder + "/");
 
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    GeradorCrudHelper.output(dir + folder + "-form.component.ts",
+                    output(dir + folder + "-form.component.ts",
                             fm.process(
                                     TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",
                                     model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-form.component.css",
+                    output(dir + folder + "-form.component.css",
                             fm.process(
                                     TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",
                                     model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-form.component.html", fm.process(
+                    output(dir + folder + "-form.component.html", fm.process(
                             TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",
                             model(artefato)));
 
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.ts",
+                    output(dir + folder + "-grid.component.ts",
                             fm.process(
                                     TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",
                                     model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.css",
+                    output(dir + folder + "-grid.component.css",
                             fm.process(
                                     TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",
                                     model(artefato)));
-                    GeradorCrudHelper.output(dir + folder + "-grid.component.html", fm.process(
+                    output(dir + folder + "-grid.component.html", fm.process(
                             TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",
                             model(artefato)));
 
-                    GeradorCrudHelper.output(dir + folder + ".service.ts",
+                    output(dir + folder + ".service.ts",
                             fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",
                                     model(artefato)));
                 }
                 else if (TipoArtefato.Template.equals(artefato.getTipo()))
                 {
                     if (artefato.getTemplateTs() != null)
-                        GeradorCrudHelper.output(dir + folder + ".component.ts", artefato.getTemplateTs());
+                        output(dir + folder + ".component.ts", artefato.getTemplateTs());
 
                     if (artefato.getTemplateCss() != null)
-                        GeradorCrudHelper.output(dir + folder + ".component.css", artefato.getTemplateCss());
+                        output(dir + folder + ".component.css", artefato.getTemplateCss());
 
                     if (artefato.getTemplateHtml() != null)
-                        GeradorCrudHelper.output(dir + folder + ".component.html", artefato.getTemplateHtml());
+                        output(dir + folder + ".component.html", artefato.getTemplateHtml());
                 }
             }
         }
@@ -252,8 +252,8 @@ public class GenerationService
         String o = TemplateBackendHelper.FRONTEND_SRC_APP;
         try
         {
-            GeradorCrudHelper.output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
-            GeradorCrudHelper.output(d + "app.module.ts", fm.process(o + "app.module.ts", model(projeto)));
+            output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
+            output(d + "app.module.ts", fm.process(o + "app.module.ts", model(projeto)));
         }
         catch (Exception e)
         {
@@ -267,8 +267,8 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"),
+            copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
+            copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"),
                     new File(d + "autocomplete/autocomplete-type.component.ts"));
         }
         catch (IOException e)
@@ -283,54 +283,32 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "base/base.component.html"),
-                    new File(d + "base/base.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "base/base.component.ts"), new File(d + "base/base.component.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.html"),
-                    new File(d + "erro/erro.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.css"),
-                    new File(d + "erro/erro.component.css"));
-            GeradorCrudHelper.copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
-
-            GeradorCrudHelper.copyFile(new File(o + "home/home.component.html"),
-                    new File(d + "home/home.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "home/home.component.css"),
-                    new File(d + "home/home.component.css"));
-            
-            // fm.process pricura arquivos aprtir de templates. 
-            GeradorCrudHelper.output(d + "home/home.component.ts", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
-            
-            GeradorCrudHelper.copyFile(new File(o + "login/login.component.html"),
-                    new File(d + "login/login.component.html"));
-            GeradorCrudHelper.copyFile(new File(o + "login/login.component.scss"),
-                    new File(d + "login/login.component.scss"));
-            GeradorCrudHelper.copyFile(new File(o + "login/login.component.ts"),
-                    new File(d + "login/login.component.ts"));
-
-            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.css"),
-                    new File(d + "sidenav/sidenav.component.css"));
-            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.component.ts"),
-                    new File(d + "sidenav/sidenav.component.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "sidenav/sidenav.service.ts"),
-                    new File(d + "sidenav/sidenav.service.ts"));
-
-            GeradorCrudHelper.output(d + "sidenav/sidenav.component.html", fm.process(
+            copyFile(new File(o + "base/base.component.html"), new File(d + "base/base.component.html"));
+            copyFile(new File(o + "base/base.component.ts"), new File(d + "base/base.component.ts"));
+            copyFile(new File(o + "erro/erro.component.html"), new File(d + "erro/erro.component.html"));
+            copyFile(new File(o + "erro/erro.component.css"), new File(d + "erro/erro.component.css"));
+            copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
+            copyFile(new File(o + "home/home.component.html"), new File(d + "home/home.component.html"));
+            copyFile(new File(o + "home/home.component.css"), new File(d + "home/home.component.css"));
+            output(d + "home/home.component.ts", fm
+                    .process(TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
+            copyFile(new File(o + "login/login.component.html"), new File(d + "login/login.component.html"));
+            copyFile(new File(o + "login/login.component.scss"), new File(d + "login/login.component.scss"));
+            copyFile(new File(o + "login/login.component.ts"), new File(d + "login/login.component.ts"));
+            copyFile(new File(o + "sidenav/sidenav.component.css"), new File(d + "sidenav/sidenav.component.css"));
+            copyFile(new File(o + "sidenav/sidenav.component.ts"), new File(d + "sidenav/sidenav.component.ts"));
+            copyFile(new File(o + "sidenav/sidenav.service.ts"), new File(d + "sidenav/sidenav.service.ts"));
+            output(d + "sidenav/sidenav.component.html", fm.process(
                     TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
-
-             // GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.html"),                new File(d + "sobre/sobre.component.html"));
-            GeradorCrudHelper.output(d + "sobre/sobre.component.html", fm.process( TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
-
-            
-            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.css"),
-                    new File(d + "sobre/sobre.component.css"));
-            GeradorCrudHelper.copyFile(new File(o + "sobre/sobre.component.ts"),
-                    new File(d + "sobre/sobre.component.ts"));
+            output(d + "sobre/sobre.component.html", fm.process(
+                    TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
+            copyFile(new File(o + "sobre/sobre.component.css"), new File(d + "sobre/sobre.component.css"));
+            copyFile(new File(o + "sobre/sobre.component.ts"), new File(d + "sobre/sobre.component.ts"));
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-
     }
 
     public void frontendSecurityFiles(Projeto projeto)
@@ -339,16 +317,15 @@ public class GenerationService
         String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         try
         {
-            GeradorCrudHelper.copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "auth.guard.ts"), new File(d + "auth.guard.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "authentication.service.ts"),
-                    new File(d + "authentication.service.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "guest.guard.ts"), new File(d + "guest.guard.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "index.ts"), new File(d + "index.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "jwt.interceptor.ts"), new File(d + "jwt.interceptor.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "message.service.ts"), new File(d + "message.service.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "resource.service.ts"), new File(d + "resource.service.ts"));
-            GeradorCrudHelper.copyFile(new File(o + "user.service.ts"), new File(d + "user.service.ts"));
+            copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
+            copyFile(new File(o + "auth.guard.ts"), new File(d + "auth.guard.ts"));
+            copyFile(new File(o + "authentication.service.ts"), new File(d + "authentication.service.ts"));
+            copyFile(new File(o + "guest.guard.ts"), new File(d + "guest.guard.ts"));
+            copyFile(new File(o + "index.ts"), new File(d + "index.ts"));
+            copyFile(new File(o + "jwt.interceptor.ts"), new File(d + "jwt.interceptor.ts"));
+            copyFile(new File(o + "message.service.ts"), new File(d + "message.service.ts"));
+            copyFile(new File(o + "resource.service.ts"), new File(d + "resource.service.ts"));
+            copyFile(new File(o + "user.service.ts"), new File(d + "user.service.ts"));
         }
         catch (IOException e)
         {
@@ -358,7 +335,7 @@ public class GenerationService
 
     public void frontReadmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README,
                 frontendReadmeToString(projeto));
     }
 
@@ -369,7 +346,7 @@ public class GenerationService
 
     public void backendApplicationToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APPLICATION,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APPLICATION,
                 backendApplicationToString(projeto));
     }
 
@@ -384,19 +361,17 @@ public class GenerationService
         {
             for (Artefato artefato : projeto.getArtefatos())
             {
-
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-
                     String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH
                             + artefato.getClassName() + ".java";
                     String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH
                             + artefato.getClassName() + "Repository.java";
                     String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH
                             + artefato.getClassName() + "Resource.java";
-                    GeradorCrudHelper.output(arq, backendEntityToString(artefato));
-                    GeradorCrudHelper.output(rep, backendRepositoryToString(artefato));
-                    GeradorCrudHelper.output(res, backendResourceToString(artefato));
+                    output(arq, backendEntityToString(artefato));
+                    output(rep, backendRepositoryToString(artefato));
+                    output(res, backendResourceToString(artefato));
                 }
             }
         }
@@ -439,7 +414,7 @@ public class GenerationService
 
     public void backendPomToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_POM,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_POM,
                 backendPomToString(projeto));
     }
 
@@ -450,7 +425,7 @@ public class GenerationService
 
     public void readmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.README,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.README,
                 readmeToString(projeto));
     }
 
@@ -461,7 +436,7 @@ public class GenerationService
 
     public void backendReadmeToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_README,
+        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_README,
                 backendReadmeToString(projeto));
     }
 
@@ -472,20 +447,11 @@ public class GenerationService
 
     public void backendAppPropertiesToOutput(Projeto projeto)
     {
-        GeradorCrudHelper.output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_PROPERTIES,
-                backendAppPropertiesToString(projeto));
-
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE + "data.sql";
-        String o = "templates/" + TemplateBackendHelper.BACKEND_APP_RESOURCE + "data.sql";
-        try
-        {
-            // GeradorCrudHelper.copyFile(new File(o), new File(d));
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
+        String out = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE;
+        String tpl = TemplateBackendHelper.BACKEND_APP_RESOURCE;
+        output(out + "application.properties", fm.process(tpl + "application.properties", model(projeto)));
+        output(out + "application-dev.properties", fm.process(tpl + "application-dev.properties", model(projeto)));
+        output(out + "application-prod.properties", fm.process(tpl + "application-prod.properties", model(projeto)));
     }
 
     public String backendAppPropertiesToString(Projeto projeto)
