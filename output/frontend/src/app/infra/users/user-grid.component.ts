@@ -40,7 +40,11 @@ export class UserGridComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
   displayedColumns = [
   'username',
+  'firstname',
+  'lastname',
   'email',
+  'phone',
+  'enabled',
   'actions'
   ];
 

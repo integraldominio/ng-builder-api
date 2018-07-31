@@ -33,10 +33,40 @@
 	      <mat-cell *matCellDef="let row" >{{row.username}}</mat-cell>
 	    </ng-container>
 
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="firstname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.firstname}}</mat-cell>
+        </ng-container>
+  
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="lastname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sobrenome</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.lastname}}</mat-cell>
+        </ng-container>
+
       <!-- ID Column -->
 	    <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
           <mat-cell *matCellDef="let row" >{{row.email}}</mat-cell>
+        </ng-container>
+
+      <!-- ID Column -->
+	    <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.phone}}</mat-cell>
+        </ng-container>
+    
+      <!-- ID Column -->
+	    <ng-container matColumnDef="enabled">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Ativo</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.enabled}}</mat-cell>
+        </ng-container>
+    
+      <!-- ID Column -->
+	    <ng-container matColumnDef="lastPasswordResetDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Última Mud.Senha</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.lastPasswordResetDate}}</mat-cell>
         </ng-container>
     
     <!-- actions -->

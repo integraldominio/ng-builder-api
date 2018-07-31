@@ -48,7 +48,12 @@ export class UsersService extends ResourceService<User> {
 export class User {
   id: number;
   username: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
   email: string;
+  enabled: string;
+  lastPasswordResetDate: Date;
 }
 
 // usando json-server

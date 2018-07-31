@@ -48,23 +48,50 @@ export class UserFormComponent implements OnInit {
   };
   model = {
   };
-  // Datatable
-  displayedColumns = [
-  'nome',
-  'actions'
-  ];
-  dataSource: Array<User> = [];
+
   // Fieds
   fields: FormlyFieldConfig[] = [
   {
-     key: 'nome', type: 'input',
+     key: 'username', type: 'input',
      templateOptions: {
-        label: 'Nome',
-        placeholder: 'Informe Nome',
+        label: 'Login',
+        placeholder: 'Informe nome login',
         required: true,
      }
+  },
+  {
+    key: 'firstname', type: 'input',
+    templateOptions: {
+       label: 'Nome',
+       placeholder: 'Informe Nome',
+       required: true,
+    }
+ },
+ {
+  key: 'lastname', type: 'input',
+  templateOptions: {
+     label: 'Sobrenome',
+     placeholder: 'Informe Sobrenome',
+     required: true,
   }
-  ];
+},
+{
+  key: 'email', type: 'input',
+  templateOptions: {
+     label: 'Email',
+     placeholder: 'Informe Email',
+     required: true,
+  }
+},
+{
+  key: 'enabled', type: 'input',
+  templateOptions: {
+     label: 'Situação',
+     placeholder: 'Informe situação',
+     required: true,
+  }
+},
+];
 
   constructor (
     private router: Router,
