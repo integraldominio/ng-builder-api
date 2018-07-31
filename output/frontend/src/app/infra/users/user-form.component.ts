@@ -107,7 +107,7 @@ export class UserFormComponent implements OnInit {
   }
 
   setFormTitle( id: any  ) {
-    this.title = 'User';
+    this.title = 'Usuário';
     if ( this.id === null ) {
        this.title = 'Novo ' + this.title;
     } else {
