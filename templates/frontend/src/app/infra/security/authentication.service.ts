@@ -25,13 +25,15 @@
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ConfigService } from './config.service';
+import { UserService } from '../auth';
 
 @Injectable()
 export class AuthenticationService {
 
     constructor(
       private http: HttpClient,
-      private configService: ConfigService
+      private configService: ConfigService,
+      private userService: UserService
     ) { }
 
     login(username: string, password: string) {
@@ -40,9 +42,20 @@ export class AuthenticationService {
             .pipe(map((res: any) => {
                 // login successful if there's a jwt token in the response
                 if (res && res.token) {
-                    console.log(JSON.stringify({ username, token: res.token }));
+                    // console.log(JSON.stringify({ username, token: res.token }));
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username, token: res.token }));
+
+                    this.userService.getMyInfo().subscribe(
+                      info => {
+                          // console.log( '>>>authorities: ');
+                          // console.log( info );
+                          // console.log( '>>>username: ');
+                          // console.log( username );
+                          localStorage.setItem('currentUser', JSON.stringify({ username, token: res.token, authorities: info }));
+                    }
+                  );
+
                 }
             }));
     }
@@ -66,4 +79,6 @@ export class AuthenticationService {
       const currentUser = JSON.parse(localStorage.getItem('currentUser'));
       return currentUser ? currentUser : '';
     }
+
+
 }

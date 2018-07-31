@@ -41,6 +41,8 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
 import { AuthGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UserGridComponent } from './infra/users/user-grid.component';
+import { UserFormComponent } from './infra/users/user-form.component';
 
 const routes: Routes =
 
@@ -66,6 +68,9 @@ const routes: Routes =
     { path: '${artefato.classFolder}/add',  component: ${artefato.className}FormComponent, canActivate: [AuthGuard] },
     </#if>
     </#list> 
+    { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
+    { path: 'user/edit/:id', component: UserFormComponent, canActivate: [AdminGuard] },
+    { path: 'user/add',  component: UserFormComponent, canActivate: [AdminGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
 },

@@ -21,7 +21,6 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- 
 export * from './auth.guard';
 export * from './admin.guard';
 export * from './guest.guard';
@@ -30,4 +29,4 @@ export * from './config.service';
 export * from './jwt.interceptor';
 export * from './message.service';
 export * from './resource.service';
-export * from './user.service';
+

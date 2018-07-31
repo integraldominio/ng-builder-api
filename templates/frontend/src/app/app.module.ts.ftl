@@ -56,8 +56,11 @@ import { ${artefato.className}FormComponent } from './erp/${artefato.classFolder
 <#elseif artefato.tipo == 'Template' >
 import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${artefato.classFolder}.component';
 </#if>
-
 </#list>
+
+import { UserGridComponent } from './infra/users/user-grid.component';
+import { UserFormComponent } from './infra/users/user-form.component';
+import { UserService, ApiService } from './infra/auth';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,8 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     AutocompleteTypeComponent,
     MaxCharPipe,
     DashcardComponent,
+    UserGridComponent,
+    UserFormComponent,
  	<#list projeto.artefatos as artefato >  
     <#if artefato.tipo == 'Crud' >  
     ${artefato.className}GridComponent,
@@ -104,6 +109,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
     Ng2OdometerModule.forRoot(),
   ],
   providers: [
+    ApiService,
     AuthGuard,
     GuestGuard,
     AdminGuard,

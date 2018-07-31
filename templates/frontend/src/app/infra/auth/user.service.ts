@@ -23,34 +23,52 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
-
+import { ApiService } from './api.service';
+import { ConfigService } from '../security/config.service';
+import { map } from 'rxjs/operators';
 @Injectable()
-export class AdminGuard implements CanActivate {
+export class UserService {
+
+  currentUser;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService) {}
+    private apiService: ApiService,
+    private config: ConfigService
+  ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authenticationService.getCurrentUser()) {
-
-      console.log('>>>');
-      console.log(this.authenticationService.getCurrentUser());
-
-      if (JSON.stringify(this.authenticationService.getCurrentUser().authorities).search('ROLE_ADMIN') !== -1) {
-        return true;
-      } else {
-        this.router.navigate(['/erro']);
-        return false;
+  initUser() {
+    const promise = this.apiService.get(this.config.getRefresh_token_url()).toPromise()
+    .then(res => {
+      if (res.access_token !== null) {
+        return this.getMyInfo().toPromise()
+        .then(user => {
+          this.currentUser = user;
+        });
       }
-
-    } else {
-      console.log('NOT AN ADMIN ROLE');
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-      return false;
-    }
+    })
+    .catch(() => null);
+    return promise;
   }
-}
 
+  resetCredentials() {
+    return this.apiService.get(this.config.getReset_credentials_url());
+  }
+
+  getMyInfo() {
+    return this.apiService.get(this.config.getWhoami_url()).pipe( map(user => this.currentUser = user));
+  }
+
+  getAll() {
+    return this.apiService.get(this.config.getUsers_url());
+  }
+
+  getReport() {
+    return this.apiService.get(this.config.getReport_url());
+  }
+
+  logout() {
+    this.currentUser = null;
+    localStorage.removeItem('currentUser');
+  }
+
+}
