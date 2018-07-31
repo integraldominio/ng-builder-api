@@ -5,7 +5,7 @@
     <mat-card>
       <mat-card-title>Users</mat-card-title>
 
-      <a mat-fab color="accent" routerLink="/configuracao/add" >
+      <a mat-fab color="accent" routerLink="/user/add" >
         <mat-icon>add</mat-icon>
       </a>
       
@@ -17,7 +17,7 @@
         <mat-icon>photo_camera</mat-icon>
       </a>
             
-    <mat-card-content>
+<mat-card-content>
       
     <div class="table-header">
         <mat-form-field>
@@ -28,11 +28,17 @@
 	<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
 	    <!-- ID Column -->
-	    <ng-container matColumnDef="nome">
+	    <ng-container matColumnDef="username">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
+	      <mat-cell *matCellDef="let row" >{{row.username}}</mat-cell>
 	    </ng-container>
-  
+
+      <!-- ID Column -->
+	    <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.email}}</mat-cell>
+        </ng-container>
+    
     <!-- actions -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>

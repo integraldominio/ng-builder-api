@@ -42,16 +42,16 @@ export class AuthenticationService {
             .pipe(map((res: any) => {
                 // login successful if there's a jwt token in the response
                 if (res && res.token) {
-                    console.log(JSON.stringify({ username, token: res.token }));
+                    // console.log(JSON.stringify({ username, token: res.token }));
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username, token: res.token }));
 
                     this.userService.getMyInfo().subscribe(
                       info => {
-                          console.log( '>>>authorities: ');
-                          console.log( info );
-                          console.log( '>>>username: ');
-                          console.log( username );
+                          // console.log( '>>>authorities: ');
+                          // console.log( info );
+                          // console.log( '>>>username: ');
+                          // console.log( username );
                           localStorage.setItem('currentUser', JSON.stringify({ username, token: res.token, authorities: info }));
                     }
                   );
