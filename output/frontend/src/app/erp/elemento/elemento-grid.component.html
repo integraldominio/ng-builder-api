@@ -1,0 +1,147 @@
+<div id="convert"> 
+
+<div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title>Elementos</mat-card-title>
+
+      <a mat-fab color="accent" routerLink="/elemento/add" >
+        <mat-icon>add</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="print()" > 
+        <mat-icon>print</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="screenshot()" > 
+        <mat-icon>photo_camera</mat-icon>
+      </a>
+            
+    <mat-card-content>
+    <div class="table-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+	<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="artefato">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Artefato</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.artefato?.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="tipoElemento">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Elemento</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.tipoElemento}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="tipoField">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Field</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.tipoField}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="nome">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="rotulo">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Rótulo</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.rotulo}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="inicial">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Valor Inicial</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.inicial}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="mascara">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Máscara Edição</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.mascara}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="pipe">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Máscara Display</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.pipe}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="dica">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Hint(dica)</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.dica}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="requerido">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Requerido</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.requerido}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="persistence">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Persistence</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.persistence}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="tamanho">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Tamanho</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.tamanho}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="showcolumn">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Show Column</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.showcolumn}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="valueProp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Value Prop</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.valueProp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="labelProp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Label Prop</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.labelProp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="options">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Opções</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.options}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="ordenation">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Ordem</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.ordenation}}</mat-cell>
+	    </ng-container>
+  
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row"  >
+ 
+        <button mat-mini-fab color="primary"routerLink="/elemento/edit/{{row.id}}">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button  mat-mini-fab   (click)="deleteItem(row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container> 
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+ <!-- <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+      No results
+  </div> -->
+
+ 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
+ 
+</div>

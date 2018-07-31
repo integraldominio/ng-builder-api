@@ -1,0 +1,132 @@
+<div id="convert"> 
+
+<div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title>Projetos</mat-card-title>
+
+      <a mat-fab color="accent" routerLink="/projeto/add" >
+        <mat-icon>add</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="print()" > 
+        <mat-icon>print</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="screenshot()" > 
+        <mat-icon>photo_camera</mat-icon>
+      </a>
+            
+    <mat-card-content>
+    <div class="table-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+	<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="portal">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Portal</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.portal?.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="nome">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="descricao">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.descricao}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="nomeBackendApp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome Backend App</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.nomeBackendApp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="nomeFrontEndApp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome Frontend App</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.nomeFrontEndApp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="iconeApp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Ícone App</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.iconeApp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="imageApp">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Image App</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.imageApp}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="serverHost">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Server Host</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.serverHost}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="serverPort">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Server port</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.serverPort}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="frontHost">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Front Host</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.frontHost}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="frontPort">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Front port</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.frontPort}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="useLogin">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Use Login</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.useLogin}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="useRoles">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Use Roles</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.useRoles}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="outputDirectory">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Output Directory</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.outputDirectory}}</mat-cell>
+	    </ng-container>
+  
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row"  >
+ 
+        <button mat-mini-fab color="primary"routerLink="/projeto/edit/{{row.id}}">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button  mat-mini-fab   (click)="deleteItem(row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container> 
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+ <!-- <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+      No results
+  </div> -->
+
+ 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
+ 
+</div>

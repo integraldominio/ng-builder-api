@@ -1,0 +1,35 @@
+<div class="signin-container" >
+
+  <div class="signin-content mat-elevation-z12">
+
+      <div fxLayoutAlign="center center">
+          <img src="assets/images/logo.svg" style="width: 64px; padding: 0px 0 0px;">
+     </div>
+
+     
+
+    <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="login()" #loginForm="ngForm" >
+
+        <div class="register-content" fxLayout="column" fxLayoutAlign="start stretch">
+
+            <mat-form-field class="display-block">
+            <input matInput placeholder="Username" formControlName="username" name="username" required>
+            </mat-form-field>
+
+            <mat-form-field class="display-block">
+          <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+        </mat-form-field>
+
+        <div class="m-b-15" fxLayout="row" fxLayoutAlign="center center">
+            <mat-checkbox class="remember-me">Lembre-me
+            </mat-checkbox>
+        </div>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary"  style="width: 300px"  [disabled]="!loginForm.form.valid"  (click)="login()" color="primary">Login</button>
+        </mat-card-actions>
+      </div>
+
+    </form>
+    </div>
+  </div>

@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    margin-bottom: 1.5rem;
+    padding: 0 0.4rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+ 
+  .header h1{
+      display: inline;
+      padding-top: .6rem;
+      font-weight: 400;
+  }
+
+ .table-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+    /* background-color: #ededed; */
+    background-color: #f5f5f5;
+  }
+
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
+  mat-row:hover {
+    background-color:  #f5f5f5;
+  }

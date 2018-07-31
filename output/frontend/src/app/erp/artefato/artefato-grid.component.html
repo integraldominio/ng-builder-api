@@ -1,0 +1,112 @@
+<div id="convert"> 
+
+<div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title>Artefatos</mat-card-title>
+
+      <a mat-fab color="accent" routerLink="/artefato/add" >
+        <mat-icon>add</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="print()" > 
+        <mat-icon>print</mat-icon>
+      </a>
+      
+      <a mat-fab color="accent" (click)="screenshot()" > 
+        <mat-icon>photo_camera</mat-icon>
+      </a>
+            
+    <mat-card-content>
+    <div class="table-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+	<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="projeto">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Projeto</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.projeto?.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="tipo">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.tipo}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="nome">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="resourceName">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Resource Name</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.resourceName}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="className">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Class Name</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.className}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="classFolder">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Class Folder</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.classFolder}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="paginaHome">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Página Home</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.paginaHome}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="templateTs">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Template Ts</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.templateTs}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="templateHtml">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Template Html</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.templateHtml}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="templateCss">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Template Css</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.templateCss}}</mat-cell>
+	    </ng-container>
+  
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row"  >
+ 
+        <button mat-mini-fab color="primary"routerLink="/artefato/edit/{{row.id}}">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button  mat-mini-fab   (click)="deleteItem(row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container> 
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+ <!-- <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+      No results
+  </div> -->
+
+ 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
+ 
+</div>

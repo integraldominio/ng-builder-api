@@ -1,13 +1,11 @@
 /target/
 /target/**
 
-/output/
-/output/**
+/output/frontend/node_modules
+/output/frontend/node_modules/**
 
 /output/backend/target/classes/
 /output/backend/target/classes/**
-
-
 
 !.mvn/wrapper/maven-wrapper.jar
 
