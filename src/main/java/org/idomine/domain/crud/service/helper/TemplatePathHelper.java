@@ -35,6 +35,7 @@ public final class TemplatePathHelper
     public static final String BACKEND_README = BACKEND + "README.md";
     public static final String BACKEND_APP_PROPERTIES = BACKEND + "src/main/resources/application.properties";
     public static final String BACKEND_APP_RESOURCE = BACKEND + "src/main/resources/";
+    public static final String BACKEND_APP_RESOURCE_MIGRA = BACKEND + "src/main/resources/db/migration/";
     public static final String BACKEND_APPLICATION = BACKEND + BACKEND_DOMAIN + "Application.java";
     public static final String BACKEND_WEBCONFIG = BACKEND + BACKEND_DOMAIN+ "application/";
     public static final String BACKEND_ENTITY = BACKEND + BACKEND_DOMAIN + "domain/crud/model/Entidade.java";

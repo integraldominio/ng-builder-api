@@ -31,6 +31,7 @@ import org.idomine.security.jwt.JwtAuthorizationTokenFilter;
 import org.idomine.security.jwt.JwtTokenUtil;
 import org.idomine.security.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -63,11 +64,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
 
-    // @Value("${jwt.header}")
+    @Value("${jwt.header}")
     private String tokenHeader = "Authorization";
 
-    // @Value("${jwt.route.authentication.path}")
-    private String authenticationPath = "/auth";
+    @Value("${jwt.route.authentication.path}")
+    private String authenticationPath;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
@@ -91,8 +92,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     public CorsConfigurationSource corsConfigurationSource()
     {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5000", "http://localhost:4200"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE"));
+        configuration.setAllowedOrigins(Arrays.asList("*", "http://localhost:4200"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Origin", "x-requested-With",
                 "content-type", "accept", "Authorization", "x-xsrf-token", "Application/Json"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

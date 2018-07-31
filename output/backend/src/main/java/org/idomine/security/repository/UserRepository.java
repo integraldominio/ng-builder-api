@@ -22,33 +22,12 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-package org.idomine.security.service;
+package org.idomine.security.repository;
 
-import org.idomine.security.jwt.JwtUserFactory;
 import org.idomine.security.model.User;
-import org.idomine.security.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Service
-public class JwtUserDetailsService implements UserDetailsService
+public interface UserRepository extends JpaRepository<User, Long>
 {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-    {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null)
-        {
-            throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
-        }
-        return JwtUserFactory.create(user);
-    }
+    User findByUsername(String username);
 }

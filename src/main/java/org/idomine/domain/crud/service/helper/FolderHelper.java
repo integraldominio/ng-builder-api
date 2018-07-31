@@ -67,6 +67,8 @@ public class FolderHelper
         criarDir(base + "/backend/src/main/java/org/idomine/security/rest/user");
         criarDir(base + "/backend/src/main/java/org/idomine/security/service");
         criarDir(base + "/backend/src/main/resources");
+        criarDir(base + "/backend/src/main/resources/db");
+        criarDir(base + "/backend/src/main/resources/db/migration");
 
         criarDir(base + "/frontend");
         criarDir(base + "/frontend/e2e");

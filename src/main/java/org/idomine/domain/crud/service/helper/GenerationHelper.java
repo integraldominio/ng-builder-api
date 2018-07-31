@@ -58,10 +58,12 @@ public class GenerationHelper
             readmeToOutput(projeto);
             backendPomToOutput(projeto);
             backendReadmeToOutput(projeto);
+            backendMigrationToOutput(projeto);
             backendAppPropertiesToOutput(projeto);
             backendApplicationToOutput(projeto);
             backendEntityToOutput(projeto);
             backendSecurity(projeto);
+
             frontReadmeToOutput(projeto);
             frontJsonsToOutput(projeto);
             frontAssets(projeto);
@@ -76,35 +78,50 @@ public class GenerationHelper
         }
     }
 
+    private static void backendMigrationToOutput(Projeto projeto)
+    {
+        String o = "templates/" + TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA;
+        try
+        {
+            copyFile(new File(o + "V001__criar_portal.sql"),new File(d + "V001__criar_portal.sql"));
+            copyFile(new File(o + "V002__criar_tabela_projeto.sql"),new File(d + "V002__criar_tabela_projeto.sql"));
+            copyFile(new File(o + "V003__criar_tabela_artefato.sql"),new File(d + "V003__criar_tabela_artefato.sql"));
+            copyFile(new File(o + "V004__criar_tabela_elemento.sql"),new File(d + "V004__criar_tabela_elemento.sql"));
+            copyFile(new File(o + "V005__criar_tabela_configuracao.sql"),new File(d + "V005__criar_tabela_configuracao.sql"));
+            copyFile(new File(o + "V006__criar_tabelas_security.sql"),new File(d + "V006__criar_tabelas_security.sql"));
+            copyFile(new File(o + "V007__insert_dados_security.sql"),new File(d + "V007__insert_dados_security.sql"));
+        }
+        catch (IOException e)
+        {
+            System.err.println(">>>" + e);
+
+        }
+    }
+
     private static void backendSecurity(Projeto projeto)
     {
         String o = "templates/" + TemplatePathHelper.BACKEND_SECURITY;
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_SECURITY;
         try
         {
-            copyFile(new File(o + "exceptions/AuthenticationException.java"),
-                    new File(d + "exceptions/AuthenticationException.java"));
-            copyFile(new File(o + "jwt/JwtAuthenticationEntryPoint.java"),
-                    new File(d + "jwt/JwtAuthenticationEntryPoint.java"));
-            copyFile(new File(o + "jwt/JwtAuthenticationRequest.java"),
-                    new File(d + "jwt/JwtAuthenticationRequest.java"));
-            copyFile(new File(o + "jwt/JwtAuthorizationTokenFilter.java"),
-                    new File(d + "jwt/JwtAuthorizationTokenFilter.java"));
-            copyFile(new File(o + "jwt/JwtTokenUtil.java"), new File(d + "jwt/JwtTokenUtil.java"));
-            copyFile(new File(o + "jwt/JwtUser.java"), new File(d + "jwt/JwtUser.java"));
-            copyFile(new File(o + "jwt/JwtUserFactory.java"), new File(d + "jwt/JwtUserFactory.java"));
-            copyFile(new File(o + "model/Authority.java"), new File(d + "model/Authority.java"));
-            copyFile(new File(o + "model/AuthorityName.java"), new File(d + "model/AuthorityName.java"));
-            copyFile(new File(o + "model/Group.java"), new File(d + "model/Group.java"));
-            copyFile(new File(o + "model/User.java"), new File(d + "model/User.java"));
-            copyFile(new File(o + "rest/auth/AuthenticationRestController.java"),
-                    new File(d + "rest/auth/AuthenticationRestController.java"));
-            copyFile(new File(o + "rest/protecteds/MethodProtectedRestController.java"),
-                    new File(d + "rest/protecteds/MethodProtectedRestController.java"));
-            copyFile(new File(o + "rest/user/UserRestController.java"),
-                    new File(d + "rest/user/UserRestController.java"));
-            copyFile(new File(o + "service/JwtAuthenticationResponse.java"),
-                    new File(d + "service/JwtAuthenticationResponse.java"));
+            copyFile(new File(o + "exceptions/AuthenticationException.java"),           new File(d + "exceptions/AuthenticationException.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationEntryPoint.java"),              new File(d + "jwt/JwtAuthenticationEntryPoint.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationRequest.java"),                 new File(d + "jwt/JwtAuthenticationRequest.java"));
+            copyFile(new File(o + "jwt/JwtAuthorizationTokenFilter.java"),              new File(d + "jwt/JwtAuthorizationTokenFilter.java"));
+            copyFile(new File(o + "jwt/JwtTokenUtil.java"),                             new File(d + "jwt/JwtTokenUtil.java"));   
+            copyFile(new File(o + "jwt/JwtUser.java"),                                  new File(d + "jwt/JwtUser.java"));
+            copyFile(new File(o + "jwt/JwtUserFactory.java"),                           new File(d + "jwt/JwtUserFactory.java"));
+            copyFile(new File(o + "model/Authority.java"),                              new File(d + "model/Authority.java"));
+            copyFile(new File(o + "model/AuthorityName.java"),                          new File(d + "model/AuthorityName.java"));
+            copyFile(new File(o + "model/Group.java"),                                  new File(d + "model/Group.java"));
+            copyFile(new File(o + "model/User.java"),                                   new File(d + "model/User.java"));
+            copyFile(new File(o + "repository/UserRepository.java"),                    new File(d + "repository/UserRepository.java"));
+            copyFile(new File(o + "rest/auth/AuthenticationRestController.java"),       new File(d + "rest/auth/AuthenticationRestController.java"));
+            copyFile(new File(o + "rest/protecteds/MethodProtectedRestController.java"),new File(d + "rest/protecteds/MethodProtectedRestController.java"));
+            copyFile(new File(o + "rest/user/UserRestController.java"),                 new File(d + "rest/user/UserRestController.java"));
+            copyFile(new File(o + "service/JwtAuthenticationResponse.java"),            new File(d + "service/JwtAuthenticationResponse.java"));
+            copyFile(new File(o + "service/JwtUserDetailsService.java"),                new File(d + "service/JwtUserDetailsService.java"));
         }
         catch (IOException e)
         {

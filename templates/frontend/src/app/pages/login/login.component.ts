@@ -21,9 +21,14 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- 
+
 import { Component, OnInit , OnDestroy} from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService, AuthenticationService } from '../../infra/security';
+import { DisplayMessage } from '../../shared/models/display-message';
+import { Subject } from 'rxjs';
+import { first , takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -34,22 +39,55 @@ export class LoginComponent implements OnInit, OnDestroy  {
 
   username: string;
   password: string;
-  token: 'token: FAKE';
+  form: FormGroup;
+  notification: DisplayMessage;
+  returnUrl: string;
+  submitted = false;
+  ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  constructor( private router: Router) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+  ) {}
 
   ngOnInit() {
+    this.route.params.pipe(
+    takeUntil(this.ngUnsubscribe))
+    .subscribe((params: DisplayMessage) => {
+      this.notification = params;
+    });
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.form = this.formBuilder.group({
+      username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])]
+    });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
-  login(): void {
-    if (this.username === 'admin' && this.password === 'admin') {
-     localStorage.setItem('currentUser', JSON.stringify({ username: this.username, token: this.token }));
-     this.router.navigate( ['home'] );
-    } else {
-      alert('"Invalid credentials');
-    }
+  login() {
+    this.notification = undefined;
+    this.submitted = true;
+    this.authenticationService
+      .login( this.form.value.username, this.form.value.password)
+      .pipe(first())
+      .subscribe(
+        data => {
+            // this.userService.getMyInfo().subscribe();
+            this.router.navigate(['home']);
+        },
+        error => {
+           // this.error = error;
+           // this.loading = false;
+           this.submitted = false;
+           this.notification = { msgType: 'error', msgBody: 'Incorrect username or password.' };
+        });
   }
 }

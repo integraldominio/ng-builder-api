@@ -31,6 +31,7 @@ import org.idomine.security.jwt.JwtTokenUtil;
 import org.idomine.security.jwt.JwtUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,8 +44,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController
 {
 
-    // @Value("${jwt.header}")
-    private String tokenHeader = "Authorization";
+    @Value("${jwt.header}")
+    private String tokenHeader;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;

@@ -1,0 +1,20 @@
+CREATE TABLE `configuracao` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `app_properties` varchar(255) DEFAULT NULL,
+  `back_classes_helper` varchar(255) DEFAULT NULL,
+  `back_template_entity` longblob,
+  `back_template_pom` longblob,
+  `back_template_repository` longblob,
+  `back_template_resource` longblob,
+  `back_template_vo` longblob,
+  `email_empresa` varchar(255) DEFAULT NULL,
+  `front_classes_helper` varchar(255) DEFAULT NULL,
+  `front_templat_crude_service` longblob,
+  `front_template_crud` longblob,
+  `front_template_menu` longblob,
+  `front_template_model` longblob,
+  `nome_empresa` varchar(255) DEFAULT NULL,
+  `output_directory` varchar(255) DEFAULT NULL,
+  `site_empresa` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

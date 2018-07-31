@@ -26,7 +26,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyModule } from '@ngx-formly/core';
@@ -124,7 +124,6 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     MessageService,
     UserService,
     SidenavService,
-    JwtInterceptor,
     {
       /// iterceptar requisioes http e colocar token
       provide: HTTP_INTERCEPTORS,
