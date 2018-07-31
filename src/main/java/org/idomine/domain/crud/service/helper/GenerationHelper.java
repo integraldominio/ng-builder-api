@@ -521,7 +521,6 @@ public class GenerationHelper
     {
         String out = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APP_RESOURCE;
         String tpl = TemplatePathHelper.BACKEND_APP_RESOURCE;
-        output(out + "application.properties", fm.process(tpl + "application.properties", model(projeto)));
         output(out + "application-dev.properties", fm.process(tpl + "application-dev.properties", model(projeto)));
         output(out + "application-prod.properties", fm.process(tpl + "application-prod.properties", model(projeto)));
     }
