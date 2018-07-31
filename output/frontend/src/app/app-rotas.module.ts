@@ -45,6 +45,7 @@ import { AuthGuard, AdminGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserGridComponent } from './infra/users/user-grid.component';
+import { UserFormComponent } from './infra/users/user-form.component';
 
 const routes: Routes =
 
@@ -78,7 +79,7 @@ const routes: Routes =
     { path: 'configuracao/add',  component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
     { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
     { path: 'user/edit/:id', component: UserGridComponent, canActivate: [AdminGuard] },
-    { path: 'user/add',  component: UserGridComponent, canActivate: [AdminGuard] },
+    { path: 'user/add',  component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
