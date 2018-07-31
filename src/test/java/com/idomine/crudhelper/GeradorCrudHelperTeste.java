@@ -1,6 +1,6 @@
 package com.idomine.crudhelper;
 
-import org.idomine.domain.crud.service.helper.GeradorCrudHelper;
+import org.idomine.domain.crud.service.helper.FolderHelper;
 import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class GeradorCrudHelperTeste
         // assertTrue(GeradorCrudHelper.criarDir(output + "backend"));
         // assertTrue(GeradorCrudHelper.criarDir(output + "frontend"));
 
-        GeradorCrudHelper.criarFolders("");
-        GeradorCrudHelper.output("output/"+TemplateBackendHelper.BACKEND_POM, "pom");
+        FolderHelper.criarFolders("");
+        FolderHelper.output("output/"+TemplateBackendHelper.BACKEND_POM, "pom");
         
     }
 

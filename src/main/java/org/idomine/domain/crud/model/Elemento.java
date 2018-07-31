@@ -1,4 +1,28 @@
 
+/**
+ * The MIT License
+ *
+ *  Copyright (c) 2018, Lyndon Tavares (integraldominio@gmail.com)
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in
+ *  all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *  THE SOFTWARE.
+ */
+
 package org.idomine.domain.crud.model;
 
 import java.util.ArrayList;
@@ -38,17 +62,16 @@ public class Elemento
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
- 
+
     @ManyToOne
     private Artefato artefato;
-    
+
     @Enumerated(EnumType.STRING)
     private TipoElemento tipoElemento;
-    
+
     @Enumerated(EnumType.STRING)
     private TipoField tipoField;
-    
+
     private boolean persistence;
     private boolean requerido;
     private String artefatoFK; // selectDB
@@ -131,11 +154,13 @@ public class Elemento
 
     public String getDefault()
     {
-        if (TipoField.BigDecimal.equals(tipoField) || TipoField.BigInteger.equals(tipoField) || TipoField.Integer.equals(tipoField) || TipoField.Long.equals(tipoField))
+        if (TipoField.BigDecimal.equals(tipoField) || TipoField.BigInteger.equals(tipoField)
+                || TipoField.Integer.equals(tipoField) || TipoField.Long.equals(tipoField))
         {
             return inicial;
         }
-        else if (TipoElemento.Input.equals(tipoElemento) || TipoElemento.TextArea.equals(tipoElemento) || TipoElemento.Select.equals(tipoElemento))
+        else if (TipoElemento.Input.equals(tipoElemento) || TipoElemento.TextArea.equals(tipoElemento)
+                || TipoElemento.Select.equals(tipoElemento))
         {
             return "'" + inicial + "'";
         }
@@ -146,7 +171,7 @@ public class Elemento
     {
         List<Elemento> lista = new ArrayList<>();
 
-        //portal
+        // portal
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -159,8 +184,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());       
-        //portal
+                        .build());
+        // portal
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -173,8 +198,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());       
-        //portal
+                        .build());
+        // portal
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -187,8 +212,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());       
-        //portal
+                        .build());
+        // portal
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -201,8 +226,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());       
-        //portal
+                        .build());
+        // portal
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -215,12 +240,11 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());       
-        
+                        .build());
+
         return lista;
     }
 
-    
     public static List<Elemento> getFake1()
     {
         List<Elemento> lista = new ArrayList<>();
@@ -241,9 +265,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .build());        
-        
-        
+                        .build());
+
         lista.add(
                 Elemento.builder()
                         .id(1L)
@@ -451,7 +474,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
+                        .options(
+                                "[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
                         .build());
 
         lista.add(
@@ -519,7 +543,7 @@ public class Elemento
                         .persistence(true)
                         .showcolumn(false)
                         .build());
-        
+
         lista.add(
                 Elemento.builder()
                         .id(12L)
@@ -594,9 +618,12 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} ," +
-                                        " { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} ," +
-                                        " { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } ," +
+                                "[{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} ,"
+                                        +
+                                        " { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} ,"
+                                        +
+                                        " { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } ,"
+                                        +
                                         " { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] ")
 
                         .build());
@@ -612,8 +639,10 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'}," +
-                                        " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ," +
+                                "[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'},"
+                                        +
+                                        " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ,"
+                                        +
                                         " {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]")
                         .build());
 
@@ -977,6 +1006,5 @@ public class Elemento
 
         return lista;
     }
-
 
 }

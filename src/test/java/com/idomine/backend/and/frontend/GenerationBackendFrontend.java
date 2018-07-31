@@ -1,3 +1,4 @@
+package com.idomine.backend.and.frontend;
 
 /**
  * The MIT License
@@ -23,21 +24,18 @@
  *  THE SOFTWARE.
  */
 
-package org.idomine.domain.crud.reporitory;
-
-import org.idomine.domain.crud.model.Portal;
 import org.idomine.domain.crud.model.Projeto;
-import org.springframework.data.repository.CrudRepository;
+import org.idomine.domain.crud.service.helper.GenerationHelper;
 
-
-public interface PortalRepository extends  CrudRepository<Portal, Long>
+public class GenerationBackendFrontend
 {
-    Projeto findByNome(String nome);
-    
-    Projeto findByNomeIgnoreCase(String nome);
-    
-    Projeto findByNomeOrId(String nome, Long id);
-    
-    Projeto findByNomeIgnoreCaseOrId(String nome, Long id);
-}
 
+    public static void main(String[] args)
+    {
+        /*
+         *  Call this do Backend and Frontend generation. 
+         */
+        GenerationHelper.backendAllToOutput(Projeto.getFake());
+    }
+
+}
