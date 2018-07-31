@@ -89,6 +89,8 @@ public class FolderHelper
         criarDir(base + "/frontend/src/app/pages/sobre");
         criarDir(base + "/frontend/src/app/shared");
         criarDir(base + "/frontend/src/app/shared/autocomplete");
+        criarDir(base + "/frontend/src/app/shared/models");
+        criarDir(base + "/frontend/src/app/shared/utilities");
         criarDir(base + "/frontend/src/assets");
         criarDir(base + "/frontend/src/assets/icon");
         criarDir(base + "/frontend/src/assets/images");

@@ -327,8 +327,11 @@ public class GenerationHelper
         try
         {
             copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
-            copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"),
-                    new File(d + "autocomplete/autocomplete-type.component.ts"));
+            copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"), new File(d + "autocomplete/autocomplete-type.component.ts"));
+            
+            copyFile(new File(o + "/models/display-message.ts"), new File(d + "/models/display-message.ts"));
+            copyFile(new File(o + "/utilities/loose-invalid.ts"), new File(d + "/utilities/loose-invalid.ts"));
+            copyFile(new File(o + "/utilities/serialize.ts"), new File(d + "/utilities/serialize.ts"));
         }
         catch (IOException e)
         {
