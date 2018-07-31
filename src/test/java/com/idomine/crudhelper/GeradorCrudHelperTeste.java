@@ -1,7 +1,7 @@
 package com.idomine.crudhelper;
 
 import org.idomine.domain.crud.service.helper.FolderHelper;
-import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
+import org.idomine.domain.crud.service.helper.TemplatePathHelper;
 import org.junit.Test;
 
 public class GeradorCrudHelperTeste
@@ -23,7 +23,7 @@ public class GeradorCrudHelperTeste
         // assertTrue(GeradorCrudHelper.criarDir(output + "frontend"));
 
         FolderHelper.criarFolders("");
-        FolderHelper.output("output/"+TemplateBackendHelper.BACKEND_POM, "pom");
+        FolderHelper.output("output/"+TemplatePathHelper.BACKEND_POM, "pom");
         
     }
 

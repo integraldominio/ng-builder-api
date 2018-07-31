@@ -25,7 +25,7 @@
 
 package org.idomine.domain.crud.service.helper;
 
-public final class TemplateBackendHelper
+public final class TemplatePathHelper
 {
     public static final String BACKEND_DOMAIN = "src/main/java/org/idomine/";
     public static final String BACKEND = "backend/";

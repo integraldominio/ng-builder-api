@@ -41,7 +41,7 @@ import org.idomine.domain.crud.model.vo.TipoArtefato;
 import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.FolderHelper;
-import org.idomine.domain.crud.service.helper.TemplateBackendHelper;
+import org.idomine.domain.crud.service.helper.TemplatePathHelper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -249,7 +249,7 @@ public class Artefato
     private static String template()
     {
 
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_SHARED;
 
         return FolderHelper.lerTemplate("templates/example/buildapp.component.ts");
     }

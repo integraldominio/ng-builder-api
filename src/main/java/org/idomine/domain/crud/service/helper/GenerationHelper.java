@@ -29,12 +29,12 @@ import static org.idomine.domain.crud.service.helper.FolderHelper.copyFile;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarDir;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarFolders;
 import static org.idomine.domain.crud.service.helper.FolderHelper.output;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_APP_PROPERTIES;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_ENTITY;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_POM;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_README;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_REPOSITORY;
-import static org.idomine.domain.crud.service.helper.TemplateBackendHelper.BACKEND_RESOURCE;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_APP_PROPERTIES;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_ENTITY;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_POM;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_README;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_REPOSITORY;
+import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_RESOURCE;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,8 +78,8 @@ public class GenerationHelper
 
     private static void backendSecurity(Projeto projeto)
     {
-        String o = "templates/" + TemplateBackendHelper.BACKEND_SECURITY;
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_SECURITY;
+        String o = "templates/" + TemplatePathHelper.BACKEND_SECURITY;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_SECURITY;
         try
         {
             copyFile(new File(o + "exceptions/AuthenticationException.java"),
@@ -115,8 +115,8 @@ public class GenerationHelper
 
     private static void frontendInfraComps(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_PIPES;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_PIPES;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         try
         {
             copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
@@ -129,8 +129,8 @@ public class GenerationHelper
 
     private static void frontendInfraPipes(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_COMPS;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         try
         {
             copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
@@ -148,8 +148,8 @@ public class GenerationHelper
 
     public static void frontEnviroment(Projeto projeto)
     {
-        String o = TemplateBackendHelper.FRONTEND_SRC_ENV;
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ENV;
+        String o = TemplatePathHelper.FRONTEND_SRC_ENV;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_ENV;
         try
         {
             output(d + "environment.prod.ts", fm.process(o + "environment.prod.ts", model(projeto)));
@@ -163,8 +163,8 @@ public class GenerationHelper
 
     public static void frontAssets(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_ASSETS;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_ASSETS;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_ASSETS;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_ASSETS;
         try
         {
             copyFile(new File(o + "icon/auth.svg"), new File(d + "icon/auth.svg"));
@@ -185,32 +185,32 @@ public class GenerationHelper
 
     public static void frontJsonsToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_ANGULAR_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_ANGULAR_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_DBJSON,
-                fm.process(TemplateBackendHelper.FRONTEND_DBJSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_PACKAGE_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_PACKAGE_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSCONFIG_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_TSCONFIG_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_TSLINT_JSON,
-                fm.process(TemplateBackendHelper.FRONTEND_TSLINT_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_ANGULAR_JSON,
+                fm.process(TemplatePathHelper.FRONTEND_ANGULAR_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_DBJSON,
+                fm.process(TemplatePathHelper.FRONTEND_DBJSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_PACKAGE_JSON,
+                fm.process(TemplatePathHelper.FRONTEND_PACKAGE_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSCONFIG_JSON,
+                fm.process(TemplatePathHelper.FRONTEND_TSCONFIG_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSLINT_JSON,
+                fm.process(TemplatePathHelper.FRONTEND_TSLINT_JSON, model(projeto)));
 
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_INDEX,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_INDEX, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_STYLE,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_STYLE, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_MAIN,
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_MAIN, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_INDEX,
+                fm.process(TemplatePathHelper.FRONTEND_SRC_INDEX, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_STYLE,
+                fm.process(TemplatePathHelper.FRONTEND_SRC_STYLE, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_MAIN,
+                fm.process(TemplatePathHelper.FRONTEND_SRC_MAIN, model(projeto)));
 
         output(
-                projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY
+                projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY
                         + "config.service.ts",
-                fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
+                fm.process(TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
                         model(projeto)));
 
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC;
         try
         {
             copyFile(new File(o + "favicon.ico"), new File(d + "favicon.ico"));
@@ -236,40 +236,40 @@ public class GenerationHelper
             for (Artefato artefato : projeto.getArtefatos())
             {
                 String folder = artefato.getClassFolder();
-                String dir = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder
+                String dir = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder
                         + "/";
 
                 criarDir(
-                        projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_ERP + folder + "/");
+                        projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder + "/");
 
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
                     output(dir + folder + "-form.component.ts",
                             fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",
+                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",
                                     model(artefato)));
                     output(dir + folder + "-form.component.css",
                             fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",
+                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",
                                     model(artefato)));
                     output(dir + folder + "-form.component.html", fm.process(
-                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",
+                            TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",
                             model(artefato)));
 
                     output(dir + folder + "-grid.component.ts",
                             fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",
+                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",
                                     model(artefato)));
                     output(dir + folder + "-grid.component.css",
                             fm.process(
-                                    TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",
+                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",
                                     model(artefato)));
                     output(dir + folder + "-grid.component.html", fm.process(
-                            TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",
+                            TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",
                             model(artefato)));
 
                     output(dir + folder + ".service.ts",
-                            fm.process(TemplateBackendHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",
+                            fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",
                                     model(artefato)));
                 }
                 else if (TipoArtefato.Template.equals(artefato.getTipo()))
@@ -290,8 +290,8 @@ public class GenerationHelper
 
     public static void fromendAppModule(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP;
-        String o = TemplateBackendHelper.FRONTEND_SRC_APP;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP;
+        String o = TemplatePathHelper.FRONTEND_SRC_APP;
         try
         {
             output(d + "app-rotas.module.ts", fm.process(o + "app-rotas.module.ts", model(projeto)));
@@ -305,8 +305,8 @@ public class GenerationHelper
 
     public static void frontendShared(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_SHARED;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_SHARED;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_SHARED;
         try
         {
             copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
@@ -321,8 +321,8 @@ public class GenerationHelper
 
     public static void frontendPages(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_PAGES;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_PAGES;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_PAGES;
         try
         {
             copyFile(new File(o + "base/base.component.html"), new File(d + "base/base.component.html"));
@@ -333,7 +333,7 @@ public class GenerationHelper
             copyFile(new File(o + "home/home.component.html"), new File(d + "home/home.component.html"));
             copyFile(new File(o + "home/home.component.css"), new File(d + "home/home.component.css"));
             output(d + "home/home.component.ts", fm
-                    .process(TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
+                    .process(TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
             copyFile(new File(o + "login/login.component.html"), new File(d + "login/login.component.html"));
             copyFile(new File(o + "login/login.component.scss"), new File(d + "login/login.component.scss"));
             copyFile(new File(o + "login/login.component.ts"), new File(d + "login/login.component.ts"));
@@ -341,9 +341,9 @@ public class GenerationHelper
             copyFile(new File(o + "sidenav/sidenav.component.ts"), new File(d + "sidenav/sidenav.component.ts"));
             copyFile(new File(o + "sidenav/sidenav.service.ts"), new File(d + "sidenav/sidenav.service.ts"));
             output(d + "sidenav/sidenav.component.html", fm.process(
-                    TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
+                    TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
             output(d + "sobre/sobre.component.html", fm.process(
-                    TemplateBackendHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
+                    TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
             copyFile(new File(o + "sobre/sobre.component.css"), new File(d + "sobre/sobre.component.css"));
             copyFile(new File(o + "sobre/sobre.component.ts"), new File(d + "sobre/sobre.component.ts"));
         }
@@ -355,8 +355,8 @@ public class GenerationHelper
 
     public static void frontendSecurityFiles(Projeto projeto)
     {
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
-        String o = "templates/" + TemplateBackendHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         try
         {
             copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
@@ -377,21 +377,21 @@ public class GenerationHelper
 
     public static void frontReadmeToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.FRONTEND_README,
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_README,
                 frontendReadmeToString(projeto));
     }
 
     public static String frontendReadmeToString(Projeto projeto)
     {
-        return fm.process(TemplateBackendHelper.FRONTEND_README, model(projeto));
+        return fm.process(TemplatePathHelper.FRONTEND_README, model(projeto));
     }
 
     public static void backendApplicationToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APPLICATION,backendApplicationToString(projeto));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APPLICATION,backendApplicationToString(projeto));
 
-        String o = "templates/" + TemplateBackendHelper.BACKEND_WEBCONFIG;
-        String d = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_WEBCONFIG;
+        String o = "templates/" + TemplatePathHelper.BACKEND_WEBCONFIG;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_WEBCONFIG;
         try
         {
             copyFile(new File(o + "WebSecurityConfig.java"), new File(d + "WebSecurityConfig.java"));
@@ -404,7 +404,7 @@ public class GenerationHelper
 
     public static String backendApplicationToString(Projeto projeto)
     {
-        return fm.process(TemplateBackendHelper.BACKEND_APPLICATION, model(projeto));
+        return fm.process(TemplatePathHelper.BACKEND_APPLICATION, model(projeto));
     }
 
     public static void backendEntityToOutput(Projeto projeto)
@@ -415,11 +415,11 @@ public class GenerationHelper
             {
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    String arq = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_ENTITY_PATH
+                    String arq = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_ENTITY_PATH
                             + artefato.getClassName() + ".java";
-                    String rep = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_REPOSITORY_PATH
+                    String rep = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_REPOSITORY_PATH
                             + artefato.getClassName() + "Repository.java";
-                    String res = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_RESOURCE_PATH
+                    String res = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_RESOURCE_PATH
                             + artefato.getClassName() + "Resource.java";
                     output(arq, backendEntityToString(artefato));
                     output(rep, backendRepositoryToString(artefato));
@@ -466,7 +466,7 @@ public class GenerationHelper
 
     public static void backendPomToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_POM,
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_POM,
                 backendPomToString(projeto));
     }
 
@@ -477,18 +477,18 @@ public class GenerationHelper
 
     public static void readmeToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.README,
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.README,
                 readmeToString(projeto));
     }
 
     public static String readmeToString(Projeto projeto)
     {
-        return fm.process(TemplateBackendHelper.README, model(projeto));
+        return fm.process(TemplatePathHelper.README, model(projeto));
     }
 
     public static void backendReadmeToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_README,
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_README,
                 backendReadmeToString(projeto));
     }
 
@@ -499,8 +499,8 @@ public class GenerationHelper
 
     public static void backendAppPropertiesToOutput(Projeto projeto)
     {
-        String out = projeto.getOutputDirectory() + "/" + TemplateBackendHelper.BACKEND_APP_RESOURCE;
-        String tpl = TemplateBackendHelper.BACKEND_APP_RESOURCE;
+        String out = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APP_RESOURCE;
+        String tpl = TemplatePathHelper.BACKEND_APP_RESOURCE;
         output(out + "application.properties", fm.process(tpl + "application.properties", model(projeto)));
         output(out + "application-dev.properties", fm.process(tpl + "application-dev.properties", model(projeto)));
         output(out + "application-prod.properties", fm.process(tpl + "application-prod.properties", model(projeto)));
