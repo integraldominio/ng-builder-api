@@ -6,10 +6,11 @@ Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angula
 
 ## Pré-requisitos
 
-* IDE Java Eclipse (Sugestão)
-* Visual Code (Sugestão)
-* NodeJS
-* MySql
+* IDE Java Eclipse (http://www.eclipse.org/)
+* Lombok (https://projectlombok.org/download)
+* Visual Code (https://code.visualstudio.com/download)
+* NodeJS (https://nodejs.org/en/download/)
+* MySql (https://www.mysql.com/downloads/)
 
 ## Instalação
 
@@ -26,6 +27,13 @@ Importe o projeto Maven com IDE Java.
 ### Passo 3
 
 Crie o database ngxbuilder no MySql. Configure usuário e senha nos profiles 
+
+#### Selecione do profile
+
+```
+-Dspring.profiles.active=dev
+-Dspring.profiles.active=prod
+```
 
 #### application-prod.properties:
 
@@ -47,7 +55,7 @@ Prepare o profile de produção (applicaiton-pro.properties) em run configuratio
 
 ### Passo 5
 
-Gere o frontend do ngbuilder, executando CreateFolderTeste.java
+Gere o frontend do ngbuilder, executando GenerationBackendFrontend.java
 
 ### Passo 6 
 

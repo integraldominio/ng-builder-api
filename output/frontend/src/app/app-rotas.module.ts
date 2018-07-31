@@ -41,9 +41,10 @@ import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
-import { AuthGuard } from './infra/security';
+import { AuthGuard, AdminGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UserGridComponent } from './infra/users/user-grid.component';
 
 const routes: Routes =
 
@@ -75,6 +76,9 @@ const routes: Routes =
     { path: 'configuracao', component: ConfiguracaoGridComponent, canActivate: [AuthGuard] },
     { path: 'configuracao/edit/:id', component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
     { path: 'configuracao/add',  component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
+    { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
+    { path: 'user/edit/:id', component: UserGridComponent, canActivate: [AdminGuard] },
+    { path: 'user/add',  component: UserGridComponent, canActivate: [AdminGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]

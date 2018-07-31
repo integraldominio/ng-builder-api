@@ -34,7 +34,7 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
 import { AuthGuard, GuestGuard, AdminGuard, AuthenticationService,
-          ConfigService, JwtInterceptor, MessageService, UserService } from './infra/security';
+          ConfigService, JwtInterceptor, MessageService } from './infra/security';
 import { AppRotasModule } from './app-rotas.module';
 import { LoginComponent } from './pages/login/login.component';
 import { SidenaveComponent } from './pages/sidenav/sidenav.component';
@@ -65,6 +65,9 @@ import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
 
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
+import { UserGridComponent } from './infra/users/user-grid.component';
+import { UserFormComponent } from './infra/users/user-form.component';
+import { UserService, ApiService } from './infra/auth';
 
 
 @NgModule({
@@ -88,6 +91,8 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     ElementoFormComponent,
     ConfiguracaoGridComponent,
     ConfiguracaoFormComponent,
+    UserGridComponent,
+    UserFormComponent,
     BuildAppComponent,
     ],
   imports: [
@@ -124,6 +129,7 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     MessageService,
     UserService,
     SidenavService,
+    ApiService,
     {
       /// iterceptar requisioes http e colocar token
       provide: HTTP_INTERCEPTORS,

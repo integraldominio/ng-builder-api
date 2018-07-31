@@ -73,6 +73,7 @@ public class Elemento
     private TipoField tipoField;
 
     private boolean persistence;
+    private String columnName;
     private boolean requerido;
     private String artefatoFK; // selectDB
     private String options;

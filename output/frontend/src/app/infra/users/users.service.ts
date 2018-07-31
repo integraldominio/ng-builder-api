@@ -23,34 +23,33 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService, ConfigService, ResourceService } from '../security';
 
-@Injectable()
-export class AdminGuard implements CanActivate {
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersService extends ResourceService<User> {
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService) {}
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authenticationService.getCurrentUser()) {
-
-      console.log('>>>');
-      console.log(this.authenticationService.getCurrentUser());
-
-      if (JSON.stringify(this.authenticationService.getCurrentUser().authorities).search('ROLE_ADMIN') !== -1) {
-        return true;
-      } else {
-        this.router.navigate(['/erro']);
-        return false;
-      }
-
-    } else {
-      console.log('NOT AN ADMIN ROLE');
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-      return false;
-    }
+    httpClient: HttpClient,
+    messageService: MessageService,
+    configService: ConfigService
+  ) {
+      super(
+      httpClient,
+      configService.getApiUrl(),
+      'users',
+      messageService);
   }
 }
 
+export class User {
+  id: number;
+  nome: string;
+}
+
+// usando json-server
+// npm install -g json-server
+// json-server --watch db.json
