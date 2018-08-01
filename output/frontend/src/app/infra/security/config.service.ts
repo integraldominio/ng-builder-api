@@ -21,7 +21,8 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- import { Injectable } from '@angular/core';
+
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConfigService {
@@ -45,6 +46,7 @@ export class ConfigService {
   getFotoUserUrl() {
     return this._foto_user_url;
   }
+
   getApiUrl() {
     return this._api_url;
   }

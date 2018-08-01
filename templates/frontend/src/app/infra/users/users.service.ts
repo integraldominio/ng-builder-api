@@ -55,7 +55,12 @@ export class User {
   enabled: string;
   foto: string;
   lastPasswordResetDate: Date;
+  authorities: Array<Authority>;
 
+}
+
+export class Authority {
+  authority: string;
 }
 
 // usando json-server

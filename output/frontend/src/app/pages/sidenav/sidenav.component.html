@@ -1,4 +1,4 @@
-<mat-sidenav-container  [class.dark-theme]="isToggledTheme">
+<mat-sidenav-container class="sidenav-container" >
   <mat-sidenav
     #sidenav
     class="sidenav"
@@ -19,9 +19,9 @@
         <a mat-list-item  (click)="toggle()" [routerLink]="['/elemento']"  >Elementos</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/configuracao']"  >Configuração</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/buildapp']"  >Gerar App!</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']" *ngIf="isAdmin()"    >Usuários</a>	
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']" *ngIf="isAdmin()"    >Usuários</a>
         <a mat-list-item  (click)="theme()" >Tema</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
         <a mat-list-item  (click)="logout()" >Logout</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -36,11 +36,9 @@
        >
        <!-- PQ *ngIf="(isHandset | async)!.matches" -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-     </button>
+      </button>
 
-  
     </mat-toolbar>
-
 
     <div class="inner-sidenav-content">
       <router-outlet></router-outlet>
