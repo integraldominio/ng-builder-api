@@ -84,6 +84,14 @@ export class UserFormComponent implements OnInit {
   }
 },
 {
+  key: 'phone', type: 'input',
+  templateOptions: {
+     label: 'Telefone',
+     placeholder: 'Informe Telefone',
+     required: true,
+  }
+},
+{
   key: 'enabled', type: 'input',
   templateOptions: {
      label: 'Situação',
@@ -103,7 +111,7 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.setFormTitle( this.id );
-    this.loadConfiguracao( parseInt( this.id ) );
+    this.loadUser( parseInt( this.id ) );
   }
 
   setFormTitle( id: any  ) {
@@ -126,10 +134,12 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  loadConfiguracao(id: number)  {
+  loadUser(id: number)  {
     if ( this.id !== null ) {
        this.userService.read(id).subscribe(
        data => {
+         console.log('>>>');
+         console.log(this.model);
        this.model  = data as User;
     });
     }

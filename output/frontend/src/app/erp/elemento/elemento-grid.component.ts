@@ -40,6 +40,7 @@ export class ElementoGridComponent implements OnInit {
 
   dataSource: MatTableDataSource<Elemento>;
   displayedColumns = [
+  'artefato',
   'nome',
   'rotulo',
   'actions'

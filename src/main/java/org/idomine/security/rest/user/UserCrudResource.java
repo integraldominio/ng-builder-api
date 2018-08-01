@@ -56,6 +56,12 @@ public class UserCrudResource
         return userRepository.findAll();
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<?> searchId(@PathVariable Long id)
+    {
+        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/users/count")
     public Long count()
