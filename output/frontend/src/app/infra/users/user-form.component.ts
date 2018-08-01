@@ -52,8 +52,7 @@ export class UserFormComponent implements OnInit {
       awesomeIsForced: false,
     },
   };
-  model = {
-  };
+  model: User = new User;
 
   // Fieds
   fields: FormlyFieldConfig[] = [

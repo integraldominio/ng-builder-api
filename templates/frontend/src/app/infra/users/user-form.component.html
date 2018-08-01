@@ -15,9 +15,6 @@
             [options]="options"
             [fields]="fields"
             [model]="model">
-
-            <app-file-upload [text]="labelUploadButtom"  [target]="target" (complete)="onFileComplete($event)"></app-file-upload> 
-
             <button mat-raised-button color="primary"  type="submit">Salvar</button>
             <button mat-raised-button (click)="options.resetModel()">Limpar</button>
           </formly-form>

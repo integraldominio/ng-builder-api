@@ -8,6 +8,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
+  `foto` LONGBLOB default NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 

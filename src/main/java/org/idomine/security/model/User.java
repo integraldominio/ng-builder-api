@@ -36,6 +36,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -90,6 +91,10 @@ public class User
     @Temporal(TemporalType.TIMESTAMP)
     // @NotNull
     private Date lastPasswordResetDate;
+
+    @Lob
+    @Column(name = "FOTO")
+    private byte[] foto;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_AUTHORITY", joinColumns = {
@@ -195,6 +200,16 @@ public class User
     public void setPhone(String phone)
     {
         this.phone = phone;
+    }
+
+    public byte[] getFoto()
+    {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto)
+    {
+        this.foto = foto;
     }
 
     @Override
