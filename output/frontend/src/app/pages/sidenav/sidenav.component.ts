@@ -24,7 +24,8 @@ export class SidenaveComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private sidenavService: SidenavService,
     private authenticationService: AuthenticationService,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+
   ) {}
 
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
@@ -52,6 +53,10 @@ export class SidenaveComponent implements OnInit {
   theme() {
     console.log('>>>');
     this.isToggledTheme = !this.isToggledTheme;
+  }
+
+  isAdmin(): boolean {
+    return this.authenticationService.isAdmin();
   }
 }
 
