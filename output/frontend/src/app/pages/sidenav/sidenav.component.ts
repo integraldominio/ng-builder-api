@@ -5,6 +5,7 @@ import { SidenavService } from './sidenav.service';
 import { NavigationStart, ResolveStart, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
 import { AuthenticationService } from '../../infra/security';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,6 +15,7 @@ import { AuthenticationService } from '../../infra/security';
 export class SidenaveComponent implements OnInit {
 
   private islogado = false;
+  isToggledTheme = false;
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
 
@@ -21,7 +23,8 @@ export class SidenaveComponent implements OnInit {
     private router: Router,
     private breakpointObserver: BreakpointObserver,
     private sidenavService: SidenavService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private overlayContainer: OverlayContainer
   ) {}
 
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
@@ -45,7 +48,10 @@ export class SidenaveComponent implements OnInit {
           }
       });
   }
-  
 
+  theme() {
+    console.log('>>>');
+    this.isToggledTheme = !this.isToggledTheme;
+  }
 }
 
