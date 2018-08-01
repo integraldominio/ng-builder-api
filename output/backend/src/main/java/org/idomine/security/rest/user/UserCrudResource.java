@@ -25,6 +25,11 @@
 
 package org.idomine.security.rest.user;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.transaction.Transactional;
 
 import org.idomine.security.model.User;
@@ -40,7 +45,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -54,6 +62,12 @@ public class UserCrudResource
     public Iterable<User> listaAll()
     {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<?> searchId(@PathVariable Long id)
+    {
+        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -90,4 +104,27 @@ public class UserCrudResource
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/users/foto/{id}")
+    public ResponseEntity<?> singleFileUpload(@PathVariable Long id, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes)
+    {
+        if (file.isEmpty())
+        {
+            return new ResponseEntity<>("Please select a file to upload", HttpStatus.NO_CONTENT);
+        }
+        try
+        {
+            String nome = userRepository.findById(id).get().getFirstname();
+
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get("fotos/" + nome + "-" + file.getOriginalFilename());
+            Files.write(path, bytes);
+            new ResponseEntity<>("sucesso!", HttpStatus.OK);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 }

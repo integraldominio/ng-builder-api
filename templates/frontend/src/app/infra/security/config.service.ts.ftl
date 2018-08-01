@@ -21,7 +21,8 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- import { Injectable } from '@angular/core';
+
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConfigService {
@@ -40,6 +41,11 @@ export class ConfigService {
   private _reset_credentials_url = this._user_url + '/reset-credentials';
   private _foo_url = this._api_url + '/foo';
   private _report_url = this._api_url + '/report';
+  private _foto_user_url = this._api_url + '/users/foto';
+
+  getFotoUserUrl() {
+    return this._foto_user_url;
+  }
 
   getApiUrl() {
     return this._api_url;

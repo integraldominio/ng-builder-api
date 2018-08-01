@@ -44,7 +44,8 @@ public final class TemplatePathHelper
     public static final String BACKEND_REPOSITORY_PATH = BACKEND + BACKEND_DOMAIN + "domain/crud/repository/";
     public static final String BACKEND_RESOURCE = BACKEND + BACKEND_DOMAIN + "domain/crud/resource/Resource.java";
     public static final String BACKEND_RESOURCE_PATH = BACKEND + BACKEND_DOMAIN + "domain/crud/resource/";
-    public static final String BACKEND_SECURITY = BACKEND + BACKEND_DOMAIN + "security/";
+    public static final String BACKEND_INFRA = BACKEND + BACKEND_DOMAIN + "infrastructure/";
+    public static final String BACKEND_SECURITY = BACKEND + BACKEND_DOMAIN +"security/";
 
     public static final String FRONTEND_README = FRONTEND + "README.md";
     public static final String FRONTEND_ANGULAR_JSON = FRONTEND + "angular.json";

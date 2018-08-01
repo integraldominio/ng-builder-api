@@ -80,6 +80,8 @@ import { UserUploadComponent } from './infra/users/user-upload.component';
     DashcardComponent,
     UserGridComponent,
     UserFormComponent,
+    FileUploadComponent,
+    UserUploadComponent,
     PortalGridComponent,
     PortalFormComponent,
     ProjetoGridComponent,
@@ -91,8 +93,6 @@ import { UserUploadComponent } from './infra/users/user-upload.component';
     ConfiguracaoGridComponent,
     ConfiguracaoFormComponent,
     BuildAppComponent,
-    FileUploadComponent,
-    UserUploadComponent,
     ],
   imports: [
     BrowserModule,

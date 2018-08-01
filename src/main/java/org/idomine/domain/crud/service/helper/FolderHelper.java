@@ -56,6 +56,7 @@ public class FolderHelper
         criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/model");
         criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/repository");
         criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/resource");
+        criarDir(base + "/backend/src/main/java/org/idomine/infrastructure");
         criarDir(base + "/backend/src/main/java/org/idomine/security");
         criarDir(base + "/backend/src/main/java/org/idomine/security/exceptions");
         criarDir(base + "/backend/src/main/java/org/idomine/security/jwt");
@@ -79,6 +80,7 @@ public class FolderHelper
         criarDir(base + "/frontend/src/app/infra/auth");
         criarDir(base + "/frontend/src/app/infra/comps");
         criarDir(base + "/frontend/src/app/infra/comps/dashcard");
+        criarDir(base + "/frontend/src/app/infra/comps/file-upload");
         criarDir(base + "/frontend/src/app/infra/pipes");
         criarDir(base + "/frontend/src/app/infra/security");
         criarDir(base + "/frontend/src/app/infra/users");

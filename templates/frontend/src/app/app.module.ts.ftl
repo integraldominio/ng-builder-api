@@ -61,6 +61,8 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
 import { UserGridComponent } from './infra/users/user-grid.component';
 import { UserFormComponent } from './infra/users/user-form.component';
 import { UserService, ApiService } from './infra/auth';
+import { FileUploadComponent } from './infra/comps/file-upload/file-upload.component';
+import { UserUploadComponent } from './infra/users/user-upload.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { UserService, ApiService } from './infra/auth';
     DashcardComponent,
     UserGridComponent,
     UserFormComponent,
+    FileUploadComponent,
+    UserUploadComponent,
  	<#list projeto.artefatos as artefato >  
     <#if artefato.tipo == 'Crud' >  
     ${artefato.className}GridComponent,

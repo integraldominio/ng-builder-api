@@ -52,6 +52,7 @@ export class ElementoFormComponent implements OnInit {
   };
   // Datatable
   displayedColumns = [
+  'Artefato',
   'nome',
   'rotulo',
   'actions'

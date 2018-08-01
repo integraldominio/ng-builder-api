@@ -63,6 +63,7 @@ public class GenerationHelper
             backendApplicationToOutput(projeto);
             backendEntityToOutput(projeto);
             backendSecurity(projeto);
+            backendInfrastructure(projeto);
 
             frontReadmeToOutput(projeto);
             frontJsonsToOutput(projeto);
@@ -77,6 +78,20 @@ public class GenerationHelper
             fromendAppModule(projeto);
             frontendErp(projeto);
         }
+    }
+
+    private static void backendInfrastructure(Projeto projeto)
+    {
+        String o = "templates/" + TemplatePathHelper.BACKEND_INFRA;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_INFRA;
+        try
+        {
+            copyFile(new File(o + "ImageBase64Helper.java"),new File(d + "ImageBase64Helper.java"));
+        }
+        catch (IOException e)
+        {
+            System.err.println(">>>" + e);
+        }           
     }
 
     private static void frontendInfra(Projeto projeto)
@@ -95,6 +110,8 @@ public class GenerationHelper
             copyFile(new File(o + "users/user-grid.component.css"),new File(d + "users/user-grid.component.css"));
             copyFile(new File(o + "users/user-grid.component.html"),new File(d + "users/user-grid.component.html"));
             copyFile(new File(o + "users/user-grid.component.ts"),new File(d + "users/user-grid.component.ts"));
+            copyFile(new File(o + "users/user-upload.component.ts"),new File(d + "users/user-upload.component.ts"));
+            copyFile(new File(o + "users/user-upload.component.html"),new File(d + "users/user-upload.component.html"));
             copyFile(new File(o + "users/users.service.ts"),new File(d + "users/users.service.ts"));
         }
         catch (IOException e)
@@ -180,6 +197,10 @@ public class GenerationHelper
             copyFile(new File(o + "dashcard/dashcard.component.ts"),   new File(d + "dashcard/dashcard.component.ts"));
             copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.component.html"));
             copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scss"));
+            copyFile(new File(o + "file-upload/file-upload.component.css"), new File(d + "file-upload/file-upload.component.css"));
+            copyFile(new File(o + "file-upload/file-upload.component.html"), new File(d + "file-upload/file-upload.component.html"));
+            copyFile(new File(o + "file-upload/file-upload.component.ts"), new File(d + "file-upload/file-upload.component.ts"));
+
         }
         catch (IOException e)
         {
