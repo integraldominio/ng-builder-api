@@ -114,7 +114,7 @@ public class UserCrudResource
         }
         try
         {
-            String nome = userRepository.findById(id).get().getFirstname();
+            String nome = userRepository.findById(id).get().getId().toString();
 
             byte[] bytes = file.getBytes();
             Path path = Paths.get("fotos/" + nome + "-" + file.getOriginalFilename());
