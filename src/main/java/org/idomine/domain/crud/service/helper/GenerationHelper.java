@@ -87,6 +87,7 @@ public class GenerationHelper
         try
         {
             copyFile(new File(o + "ImageBase64Helper.java"),new File(d + "ImageBase64Helper.java"));
+            copyFile(new File(o + "PasswordHelper.java"),new File(d + "PasswordHelper.java"));
         }
         catch (IOException e)
         {

@@ -50,7 +50,7 @@ public class User
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "USERNAME", length = 50, unique = true)
@@ -88,7 +88,7 @@ public class User
 
     @Column(name = "LASTPASSWORDRESETDATE")
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
+    // @NotNull
     private Date lastPasswordResetDate;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -60,48 +60,69 @@ export class UserFormComponent implements OnInit {
   {
      key: 'username', type: 'input',
      templateOptions: {
-        label: 'Login',
+        label: 'Login (Min:4 Max:10)',
         placeholder: 'Informe nome login',
         required: true,
+        minLength: 4,
+        maxLength: 50,
      }
   },
   {
     key: 'firstname', type: 'input',
     templateOptions: {
-       label: 'Nome',
+       label: 'Nome (Min:4 Max:10)',
        placeholder: 'Informe Nome',
        required: true,
-    }
+       minLength: 4,
+       maxLength: 50,
+   }
  },
  {
   key: 'lastname', type: 'input',
   templateOptions: {
-     label: 'Sobrenome',
+     label: 'Sobrenome (Min:4 Max:10)',
      placeholder: 'Informe Sobrenome',
      required: true,
-  }
+     minLength: 4,
+     maxLength: 50,
+}
 },
 {
   key: 'email', type: 'input',
   templateOptions: {
-     label: 'Email',
+     label: 'Emai (Min:4 Max:10)',
      placeholder: 'Informe Email',
      required: true,
-  }
+     minLength: 4,
+     maxLength: 50,
+}
 },
 {
   key: 'phone', type: 'input',
   templateOptions: {
-     label: 'Telefone',
+     label: 'Telefone (Min:4 Max:10)',
      placeholder: 'Informe Telefone',
      required: true,
+     minLength: 4,
+     maxLength: 50,
+}
+},
+{
+  key: 'password', type: 'input',
+  templateOptions: {
+     type: 'password',
+     label: 'Senha (Min:4 Max:10)',
+     placeholder: 'Informe Senha',
+     required: true,
+     minLength: 4,
+     maxLength: 10,
+
   }
 },
 {
-  key: 'enabled', type: 'input',
+  key: 'enabled', type: 'checkbox',
   templateOptions: {
      label: 'Situação',
-     placeholder: 'Informe situação',
      required: true,
   }
 },

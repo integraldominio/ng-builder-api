@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -91,8 +92,9 @@ public class UserCrudResource
     @Transactional
     public ResponseEntity<User> add(@RequestBody User u)
     {
-        User newConfig = userRepository.save(u);
-        return new ResponseEntity<>(newConfig, HttpStatus.OK);
+        u.setLastPasswordResetDate(new Date());
+        User newUser = userRepository.save(u);
+        return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
