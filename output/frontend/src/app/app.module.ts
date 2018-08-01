@@ -64,6 +64,8 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 import { UserGridComponent } from './infra/users/user-grid.component';
 import { UserFormComponent } from './infra/users/user-form.component';
 import { UserService, ApiService } from './infra/auth';
+import { FileUploadComponent } from './infra/comps/file-upload/file-upload.component';
+import { UserUploadComponent } from './infra/users/user-upload.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { UserService, ApiService } from './infra/auth';
     ConfiguracaoGridComponent,
     ConfiguracaoFormComponent,
     BuildAppComponent,
+    FileUploadComponent,
+    UserUploadComponent,
     ],
   imports: [
     BrowserModule,

@@ -46,6 +46,7 @@ import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserGridComponent } from './infra/users/user-grid.component';
 import { UserFormComponent } from './infra/users/user-form.component';
+import { UserUploadComponent } from './infra/users/user-upload.component';
 
 const routes: Routes =
 
@@ -81,6 +82,7 @@ const routes: Routes =
     { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
     { path: 'user/edit/:id', component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'user/add',  component: UserFormComponent, canActivate: [AdminGuard] },
+    { path: 'user/foto/:id',  component: UserUploadComponent, canActivate: [AdminGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ]
 },

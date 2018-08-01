@@ -40,6 +40,11 @@ export class ConfigService {
   private _reset_credentials_url = this._user_url + '/reset-credentials';
   private _foo_url = this._api_url + '/foo';
   private _report_url = this._api_url + '/report';
+  private _upload_foto_user_url = this._api_url + '/users/foto';
+
+  getFotoUserUrl() {
+    return this._upload_foto_user_url;
+  }
 
   getApiUrl() {
     return this._api_url;

@@ -28,84 +28,23 @@ import { MessageService } from '../security';
 import { FormGroup} from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ConfigService } from './../security/config.service';
+import { ConfigService } from '../security/config.service';
 
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-user-upload',
+  templateUrl: './user-upload.component.html',
 })
-export class UserFormComponent implements OnInit {
+export class UserUploadComponent implements OnInit {
 
-  // upload
+  // file upload
   labelUploadButtom = 'Upload Foto';
   target = '';
 
-  //
+  // User info
   id: string;
   title: string;
-  // Form
-  form = new FormGroup({});
-  options: FormlyFormOptions = {
-    formState: {
-      awesomeIsForced: false,
-    },
-  };
-  model = {
-  };
-
-  // Fieds
-  fields: FormlyFieldConfig[] = [
-  {
-     key: 'username', type: 'input',
-     templateOptions: {
-        label: 'Login',
-        placeholder: 'Informe nome login',
-        required: true,
-     }
-  },
-  {
-    key: 'firstname', type: 'input',
-    templateOptions: {
-       label: 'Nome',
-       placeholder: 'Informe Nome',
-       required: true,
-    }
- },
- {
-  key: 'lastname', type: 'input',
-  templateOptions: {
-     label: 'Sobrenome',
-     placeholder: 'Informe Sobrenome',
-     required: true,
-  }
-},
-{
-  key: 'email', type: 'input',
-  templateOptions: {
-     label: 'Email',
-     placeholder: 'Informe Email',
-     required: true,
-  }
-},
-{
-  key: 'phone', type: 'input',
-  templateOptions: {
-     label: 'Telefone',
-     placeholder: 'Informe Telefone',
-     required: true,
-  }
-},
-{
-  key: 'enabled', type: 'input',
-  templateOptions: {
-     label: 'Situação',
-     placeholder: 'Informe situação',
-     required: true,
-  }
-},
-];
+  model: User;
 
   constructor (
     private router: Router,
@@ -117,44 +56,22 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.setFormTitle( this.id );
     this.loadUser( parseInt( this.id ) );
     this.target = this.configService.getFotoUserUrl();
   }
-
-  setFormTitle( id: any  ) {
-    this.title = 'Usuário';
-    if ( this.id === null ) {
-       this.title = 'Novo ' + this.title;
-    } else {
-       this.title = 'Editar ' + this.title;
-    }
-  }
-
-  onSubmit(model) {
-    if (this.form.valid) {
-      this.userService
-        .create( model as User )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/user']); });
-    } else {
-      this.messageService.info('Informe corretamente dados obrigatórios.');
-    }
-  }
-
 
   loadUser(id: number)  {
     if ( this.id !== null ) {
        this.userService.read(id).subscribe(
        data => {
-         console.log('>>>');
-         console.log(this.model);
-       this.model  = data as User;
-    });
+         this.model = data;
+         this.title = 'User: ' + this.model.username;
+      });
     }
   }
 
- onFileComplete(data: any) {
+  onFileComplete(data: any) {
     console.log(data); // We just print out data bubbled up from event emitter.
- }
+  }
 
 }

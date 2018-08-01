@@ -74,6 +74,9 @@
       <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
       <mat-cell *matCellDef="let row"  >
  
+        <button mat-mini-fab color="primary"routerLink="/user/foto/{{row.id}}">
+          <mat-icon aria-label="Edit">photo_camera</mat-icon>
+        </button>
         <button mat-mini-fab color="primary"routerLink="/user/edit/{{row.id}}">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
