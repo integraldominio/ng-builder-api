@@ -38,7 +38,7 @@ import { ${artefato.className}Component } from './erp/${artefato.classFolder}/${
 </#if>
 </#list>
 
-import { AuthGuard } from './infra/security';
+import { AuthGuard, AdminGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserGridComponent } from './infra/users/user-grid.component';

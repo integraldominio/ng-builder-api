@@ -34,7 +34,7 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
 import { AuthGuard, GuestGuard, AdminGuard, AuthenticationService,
-          ConfigService, JwtInterceptor, MessageService, UserService } from './infra/security';
+          ConfigService, JwtInterceptor, MessageService } from './infra/security';
 import { AppRotasModule } from './app-rotas.module';
 import { LoginComponent } from './pages/login/login.component';
 import { SidenaveComponent } from './pages/sidenav/sidenav.component';

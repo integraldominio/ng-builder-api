@@ -7,6 +7,7 @@ CREATE TABLE `elemento` (
   `label_prop` varchar(255) DEFAULT NULL,
   `mascara` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
+  `column_name` varchar(255) DEFAULT NULL,
   `options` varchar(255) DEFAULT NULL,
   `ordenation` bigint(20) DEFAULT NULL,
   `persistence` bit(1) NOT NULL,

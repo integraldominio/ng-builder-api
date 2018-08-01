@@ -76,10 +76,12 @@ public class FolderHelper
         criarDir(base + "/frontend/src/app");
         criarDir(base + "/frontend/src/app/erp");
         criarDir(base + "/frontend/src/app/infra");
+        criarDir(base + "/frontend/src/app/infra/auth");
         criarDir(base + "/frontend/src/app/infra/comps");
         criarDir(base + "/frontend/src/app/infra/comps/dashcard");
         criarDir(base + "/frontend/src/app/infra/pipes");
         criarDir(base + "/frontend/src/app/infra/security");
+        criarDir(base + "/frontend/src/app/infra/users");
         criarDir(base + "/frontend/src/app/pages");
         criarDir(base + "/frontend/src/app/pages/base");
         criarDir(base + "/frontend/src/app/pages/erro");

@@ -69,6 +69,7 @@ public class GenerationHelper
             frontAssets(projeto);
             frontEnviroment(projeto);
             frontendSecurityFiles(projeto);
+            frontendInfra(projeto);
             frontendInfraComps(projeto);
             frontendInfraPipes(projeto);
             frontendPages(projeto);
@@ -76,6 +77,31 @@ public class GenerationHelper
             fromendAppModule(projeto);
             frontendErp(projeto);
         }
+    }
+
+    private static void frontendInfra(Projeto projeto)
+    {
+        String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA;
+        String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA;
+        try
+        {
+            copyFile(new File(o + "auth/api.service.ts"),new File(d + "auth/api.service.ts"));
+            copyFile(new File(o + "auth/auth.service.ts"),new File(d + "auth/auth.service.ts"));
+            copyFile(new File(o + "auth/index.ts"),new File(d + "auth/index.ts"));
+            copyFile(new File(o + "auth/user.service.ts"),new File(d + "auth/user.service.ts"));
+            copyFile(new File(o + "users/user-form.component.css"),new File(d + "users/user-form.component.css"));
+            copyFile(new File(o + "users/user-form.component.ts"),new File(d + "users/user-form.component.ts"));
+            copyFile(new File(o + "users/user-form.component.html"),new File(d + "users/user-form.component.html"));
+            copyFile(new File(o + "users/user-grid.component.css"),new File(d + "users/user-grid.component.css"));
+            copyFile(new File(o + "users/user-grid.component.html"),new File(d + "users/user-grid.component.html"));
+            copyFile(new File(o + "users/user-grid.component.ts"),new File(d + "users/user-grid.component.ts"));
+            copyFile(new File(o + "users/users.service.ts"),new File(d + "users/users.service.ts"));
+        }
+        catch (IOException e)
+        {
+            System.err.println(">>>" + e);
+
+        }        
     }
 
     private static void backendMigrationToOutput(Projeto projeto)
@@ -119,6 +145,7 @@ public class GenerationHelper
             copyFile(new File(o + "repository/UserRepository.java"),                    new File(d + "repository/UserRepository.java"));
             copyFile(new File(o + "rest/auth/AuthenticationRestController.java"),       new File(d + "rest/auth/AuthenticationRestController.java"));
             copyFile(new File(o + "rest/protecteds/MethodProtectedRestController.java"),new File(d + "rest/protecteds/MethodProtectedRestController.java"));
+            copyFile(new File(o + "rest/user/UserCrudResource.java"),                   new File(d + "rest/user/UserCrudResource.java"));
             copyFile(new File(o + "rest/user/UserRestController.java"),                 new File(d + "rest/user/UserRestController.java"));
             copyFile(new File(o + "service/JwtAuthenticationResponse.java"),            new File(d + "service/JwtAuthenticationResponse.java"));
             copyFile(new File(o + "service/JwtUserDetailsService.java"),                new File(d + "service/JwtUserDetailsService.java"));
@@ -150,11 +177,9 @@ public class GenerationHelper
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         try
         {
-            copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
-            copyFile(new File(o + "dashcard/dashcard.component.html"),
-                    new File(d + "dashcard/dashcard.component.html"));
-            copyFile(new File(o + "dashcard/dashcard.component.scss"),
-                    new File(d + "dashcard/dashcard.component.scss"));
+            copyFile(new File(o + "dashcard/dashcard.component.ts"),   new File(d + "dashcard/dashcard.component.ts"));
+            copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.component.html"));
+            copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scss"));
         }
         catch (IOException e)
         {
@@ -220,11 +245,7 @@ public class GenerationHelper
         output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_MAIN,
                 fm.process(TemplatePathHelper.FRONTEND_SRC_MAIN, model(projeto)));
 
-        output(
-                projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY
-                        + "config.service.ts",
-                fm.process(TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts",
-                        model(projeto)));
+
 
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC;
@@ -377,17 +398,17 @@ public class GenerationHelper
     {
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
+        output( d + "config.service.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts", model(projeto)));        
         try
         {
-            copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
-            copyFile(new File(o + "auth.guard.ts"), new File(d + "auth.guard.ts"));
+            copyFile(new File(o + "admin.guard.ts"),    new File(d + "admin.guard.ts"));
+            copyFile(new File(o + "auth.guard.ts"),     new File(d + "auth.guard.ts"));
             copyFile(new File(o + "authentication.service.ts"), new File(d + "authentication.service.ts"));
-            copyFile(new File(o + "guest.guard.ts"), new File(d + "guest.guard.ts"));
-            copyFile(new File(o + "index.ts"), new File(d + "index.ts"));
-            copyFile(new File(o + "jwt.interceptor.ts"), new File(d + "jwt.interceptor.ts"));
-            copyFile(new File(o + "message.service.ts"), new File(d + "message.service.ts"));
+            copyFile(new File(o + "guest.guard.ts"),    new File(d + "guest.guard.ts"));
+            copyFile(new File(o + "index.ts"),          new File(d + "index.ts"));
+            copyFile(new File(o + "jwt.interceptor.ts"),new File(d + "jwt.interceptor.ts"));
+            copyFile(new File(o + "message.service.ts"),new File(d + "message.service.ts"));
             copyFile(new File(o + "resource.service.ts"), new File(d + "resource.service.ts"));
-            copyFile(new File(o + "user.service.ts"), new File(d + "user.service.ts"));
         }
         catch (IOException e)
         {

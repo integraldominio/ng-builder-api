@@ -15,7 +15,8 @@
     min-height: 64px;
     padding: 8px 24px 0;
     /* background-color: #ededed; */
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    background-color:rgba(245, 245, 248, 0.521) ;
   }
 
 

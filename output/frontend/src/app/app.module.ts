@@ -51,24 +51,19 @@ import { Ng2OdometerModule } from 'ng2-odometer';
 
 import { PortalGridComponent } from './erp/portal/portal-grid.component';
 import { PortalFormComponent } from './erp/portal/portal-form.component';
-
 import { ProjetoGridComponent } from './erp/projeto/projeto-grid.component';
 import { ProjetoFormComponent } from './erp/projeto/projeto-form.component';
-
 import { ArtefatoGridComponent } from './erp/artefato/artefato-grid.component';
 import { ArtefatoFormComponent } from './erp/artefato/artefato-form.component';
-
 import { ElementoGridComponent } from './erp/elemento/elemento-grid.component';
 import { ElementoFormComponent } from './erp/elemento/elemento-form.component';
-
 import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.component';
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
-
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
+
 import { UserGridComponent } from './infra/users/user-grid.component';
 import { UserFormComponent } from './infra/users/user-form.component';
 import { UserService, ApiService } from './infra/auth';
-
 
 @NgModule({
   declarations: [
@@ -81,6 +76,8 @@ import { UserService, ApiService } from './infra/auth';
     AutocompleteTypeComponent,
     MaxCharPipe,
     DashcardComponent,
+    UserGridComponent,
+    UserFormComponent,
     PortalGridComponent,
     PortalFormComponent,
     ProjetoGridComponent,
@@ -91,8 +88,6 @@ import { UserService, ApiService } from './infra/auth';
     ElementoFormComponent,
     ConfiguracaoGridComponent,
     ConfiguracaoFormComponent,
-    UserGridComponent,
-    UserFormComponent,
     BuildAppComponent,
     ],
   imports: [
@@ -120,6 +115,7 @@ import { UserService, ApiService } from './infra/auth';
     Ng2OdometerModule.forRoot(),
   ],
   providers: [
+    ApiService,
     AuthGuard,
     GuestGuard,
     AdminGuard,
@@ -129,7 +125,6 @@ import { UserService, ApiService } from './infra/auth';
     MessageService,
     UserService,
     SidenavService,
-    ApiService,
     {
       /// iterceptar requisioes http e colocar token
       provide: HTTP_INTERCEPTORS,

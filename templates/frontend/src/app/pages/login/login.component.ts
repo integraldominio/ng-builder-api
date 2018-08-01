@@ -25,10 +25,11 @@
 import { Component, OnInit , OnDestroy} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService, AuthenticationService } from '../../infra/security';
+import { AuthenticationService } from '../../infra/security';
 import { DisplayMessage } from '../../shared/models/display-message';
 import { Subject } from 'rxjs';
 import { first , takeUntil} from 'rxjs/operators';
+import { UserService } from '../../infra/auth';
 
 @Component({
   selector: 'app-login',
@@ -80,7 +81,6 @@ export class LoginComponent implements OnInit, OnDestroy  {
       .pipe(first())
       .subscribe(
         data => {
-            // this.userService.getMyInfo().subscribe();
             this.router.navigate(['home']);
         },
         error => {

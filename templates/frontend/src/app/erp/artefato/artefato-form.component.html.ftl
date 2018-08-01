@@ -3,7 +3,7 @@
       <mat-card>
         
         <mat-card-title>{{title}}</mat-card-title>
-        <a mat-fab color="accent"  routerLink="/${artefato.classFolder}" >
+        <a mat-raised-button color="accent"  routerLink="/${artefato.classFolder}" >
           <mat-icon>chevron_left</mat-icon>
         </a>
         
