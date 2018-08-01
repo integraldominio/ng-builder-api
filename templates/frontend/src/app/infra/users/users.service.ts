@@ -53,7 +53,9 @@ export class User {
   phone: string;
   email: string;
   enabled: string;
+  foto: string;
   lastPasswordResetDate: Date;
+
 }
 
 // usando json-server

@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" class="form-group">
     <div fxFlex.gt-sm="100" class="divide">
-      <mat-card>
+      <mat-card fxFlex.gt-sm="50" >
         
         <mat-card-title>{{title}}</mat-card-title>
         <a mat-raised-button color="accent"  routerLink="/user" >
@@ -19,7 +19,17 @@
             <button mat-raised-button (click)="options.resetModel()">Limpar</button>
           </formly-form>
         </form>
-  </mat-card-content>
-  </mat-card>
-  </div>
+
+      </mat-card-content>
+      </mat-card>
+
+    <mat-card fxFlex.gt-sm="50">
+     <mat-card-title>Foto</mat-card-title>
+     <mat-card-content>
+        <img *ngIf="model.foto" src="data:image/gif;base64,{{ model.foto }}" style="width: 80%" /> 
+      </mat-card-content>
+    </mat-card>
+
+
+    </div>
   </div>

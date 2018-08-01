@@ -28,21 +28,21 @@
 	<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
 	    <!-- ID Column -->
-	    <ng-container matColumnDef="username">
-	      <mat-header-cell *matHeaderCellDef mat-sort-header>Login</mat-header-cell>
-	      <mat-cell *matCellDef="let row" > <img *ngIf="row.foto" src="data:image/gif;base64,{{row.foto}}"  />      {{row.username}}</mat-cell>
+	    <ng-container matColumnDef="username" >
+	      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+	      <mat-cell *matCellDef="let row" > <img *ngIf="row.foto" src="data:image/gif;base64,{{row.foto}}"/> </mat-cell>
 	    </ng-container>
 
 	    <!-- ID Column -->
 	    <ng-container matColumnDef="firstname">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-          <mat-cell *matCellDef="let row" >{{row.firstname}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Login</mat-header-cell>
+          <mat-cell *matCellDef="let row" >     {{row.username}}</mat-cell>
         </ng-container>
   
 	    <!-- ID Column -->
 	    <ng-container matColumnDef="lastname">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Sobrenome</mat-header-cell>
-          <mat-cell *matCellDef="let row" >{{row.lastname}}</mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Nome/Sobrenome</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.firstname}} {{row.lastname}}</mat-cell>
         </ng-container>
 
       <!-- ID Column -->

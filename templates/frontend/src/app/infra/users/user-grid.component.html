@@ -30,7 +30,7 @@
 	    <!-- ID Column -->
 	    <ng-container matColumnDef="username">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Login</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.username}}</mat-cell>
+	      <mat-cell *matCellDef="let row" > <img *ngIf="row.foto" src="data:image/gif;base64,{{row.foto}}"  />      {{row.username}}</mat-cell>
 	    </ng-container>
 
 	    <!-- ID Column -->
