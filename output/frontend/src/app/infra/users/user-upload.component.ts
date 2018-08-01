@@ -57,7 +57,6 @@ export class UserUploadComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.loadUser( parseInt( this.id ) );
-    this.target = this.configService.getFotoUserUrl();
   }
 
   loadUser(id: number)  {
@@ -66,6 +65,7 @@ export class UserUploadComponent implements OnInit {
        data => {
          this.model = data;
          this.title = 'User: ' + this.model.username;
+         this.target = this.configService.getFotoUserUrl() + '/' + this.model.id;
       });
     }
   }
