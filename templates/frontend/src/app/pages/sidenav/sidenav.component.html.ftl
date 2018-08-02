@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" >
+<mat-sidenav-container [class.dark-theme]="isToggledTheme"  >
   <mat-sidenav
     #sidenav
     class="sidenav"
@@ -16,7 +16,8 @@
     <#list projeto.artefatos as artefato > 
         <a mat-list-item  (click)="toggle()" [routerLink]="['/${artefato.classFolder}']"  >${artefato.nome}</a>
 	</#list>        
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']"  >Usuários</a>	
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']" *ngIf="isAdmin()"    >Usuários</a>
+        <a mat-list-item  (click)="theme()" >Tema</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
         <a mat-list-item  (click)="logout()" >Logout</a>
     </mat-nav-list>

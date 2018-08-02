@@ -58,7 +58,7 @@ public final class TemplatePathHelper
     public static final String FRONTEND_SRC_TSCONFIG_SPEC = FRONTEND_SRC + "tsconfig.spec.json";
     public static final String FRONTEND_SRC_TSCONFIG_APP = FRONTEND_SRC + "tsconfig.app.json";
     public static final String FRONTEND_SRC_TEST = FRONTEND_SRC + "test.ts";
-    public static final String FRONTEND_SRC_STYLE = FRONTEND_SRC + "styles.css";
+    public static final String FRONTEND_SRC_STYLE = FRONTEND_SRC + "styles.scss";
     public static final String FRONTEND_SRC_INDEX = FRONTEND_SRC + "index.html";
     public static final String FRONTEND_SRC_MAIN = FRONTEND_SRC + "main.ts";
     public static final String FRONTEND_SRC_ASSETS = FRONTEND_SRC + "assets/";

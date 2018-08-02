@@ -26,6 +26,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ConfigService } from './config.service';
 import { UserService } from '../auth';
+import { User, Authority } from '../users/users.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -80,5 +81,16 @@ export class AuthenticationService {
       return currentUser ? currentUser : '';
     }
 
+    isAdmin(): boolean {
+      const currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+      const a: Array<Authority> = currentUser.authorities;
+      console.log( '>>>authorities');
+      console.log( a );
+      // console.log( a.find( aut => aut.authority === 'ROLE_ADMIN' ) );
+      return true;
+    }
 
 }
+
+
+

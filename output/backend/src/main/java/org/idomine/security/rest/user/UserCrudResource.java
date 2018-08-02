@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -48,7 +49,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -91,8 +91,9 @@ public class UserCrudResource
     @Transactional
     public ResponseEntity<User> add(@RequestBody User u)
     {
-        User newConfig = userRepository.save(u);
-        return new ResponseEntity<>(newConfig, HttpStatus.OK);
+        u.setLastPasswordResetDate(new Date());
+        User newUser = userRepository.save(u);
+        return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -106,7 +107,8 @@ public class UserCrudResource
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/users/foto/{id}")
-    public ResponseEntity<?> singleFileUpload(@PathVariable Long id, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes)
+    @Transactional
+    public ResponseEntity<?> singleFileUpload(@PathVariable Long id, @RequestParam("file") MultipartFile file)
     {
         if (file.isEmpty())
         {
@@ -114,17 +116,24 @@ public class UserCrudResource
         }
         try
         {
-            String nome = userRepository.findById(id).get().getFirstname();
+            User user = userRepository.findById(id).get();
 
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get("fotos/" + nome + "-" + file.getOriginalFilename());
-            Files.write(path, bytes);
-            new ResponseEntity<>("sucesso!", HttpStatus.OK);
+            if (user != null)
+            {
+                byte[] bytes = file.getBytes();
+                // salvando em arquivo
+                // Path path = Paths.get("fotos/" + user.getId().toString() + "-" + file.getOriginalFilename());
+                // Files.write(path, bytes);
+                user.setFoto(bytes);
+                userRepository.save(user);
+                new ResponseEntity<>("sucesso!", HttpStatus.OK);
+            }
+
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 }
