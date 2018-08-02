@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" >
+<mat-sidenav-container [class.dark-theme]="isToggledTheme"  >
   <mat-sidenav
     #sidenav
     class="sidenav"
