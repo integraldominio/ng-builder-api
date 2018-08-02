@@ -1,4 +1,4 @@
-package org.idomine.domain.infrastructure;
+package org.idomine.infrastructure;
 
 import java.io.File;
 import java.io.FileInputStream;
