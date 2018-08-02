@@ -6,6 +6,8 @@
         <a mat-raised-button color="accent"  routerLink="/configuracao" >
           <mat-icon>chevron_left</mat-icon>
         </a>
+        <button mat-raised-button color="accent" (click)="onSubmit()"><mat-icon>save</mat-icon></button>
+        <button mat-raised-button color="accent" (click)="options.resetModel()"><mat-icon>clear</mat-icon></button>
         
         <mat-card-content>
 
@@ -15,8 +17,6 @@
             [options]="options"
             [fields]="fields"
             [model]="model">
-            <button mat-raised-button color="primary"  type="submit">Salvar</button>
-            <button mat-raised-button (click)="options.resetModel()">Limpar</button>
           </formly-form>
         </form>
 

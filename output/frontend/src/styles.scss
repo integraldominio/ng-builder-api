@@ -11,7 +11,7 @@ $app-dark-theme: mat-dark-theme($app-dark-primary, $app-dark-accent);
 // Normal theme
 $app-light-primary: mat-palette($mat-indigo);
 // $app-light-accent: mat-palette($mat-pink, A200, A100, A400);
-$app-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-light-accent: mat-palette($mat-indigo, A200, A100, A400);
 $app-dark-accent: mat-palette($mat-indigo, A200, A100, A400);
 // $app-dark-accent: mat-palette($mat-green, A200, A100, A400);
 $app-light-theme: mat-light-theme($app-light-primary, $app-light-accent);
@@ -26,6 +26,8 @@ purple-green.css
 */
 
 
+
+
 body{
   margin: 0;
 }
@@ -35,7 +37,7 @@ body{
 
 :host {
   display: block;
-  padding: 10px;
+  padding: 15px;
 }
 
 .form-check {
