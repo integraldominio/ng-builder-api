@@ -40,9 +40,13 @@ export class ArtefatoGridComponent implements OnInit {
 
   dataSource: MatTableDataSource<Artefato>;
   displayedColumns = [
+  'id',
   'tipo',
+  'id',
   'nome',
+  'id',
   'resourceName',
+  'id',
   'className',
   'actions'
   ];

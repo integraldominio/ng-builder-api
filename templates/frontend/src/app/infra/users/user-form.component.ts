@@ -154,8 +154,8 @@ export class UserFormComponent implements OnInit {
   onSubmit(model) {
     if (this.form.valid) {
       this.userService
-        .create( model as User )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/user']); });
+        .create( this.model as User )
+        .subscribe(  _ => { this.router.navigate(['/user']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

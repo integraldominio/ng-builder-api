@@ -182,9 +182,9 @@ export class ArtefatoFormComponent implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-       model = this.projetoToArtefato(model);
+       this.model = this.projetoToArtefato(model);
       this.artefatoService
-        .create( model as Artefato )
+        .create( this.model as Artefato )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/artefato']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');

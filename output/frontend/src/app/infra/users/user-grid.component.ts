@@ -43,7 +43,6 @@ export class UserGridComponent implements OnInit {
   'firstname',
   'lastname',
   'email',
-  'phone',
   'enabled',
   'actions'
   ];

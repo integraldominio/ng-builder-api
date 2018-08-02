@@ -39,10 +39,15 @@ export class ConfiguracaoGridComponent implements OnInit {
 
   dataSource: MatTableDataSource<Configuracao>;
   displayedColumns = [
+  'id',
   'nomeEmpresa',
+  'id',
   'siteEmpresa',
+  'id',
   'emailEmpresa',
+  'id',
   'outputDirectory',
+  'id',
   'appProperties',
   'actions'
   ];

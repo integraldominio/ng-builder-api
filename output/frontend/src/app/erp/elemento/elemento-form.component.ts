@@ -263,9 +263,9 @@ export class ElementoFormComponent implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-       model = this.artefatoToElemento(model);
+       this.model = this.artefatoToElemento(model);
       this.elementoService
-        .create( model as Elemento )
+        .create( this.model as Elemento )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/elemento']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');

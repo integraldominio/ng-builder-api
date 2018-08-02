@@ -13,13 +13,13 @@
 
     <mat-nav-list>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/home']" >Home</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/portal']"  >Portais</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/projeto']"  >Projetos</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/artefato']"  >Artefatos</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/elemento']"  >Elementos</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/configuracao']"  >Configuração</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/buildapp']"  >Gerar App!</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']">Usuários</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/portal']" >Portais</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/projeto']" >Projetos</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/artefato']" >Artefatos</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/elemento']" >Elementos</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/configuracao']" >Configuração</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/buildapp']" >Gerar App!</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/user']" *ngIf="isAdmin()" >Usuários</a>
         <a mat-list-item  (click)="theme()" >Tema</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
         <a mat-list-item  (click)="logout()" >Logout</a>

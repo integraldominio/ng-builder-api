@@ -39,10 +39,15 @@ export class PortalGridComponent implements OnInit {
 
   dataSource: MatTableDataSource<Portal>;
   displayedColumns = [
+  'id',
   'nome',
+  'id',
   'descricao',
+  'id',
   'templateTs',
+  'id',
   'templateCss',
+  'id',
   'templateHtml',
   'actions'
   ];

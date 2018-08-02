@@ -40,9 +40,13 @@ export class ProjetoGridComponent implements OnInit {
 
   dataSource: MatTableDataSource<Projeto>;
   displayedColumns = [
+  'id',
   'portal',
+  'id',
   'nome',
+  'id',
   'descricao',
+  'id',
   'outputDirectory',
   'actions'
   ];

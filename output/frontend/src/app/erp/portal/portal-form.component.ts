@@ -132,7 +132,7 @@ export class PortalFormComponent implements OnInit {
   onSubmit(model) {
     if (this.form.valid) {
       this.portalService
-        .create( model as Portal )
+        .create( this.model as Portal )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/portal']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');

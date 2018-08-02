@@ -217,9 +217,9 @@ export class ProjetoFormComponent implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-       model = this.portalToProjeto(model);
+       this.model = this.portalToProjeto(model);
       this.projetoService
-        .create( model as Projeto )
+        .create( this.model as Projeto )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/projeto']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');

@@ -130,10 +130,6 @@ export class ConfiguracaoFormComponent implements OnInit {
   }
 
   onSubmit(model) {
-
-    console.log( '>>>Model');
-    console.log( this.model );
-
     if (this.form.valid) {
       this.configuracaoService
         .create( this.model as Configuracao )
