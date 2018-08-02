@@ -8,6 +8,7 @@
         </a>
         <button mat-raised-button color="accent" (click)="onSubmit()"><mat-icon>save</mat-icon></button>
         <button mat-raised-button color="accent" (click)="options.resetModel()"><mat-icon>clear</mat-icon></button>
+        <br>
         
         <mat-card-content>
 
