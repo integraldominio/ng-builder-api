@@ -192,6 +192,15 @@ export class ElementoFormComponent implements OnInit {
      }
   },
   {
+     key: 'linhas', type: 'input',
+     templateOptions: {
+        label: 'Número Linhas',
+        placeholder: 'Informe Número Linhas',
+        required: false,
+        
+     }
+  },
+  {
      key: 'showcolumn', type: 'checkbox',
      templateOptions: {
         label: 'Show Column',

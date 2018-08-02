@@ -103,6 +103,11 @@
 	      <mat-cell *matCellDef="let row" >{{row.max}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="linhas">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Número Linhas</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.linhas}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="showcolumn">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Show Column</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.showcolumn}}</mat-cell>

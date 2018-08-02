@@ -169,6 +169,11 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByMax(max), HttpStatus.OK);
     }
+    @GetMapping("/elementos/search/linhas/{linhas}")
+    public ResponseEntity<?> searchPathVariableLinhas(@PathVariable  Long  linhas)
+    {
+        return new ResponseEntity<>(elementoRepository.findByLinhas(linhas), HttpStatus.OK);
+    }
     @GetMapping("/elementos/search/showcolumn/{showcolumn}")
     public ResponseEntity<?> searchPathVariableShowcolumn(@PathVariable  Boolean  showcolumn)
     {

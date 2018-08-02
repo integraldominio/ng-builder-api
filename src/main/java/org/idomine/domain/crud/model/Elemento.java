@@ -78,6 +78,7 @@ public class Elemento
     private boolean requerido;
     private Long minimo;
     private Long maximo;
+    private Long linhas;
 
     private String artefatoFK;
     private String options;
@@ -111,14 +112,14 @@ public class Elemento
         {
             if (minimo != null)
             {
-                restricoes = isTipoString() ? "minLength: " + minimo : "min:" + minimo ;
+                restricoes = isTipoString() ? "minLength: " + minimo : "min: " + minimo ;
                 restricoes = restricoes + ",";
             }
 
             if (maximo != null)
             {
                 restricoes = restricoes.equals("") ? "" : "; ";
-                restricoes = isTipoString() ? "maxLength: " + maximo : "max:" + maximo ;
+                restricoes = isTipoString() ? "maxLength: " + maximo : "max: " + maximo ;
                 restricoes = restricoes + ",";
             }
         }
@@ -247,7 +248,8 @@ public class Elemento
                         .rotulo("template Ts")
                         .tamanho(100L)
                         .minimo(1L)
-                        .maximo(100L)
+                        .maximo(200L)
+                        .linhas(3L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -261,9 +263,10 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("templateCss")
                         .rotulo("template Css")
-                        .tamanho(100L)
+                        .tamanho(200L)
                         .minimo(1L)
-                        .maximo(100L)
+                        .maximo(200L)
+                        .linhas(3L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -279,7 +282,8 @@ public class Elemento
                         .rotulo("template Html")
                         .tamanho(100L)
                         .minimo(1L)
-                        .maximo(100L)
+                        .maximo(200L)
+                        .linhas(3L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -883,6 +887,18 @@ public class Elemento
                         .nome("max")
                         .tamanho(20L)
                         .rotulo("Máximo")
+                        .requerido(false)
+                        .persistence(true)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("linhas")
+                        .tamanho(20L)
+                        .rotulo("Número Linhas")
                         .requerido(false)
                         .persistence(true)
                         .build());

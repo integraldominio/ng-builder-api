@@ -62,6 +62,7 @@ export class Elemento {
   tamanho: number;
   min: number;
   max: number;
+  linhas: number;
   showcolumn: boolean;
   valueProp: string;
   labelProp: number;

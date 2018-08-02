@@ -92,6 +92,8 @@ public class Elemento
     
     private Long max;
     
+    private Long linhas;
+    
     private Boolean showcolumn;
     
     private String valueProp;

@@ -78,6 +78,9 @@ export class ${artefato.className}FormComponent implements OnInit {
         placeholder: 'Informe ${e.rotulo}',
         required: ${e.requiredToString()},
         ${e.restricoes()}
+        <#if e.linhas ?? >
+        rows: ${e.linhas},
+        </#if>
         <#if e.selectDB() >
         valueProp: '${e.valueProp}',
         labelProp: '${e.labelProp}',

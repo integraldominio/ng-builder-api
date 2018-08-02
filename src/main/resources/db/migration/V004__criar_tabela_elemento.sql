@@ -15,6 +15,7 @@ CREATE TABLE `elemento` (
   `requerido` bit(1) NOT NULL,
   `minimo` bigint(20) DEFAULT NULL,
   `maximo` bigint(20) DEFAULT NULL,
+  `linhas` bigint(20) DEFAULT NULL,
   `resource_prop` varchar(255) DEFAULT NULL,
   `rotulo` varchar(255) DEFAULT NULL,
   `showcolumn` bit(1) NOT NULL,

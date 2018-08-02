@@ -48,6 +48,7 @@ public interface ElementoRepository extends  CrudRepository<Elemento, Long>
     Elemento findByTamanho(Long tamanho);
     Elemento findByMin(Long min);
     Elemento findByMax(Long max);
+    Elemento findByLinhas(Long linhas);
     Elemento findByShowcolumn(Boolean showcolumn);
     Elemento findByValueProp(String valueProp);
     Elemento findByLabelProp(Long labelProp);
