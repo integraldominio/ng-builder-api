@@ -66,6 +66,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Artefato',
         placeholder: 'Informe Artefato',
         required: true,
+        
         valueProp: 'id',
         labelProp: 'nome',
         options: this.artefatoService.listAll(),
@@ -77,6 +78,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Tipo Elemento',
         placeholder: 'Informe Tipo Elemento',
         required: true,
+        
         options: [{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} , { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} , { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } , { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] 
      }
   },
@@ -86,7 +88,8 @@ export class ElementoFormComponent implements OnInit {
         label: 'Tipo Field',
         placeholder: 'Informe Tipo Field',
         required: true,
-        options: [{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'}, {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} , {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]
+        
+        options: [ {value: 'Boolean', label: 'Boolean'}, {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} , {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]
      }
   },
   {
@@ -95,6 +98,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
+        maxLength: 50,
      }
   },
   {
@@ -103,6 +107,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Rótulo',
         placeholder: 'Informe Rótulo',
         required: true,
+        maxLength: 50,
      }
   },
   {
@@ -111,6 +116,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Valor Inicial',
         placeholder: 'Informe Valor Inicial',
         required: false,
+        
      }
   },
   {
@@ -119,6 +125,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Máscara Edição',
         placeholder: 'Informe Máscara Edição',
         required: false,
+        
      }
   },
   {
@@ -127,6 +134,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Máscara Display',
         placeholder: 'Informe Máscara Display',
         required: false,
+        
      }
   },
   {
@@ -135,6 +143,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Hint(dica)',
         placeholder: 'Informe Hint(dica)',
         required: false,
+        
      }
   },
   {
@@ -143,6 +152,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Requerido',
         placeholder: 'Informe Requerido',
         required: true,
+        
      }
   },
   {
@@ -151,6 +161,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Persistence',
         placeholder: 'Informe Persistence',
         required: true,
+        
      }
   },
   {
@@ -159,6 +170,25 @@ export class ElementoFormComponent implements OnInit {
         label: 'Tamanho',
         placeholder: 'Informe Tamanho',
         required: true,
+        
+     }
+  },
+  {
+     key: 'min', type: 'input',
+     templateOptions: {
+        label: 'Mínimo',
+        placeholder: 'Informe Mínimo',
+        required: false,
+        
+     }
+  },
+  {
+     key: 'max', type: 'input',
+     templateOptions: {
+        label: 'Máximo',
+        placeholder: 'Informe Máximo',
+        required: false,
+        
      }
   },
   {
@@ -167,6 +197,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Show Column',
         placeholder: 'Informe Show Column',
         required: false,
+        
      }
   },
   {
@@ -175,6 +206,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Value Prop',
         placeholder: 'Informe Value Prop',
         required: false,
+        
      }
   },
   {
@@ -183,6 +215,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Label Prop',
         placeholder: 'Informe Label Prop',
         required: false,
+        
      }
   },
   {
@@ -191,6 +224,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Opções',
         placeholder: 'Informe Opções',
         required: false,
+        
      }
   },
   {
@@ -199,6 +233,7 @@ export class ElementoFormComponent implements OnInit {
         label: 'Ordem',
         placeholder: 'Informe Ordem',
         required: false,
+        
      }
   },
   ];

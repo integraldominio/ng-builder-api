@@ -88,6 +88,10 @@ public class Elemento
     
     private Long tamanho;
     
+    private Long min;
+    
+    private Long max;
+    
     private Boolean showcolumn;
     
     private String valueProp;

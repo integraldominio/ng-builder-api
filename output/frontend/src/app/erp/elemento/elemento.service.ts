@@ -60,6 +60,8 @@ export class Elemento {
   requerido: boolean;
   persistence: boolean;
   tamanho: number;
+  min: number;
+  max: number;
   showcolumn: boolean;
   valueProp: string;
   labelProp: number;

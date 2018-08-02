@@ -87,6 +87,16 @@
 	      <mat-cell *matCellDef="let row" >{{row.tamanho}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="min">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Mínimo</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.min}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="max">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Máximo</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.max}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="showcolumn">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Show Column</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.showcolumn}}</mat-cell>

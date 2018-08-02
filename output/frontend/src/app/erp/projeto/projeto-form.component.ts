@@ -67,6 +67,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Portal',
         placeholder: 'Informe Portal',
         required: true,
+        maxLength: 50,
         valueProp: 'id',
         labelProp: 'nome',
         options: this.portalService.listAll(),
@@ -78,6 +79,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -86,6 +88,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Descrição',
         placeholder: 'Informe Descrição',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -94,6 +97,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Nome Backend App',
         placeholder: 'Informe Nome Backend App',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -102,6 +106,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Nome Frontend App',
         placeholder: 'Informe Nome Frontend App',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -110,6 +115,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Ícone App',
         placeholder: 'Informe Ícone App',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -118,6 +124,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Image App',
         placeholder: 'Informe Image App',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -126,6 +133,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Server Host',
         placeholder: 'Informe Server Host',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -134,6 +142,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Server port',
         placeholder: 'Informe Server port',
         required: true,
+        max:9999,
      }
   },
   {
@@ -142,6 +151,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Front Host',
         placeholder: 'Informe Front Host',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -150,6 +160,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Front port',
         placeholder: 'Informe Front port',
         required: true,
+        max:99990,
      }
   },
   {
@@ -158,6 +169,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Use Login',
         placeholder: 'Informe Use Login',
         required: true,
+        
      }
   },
   {
@@ -166,6 +178,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Use Roles',
         placeholder: 'Informe Use Roles',
         required: true,
+        
      }
   },
   {
@@ -173,7 +186,8 @@ export class ProjetoFormComponent implements OnInit {
      templateOptions: {
         label: 'Output Directory',
         placeholder: 'Informe Output Directory',
-        required: false,
+        required: true,
+        maxLength: 100,
      }
   },
   ];

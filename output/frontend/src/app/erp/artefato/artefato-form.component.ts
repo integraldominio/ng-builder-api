@@ -67,6 +67,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Projeto',
         placeholder: 'Informe Projeto',
         required: true,
+        maxLength: 50,
         valueProp: 'id',
         labelProp: 'nome',
         options: this.projetoService.listAll(),
@@ -78,6 +79,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Tipo',
         placeholder: 'Informe Tipo',
         required: true,
+        maxLength: 50,
         options: [{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]
      }
   },
@@ -87,6 +89,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
+        maxLength: 50,
      }
   },
   {
@@ -95,6 +98,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Resource Name',
         placeholder: 'Informe Resource Name',
         required: true,
+        maxLength: 501,
      }
   },
   {
@@ -103,6 +107,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Class Name',
         placeholder: 'Informe Class Name',
         required: true,
+        maxLength: 50,
      }
   },
   {
@@ -111,6 +116,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Class Folder',
         placeholder: 'Informe Class Folder',
         required: true,
+        maxLength: 50,
      }
   },
   {
@@ -119,6 +125,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Página Home',
         placeholder: 'Informe Página Home',
         required: false,
+        
      }
   },
   {
@@ -127,6 +134,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Template Ts',
         placeholder: 'Informe Template Ts',
         required: false,
+        
      }
   },
   {
@@ -135,6 +143,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Template Html',
         placeholder: 'Informe Template Html',
         required: false,
+        
      }
   },
   {
@@ -143,6 +152,7 @@ export class ArtefatoFormComponent implements OnInit {
         label: 'Template Css',
         placeholder: 'Informe Template Css',
         required: false,
+        
      }
   },
   ];

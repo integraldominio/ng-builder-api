@@ -66,6 +66,7 @@ export class PortalFormComponent implements OnInit {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -74,6 +75,7 @@ export class PortalFormComponent implements OnInit {
         label: 'descricao',
         placeholder: 'Informe descricao',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -82,6 +84,7 @@ export class PortalFormComponent implements OnInit {
         label: 'template Ts',
         placeholder: 'Informe template Ts',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -90,6 +93,7 @@ export class PortalFormComponent implements OnInit {
         label: 'template Css',
         placeholder: 'Informe template Css',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -98,6 +102,7 @@ export class PortalFormComponent implements OnInit {
         label: 'template Html',
         placeholder: 'Informe template Html',
         required: true,
+        maxLength: 100,
      }
   },
   ];

@@ -66,6 +66,7 @@ export class ConfiguracaoFormComponent implements OnInit {
         label: 'Nome Empresa',
         placeholder: 'Informe Nome Empresa',
         required: true,
+        maxLength: 100,
      }
   },
   {
@@ -74,6 +75,7 @@ export class ConfiguracaoFormComponent implements OnInit {
         label: 'Site Empresa',
         placeholder: 'Informe Site Empresa',
         required: false,
+        
      }
   },
   {
@@ -82,6 +84,7 @@ export class ConfiguracaoFormComponent implements OnInit {
         label: 'Email Empresa',
         placeholder: 'Informe Email Empresa',
         required: false,
+        
      }
   },
   {
@@ -90,6 +93,7 @@ export class ConfiguracaoFormComponent implements OnInit {
         label: 'Output Directory',
         placeholder: 'Informe Output Directory',
         required: false,
+        
      }
   },
   {
@@ -98,6 +102,7 @@ export class ConfiguracaoFormComponent implements OnInit {
         label: 'Application Properties',
         placeholder: 'Informe Application Properties',
         required: false,
+        
      }
   },
   ];

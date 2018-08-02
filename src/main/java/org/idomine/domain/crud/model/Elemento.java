@@ -74,31 +74,56 @@ public class Elemento
 
     private boolean persistence;
     private String columnName;
-    
+
     private boolean requerido;
     private Long minimo;
     private Long maximo;
-    
+
     private String artefatoFK;
     private String options;
     private String valueProp;
     private String labelProp;
     private String urlProp;
     private String resourceProp;
-    
+
     private Long tamanho;
     private Long decimais;
-    
+
     private String nome;
     private String rotulo;
     private String inicial;
     private String mascara;
     private String pipe;
     private String dica;
-    
+
     private boolean showcolumn;
     private Long ordenation;
 
+    public boolean isTipoString()
+    {
+        return TipoField.String.equals(tipoField);
+    }
+
+    public String restricoes()
+    {
+        String restricoes = "";
+        if (requerido)
+        {
+            if (minimo != null)
+            {
+                restricoes = isTipoString() ? "minLength: " + minimo : "min:" + minimo ;
+                restricoes = restricoes + ",";
+            }
+
+            if (maximo != null)
+            {
+                restricoes = restricoes.equals("") ? "" : "; ";
+                restricoes = isTipoString() ? "maxLength: " + maximo : "max:" + maximo ;
+                restricoes = restricoes + ",";
+            }
+        }
+        return restricoes;
+    }
 
     public String tipoAngular()
     {
@@ -699,7 +724,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                "[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'},"
+                                //"[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'},"
+                                "[ {value: 'Boolean', label: 'Boolean'},"
                                         +
                                         " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ,"
                                         +
@@ -860,8 +886,7 @@ public class Elemento
                         .requerido(false)
                         .persistence(true)
                         .build());
-        
-        
+
         lista.add(
                 Elemento.builder()
                         .id(19L)

@@ -159,6 +159,16 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByTamanho(tamanho), HttpStatus.OK);
     }
+    @GetMapping("/elementos/search/min/{min}")
+    public ResponseEntity<?> searchPathVariableMin(@PathVariable  Long  min)
+    {
+        return new ResponseEntity<>(elementoRepository.findByMin(min), HttpStatus.OK);
+    }
+    @GetMapping("/elementos/search/max/{max}")
+    public ResponseEntity<?> searchPathVariableMax(@PathVariable  Long  max)
+    {
+        return new ResponseEntity<>(elementoRepository.findByMax(max), HttpStatus.OK);
+    }
     @GetMapping("/elementos/search/showcolumn/{showcolumn}")
     public ResponseEntity<?> searchPathVariableShowcolumn(@PathVariable  Boolean  showcolumn)
     {

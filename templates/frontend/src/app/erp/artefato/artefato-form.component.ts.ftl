@@ -77,6 +77,7 @@ export class ${artefato.className}FormComponent implements OnInit {
         label: '${e.rotulo}',
         placeholder: 'Informe ${e.rotulo}',
         required: ${e.requiredToString()},
+        ${e.restricoes()}
         <#if e.selectDB() >
         valueProp: '${e.valueProp}',
         labelProp: '${e.labelProp}',
