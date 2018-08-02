@@ -36,6 +36,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -97,6 +98,10 @@ public class User
                     @JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") })
     private List<Authority> authorities;
 
+    @Lob
+    @Column(name = "FOTO")
+    private byte[] foto;    
+    
     public Long getId()
     {
         return id;
@@ -197,6 +202,16 @@ public class User
         this.phone = phone;
     }
 
+    public byte[] getFoto()
+    {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto)
+    {
+        this.foto = foto;
+    }
+    
     @Override
     public int hashCode()
     {

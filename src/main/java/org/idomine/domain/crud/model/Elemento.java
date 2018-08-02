@@ -74,24 +74,31 @@ public class Elemento
 
     private boolean persistence;
     private String columnName;
+    
     private boolean requerido;
-    private String artefatoFK; // selectDB
+    private Long minimo;
+    private Long maximo;
+    
+    private String artefatoFK;
     private String options;
+    private String valueProp;
+    private String labelProp;
+    private String urlProp;
+    private String resourceProp;
+    
     private Long tamanho;
     private Long decimais;
+    
     private String nome;
     private String rotulo;
     private String inicial;
     private String mascara;
     private String pipe;
     private String dica;
-    private Long ordenation;
+    
     private boolean showcolumn;
+    private Long ordenation;
 
-    private String valueProp;
-    private String labelProp;
-    private String urlProp;
-    private String resourceProp;
 
     public String tipoAngular()
     {
@@ -181,8 +188,10 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .rotulo("Nome")
-                        .tamanho(100L)
                         .requerido(true)
+                        .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .persistence(true)
                         .showcolumn(true)
                         .build());
@@ -196,6 +205,8 @@ public class Elemento
                         .nome("descricao")
                         .rotulo("descricao")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -210,6 +221,8 @@ public class Elemento
                         .nome("templateTs")
                         .rotulo("template Ts")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -224,6 +237,8 @@ public class Elemento
                         .nome("templateCss")
                         .rotulo("template Css")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -238,6 +253,8 @@ public class Elemento
                         .nome("templateHtml")
                         .rotulo("template Html")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -262,6 +279,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("Portal")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Portal")
                         .requerido(true)
                         .persistence(true)
@@ -277,6 +296,8 @@ public class Elemento
                         .nome("nome")
                         .rotulo("Nome")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -289,6 +310,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("descricao")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Descrição")
                         .inicial("Sistema muito legal, gerado com o ngx-buider")
                         .requerido(true)
@@ -303,6 +326,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nomeBackendApp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Nome Backend App")
                         .inicial("app-backend")
                         .requerido(true)
@@ -316,6 +341,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nomeFrontEndApp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Nome Frontend App")
                         .inicial("app-frontend")
                         .requerido(true)
@@ -329,6 +356,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("iconeApp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Ícone App")
                         .inicial("/assets/icon.svg")
                         .requerido(true)
@@ -342,6 +371,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("imageApp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Image App")
                         .inicial("assets/back-image.svg")
                         .requerido(true)
@@ -356,6 +387,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("serverHost")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Server Host")
                         .inicial("localhost")
                         .requerido(true)
@@ -369,6 +402,8 @@ public class Elemento
                         .tipoField(TipoField.Long)
                         .nome("serverPort")
                         .tamanho(4L)
+                        .minimo(999L)
+                        .maximo(9999L)
                         .rotulo("Server port")
                         .inicial("3000")
                         .requerido(true)
@@ -382,6 +417,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("frontHost")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Front Host")
                         .inicial("localhost")
                         .requerido(true)
@@ -395,6 +432,8 @@ public class Elemento
                         .tipoField(TipoField.Long)
                         .nome("frontPort")
                         .tamanho(4L)
+                        .minimo(999L)
+                        .maximo(99990L)
                         .rotulo("Front port")
                         .inicial("5000")
                         .requerido(true)
@@ -433,7 +472,9 @@ public class Elemento
                         .nome("outputDirectory")
                         .rotulo("Output Directory")
                         .inicial("sistemax")
-                        .requerido(false)
+                        .requerido(true)
+                        .minimo(1L)
+                        .maximo(100L)
                         .persistence(true)
                         .tamanho(100L)
                         .showcolumn(true)
@@ -458,6 +499,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("Projeto")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Projeto")
                         .requerido(true)
                         .persistence(true)
@@ -472,6 +515,8 @@ public class Elemento
                         .nome("tipo")
                         .rotulo("Tipo")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
@@ -487,6 +532,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Nome")
                         .requerido(true)
                         .persistence(true)
@@ -500,6 +547,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("resourceName")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(501L)
                         .rotulo("Resource Name")
                         .requerido(true)
                         .persistence(true)
@@ -513,6 +562,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("className")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Class Name")
                         .requerido(true)
                         .persistence(true)
@@ -526,6 +577,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("classFolder")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Class Folder")
                         .requerido(true)
                         .persistence(true)
@@ -553,6 +606,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("templateTs")
                         .tamanho(999L)
+                        .minimo(1L)
+                        .maximo(999L)
                         .rotulo("Template Ts")
                         .requerido(false)
                         .persistence(true)
@@ -565,6 +620,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("templateHtml")
                         .tamanho(999L)
+                        .minimo(1L)
+                        .maximo(999L)
                         .rotulo("Template Html")
                         .requerido(false)
                         .persistence(true)
@@ -577,6 +634,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("templateCss")
                         .tamanho(999L)
+                        .minimo(1L)
+                        .maximo(999L)
                         .rotulo("Template Css")
                         .requerido(false)
                         .persistence(true)
@@ -655,6 +714,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nome")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Nome")
                         .requerido(true)
                         .persistence(true)
@@ -668,6 +729,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("rotulo")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Rótulo")
                         .requerido(true)
                         .persistence(true)
@@ -682,6 +745,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("inicial")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Valor Inicial")
                         .requerido(false)
                         .persistence(true)
@@ -695,6 +760,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("mascara")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Máscara Edição")
                         .requerido(false)
                         .persistence(true)
@@ -708,6 +775,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("pipe")
                         .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
                         .rotulo("Máscara Display")
                         .requerido(false)
                         .persistence(true)
@@ -721,6 +790,7 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("dica")
                         .tamanho(200L)
+                        .maximo(200L)
                         .rotulo("Hint(dica)")
                         .requerido(false)
                         .persistence(true)
@@ -765,6 +835,33 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("min")
+                        .tamanho(20L)
+                        .rotulo("Mínimo")
+                        .requerido(false)
+                        .persistence(true)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("max")
+                        .tamanho(20L)
+                        .rotulo("Máximo")
+                        .requerido(false)
+                        .persistence(true)
+                        .build());
+        
+        
         lista.add(
                 Elemento.builder()
                         .id(19L)
@@ -786,6 +883,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("valueProp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Value Prop")
                         .requerido(false)
                         .persistence(true)
@@ -798,6 +897,8 @@ public class Elemento
                         .tipoField(TipoField.Long)
                         .nome("labelProp")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Label Prop")
                         .requerido(false)
                         .persistence(true)
@@ -810,7 +911,9 @@ public class Elemento
                         .tipoElemento(TipoElemento.TextArea)
                         .tipoField(TipoField.String)
                         .nome("options")
-                        .tamanho(1L)
+                        .tamanho(999L)
+                        .minimo(1L)
+                        .maximo(999L)
                         .rotulo("Opções")
                         .persistence(true)
                         .requerido(false)
@@ -846,6 +949,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("nomeEmpresa")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Nome Empresa")
                         .requerido(true)
                         .persistence(true)
@@ -860,6 +965,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("siteEmpresa")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Site Empresa")
                         .requerido(false)
                         .persistence(true)
@@ -874,6 +981,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("emailEmpresa")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Email Empresa")
                         .requerido(false)
                         .persistence(true)
@@ -888,6 +997,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("outputDirectory")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Output Directory")
                         .requerido(false)
                         .persistence(true)
@@ -902,6 +1013,8 @@ public class Elemento
                         .tipoField(TipoField.String)
                         .nome("appProperties")
                         .tamanho(100L)
+                        .minimo(1L)
+                        .maximo(100L)
                         .rotulo("Application Properties")
                         .requerido(false)
                         .persistence(true)
