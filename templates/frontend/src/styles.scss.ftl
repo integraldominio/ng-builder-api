@@ -1,12 +1,14 @@
 @import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @include mat-core();
-// $app-dark-primary: mat-palette($mat-purple);
-$app-dark-primary: mat-palette($mat-indigo);
-$app-dark-accent: mat-palette($mat-indigo, A200, A100, A400);
+$app-dark-primary: mat-palette($mat-purple);
+//$app-dark-primary: mat-palette($mat-indigo);
+$app-dark-accent: mat-palette($mat-purple, A200, A100, A400);
 $app-dark-theme: mat-dark-theme($app-dark-primary, $app-dark-accent);
 .dark-theme {
-  @include angular-material-theme($app-dark-theme);
+  //@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+   @include angular-material-theme($app-dark-theme);
 }
 // Normal theme
 $app-light-primary: mat-palette($mat-indigo);
@@ -22,7 +24,7 @@ deeppurple-amber.css
 indigo-pink.css
 pink-bluegrey.css
 purple-green.css
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 */
 
 

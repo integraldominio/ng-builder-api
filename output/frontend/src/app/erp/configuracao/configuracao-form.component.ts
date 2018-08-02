@@ -130,9 +130,13 @@ export class ConfiguracaoFormComponent implements OnInit {
   }
 
   onSubmit(model) {
+
+    console.log( '>>>Model');
+    console.log( this.model );
+
     if (this.form.valid) {
       this.configuracaoService
-        .create( model as Configuracao )
+        .create( this.model as Configuracao )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/configuracao']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');

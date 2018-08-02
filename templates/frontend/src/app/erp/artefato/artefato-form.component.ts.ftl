@@ -123,12 +123,12 @@ export class ${artefato.className}FormComponent implements OnInit {
        <#list artefato.elementos as e >
        <#if e.toForm()>
        <#if e.selectDB() >
-       model = this.${e.nome?lower_case}To${artefato.className}(model);
+       this.model = this.${e.nome?lower_case}To${artefato.className}(model);
 	   </#if>
 	   </#if>
 	   </#list>
       this.${artefato.classFolder}Service
-        .create( model as ${artefato.className} )
+        .create( this.model as ${artefato.className} )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/${artefato.classFolder}']); });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
