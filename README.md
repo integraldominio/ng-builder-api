@@ -112,7 +112,7 @@ Módulos:
 
 ## Geração de código
 
-Por trás do ngx-builder está o conceito de geração de código por template engine. O ngx-builder usa o Apache FreeMaker. Usando Spring Boot no backend e Angular no frontend. Também está previso o backend em Express com mongoDB.
+Por trás do ngx-builder está o conceito de geração de código por template engine. O ngx-builder usa o Apache FreeMaker. Usando Spring Boot no backend e Angular no frontend. Também está previso o backend javascript.
 
 ## Diagrama de classes
 
@@ -122,12 +122,63 @@ Por trás do ngx-builder está o conceito de geração de código por template e
 
 ## Backend - Spring Boot
 
-## Backend - Express
+* Spring Boot (https://spring.io/projects/spring-boot)
+
+## Backend - Nestjs
+
+O Nest é uma framework para criar aplicativos do lado do servidor Node.js eficientes e escaláveis . Usa JavaScript progressivo, é construído com o TypeScript (preserva a compatibilidade com JavaScript puro) e combina elementos de OOP (Programação Orientada a Objetos), FP (Programação Funcional) e FRP (Programação Reactiva Funcional).
+
+Nest faz uso do Express, mas também oferece compatibilidade com uma ampla gama de outras bibliotecas, como por exemplo o Fastify, permitindo o uso fácil dos inúmeros plugins de terceiros disponíveis.
+
+* nestjs (https://docs.nestjs.com/)
+* typeorm (http://typeorm.io/#/)
+* GraphQL (https://www.apollographql.com/)
+
+### Iniciando com Nestjs
+
+
+Usando CLI
+```
+npm i -g @nestjs/cli
+nest new project-name
+```
+
+Usando sedd
+```
+git clone https://github.com/nestjs/typescript-starter.git project
+cd project
+npm install
+npm run start
+```
+
+Usando npm
+```
+npm i --save @nestjs/core @nestjs/common rxjs reflect-metadata
+```
+
+Main.js
+
+```javascript
+import { NestFactory } from '@nestjs/core';
+import { ApplicationModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(ApplicationModule);
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+Iniciando
+```
+npm run start
+```
+
+
 
 ## Frontend - Angular 6
 
-
-
+* Angular (https://angular.io/)
 
 ## Freemaker
 https://freemarker.apache.org/
