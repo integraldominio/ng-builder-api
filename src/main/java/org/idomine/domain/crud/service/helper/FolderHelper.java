@@ -35,9 +35,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class FolderHelper
 {
-
+    private static final Logger logger = LoggerFactory.getLogger(GenerationHelper.class);
+    
     public static void criarFolders(String base)
     {
         base = baseFolder(base);
@@ -88,6 +92,8 @@ public class FolderHelper
         criarDir(base + "/frontend/src/assets/images");
         criarDir(base + "/frontend/src/assets/svg-loaders");
         criarDir(base + "/frontend/src/environments");
+        
+        logger.debug(">>>NGXB frontend folders created");
     }
 
     public static void criarBackendJavaFolders(String base)
@@ -121,6 +127,8 @@ public class FolderHelper
         criarDir(base + "/backend/src/main/resources");
         criarDir(base + "/backend/src/main/resources/db");
         criarDir(base + "/backend/src/main/resources/db/migration");
+
+        logger.debug(">>>NGXB Java backend folders created");
     }
 
     public static void criarBackendJSFolders(String base)
@@ -134,6 +142,8 @@ public class FolderHelper
         criarDir(base + "/backend/guards");
         criarDir(base + "/backend/modules");
         criarDir(base + "/backend/utilities");
+
+        logger.debug(">>>NGXB JS backend folders created");
     }   
     
     

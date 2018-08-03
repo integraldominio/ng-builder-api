@@ -48,16 +48,25 @@ import org.idomine.domain.crud.model.Artefato;
 import org.idomine.domain.crud.model.Portal;
 import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.model.vo.TipoArtefato;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GenerationHelper
 {
+    private static final Logger logger = LoggerFactory.getLogger(GenerationHelper.class);
     private static String ngxbuilder = "0.0.2";
     private static FreeMarkerHelper fm = FreeMarkerHelper.of();
 
     public static void generatePortal(Portal portal)
     {
         if (portal != null && portal.getProjetos() != null)
+        {
             portal.getProjetos().forEach(p -> generateProjeto(p));
+        }
+        else
+        {
+            logger.error(">>>NGXB Portal/Projeto is null");
+        }
 
     }
 
@@ -89,6 +98,7 @@ public class GenerationHelper
             frontendShared(projeto);
             fromendAppModule(projeto);
             frontendErp(projeto);
+            logger.debug(">>>NGXB Generated frontend");
         }
     }
 
@@ -107,6 +117,7 @@ public class GenerationHelper
                 backendEntityToOutput(projeto);
                 backendSecurity(projeto);
                 backendInfrastructure(projeto);
+                logger.debug(">>>NGXB Generated backend");
             }
             else
             {
@@ -126,7 +137,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            System.err.println(">>>" + e);
+            logger.error(">>>NGXB backendInfrastructure: " + e.getMessage());
         }
     }
 
@@ -152,8 +163,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            System.err.println(">>>" + e);
-
+            logger.error(">>>NGXB frontendInfra: " + e.getMessage());
         }
     }
 
@@ -173,8 +183,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            System.err.println(">>>" + e);
-
+            logger.error(">>>NGXB backendMigrationToOutput: " + e.getMessage());
         }
     }
 
@@ -205,8 +214,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            System.err.println(">>>" + e);
-
+            logger.error(">>>NGXB backendSecurity: " + e.getMessage());
         }
     }
 
@@ -220,7 +228,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontendInfraComps: " + e.getMessage());
         }
     }
 
@@ -240,7 +248,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontendInfraPipes: " + e.getMessage());
         }
 
     }
@@ -256,7 +264,7 @@ public class GenerationHelper
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontEnviroment: " + e.getMessage());
         }
     }
 
@@ -277,30 +285,21 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontAssets: " + e.getMessage());
         }
 
     }
 
     public static void frontJsonsToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_ANGULAR_JSON,
-                fm.process(TemplatePathHelper.FRONTEND_ANGULAR_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_DBJSON,
-                fm.process(TemplatePathHelper.FRONTEND_DBJSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_PACKAGE_JSON,
-                fm.process(TemplatePathHelper.FRONTEND_PACKAGE_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSCONFIG_JSON,
-                fm.process(TemplatePathHelper.FRONTEND_TSCONFIG_JSON, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSLINT_JSON,
-                fm.process(TemplatePathHelper.FRONTEND_TSLINT_JSON, model(projeto)));
-
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_INDEX,
-                fm.process(TemplatePathHelper.FRONTEND_SRC_INDEX, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_STYLE,
-                fm.process(TemplatePathHelper.FRONTEND_SRC_STYLE, model(projeto)));
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_MAIN,
-                fm.process(TemplatePathHelper.FRONTEND_SRC_MAIN, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_ANGULAR_JSON, fm.process(TemplatePathHelper.FRONTEND_ANGULAR_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_DBJSON, fm.process(TemplatePathHelper.FRONTEND_DBJSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_PACKAGE_JSON, fm.process(TemplatePathHelper.FRONTEND_PACKAGE_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSCONFIG_JSON, fm.process(TemplatePathHelper.FRONTEND_TSCONFIG_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_TSLINT_JSON, fm.process(TemplatePathHelper.FRONTEND_TSLINT_JSON, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_INDEX, fm.process(TemplatePathHelper.FRONTEND_SRC_INDEX, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_STYLE, fm.process(TemplatePathHelper.FRONTEND_SRC_STYLE, model(projeto)));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_MAIN, fm.process(TemplatePathHelper.FRONTEND_SRC_MAIN, model(projeto)));
 
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC;
@@ -317,7 +316,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontJsonsToOutput: " + e.getMessage());
         }
 
     }
@@ -329,41 +328,18 @@ public class GenerationHelper
             for (Artefato artefato : projeto.getArtefatos())
             {
                 String folder = artefato.getClassFolder();
-                String dir = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder
-                        + "/";
-
-                criarDir(
-                        projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder + "/");
+                String dir = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder + "/";
+                criarDir(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_ERP + folder + "/");
 
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    output(dir + folder + "-form.component.ts",
-                            fm.process(
-                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts",
-                                    model(artefato)));
-                    output(dir + folder + "-form.component.css",
-                            fm.process(
-                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css",
-                                    model(artefato)));
-                    output(dir + folder + "-form.component.html", fm.process(
-                            TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html",
-                            model(artefato)));
-
-                    output(dir + folder + "-grid.component.ts",
-                            fm.process(
-                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts",
-                                    model(artefato)));
-                    output(dir + folder + "-grid.component.css",
-                            fm.process(
-                                    TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css",
-                                    model(artefato)));
-                    output(dir + folder + "-grid.component.html", fm.process(
-                            TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html",
-                            model(artefato)));
-
-                    output(dir + folder + ".service.ts",
-                            fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts",
-                                    model(artefato)));
+                    output(dir + folder + "-form.component.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.ts", model(artefato)));
+                    output(dir + folder + "-form.component.css", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.css", model(artefato)));
+                    output(dir + folder + "-form.component.html", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-form.component.html", model(artefato)));
+                    output(dir + folder + "-grid.component.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.ts", model(artefato)));
+                    output(dir + folder + "-grid.component.css", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.css", model(artefato)));
+                    output(dir + folder + "-grid.component.html", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato-grid.component.html", model(artefato)));
+                    output(dir + folder + ".service.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_ERP + "artefato/artefato.service.ts", model(artefato)));
                 }
                 else if (TipoArtefato.Template.equals(artefato.getTipo()))
                 {
@@ -392,7 +368,7 @@ public class GenerationHelper
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB fromendAppModule: " + e.getMessage());
         }
     }
 
@@ -411,8 +387,8 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
-        }
+            logger.error(">>>NGXB frontendShared: " + e.getMessage());
+       }
     }
 
     public static void frontendPages(Projeto projeto)
@@ -428,18 +404,15 @@ public class GenerationHelper
             copyFile(new File(o + "erro/erro.component.ts"), new File(d + "erro/erro.component.ts"));
             copyFile(new File(o + "home/home.component.html"), new File(d + "home/home.component.html"));
             copyFile(new File(o + "home/home.component.css"), new File(d + "home/home.component.css"));
-            output(d + "home/home.component.ts", fm
-                    .process(TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
+            output(d + "home/home.component.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "home/home.component.ts", model(projeto)));
             copyFile(new File(o + "login/login.component.html"), new File(d + "login/login.component.html"));
             copyFile(new File(o + "login/login.component.scss"), new File(d + "login/login.component.scss"));
             copyFile(new File(o + "login/login.component.ts"), new File(d + "login/login.component.ts"));
             copyFile(new File(o + "sidenav/sidenav.component.css"), new File(d + "sidenav/sidenav.component.css"));
             copyFile(new File(o + "sidenav/sidenav.component.ts"), new File(d + "sidenav/sidenav.component.ts"));
             copyFile(new File(o + "sidenav/sidenav.service.ts"), new File(d + "sidenav/sidenav.service.ts"));
-            output(d + "sidenav/sidenav.component.html", fm.process(
-                    TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
-            output(d + "sobre/sobre.component.html", fm.process(
-                    TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
+            output(d + "sidenav/sidenav.component.html", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sidenav/sidenav.component.html", model(projeto)));
+            output(d + "sobre/sobre.component.html", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_PAGES + "sobre/sobre.component.html", model(projeto)));
             copyFile(new File(o + "sobre/sobre.component.css"), new File(d + "sobre/sobre.component.css"));
             copyFile(new File(o + "sobre/sobre.component.ts"), new File(d + "sobre/sobre.component.ts"));
         }
@@ -467,7 +440,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontendSecurityFiles: " + e.getMessage());
         }
     }
 
@@ -494,7 +467,7 @@ public class GenerationHelper
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(">>>NGXB frontendReadmeToString: " + e.getMessage());
         }
     }
 
@@ -511,12 +484,9 @@ public class GenerationHelper
             {
                 if (TipoArtefato.Crud.equals(artefato.getTipo()))
                 {
-                    String arq = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_ENTITY_PATH
-                            + artefato.getClassName() + ".java";
-                    String rep = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_REPOSITORY_PATH
-                            + artefato.getClassName() + "Repository.java";
-                    String res = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_RESOURCE_PATH
-                            + artefato.getClassName() + "Resource.java";
+                    String arq = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_ENTITY_PATH + artefato.getClassName() + ".java";
+                    String rep = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_REPOSITORY_PATH + artefato.getClassName() + "Repository.java";
+                    String res = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_RESOURCE_PATH + artefato.getClassName() + "Resource.java";
                     output(arq, backendEntityToString(artefato));
                     output(rep, backendRepositoryToString(artefato));
                     output(res, backendResourceToString(artefato));
@@ -613,5 +583,4 @@ public class GenerationHelper
         model.put("ngxbuilder", ngxbuilder);
         return model;
     }
-
 }
