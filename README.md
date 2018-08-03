@@ -426,17 +426,17 @@ Tecnologias:
 
 - [x] Angular as the application framework- 
 - [x] Angular Material as the UI language and component library
-- [] Angular Firebase for easy user authentication
+- [ ] Angular Firebase for easy user authentication
 - [x] Angular Flex Layout for dynamic responsive layouts
 - [x] Fully typed build tools and application using TypeScript
 - [x] Manage your type definitions using @types (easier than using typings)
-- [] Automatic sitemap generation
+- [ ] Automatic sitemap generation
 - [x] SCSS support for professional grade CSS management
-- [] Full favicon icon generation for multiple devices derived from a single seed image
-- [] Analyze bundle sizes by using source-map-explorer
-- [] Cookies Support
-- [] Simple Ad-Blocker detection service
-- [] Built by Angular Universal Consulting
+- [ ] Full favicon icon generation for multiple devices derived from a single seed image
+- [ ] Analyze bundle sizes by using source-map-explorer
+- [ ] Cookies Support
+- [ ] Simple Ad-Blocker detection service
+- [ ] Built by Angular Universal Consulting
 
 ### Springboot
 
