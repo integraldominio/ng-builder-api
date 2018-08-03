@@ -42,11 +42,8 @@ export class ArtefatoGridComponent implements OnInit {
   displayedColumns = [
   'id',
   'tipo',
-  'id',
   'nome',
-  'id',
   'resourceName',
-  'id',
   'className',
   'actions'
   ];

@@ -42,9 +42,7 @@ export class ElementoGridComponent implements OnInit {
   displayedColumns = [
   'id',
   'artefato',
-  'id',
   'nome',
-  'id',
   'rotulo',
   'actions'
   ];

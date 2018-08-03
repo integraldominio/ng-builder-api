@@ -272,7 +272,7 @@ export class ElementoFormComponent implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-       this.model = this.artefatoToElemento(model);
+       this.model = this.artefatoToElemento(this.model);
       this.elementoService
         .create( this.model as Elemento )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/elemento']); });

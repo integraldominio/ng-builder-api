@@ -41,13 +41,9 @@ export class ConfiguracaoGridComponent implements OnInit {
   displayedColumns = [
   'id',
   'nomeEmpresa',
-  'id',
   'siteEmpresa',
-  'id',
   'emailEmpresa',
-  'id',
   'outputDirectory',
-  'id',
   'appProperties',
   'actions'
   ];

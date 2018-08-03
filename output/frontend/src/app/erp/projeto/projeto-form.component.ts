@@ -142,7 +142,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Server port',
         placeholder: 'Informe Server port',
         required: true,
-        max:9999,
+        max: 9999,
      }
   },
   {
@@ -160,7 +160,7 @@ export class ProjetoFormComponent implements OnInit {
         label: 'Front port',
         placeholder: 'Informe Front port',
         required: true,
-        max:99990,
+        max: 99990,
      }
   },
   {
@@ -217,7 +217,7 @@ export class ProjetoFormComponent implements OnInit {
 
   onSubmit(model) {
     if (this.form.valid) {
-       this.model = this.portalToProjeto(model);
+       this.model = this.portalToProjeto(this.model);
       this.projetoService
         .create( this.model as Projeto )
         .subscribe(  _ => { console.log(model);  this.router.navigate(['/projeto']); });

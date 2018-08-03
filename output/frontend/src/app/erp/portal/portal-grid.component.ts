@@ -41,13 +41,9 @@ export class PortalGridComponent implements OnInit {
   displayedColumns = [
   'id',
   'nome',
-  'id',
   'descricao',
-  'id',
   'templateTs',
-  'id',
   'templateCss',
-  'id',
   'templateHtml',
   'actions'
   ];

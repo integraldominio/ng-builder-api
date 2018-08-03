@@ -44,9 +44,9 @@ export class ${artefato.className}GridComponent implements OnInit {
 
   dataSource: MatTableDataSource<${artefato.className}>;
   displayedColumns = [
+  'id',
   <#list artefato.elementos as e >
   <#if e.showcolumn>
-  'id',
   '${e.nome?uncap_first}',
   </#if>
   </#list> 

@@ -84,8 +84,8 @@ export class AuthenticationService {
     isAdmin(): boolean {
       const currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
       const a: Array<Authority> = currentUser.authorities;
-      console.log( '>>>authorities');
-      console.log( a );
+      // console.log( '>>>authorities');
+      // console.log( a );
       // console.log( a.find( aut => aut.authority === 'ROLE_ADMIN' ) );
       return true;
     }

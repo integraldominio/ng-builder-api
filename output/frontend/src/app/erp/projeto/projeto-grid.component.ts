@@ -42,11 +42,8 @@ export class ProjetoGridComponent implements OnInit {
   displayedColumns = [
   'id',
   'portal',
-  'id',
   'nome',
-  'id',
   'descricao',
-  'id',
   'outputDirectory',
   'actions'
   ];
