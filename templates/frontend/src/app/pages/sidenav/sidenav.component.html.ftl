@@ -8,7 +8,12 @@
     [opened]="!(isHandset | async)!.matches">
 
     <mat-toolbar color="primary" class="mat-elevation-z6" style="height:56px;"  >
-      <img src="./../../../assets/images/logo.svg" style="width: 32px;" /> ${projeto.nome}
+
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()" >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img src="./../../../assets/images/logo.svg" style="width: 20px; padding-right: 5px" /> ngx-builder
+
     </mat-toolbar>
 
     <mat-nav-list>
