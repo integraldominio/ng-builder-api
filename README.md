@@ -110,12 +110,17 @@ Módulos:
 
 ![](docs/11.PNG)
 
+## Geração de código
 
-## Backend - Spring Boot
+Por trás do ngx-builder está o conceito de geração de código por template engine. O ngx-builder usa o Apache FreeMaker. Usando Spring Boot no backend e Angular no frontend. Também está previso o backend em Express com mongoDB.
 
-### Diagrama de classes
+## Diagrama de classes
 
 ![](docs/classe.PNG)
+
+![](docs/auth.PNG)
+
+## Backend - Spring Boot
 
 ## Backend - Express
 
