@@ -182,7 +182,7 @@ npm run start
 
 ### Árvore projeto
 
-``
+```
 app
 │   angular.json
 │   db.json
@@ -364,7 +364,7 @@ app
     └───environments
             environment.prod.ts
             environment.ts
-``
+```
 
 
 
