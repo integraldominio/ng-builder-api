@@ -43,7 +43,8 @@ public class FolderHelper
         base = baseFolder(base);
 
         criarBaseFolder(base);
-        criarBackendFolders(base);
+        criarBackendJavaFolders(base);
+        criarBackendJSFolders(base);
         criarFrontendFolders(base);
     }
 
@@ -89,7 +90,7 @@ public class FolderHelper
         criarDir(base + "/frontend/src/environments");
     }
 
-    public static void criarBackendFolders(String base)
+    public static void criarBackendJavaFolders(String base)
     {
         base = baseFolder(base);
         criarBaseFolder(base);
@@ -122,6 +123,20 @@ public class FolderHelper
         criarDir(base + "/backend/src/main/resources/db/migration");
     }
 
+    public static void criarBackendJSFolders(String base)
+    {
+        base = baseFolder(base);
+        criarBaseFolder(base);
+
+        criarDir(base + "/backend");
+        criarDir(base + "/backend/config");
+        criarDir(base + "/backend/decorators");
+        criarDir(base + "/backend/guards");
+        criarDir(base + "/backend/modules");
+        criarDir(base + "/backend/utilities");
+    }   
+    
+    
     private static String baseFolder(String base)
     {
         base = base.trim();

@@ -26,7 +26,8 @@
 package org.idomine.domain.crud.service.helper;
 
 import static org.idomine.domain.crud.service.helper.FolderHelper.copyFile;
-import static org.idomine.domain.crud.service.helper.FolderHelper.criarBackendFolders;
+import static org.idomine.domain.crud.service.helper.FolderHelper.criarBackendJSFolders;
+import static org.idomine.domain.crud.service.helper.FolderHelper.criarBackendJavaFolders;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarBaseFolder;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarDir;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarFrontendFolders;
@@ -95,15 +96,22 @@ public class GenerationHelper
     {
         if (projeto != null)
         {
-            criarBackendFolders(projeto.getOutputDirectory());
-            backendPomToOutput(projeto);
-            backendReadmeToOutput(projeto);
-            backendMigrationToOutput(projeto);
-            backendAppPropertiesToOutput(projeto);
-            backendApplicationToOutput(projeto);
-            backendEntityToOutput(projeto);
-            backendSecurity(projeto);
-            backendInfrastructure(projeto);
+            if ("java".equals(projeto.getServerLang()))
+            {
+                criarBackendJavaFolders(projeto.getOutputDirectory());
+                backendPomToOutput(projeto);
+                backendReadmeToOutput(projeto);
+                backendMigrationToOutput(projeto);
+                backendAppPropertiesToOutput(projeto);
+                backendApplicationToOutput(projeto);
+                backendEntityToOutput(projeto);
+                backendSecurity(projeto);
+                backendInfrastructure(projeto);
+            }
+            else
+            {
+                criarBackendJSFolders(projeto.getOutputDirectory());
+            }
         }
     }
 
