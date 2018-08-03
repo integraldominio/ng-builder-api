@@ -67,6 +67,7 @@ public class Projeto
     private String imageApp;
     private String serverPort;
     private String serverHost;
+    private String serverLang; 
     private String frontPort;
     private String frontHost;
     private boolean useLogin;
@@ -92,6 +93,7 @@ public class Projeto
                 .imageApp("back.png")
                 .serverPort("3000")
                 .serverHost("http://localhost")
+                .serverLang("java")
                 .frontPort("5000")
                 .frontHost("http://localhost")
                 .useLogin(false)

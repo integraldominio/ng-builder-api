@@ -55,7 +55,7 @@ public class PortalResource
     @GetMapping("/portais/build/{id}")
     public ResponseEntity<?> buildAll(@PathVariable Long id)
     {
-        generationService.backendAllToOutput(id);
+        generationService.generatePortal(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 

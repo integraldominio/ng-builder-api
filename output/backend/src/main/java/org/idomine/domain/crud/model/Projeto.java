@@ -78,6 +78,8 @@ public class Projeto
     
     private String imageApp;
     
+    private String serverLang;
+    
     private String serverHost;
     
     private Long serverPort;

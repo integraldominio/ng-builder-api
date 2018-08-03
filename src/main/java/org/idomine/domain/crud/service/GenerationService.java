@@ -25,9 +25,9 @@
 
 package org.idomine.domain.crud.service;
 
-import static org.idomine.domain.crud.service.helper.FolderHelper.criarFolders;
-
+import org.idomine.domain.crud.model.Portal;
 import org.idomine.domain.crud.model.Projeto;
+import org.idomine.domain.crud.reporitory.PortalRepository;
 import org.idomine.domain.crud.reporitory.ProjetoRepository;
 import org.idomine.domain.crud.service.helper.GenerationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +38,20 @@ public class GenerationService
 {
     @Autowired
     private ProjetoRepository projetoRepository;
+    
+    @Autowired
+    private PortalRepository portalRepository;
 
-    public void backendAllToOutput(Long id)
+    public void generatePortal(Long id)
+    {
+        Portal portal = portalRepository.findById(id).get();
+        GenerationHelper.generatePortal(portal);
+    }
+    
+    public void generateProjeto(Long id)
     {
         Projeto projeto = projetoRepository.findById(id).get();
-        if (projeto != null)
-        {
-            criarFolders(projeto.getOutputDirectory());
-            GenerationHelper.backendAllToOutput(projeto);
-        }
+        GenerationHelper.generateProjeto(projeto);
     }
+    
 }

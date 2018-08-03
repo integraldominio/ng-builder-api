@@ -58,7 +58,7 @@ public class ProjetoResource
     @GetMapping("/projetos/build/{id}")
     public ResponseEntity<?> buildAll(@PathVariable Long id)
     {
-        generationService.backendAllToOutput(id);
+        generationService.generateProjeto(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 

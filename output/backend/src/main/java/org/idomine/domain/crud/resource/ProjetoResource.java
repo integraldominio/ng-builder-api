@@ -134,6 +134,11 @@ public class ProjetoResource
     {
         return new ResponseEntity<>(projetoRepository.findByImageApp(imageApp), HttpStatus.OK);
     }
+    @GetMapping("/projetos/search/serverLang/{serverLang}")
+    public ResponseEntity<?> searchPathVariableServerLang(@PathVariable  String  serverLang)
+    {
+        return new ResponseEntity<>(projetoRepository.findByServerLang(serverLang), HttpStatus.OK);
+    }
     @GetMapping("/projetos/search/serverHost/{serverHost}")
     public ResponseEntity<?> searchPathVariableServerHost(@PathVariable  String  serverHost)
     {

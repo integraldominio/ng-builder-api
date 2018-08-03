@@ -1,4 +1,4 @@
-package com.idomine.backend.and.frontend;
+package com.idomine.generation;
 
 /**
  * The MIT License
@@ -27,7 +27,7 @@ package com.idomine.backend.and.frontend;
 import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.service.helper.GenerationHelper;
 
-public class GenerationBackendFrontend
+public class GenerateAll
 {
 
     public static void main(String[] args)
@@ -36,8 +36,8 @@ public class GenerationBackendFrontend
          *  Call this do Backend and Frontend generation. 
          */
         Projeto p = Projeto.getFake();
-        p.setOutputDirectory("sistemax");
-        GenerationHelper.backendAllToOutput(p);
+        p.setOutputDirectory("output");
+        GenerationHelper.generateProjeto(p);
     }
 
 }

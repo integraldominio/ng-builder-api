@@ -408,6 +408,25 @@ public class Elemento
                         .persistence(true)
                         .build());
 
+
+        lista.add(
+                Elemento.builder()
+                        .id(9L)
+                        .artefato(Artefato.builder().id(2L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("serverLang")
+                        .rotulo("Server Language")
+                        .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .options(
+                                "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
+                        .build());        
+        
         lista.add(
                 Elemento.builder()
                         .id(3L)

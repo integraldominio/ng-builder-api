@@ -68,6 +68,11 @@
 	      <mat-cell *matCellDef="let row" >{{row.imageApp}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="serverLang">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Server Language</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.serverLang}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="serverHost">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Server Host</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.serverHost}}</mat-cell>

@@ -44,6 +44,7 @@ export class ProjetoGridComponent implements OnInit {
   'portal',
   'nome',
   'descricao',
+  'serverLang',
   'outputDirectory',
   'actions'
   ];

@@ -41,6 +41,7 @@ public interface ProjetoRepository extends  CrudRepository<Projeto, Long>
     Projeto findByNomeFrontEndApp(String nomeFrontEndApp);
     Projeto findByIconeApp(String iconeApp);
     Projeto findByImageApp(String imageApp);
+    Projeto findByServerLang(String serverLang);
     Projeto findByServerHost(String serverHost);
     Projeto findByServerPort(Long serverPort);
     Projeto findByFrontHost(String frontHost);

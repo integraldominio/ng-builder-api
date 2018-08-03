@@ -55,6 +55,7 @@ export class ProjetoFormComponent implements OnInit {
   'Portal',
   'nome',
   'descricao',
+  'serverLang',
   'outputDirectory',
   'actions'
   ];
@@ -125,6 +126,16 @@ export class ProjetoFormComponent implements OnInit {
         placeholder: 'Informe Image App',
         required: true,
         maxLength: 100,
+     }
+  },
+  {
+     key: 'serverLang', type: 'select',
+     templateOptions: {
+        label: 'Server Language',
+        placeholder: 'Informe Server Language',
+        required: true,
+        maxLength: 50,
+        options: [{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]
      }
   },
   {

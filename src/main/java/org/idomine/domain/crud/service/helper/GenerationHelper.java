@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.idomine.domain.crud.model.Artefato;
+import org.idomine.domain.crud.model.Portal;
 import org.idomine.domain.crud.model.Projeto;
 import org.idomine.domain.crud.model.vo.TipoArtefato;
 
@@ -50,21 +51,28 @@ public class GenerationHelper
     private static String ngxbuilder = "0.0.2";
     private static FreeMarkerHelper fm = FreeMarkerHelper.of();
 
-    public static void backendAllToOutput(Projeto projeto)
+    public static void generatePortal(Portal portal)
+    {
+        if (portal != null && portal.getProjetos() != null)
+            portal.getProjetos().forEach(p -> generateProjeto(p));
+
+    }
+
+    public static void generateProjeto(Projeto projeto)
     {
         if (projeto != null)
         {
             criarFolders(projeto.getOutputDirectory());
             readmeToOutput(projeto);
-            backendPomToOutput(projeto);
-            backendReadmeToOutput(projeto);
-            backendMigrationToOutput(projeto);
-            backendAppPropertiesToOutput(projeto);
-            backendApplicationToOutput(projeto);
-            backendEntityToOutput(projeto);
-            backendSecurity(projeto);
-            backendInfrastructure(projeto);
+            generateBackend(projeto);
+            generateFrontend(projeto);
+        }
+    }
 
+    public static void generateFrontend(Projeto projeto)
+    {
+        if (projeto != null)
+        {
             frontReadmeToOutput(projeto);
             frontJsonsToOutput(projeto);
             frontAssets(projeto);
@@ -80,19 +88,34 @@ public class GenerationHelper
         }
     }
 
+    public static void generateBackend(Projeto projeto)
+    {
+        if (projeto != null)
+        {
+            backendPomToOutput(projeto);
+            backendReadmeToOutput(projeto);
+            backendMigrationToOutput(projeto);
+            backendAppPropertiesToOutput(projeto);
+            backendApplicationToOutput(projeto);
+            backendEntityToOutput(projeto);
+            backendSecurity(projeto);
+            backendInfrastructure(projeto);
+        }
+    }
+
     private static void backendInfrastructure(Projeto projeto)
     {
         String o = "templates/" + TemplatePathHelper.BACKEND_INFRA;
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_INFRA;
         try
         {
-            copyFile(new File(o + "ImageBase64Helper.java"),new File(d + "ImageBase64Helper.java"));
-            copyFile(new File(o + "PasswordHelper.java"),new File(d + "PasswordHelper.java"));
+            copyFile(new File(o + "ImageBase64Helper.java"), new File(d + "ImageBase64Helper.java"));
+            copyFile(new File(o + "PasswordHelper.java"), new File(d + "PasswordHelper.java"));
         }
         catch (IOException e)
         {
             System.err.println(">>>" + e);
-        }           
+        }
     }
 
     private static void frontendInfra(Projeto projeto)
@@ -101,25 +124,25 @@ public class GenerationHelper
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA;
         try
         {
-            copyFile(new File(o + "auth/api.service.ts"),new File(d + "auth/api.service.ts"));
-            copyFile(new File(o + "auth/auth.service.ts"),new File(d + "auth/auth.service.ts"));
-            copyFile(new File(o + "auth/index.ts"),new File(d + "auth/index.ts"));
-            copyFile(new File(o + "auth/user.service.ts"),new File(d + "auth/user.service.ts"));
-            copyFile(new File(o + "users/user-form.component.css"),new File(d + "users/user-form.component.css"));
-            copyFile(new File(o + "users/user-form.component.ts"),new File(d + "users/user-form.component.ts"));
-            copyFile(new File(o + "users/user-form.component.html"),new File(d + "users/user-form.component.html"));
-            copyFile(new File(o + "users/user-grid.component.css"),new File(d + "users/user-grid.component.css"));
-            copyFile(new File(o + "users/user-grid.component.html"),new File(d + "users/user-grid.component.html"));
-            copyFile(new File(o + "users/user-grid.component.ts"),new File(d + "users/user-grid.component.ts"));
-            copyFile(new File(o + "users/user-upload.component.ts"),new File(d + "users/user-upload.component.ts"));
-            copyFile(new File(o + "users/user-upload.component.html"),new File(d + "users/user-upload.component.html"));
-            copyFile(new File(o + "users/users.service.ts"),new File(d + "users/users.service.ts"));
+            copyFile(new File(o + "auth/api.service.ts"), new File(d + "auth/api.service.ts"));
+            copyFile(new File(o + "auth/auth.service.ts"), new File(d + "auth/auth.service.ts"));
+            copyFile(new File(o + "auth/index.ts"), new File(d + "auth/index.ts"));
+            copyFile(new File(o + "auth/user.service.ts"), new File(d + "auth/user.service.ts"));
+            copyFile(new File(o + "users/user-form.component.css"), new File(d + "users/user-form.component.css"));
+            copyFile(new File(o + "users/user-form.component.ts"), new File(d + "users/user-form.component.ts"));
+            copyFile(new File(o + "users/user-form.component.html"), new File(d + "users/user-form.component.html"));
+            copyFile(new File(o + "users/user-grid.component.css"), new File(d + "users/user-grid.component.css"));
+            copyFile(new File(o + "users/user-grid.component.html"), new File(d + "users/user-grid.component.html"));
+            copyFile(new File(o + "users/user-grid.component.ts"), new File(d + "users/user-grid.component.ts"));
+            copyFile(new File(o + "users/user-upload.component.ts"), new File(d + "users/user-upload.component.ts"));
+            copyFile(new File(o + "users/user-upload.component.html"), new File(d + "users/user-upload.component.html"));
+            copyFile(new File(o + "users/users.service.ts"), new File(d + "users/users.service.ts"));
         }
         catch (IOException e)
         {
             System.err.println(">>>" + e);
 
-        }        
+        }
     }
 
     private static void backendMigrationToOutput(Projeto projeto)
@@ -128,13 +151,13 @@ public class GenerationHelper
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA;
         try
         {
-            copyFile(new File(o + "V001__criar_portal.sql"),new File(d + "V001__criar_portal.sql"));
-            copyFile(new File(o + "V002__criar_tabela_projeto.sql"),new File(d + "V002__criar_tabela_projeto.sql"));
-            copyFile(new File(o + "V003__criar_tabela_artefato.sql"),new File(d + "V003__criar_tabela_artefato.sql"));
-            copyFile(new File(o + "V004__criar_tabela_elemento.sql"),new File(d + "V004__criar_tabela_elemento.sql"));
-            copyFile(new File(o + "V005__criar_tabela_configuracao.sql"),new File(d + "V005__criar_tabela_configuracao.sql"));
-            copyFile(new File(o + "V006__criar_tabelas_security.sql"),new File(d + "V006__criar_tabelas_security.sql"));
-            copyFile(new File(o + "V007__insert_dados_security.sql"),new File(d + "V007__insert_dados_security.sql"));
+            copyFile(new File(o + "V001__criar_portal.sql"), new File(d + "V001__criar_portal.sql"));
+            copyFile(new File(o + "V002__criar_tabela_projeto.sql"), new File(d + "V002__criar_tabela_projeto.sql"));
+            copyFile(new File(o + "V003__criar_tabela_artefato.sql"), new File(d + "V003__criar_tabela_artefato.sql"));
+            copyFile(new File(o + "V004__criar_tabela_elemento.sql"), new File(d + "V004__criar_tabela_elemento.sql"));
+            copyFile(new File(o + "V005__criar_tabela_configuracao.sql"), new File(d + "V005__criar_tabela_configuracao.sql"));
+            copyFile(new File(o + "V006__criar_tabelas_security.sql"), new File(d + "V006__criar_tabelas_security.sql"));
+            copyFile(new File(o + "V007__insert_dados_security.sql"), new File(d + "V007__insert_dados_security.sql"));
         }
         catch (IOException e)
         {
@@ -149,24 +172,24 @@ public class GenerationHelper
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_SECURITY;
         try
         {
-            copyFile(new File(o + "exceptions/AuthenticationException.java"),           new File(d + "exceptions/AuthenticationException.java"));
-            copyFile(new File(o + "jwt/JwtAuthenticationEntryPoint.java"),              new File(d + "jwt/JwtAuthenticationEntryPoint.java"));
-            copyFile(new File(o + "jwt/JwtAuthenticationRequest.java"),                 new File(d + "jwt/JwtAuthenticationRequest.java"));
-            copyFile(new File(o + "jwt/JwtAuthorizationTokenFilter.java"),              new File(d + "jwt/JwtAuthorizationTokenFilter.java"));
-            copyFile(new File(o + "jwt/JwtTokenUtil.java"),                             new File(d + "jwt/JwtTokenUtil.java"));   
-            copyFile(new File(o + "jwt/JwtUser.java"),                                  new File(d + "jwt/JwtUser.java"));
-            copyFile(new File(o + "jwt/JwtUserFactory.java"),                           new File(d + "jwt/JwtUserFactory.java"));
-            copyFile(new File(o + "model/Authority.java"),                              new File(d + "model/Authority.java"));
-            copyFile(new File(o + "model/AuthorityName.java"),                          new File(d + "model/AuthorityName.java"));
-            copyFile(new File(o + "model/Group.java"),                                  new File(d + "model/Group.java"));
-            copyFile(new File(o + "model/User.java"),                                   new File(d + "model/User.java"));
-            copyFile(new File(o + "repository/UserRepository.java"),                    new File(d + "repository/UserRepository.java"));
-            copyFile(new File(o + "rest/auth/AuthenticationRestController.java"),       new File(d + "rest/auth/AuthenticationRestController.java"));
-            copyFile(new File(o + "rest/protecteds/MethodProtectedRestController.java"),new File(d + "rest/protecteds/MethodProtectedRestController.java"));
-            copyFile(new File(o + "rest/user/UserCrudResource.java"),                   new File(d + "rest/user/UserCrudResource.java"));
-            copyFile(new File(o + "rest/user/UserRestController.java"),                 new File(d + "rest/user/UserRestController.java"));
-            copyFile(new File(o + "service/JwtAuthenticationResponse.java"),            new File(d + "service/JwtAuthenticationResponse.java"));
-            copyFile(new File(o + "service/JwtUserDetailsService.java"),                new File(d + "service/JwtUserDetailsService.java"));
+            copyFile(new File(o + "exceptions/AuthenticationException.java"), new File(d + "exceptions/AuthenticationException.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationEntryPoint.java"), new File(d + "jwt/JwtAuthenticationEntryPoint.java"));
+            copyFile(new File(o + "jwt/JwtAuthenticationRequest.java"), new File(d + "jwt/JwtAuthenticationRequest.java"));
+            copyFile(new File(o + "jwt/JwtAuthorizationTokenFilter.java"), new File(d + "jwt/JwtAuthorizationTokenFilter.java"));
+            copyFile(new File(o + "jwt/JwtTokenUtil.java"), new File(d + "jwt/JwtTokenUtil.java"));
+            copyFile(new File(o + "jwt/JwtUser.java"), new File(d + "jwt/JwtUser.java"));
+            copyFile(new File(o + "jwt/JwtUserFactory.java"), new File(d + "jwt/JwtUserFactory.java"));
+            copyFile(new File(o + "model/Authority.java"), new File(d + "model/Authority.java"));
+            copyFile(new File(o + "model/AuthorityName.java"), new File(d + "model/AuthorityName.java"));
+            copyFile(new File(o + "model/Group.java"), new File(d + "model/Group.java"));
+            copyFile(new File(o + "model/User.java"), new File(d + "model/User.java"));
+            copyFile(new File(o + "repository/UserRepository.java"), new File(d + "repository/UserRepository.java"));
+            copyFile(new File(o + "rest/auth/AuthenticationRestController.java"), new File(d + "rest/auth/AuthenticationRestController.java"));
+            copyFile(new File(o + "rest/protecteds/MethodProtectedRestController.java"), new File(d + "rest/protecteds/MethodProtectedRestController.java"));
+            copyFile(new File(o + "rest/user/UserCrudResource.java"), new File(d + "rest/user/UserCrudResource.java"));
+            copyFile(new File(o + "rest/user/UserRestController.java"), new File(d + "rest/user/UserRestController.java"));
+            copyFile(new File(o + "service/JwtAuthenticationResponse.java"), new File(d + "service/JwtAuthenticationResponse.java"));
+            copyFile(new File(o + "service/JwtUserDetailsService.java"), new File(d + "service/JwtUserDetailsService.java"));
         }
         catch (IOException e)
         {
@@ -195,7 +218,7 @@ public class GenerationHelper
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         try
         {
-            copyFile(new File(o + "dashcard/dashcard.component.ts"),   new File(d + "dashcard/dashcard.component.ts"));
+            copyFile(new File(o + "dashcard/dashcard.component.ts"), new File(d + "dashcard/dashcard.component.ts"));
             copyFile(new File(o + "dashcard/dashcard.component.html"), new File(d + "dashcard/dashcard.component.html"));
             copyFile(new File(o + "dashcard/dashcard.component.scss"), new File(d + "dashcard/dashcard.component.scss"));
             copyFile(new File(o + "file-upload/file-upload.component.css"), new File(d + "file-upload/file-upload.component.css"));
@@ -266,8 +289,6 @@ public class GenerationHelper
                 fm.process(TemplatePathHelper.FRONTEND_SRC_STYLE, model(projeto)));
         output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_MAIN,
                 fm.process(TemplatePathHelper.FRONTEND_SRC_MAIN, model(projeto)));
-
-
 
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC;
@@ -371,7 +392,7 @@ public class GenerationHelper
         {
             copyFile(new File(o + "material.module.ts"), new File(d + "material.module.ts"));
             copyFile(new File(o + "autocomplete/autocomplete-type.component.ts"), new File(d + "autocomplete/autocomplete-type.component.ts"));
-            
+
             copyFile(new File(o + "/models/display-message.ts"), new File(d + "/models/display-message.ts"));
             copyFile(new File(o + "/utilities/loose-invalid.ts"), new File(d + "/utilities/loose-invalid.ts"));
             copyFile(new File(o + "/utilities/serialize.ts"), new File(d + "/utilities/serialize.ts"));
@@ -420,16 +441,16 @@ public class GenerationHelper
     {
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY;
-        output( d + "config.service.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts", model(projeto)));        
+        output(d + "config.service.ts", fm.process(TemplatePathHelper.FRONTEND_SRC_APP_INFRA_SECURITY + "config.service.ts", model(projeto)));
         try
         {
-            copyFile(new File(o + "admin.guard.ts"),    new File(d + "admin.guard.ts"));
-            copyFile(new File(o + "auth.guard.ts"),     new File(d + "auth.guard.ts"));
+            copyFile(new File(o + "admin.guard.ts"), new File(d + "admin.guard.ts"));
+            copyFile(new File(o + "auth.guard.ts"), new File(d + "auth.guard.ts"));
             copyFile(new File(o + "authentication.service.ts"), new File(d + "authentication.service.ts"));
-            copyFile(new File(o + "guest.guard.ts"),    new File(d + "guest.guard.ts"));
-            copyFile(new File(o + "index.ts"),          new File(d + "index.ts"));
-            copyFile(new File(o + "jwt.interceptor.ts"),new File(d + "jwt.interceptor.ts"));
-            copyFile(new File(o + "message.service.ts"),new File(d + "message.service.ts"));
+            copyFile(new File(o + "guest.guard.ts"), new File(d + "guest.guard.ts"));
+            copyFile(new File(o + "index.ts"), new File(d + "index.ts"));
+            copyFile(new File(o + "jwt.interceptor.ts"), new File(d + "jwt.interceptor.ts"));
+            copyFile(new File(o + "message.service.ts"), new File(d + "message.service.ts"));
             copyFile(new File(o + "resource.service.ts"), new File(d + "resource.service.ts"));
         }
         catch (IOException e)
@@ -451,7 +472,7 @@ public class GenerationHelper
 
     public static void backendApplicationToOutput(Projeto projeto)
     {
-        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APPLICATION,backendApplicationToString(projeto));
+        output(projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APPLICATION, backendApplicationToString(projeto));
 
         String o = "templates/" + TemplatePathHelper.BACKEND_WEBCONFIG;
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_WEBCONFIG;

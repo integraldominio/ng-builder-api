@@ -11,6 +11,7 @@ CREATE TABLE `projeto` (
   `output_directory` varchar(255) DEFAULT NULL,
   `server_host` varchar(255) DEFAULT NULL,
   `server_port` varchar(255) DEFAULT NULL,
+  `server_lang` varchar(255) DEFAULT NULL,
   `use_login` bit(1) NOT NULL,
   `use_roles` bit(1) NOT NULL,
   `portal_id` bigint(20) DEFAULT NULL,

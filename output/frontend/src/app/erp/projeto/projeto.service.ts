@@ -55,6 +55,7 @@ export class Projeto {
   nomeFrontEndApp: string;
   iconeApp: string;
   imageApp: string;
+  serverLang: string;
   serverHost: string;
   serverPort: number;
   frontHost: string;
