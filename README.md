@@ -143,7 +143,7 @@ npm i -g @nestjs/cli
 nest new project-name
 ```
 
-Usando sedd
+Usando seed
 ```
 git clone https://github.com/nestjs/typescript-starter.git project
 cd project
