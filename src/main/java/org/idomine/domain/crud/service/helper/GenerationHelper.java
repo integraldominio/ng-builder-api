@@ -26,8 +26,10 @@
 package org.idomine.domain.crud.service.helper;
 
 import static org.idomine.domain.crud.service.helper.FolderHelper.copyFile;
+import static org.idomine.domain.crud.service.helper.FolderHelper.criarBackendFolders;
+import static org.idomine.domain.crud.service.helper.FolderHelper.criarBaseFolder;
 import static org.idomine.domain.crud.service.helper.FolderHelper.criarDir;
-import static org.idomine.domain.crud.service.helper.FolderHelper.criarFolders;
+import static org.idomine.domain.crud.service.helper.FolderHelper.criarFrontendFolders;
 import static org.idomine.domain.crud.service.helper.FolderHelper.output;
 import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_APP_PROPERTIES;
 import static org.idomine.domain.crud.service.helper.TemplatePathHelper.BACKEND_ENTITY;
@@ -62,7 +64,7 @@ public class GenerationHelper
     {
         if (projeto != null)
         {
-            criarFolders(projeto.getOutputDirectory());
+            criarBaseFolder(projeto.getOutputDirectory());
             readmeToOutput(projeto);
             generateBackend(projeto);
             generateFrontend(projeto);
@@ -73,6 +75,7 @@ public class GenerationHelper
     {
         if (projeto != null)
         {
+            criarFrontendFolders(projeto.getOutputDirectory());
             frontReadmeToOutput(projeto);
             frontJsonsToOutput(projeto);
             frontAssets(projeto);
@@ -92,6 +95,7 @@ public class GenerationHelper
     {
         if (projeto != null)
         {
+            criarBackendFolders(projeto.getOutputDirectory());
             backendPomToOutput(projeto);
             backendReadmeToOutput(projeto);
             backendMigrationToOutput(projeto);

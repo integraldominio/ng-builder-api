@@ -33,7 +33,7 @@ public class GenerateAll
     public static void main(String[] args)
     {
         /*
-         *  Call this do Backend and Frontend generation. 
+         *  Call this to Backend and Frontend generation. 
          */
         Projeto p = Projeto.getFake();
         p.setOutputDirectory("output");

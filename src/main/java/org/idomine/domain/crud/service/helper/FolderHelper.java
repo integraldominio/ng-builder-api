@@ -37,40 +37,27 @@ import java.nio.channels.FileChannel;
 
 public class FolderHelper
 {
+
     public static void criarFolders(String base)
     {
-        base = base.trim();
-        if ("".equals(base))
-            base = "output";
+        base = baseFolder(base);
 
+        criarBaseFolder(base);
+        criarBackendFolders(base);
+        criarFrontendFolders(base);
+    }
+
+    public static void criarBaseFolder(String base)
+    {
+        base = baseFolder(base);
         criarDir(base);
-        criarDir(base + "/backend");
-        criarDir(base + "/backend/src");
-        criarDir(base + "/backend/src/main");
-        criarDir(base + "/backend/src/main/java");
-        criarDir(base + "/backend/src/main/java/org");
-        criarDir(base + "/backend/src/main/java/org/idomine");
-        criarDir(base + "/backend/src/main/java/org/idomine/domain");
-        criarDir(base + "/backend/src/main/java/org/idomine/application");
-        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud");
-        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/model");
-        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/repository");
-        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/resource");
-        criarDir(base + "/backend/src/main/java/org/idomine/infrastructure");
-        criarDir(base + "/backend/src/main/java/org/idomine/security");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/exceptions");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/jwt");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/model");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/repository");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/rest");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/auth");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/protecteds");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/user");
-        criarDir(base + "/backend/src/main/java/org/idomine/security/service");
-        criarDir(base + "/backend/src/main/resources");
-        criarDir(base + "/backend/src/main/resources/db");
-        criarDir(base + "/backend/src/main/resources/db/migration");
+    }
 
+    public static void criarFrontendFolders(String base)
+    {
+        base = baseFolder(base);
+        criarBaseFolder(base);
+        
         criarDir(base + "/frontend");
         criarDir(base + "/frontend/e2e");
         criarDir(base + "/frontend/src");
@@ -100,7 +87,46 @@ public class FolderHelper
         criarDir(base + "/frontend/src/assets/images");
         criarDir(base + "/frontend/src/assets/svg-loaders");
         criarDir(base + "/frontend/src/environments");
+    }
 
+    public static void criarBackendFolders(String base)
+    {
+        base = baseFolder(base);
+        criarBaseFolder(base);
+
+        criarDir(base + "/backend");
+        criarDir(base + "/backend/src");
+        criarDir(base + "/backend/src/main");
+        criarDir(base + "/backend/src/main/java");
+        criarDir(base + "/backend/src/main/java/org");
+        criarDir(base + "/backend/src/main/java/org/idomine");
+        criarDir(base + "/backend/src/main/java/org/idomine/domain");
+        criarDir(base + "/backend/src/main/java/org/idomine/application");
+        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud");
+        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/model");
+        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/repository");
+        criarDir(base + "/backend/src/main/java/org/idomine/domain/crud/resource");
+        criarDir(base + "/backend/src/main/java/org/idomine/infrastructure");
+        criarDir(base + "/backend/src/main/java/org/idomine/security");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/exceptions");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/jwt");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/model");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/repository");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/rest");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/auth");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/protecteds");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/rest/user");
+        criarDir(base + "/backend/src/main/java/org/idomine/security/service");
+        criarDir(base + "/backend/src/main/resources");
+        criarDir(base + "/backend/src/main/resources/db");
+        criarDir(base + "/backend/src/main/resources/db/migration");
+    }
+
+    private static String baseFolder(String base)
+    {
+        base = base.trim();
+        base = "".equals(base) ? "output" : base;
+        return base;
     }
 
     public static boolean criarDir(String nome)
