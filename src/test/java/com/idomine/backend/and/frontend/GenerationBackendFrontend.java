@@ -35,7 +35,9 @@ public class GenerationBackendFrontend
         /*
          *  Call this do Backend and Frontend generation. 
          */
-        GenerationHelper.backendAllToOutput(Projeto.getFake());
+        Projeto p = Projeto.getFake();
+        p.setOutputDirectory("sistemax");
+        GenerationHelper.backendAllToOutput(p);
     }
 
 }

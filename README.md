@@ -180,6 +180,194 @@ npm run start
 
 * Angular (https://angular.io/)
 
+### Árvore projeto
+
+``
+app
+│   angular.json
+│   db.json
+│   package.json
+│   README.md
+│   tsconfig.json
+│   tslint.json
+│
+├───e2e
+└───src
+    │   browserslist
+    │   favicon.ico
+    │   index.html
+    │   karma.conf.js
+    │   main.ts
+    │   polyfills.ts
+    │   styles.scss
+    │   test.ts
+    │   tsconfig.app.json
+    │   tsconfig.spec.json
+    │   tslint.json
+    │
+    ├───app
+    │   │   app-rotas.module.ts
+    │   │   app.module.ts
+    │   │
+    │   ├───erp
+    │   │   ├───artefato
+    │   │   │       artefato-form.component.css
+    │   │   │       artefato-form.component.html
+    │   │   │       artefato-form.component.ts
+    │   │   │       artefato-grid.component.css
+    │   │   │       artefato-grid.component.html
+    │   │   │       artefato-grid.component.ts
+    │   │   │       artefato.service.ts
+    │   │   │
+    │   │   ├───buildapp
+    │   │   │       buildapp.component.css
+    │   │   │       buildapp.component.ts
+    │   │   │
+    │   │   ├───configuracao
+    │   │   │       configuracao-form.component.css
+    │   │   │       configuracao-form.component.html
+    │   │   │       configuracao-form.component.ts
+    │   │   │       configuracao-grid.component.css
+    │   │   │       configuracao-grid.component.html
+    │   │   │       configuracao-grid.component.ts
+    │   │   │       configuracao.service.ts
+    │   │   │
+    │   │   ├───elemento
+    │   │   │       elemento-form.component.css
+    │   │   │       elemento-form.component.html
+    │   │   │       elemento-form.component.ts
+    │   │   │       elemento-grid.component.css
+    │   │   │       elemento-grid.component.html
+    │   │   │       elemento-grid.component.ts
+    │   │   │       elemento.service.ts
+    │   │   │
+    │   │   ├───portal
+    │   │   │       portal-form.component.css
+    │   │   │       portal-form.component.html
+    │   │   │       portal-form.component.ts
+    │   │   │       portal-grid.component.css
+    │   │   │       portal-grid.component.html
+    │   │   │       portal-grid.component.ts
+    │   │   │       portal.service.ts
+    │   │   │
+    │   │   └───projeto
+    │   │           projeto-form.component.css
+    │   │           projeto-form.component.html
+    │   │           projeto-form.component.ts
+    │   │           projeto-grid.component.css
+    │   │           projeto-grid.component.html
+    │   │           projeto-grid.component.ts
+    │   │           projeto.service.ts
+    │   │
+    │   ├───infra
+    │   │   ├───auth
+    │   │   │       api.service.ts
+    │   │   │       auth.service.ts
+    │   │   │       index.ts
+    │   │   │       user.service.ts
+    │   │   │
+    │   │   ├───comps
+    │   │   │   ├───dashcard
+    │   │   │   │       dashcard.component.html
+    │   │   │   │       dashcard.component.scss
+    │   │   │   │       dashcard.component.ts
+    │   │   │   │
+    │   │   │   └───file-upload
+    │   │   │           file-upload.component.css
+    │   │   │           file-upload.component.html
+    │   │   │           file-upload.component.ts
+    │   │   │
+    │   │   ├───pipes
+    │   │   │       MaxCharPipe.ts
+    │   │   │
+    │   │   ├───security
+    │   │   │       admin.guard.ts
+    │   │   │       auth.guard.ts
+    │   │   │       authentication.service.ts
+    │   │   │       config.service.ts
+    │   │   │       guest.guard.ts
+    │   │   │       index.ts
+    │   │   │       jwt.interceptor.ts
+    │   │   │       message.service.ts
+    │   │   │       resource.service.ts
+    │   │   │
+    │   │   └───users
+    │   │           user-form.component.css
+    │   │           user-form.component.html
+    │   │           user-form.component.ts
+    │   │           user-grid.component.css
+    │   │           user-grid.component.html
+    │   │           user-grid.component.ts
+    │   │           user-upload.component.html
+    │   │           user-upload.component.ts
+    │   │           users.service.ts
+    │   │
+    │   ├───pages
+    │   │   ├───base
+    │   │   │       base.component.html
+    │   │   │       base.component.ts
+    │   │   │
+    │   │   ├───erro
+    │   │   │       erro.component.css
+    │   │   │       erro.component.html
+    │   │   │       erro.component.ts
+    │   │   │
+    │   │   ├───home
+    │   │   │       home.component.css
+    │   │   │       home.component.html
+    │   │   │       home.component.ts
+    │   │   │
+    │   │   ├───login
+    │   │   │       login.component.html
+    │   │   │       login.component.scss
+    │   │   │       login.component.ts
+    │   │   │
+    │   │   ├───sidenav
+    │   │   │       sidenav.component.css
+    │   │   │       sidenav.component.html
+    │   │   │       sidenav.component.ts
+    │   │   │       sidenav.service.ts
+    │   │   │
+    │   │   └───sobre
+    │   │           sobre.component.css
+    │   │           sobre.component.html
+    │   │           sobre.component.ts
+    │   │
+    │   └───shared
+    │       │   material.module.ts
+    │       │
+    │       ├───autocomplete
+    │       │       autocomplete-type.component.ts
+    │       │
+    │       ├───models
+    │       │       display-message.ts
+    │       │
+    │       └───utilities
+    │               loose-invalid.ts
+    │               serialize.ts
+    │
+    ├───assets
+    │   ├───icon
+    │   │       auth.svg
+    │   │       facebook.svg
+    │   │       github-logo.svg
+    │   │       github-plus.png
+    │   │       google-plus.svg
+    │   │
+    │   ├───images
+    │   │       face-7.jpg
+    │   │       logo.svg
+    │   │
+    │   └───svg-loaders
+    │           puff.svg
+    │
+    └───environments
+            environment.prod.ts
+            environment.ts
+``
+
+
+
 ## Freemaker
 https://freemarker.apache.org/
 
