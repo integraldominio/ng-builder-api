@@ -110,6 +110,20 @@ Módulos:
 
 ![](docs/11.PNG)
 
+
+## Backend - Spring Boot
+
+### Diagrama de classes
+
+![](docs/classe.PNG)
+
+## Backend - Express
+
+## Frontend - Angular 6
+
+
+
+
 ## Freemaker
 https://freemarker.apache.org/
 
