@@ -173,11 +173,57 @@ Iniciando
 ```
 npm run start
 ```
-Controllers
+
+#### Controllers
 Os controllers são responsáveis ​​por manipular solicitações de entrada e retornar respostas para o cliente.
 
 ![](docs/nest01.PNG)
 
+```javascript
+cats.controller.ts
+
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll() {
+    return 'This action returns all cats';
+  }
+}
+```
+
+#### Decorators
+No exemplo acima, usamos o @Controller('cats')decorador, que é necessário para definir um controlador básico. O catsé um prefixo opcional para cada rota registrada na classe. Usar um prefixo permite que você evite se repetir quando todas as suas rotas compartilharem um prefixo comum. O @Get()decorador próximo ao findAll() método informa ao Nest para criar um nó de extremidade para esse caminho de rota e mapear todas as solicitações correspondentes para esse manipulador. Como declaramos um prefixo para cada rota ( cats), o Nest /cats mapeará cada solicitação GET para esse método.
+
+Quando uma solicitação GET é feita para esse terminal, o Nest retornará um código de status 200 e o JSON analisado , nesse caso apenas uma matriz vazia. Como isso é possível? Geralmente, distinguimos duas abordagens diferentes para manipular a resposta:
+
+```
+Padrão (recomendado): Quando retornarmos um objeto ou array JavaScript, ele será automaticamente analisado para JSON. Quando retornamos uma string, o Nest enviará apenas uma string sem tentar analisá-la. Além disso, o código de status da resposta é sempre 200 por padrão, exceto para solicitações POST, que usam 201 . Podemos facilmente alterar esse comportamento adicionando o @HttpCode(...)decorador em um nível de manipulador. 
+
+Biblioteca específica: Podemos usar o objeto de resposta específico da biblioteca , que podemos injetar usando o @Res()decorador na assinatura da função, por exemplo findAll(@Res() response).
+
+Aviso É proibido usar as duas abordagens ao mesmo tempo. O Nest detecta se o manipulador está usando um @Res()ou @Next(), se for esse o caso - a maneira padrão é desativada para essa rota única e não funcionará mais conforme o esperado.
+
+```
+#### Solicitar objeto
+
+Muitos endpoints precisam de acesso aos detalhes da solicitação do cliente . Na verdade, o Nest está usando o objeto de solicitação específico da biblioteca (expresso por padrão) . Podemos forçar o Nest a injetar o objeto request no manipulador usando o @Req()decorador.
+
+```javascript
+cats.controller.ts
+
+import { Controller, Get, Req } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll(@Req() request) {
+    return 'This action returns all cats';
+  }
+}
+
+```
 
 ## Frontend - Angular 6
 
