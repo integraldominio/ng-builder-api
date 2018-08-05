@@ -129,7 +129,7 @@ export class ProjetoFormComponent implements OnInit {
      }
   },
   {
-     key: 'serverLang', type: 'select',
+     key: 'serverLang', type: 'select',defaultValue: 'java',
      templateOptions: {
         label: 'Server Language',
         placeholder: 'Informe Server Language',

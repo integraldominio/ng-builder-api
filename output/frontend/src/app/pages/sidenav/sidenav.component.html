@@ -18,7 +18,7 @@
 
     <mat-nav-list>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/home']" >Home</a>
-        <a mat-list-item  (click)="toggle()" [routerLink]="['/portal']" >Portais</a>
+            <a mat-list-item  (click)="toggle()" [routerLink]="['/portal']" >Portais</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/projeto']" >Projetos</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/artefato']" >Artefatos</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/elemento']" >Elementos</a>
@@ -33,8 +33,12 @@
 
   <mat-sidenav-content  >
     <mat-toolbar color="primary" class="fixed-header mat-elevation-z6" style="height:56px;" >
-
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="sidenav.toggle()"
+       >
        <!-- PQ *ngIf="(isHandset | async)!.matches" -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>

@@ -46,7 +46,7 @@ import { SidenavService } from './pages/sidenav/sidenav.service';
 import { AutocompleteTypeComponent } from './shared/autocomplete/autocomplete-type.component';
 
 import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
-/* import { DashcardComponent } from './infra/comps/dashcard/dashcard.component'; */
+import { DashcardComponent } from './infra/comps/dashcard/dashcard.component';
 import { Ng2OdometerModule } from 'ng2-odometer';
 
 import { PortalGridComponent } from './erp/portal/portal-grid.component';
@@ -61,12 +61,11 @@ import { ConfiguracaoGridComponent } from './erp/configuracao/configuracao-grid.
 import { ConfiguracaoFormComponent } from './erp/configuracao/configuracao-form.component';
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 
-/* import { UserGridComponent } from './infra/users/user-grid.component';
+import { UserGridComponent } from './infra/users/user-grid.component';
 import { UserFormComponent } from './infra/users/user-form.component';
-import { UserUploadComponent } from './infra/users/user-upload.component';
- */
 import { UserService, ApiService } from './infra/auth';
 import { FileUploadComponent } from './infra/comps/file-upload/file-upload.component';
+import { UserUploadComponent } from './infra/users/user-upload.component';
 
 @NgModule({
   declarations: [
@@ -78,12 +77,12 @@ import { FileUploadComponent } from './infra/comps/file-upload/file-upload.compo
     HomeComponent,
     AutocompleteTypeComponent,
     MaxCharPipe,
-    /* DashcardComponent */,
-    FileUploadComponent,
-/*     UserGridComponent,
+    DashcardComponent,
+    UserGridComponent,
     UserFormComponent,
+    FileUploadComponent,
     UserUploadComponent,
- */    PortalGridComponent,
+    PortalGridComponent,
     PortalFormComponent,
     ProjetoGridComponent,
     ProjetoFormComponent,
