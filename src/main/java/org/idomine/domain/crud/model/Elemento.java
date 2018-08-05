@@ -421,6 +421,7 @@ public class Elemento
                         .minimo(1L)
                         .maximo(50L)
                         .requerido(true)
+                        .inicial("java")
                         .persistence(true)
                         .showcolumn(true)
                         .options(
