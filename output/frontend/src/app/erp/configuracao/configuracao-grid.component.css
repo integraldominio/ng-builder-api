@@ -16,7 +16,7 @@
     padding: 8px 24px 0;
     /* background-color: #ededed; */
     /* background-color: #f5f5f5; */
-    background-color:rgba(245, 245, 248, 0.521) ;
+    background-color:rgba(245, 245, 248, 0.1) ;
   }
 
 
@@ -34,5 +34,6 @@
   }
   
   mat-row:hover {
-    background-color:  #f5f5f5;
+   /*  background-color:  #f5f5f5; */
+   background-color:rgba(213, 216, 228, 0.219) ; 
   }
