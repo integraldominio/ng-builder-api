@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./buildapp.component.css'],
   template: `
   <div fxLayout="row wrap" class="form-group">
-  <div fxFlex.gt-sm="100" class="divide">
+  <div fxFlex.lt-sm="100" >
     <mat-card>
       <mat-card-title> NG builder  </mat-card-title>
       <mat-card-content>
