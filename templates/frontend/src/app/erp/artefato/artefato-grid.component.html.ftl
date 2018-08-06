@@ -1,7 +1,7 @@
 <div id="convert"> 
 
 <div fxLayout="row wrap" class="form-group">
-  <div fxFlex.gt-sm="100" class="divide">
+  <div fxFlex.lt-sm="100" >
     <mat-card>
       <mat-card-title>${artefato.nome}</mat-card-title>
 

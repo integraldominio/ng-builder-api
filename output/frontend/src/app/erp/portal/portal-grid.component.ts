@@ -42,9 +42,6 @@ export class PortalGridComponent implements OnInit {
   'id',
   'nome',
   'descricao',
-  'templateTs',
-  'templateCss',
-  'templateHtml',
   'actions'
   ];
 

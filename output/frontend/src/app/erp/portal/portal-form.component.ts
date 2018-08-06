@@ -53,9 +53,6 @@ export class PortalFormComponent implements OnInit {
   displayedColumns = [
   'nome',
   'descricao',
-  'templateTs',
-  'templateCss',
-  'templateHtml',
   'actions'
   ];
   dataSource: Array<Portal> = [];

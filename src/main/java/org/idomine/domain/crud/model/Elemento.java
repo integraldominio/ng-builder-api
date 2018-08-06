@@ -286,7 +286,7 @@ public class Elemento
                         .linhas(3L)
                         .requerido(true)
                         .persistence(true)
-                        .showcolumn(true)
+                        .showcolumn(false)
                         .fieldGroup(2L)
                         .fieldSize(1L)
                         .build());
@@ -305,7 +305,7 @@ public class Elemento
                         .linhas(3L)
                         .requerido(true)
                         .persistence(true)
-                        .showcolumn(true)
+                        .showcolumn(false)
                         .fieldGroup(3L)
                         .fieldSize(1L)
                         .build());
@@ -324,7 +324,7 @@ public class Elemento
                         .linhas(3L)
                         .requerido(true)
                         .persistence(true)
-                        .showcolumn(true)
+                        .showcolumn(false)
                         .fieldGroup(4L)
                         .fieldSize(1L)
                         .build());
