@@ -25,5 +25,7 @@ CREATE TABLE `elemento` (
   `url_prop` varchar(255) DEFAULT NULL,
   `value_prop` varchar(255) DEFAULT NULL,
   `artefato_id` bigint(20) DEFAULT NULL,
+  `field_group` bigint(20) DEFAULT NULL,
+  `field_size` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

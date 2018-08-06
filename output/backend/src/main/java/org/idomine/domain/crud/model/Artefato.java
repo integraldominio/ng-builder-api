@@ -76,6 +76,8 @@ public class Artefato
     
     private String classFolder;
     
+    private String crudEstilo;
+    
     private Boolean paginaHome;
     
     private String templateTs;

@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 import { ConfiguracaoService, Configuracao } from './configuracao.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -33,7 +33,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-configuracao-form',
   templateUrl: './configuracao-form.component.html',
-  styleUrls: ['./configuracao-form.component.css']
+  styleUrls: ['./configuracao-form.component.css'],
+
 })
 export class ConfiguracaoFormComponent implements OnInit {
 
@@ -58,47 +59,42 @@ export class ConfiguracaoFormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<Configuracao> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
-  {
-     key: 'nomeEmpresa', type: 'input',
-     templateOptions: {
+    { key: 'nomeEmpresa', type: 'input',
+      templateOptions: {
         label: 'Nome Empresa',
         placeholder: 'Informe Nome Empresa',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'siteEmpresa', type: 'input',
-     templateOptions: {
+    { key: 'siteEmpresa', type: 'input',
+      templateOptions: {
         label: 'Site Empresa',
         placeholder: 'Informe Site Empresa',
         required: false,
         
      }
   },
-  {
-     key: 'emailEmpresa', type: 'input',
-     templateOptions: {
+    { key: 'emailEmpresa', type: 'input',
+      templateOptions: {
         label: 'Email Empresa',
         placeholder: 'Informe Email Empresa',
         required: false,
         
      }
   },
-  {
-     key: 'outputDirectory', type: 'input',
-     templateOptions: {
+    { key: 'outputDirectory', type: 'input',
+      templateOptions: {
         label: 'Output Directory',
         placeholder: 'Informe Output Directory',
         required: false,
         
      }
   },
-  {
-     key: 'appProperties', type: 'input',
-     templateOptions: {
+    { key: 'appProperties', type: 'input',
+      templateOptions: {
         label: 'Application Properties',
         placeholder: 'Informe Application Properties',
         required: false,

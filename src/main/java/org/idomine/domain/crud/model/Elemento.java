@@ -100,6 +100,36 @@ public class Elemento
     private boolean showcolumn;
     private Long ordenation;
 
+    private Long fieldGroup;
+    private Long fieldSize;
+
+    public boolean newGroup()
+    {
+        boolean multi = "multi".equals(artefato.getCrudEstilo());
+        if (multi)
+        {
+            Elemento el = artefato.getElementos().stream().filter(e -> e.getFieldGroup().equals(this.getFieldGroup())).findFirst().get();
+            return el.getNome().equals(this.getNome());
+        }
+        return false;
+    }
+
+    public boolean lastGroup()
+    {
+        boolean multi = "multi".equals(artefato.getCrudEstilo());
+        if (multi)
+        {
+            Elemento el = artefato.getElementos().stream().filter(e -> e.getFieldGroup().equals(this.getFieldGroup())).reduce((a, b) -> b).get();
+            return el.getNome().equals(this.getNome());
+        }
+        return false;
+    }
+
+    public boolean isNotFirstElemento()
+    {
+        return !artefato.getElementos().get(0).getNome().equals(this.getNome());
+    }
+
     public boolean isTipoString()
     {
         return TipoField.String.equals(tipoField);
@@ -112,14 +142,14 @@ public class Elemento
         {
             if (minimo != null)
             {
-                restricoes = isTipoString() ? "minLength: " + minimo : "min: " + minimo ;
+                restricoes = isTipoString() ? "minLength: " + minimo : "min: " + minimo;
                 restricoes = restricoes + ",";
             }
 
             if (maximo != null)
             {
                 restricoes = restricoes.equals("") ? "" : "; ";
-                restricoes = isTipoString() ? "maxLength: " + maximo : "max: " + maximo ;
+                restricoes = isTipoString() ? "maxLength: " + maximo : "max: " + maximo;
                 restricoes = restricoes + ",";
             }
         }
@@ -220,6 +250,8 @@ public class Elemento
                         .maximo(100L)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
         // portal
         lista.add(
@@ -236,6 +268,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
         // portal
         lista.add(
@@ -253,6 +287,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         // portal
         lista.add(
@@ -270,6 +306,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
         // portal
         lista.add(
@@ -287,6 +325,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
 
         return lista;
@@ -408,7 +448,6 @@ public class Elemento
                         .persistence(true)
                         .build());
 
-
         lista.add(
                 Elemento.builder()
                         .id(9L)
@@ -426,8 +465,8 @@ public class Elemento
                         .showcolumn(true)
                         .options(
                                 "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
-                        .build());        
-        
+                        .build());
+
         lista.add(
                 Elemento.builder()
                         .id(3L)
@@ -635,6 +674,22 @@ public class Elemento
 
         lista.add(
                 Elemento.builder()
+                        .id(9L)
+                        .artefato(Artefato.builder().id(2L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("crudEstilo")
+                        .rotulo("Estilo Entrada de Dados")
+                        .tamanho(50L)
+                        .inicial("single")
+                        .requerido(true)
+                        .persistence(true)
+                        .options(
+                                "[{ value: 'single', label: 'Coluna Simples'}, {value: 'multi', label: 'Coluna Múltipla'}]")
+                        .build());
+
+        lista.add(
+                Elemento.builder()
                         .id(13L)
                         .artefato(Artefato.builder().id(3L).build())
                         .tipoElemento(TipoElemento.Checkbox)
@@ -748,7 +803,9 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .options(
-                                //"[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label: 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label: 'Boolean'},"
+                                // "[{ value: 'BigDecimal', label: 'BigDecimal'}, {value: 'BigInteger', label:
+                                // 'BigInteger'}, {value: 'Binario', label: 'Binario'}, {value: 'Boolean', label:
+                                // 'Boolean'},"
                                 "[ {value: 'Boolean', label: 'Boolean'},"
                                         +
                                         " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ,"

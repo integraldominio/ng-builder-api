@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 import { ProjetoService, Projeto } from './projeto.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -34,7 +34,8 @@ import { PortalService } from '../portal/portal.service';
 @Component({
   selector: 'app-projeto-form',
   templateUrl: './projeto-form.component.html',
-  styleUrls: ['./projeto-form.component.css']
+  styleUrls: ['./projeto-form.component.css'],
+
 })
 export class ProjetoFormComponent implements OnInit {
 
@@ -60,11 +61,10 @@ export class ProjetoFormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<Projeto> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
-  {
-     key: 'portal', type: 'select',
-     templateOptions: {
+    { key: 'portal', type: 'select',
+      templateOptions: {
         label: 'Portal',
         placeholder: 'Informe Portal',
         required: true,
@@ -74,63 +74,56 @@ export class ProjetoFormComponent implements OnInit {
         options: this.portalService.listAll(),
      }
   },
-  {
-     key: 'nome', type: 'input',
-     templateOptions: {
+    { key: 'nome', type: 'input',
+      templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'descricao', type: 'input',defaultValue: 'Sistema muito legal, gerado com o ngx-buider',
-     templateOptions: {
+    { key: 'descricao', type: 'input',defaultValue: 'Sistema muito legal, gerado com o ngx-buider',
+      templateOptions: {
         label: 'Descrição',
         placeholder: 'Informe Descrição',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'nomeBackendApp', type: 'input',defaultValue: 'app-backend',
-     templateOptions: {
+    { key: 'nomeBackendApp', type: 'input',defaultValue: 'app-backend',
+      templateOptions: {
         label: 'Nome Backend App',
         placeholder: 'Informe Nome Backend App',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'nomeFrontEndApp', type: 'input',defaultValue: 'app-frontend',
-     templateOptions: {
+    { key: 'nomeFrontEndApp', type: 'input',defaultValue: 'app-frontend',
+      templateOptions: {
         label: 'Nome Frontend App',
         placeholder: 'Informe Nome Frontend App',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'iconeApp', type: 'input',defaultValue: '/assets/icon.svg',
-     templateOptions: {
+    { key: 'iconeApp', type: 'input',defaultValue: '/assets/icon.svg',
+      templateOptions: {
         label: 'Ícone App',
         placeholder: 'Informe Ícone App',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'imageApp', type: 'input',defaultValue: 'assets/back-image.svg',
-     templateOptions: {
+    { key: 'imageApp', type: 'input',defaultValue: 'assets/back-image.svg',
+      templateOptions: {
         label: 'Image App',
         placeholder: 'Informe Image App',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'serverLang', type: 'select',defaultValue: 'java',
-     templateOptions: {
+    { key: 'serverLang', type: 'select',defaultValue: 'java',
+      templateOptions: {
         label: 'Server Language',
         placeholder: 'Informe Server Language',
         required: true,
@@ -138,63 +131,56 @@ export class ProjetoFormComponent implements OnInit {
         options: [{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]
      }
   },
-  {
-     key: 'serverHost', type: 'input',defaultValue: 'localhost',
-     templateOptions: {
+    { key: 'serverHost', type: 'input',defaultValue: 'localhost',
+      templateOptions: {
         label: 'Server Host',
         placeholder: 'Informe Server Host',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'serverPort', type: 'input',defaultValue: 3000,
-     templateOptions: {
+    { key: 'serverPort', type: 'input',defaultValue: 3000,
+      templateOptions: {
         label: 'Server port',
         placeholder: 'Informe Server port',
         required: true,
         max: 9999,
      }
   },
-  {
-     key: 'frontHost', type: 'input',defaultValue: 'localhost',
-     templateOptions: {
+    { key: 'frontHost', type: 'input',defaultValue: 'localhost',
+      templateOptions: {
         label: 'Front Host',
         placeholder: 'Informe Front Host',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'frontPort', type: 'input',defaultValue: 5000,
-     templateOptions: {
+    { key: 'frontPort', type: 'input',defaultValue: 5000,
+      templateOptions: {
         label: 'Front port',
         placeholder: 'Informe Front port',
         required: true,
         max: 99990,
      }
   },
-  {
-     key: 'useLogin', type: 'checkbox',
-     templateOptions: {
+    { key: 'useLogin', type: 'checkbox',
+      templateOptions: {
         label: 'Use Login',
         placeholder: 'Informe Use Login',
         required: true,
         
      }
   },
-  {
-     key: 'useRoles', type: 'checkbox',
-     templateOptions: {
+    { key: 'useRoles', type: 'checkbox',
+      templateOptions: {
         label: 'Use Roles',
         placeholder: 'Informe Use Roles',
         required: true,
         
      }
   },
-  {
-     key: 'outputDirectory', type: 'input',defaultValue: 'sistemax',
-     templateOptions: {
+    { key: 'outputDirectory', type: 'input',defaultValue: 'sistemax',
+      templateOptions: {
         label: 'Output Directory',
         placeholder: 'Informe Output Directory',
         required: true,

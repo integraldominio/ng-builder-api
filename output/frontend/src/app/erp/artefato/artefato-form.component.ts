@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 import { ArtefatoService, Artefato } from './artefato.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -34,7 +34,8 @@ import { ProjetoService } from '../projeto/projeto.service';
 @Component({
   selector: 'app-artefato-form',
   templateUrl: './artefato-form.component.html',
-  styleUrls: ['./artefato-form.component.css']
+  styleUrls: ['./artefato-form.component.css'],
+
 })
 export class ArtefatoFormComponent implements OnInit {
 
@@ -59,11 +60,10 @@ export class ArtefatoFormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<Artefato> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
-  {
-     key: 'projeto', type: 'select',
-     templateOptions: {
+    { key: 'projeto', type: 'select',
+      templateOptions: {
         label: 'Projeto',
         placeholder: 'Informe Projeto',
         required: true,
@@ -73,9 +73,8 @@ export class ArtefatoFormComponent implements OnInit {
         options: this.projetoService.listAll(),
      }
   },
-  {
-     key: 'tipo', type: 'select',
-     templateOptions: {
+    { key: 'tipo', type: 'select',
+      templateOptions: {
         label: 'Tipo',
         placeholder: 'Informe Tipo',
         required: true,
@@ -83,72 +82,73 @@ export class ArtefatoFormComponent implements OnInit {
         options: [{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]
      }
   },
-  {
-     key: 'nome', type: 'input',
-     templateOptions: {
+    { key: 'nome', type: 'input',
+      templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
         maxLength: 50,
      }
   },
-  {
-     key: 'resourceName', type: 'input',
-     templateOptions: {
+    { key: 'resourceName', type: 'input',
+      templateOptions: {
         label: 'Resource Name',
         placeholder: 'Informe Resource Name',
         required: true,
         maxLength: 501,
      }
   },
-  {
-     key: 'className', type: 'input',
-     templateOptions: {
+    { key: 'className', type: 'input',
+      templateOptions: {
         label: 'Class Name',
         placeholder: 'Informe Class Name',
         required: true,
         maxLength: 50,
      }
   },
-  {
-     key: 'classFolder', type: 'input',
-     templateOptions: {
+    { key: 'classFolder', type: 'input',
+      templateOptions: {
         label: 'Class Folder',
         placeholder: 'Informe Class Folder',
         required: true,
         maxLength: 50,
      }
   },
-  {
-     key: 'paginaHome', type: 'checkbox',
-     templateOptions: {
+    { key: 'crudEstilo', type: 'select',defaultValue: 'single',
+      templateOptions: {
+        label: 'Estilo Entrada de Dados',
+        placeholder: 'Informe Estilo Entrada de Dados',
+        required: true,
+        
+        options: [{ value: 'single', label: 'Coluna Simples'}, {value: 'multi', label: 'Coluna Múltipla'}]
+     }
+  },
+    { key: 'paginaHome', type: 'checkbox',
+      templateOptions: {
         label: 'Página Home',
         placeholder: 'Informe Página Home',
         required: false,
         
      }
   },
-  {
-     key: 'templateTs', type: 'textarea',
-     templateOptions: {
+    { key: 'templateTs', type: 'textarea',
+      templateOptions: {
         label: 'Template Ts',
         placeholder: 'Informe Template Ts',
         required: false,
         
      }
   },
-  {
-     key: 'templateHtml', type: 'textarea',
-     templateOptions: {
+    { key: 'templateHtml', type: 'textarea',
+      templateOptions: {
         label: 'Template Html',
         placeholder: 'Informe Template Html',
         required: false,
         
      }
   },
-  {
-     key: 'templateCss', type: 'textarea',
-     templateOptions: {
+    { key: 'templateCss', type: 'textarea',
+      templateOptions: {
         label: 'Template Css',
         placeholder: 'Informe Template Css',
         required: false,

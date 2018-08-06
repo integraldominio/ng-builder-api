@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation  } from '@angular/core';
 import { PortalService, Portal } from './portal.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -33,7 +33,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-portal-form',
   templateUrl: './portal-form.component.html',
-  styleUrls: ['./portal-form.component.css']
+  styleUrls: ['./portal-form.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PortalFormComponent implements OnInit {
 
@@ -58,29 +59,31 @@ export class PortalFormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<Portal> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
-  {
-     key: 'nome', type: 'textarea',
-     templateOptions: {
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'nome', type: 'textarea',
+      templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'descricao', type: 'textarea',
-     templateOptions: {
+    {className: 'flex-1', key: 'descricao', type: 'textarea',
+      templateOptions: {
         label: 'descricao',
         placeholder: 'Informe descricao',
         required: true,
         maxLength: 100,
      }
   },
-  {
-     key: 'templateTs', type: 'textarea',
-     templateOptions: {
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateTs', type: 'textarea',
+      templateOptions: {
         label: 'template Ts',
         placeholder: 'Informe template Ts',
         required: true,
@@ -88,9 +91,11 @@ export class PortalFormComponent implements OnInit {
         rows: 3,
      }
   },
-  {
-     key: 'templateCss', type: 'textarea',
-     templateOptions: {
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateCss', type: 'textarea',
+      templateOptions: {
         label: 'template Css',
         placeholder: 'Informe template Css',
         required: true,
@@ -98,9 +103,11 @@ export class PortalFormComponent implements OnInit {
         rows: 3,
      }
   },
-  {
-     key: 'templateHtml', type: 'textarea',
-     templateOptions: {
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateHtml', type: 'textarea',
+      templateOptions: {
         label: 'template Html',
         placeholder: 'Informe template Html',
         required: true,
@@ -108,6 +115,7 @@ export class PortalFormComponent implements OnInit {
         rows: 3,
      }
   },
+   ]},
   ];
 
   constructor (

@@ -67,7 +67,6 @@ public class Artefato
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
- 
     @ManyToOne
     private Projeto projeto;
 
@@ -80,6 +79,7 @@ public class Artefato
     private String classFolder;
 
     private boolean paginaHome;
+    private String crudEstilo;
 
     private String templateTs;
     private String templateCss;
@@ -95,6 +95,16 @@ public class Artefato
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "artefato")
     private List<Elemento> elementos;
+
+    public boolean sigleColumn()
+    {
+        return "single".equals(crudEstilo);
+    }
+
+    public boolean multiColumn()
+    {
+        return "multi".equals(crudEstilo);
+    }
 
     public boolean hasDateType()
     {
@@ -158,81 +168,85 @@ public class Artefato
     {
         List<Artefato> lista = new ArrayList<>();
 
-        lista.add(
-                Artefato.builder()
-                        .id(1L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("Portais")
-                        .resourceName("portais")
-                        .className("Portal")
-                        .classFolder("portal")
-                        .elementos(Elemento.getFake0())
-                        .build());
+        // portais
+        Artefato portais = Artefato.builder()
+                .id(1L)
+                .tipo(TipoArtefato.Crud)
+                .nome("Portais")
+                .resourceName("portais")
+                .className("Portal")
+                .classFolder("portal")
+                .elementos(Elemento.getFake0())
+                .crudEstilo("multi")
+                .build();
+        portais.getElementos().forEach(e -> e.setArtefato(portais));
+        lista.add(portais);
 
-        lista.add(
-                Artefato.builder()
-                        .id(1L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("Projetos")
-                        .resourceName("projetos")
-                        .className("Projeto")
-                        .classFolder("projeto")
-                        .elementos(Elemento.getFake1())
-                        .build());
-        lista.add(
-                Artefato.builder()
-                        .id(2L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("Artefatos")
-                        .resourceName("artefatos")
-                        .className("Artefato")
-                        .classFolder("artefato")
-                        .elementos(Elemento.getFake2())
-                        .build());
-        lista.add(
-                Artefato.builder()
-                        .id(3L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("Elementos")
-                        .resourceName("elementos")
-                        .className("Elemento")
-                        .classFolder("elemento")
-                        .elementos(Elemento.getFake3())
-                        .build());
+        // projetos
+        Artefato projs = Artefato.builder()
+                .id(1L)
+                .tipo(TipoArtefato.Crud)
+                .nome("Projetos")
+                .resourceName("projetos")
+                .className("Projeto")
+                .classFolder("projeto")
+                .elementos(Elemento.getFake1())
+                .build();
+        projs.getElementos().forEach(e -> e.setArtefato(projs));
+        lista.add(projs);
 
-        lista.add(
-                Artefato.builder()
-                        .id(3L)
-                        .tipo(TipoArtefato.Crud)
-                        .nome("Configuração") // não pode usar config, pois já declarado no template
-                        .resourceName("configuracoes")
-                        .className("Configuracao")
-                        .classFolder("configuracao")
-                        .elementos(Elemento.getFake4())
-                        .build());
+        // artafatos
+        Artefato art = Artefato.builder()
+                .id(2L)
+                .tipo(TipoArtefato.Crud)
+                .nome("Artefatos")
+                .resourceName("artefatos")
+                .className("Artefato")
+                .classFolder("artefato")
+                .elementos(Elemento.getFake2())
+                .build();
+        art.getElementos().forEach(e -> e.setArtefato(art));
+        lista.add(art);
 
-        // lista.add(
-        // Artefato.builder()
-        // .id(4L)
-        // .tipo(TipoArtefato.Crud)
-        // .nome("formly-js.github.io")
-        // .resourceName("formly")
-        // .className("Formly")
-        // .classFolder("formly")
-        // .elementos(Elemento.getFake5())
-        // .build());
+        // elementos
+        Artefato els = Artefato.builder()
+                .id(3L)
+                .tipo(TipoArtefato.Crud)
+                .nome("Elementos")
+                .resourceName("elementos")
+                .className("Elemento")
+                .classFolder("elemento")
+                .elementos(Elemento.getFake3())
+                .build();
+        els.getElementos().forEach(e -> e.setArtefato(els));
+        lista.add(els);
 
-        lista.add(
-                Artefato.builder()
-                        .id(5L)
-                        .tipo(TipoArtefato.Template)
-                        .nome("Gerar App!") // não pode usar config, pois já declarado no template
-                        .className("BuildApp")
-                        .classFolder("buildapp")
-                        .templateTs(template())
-                        .templateCss(templateCSS())
-                        .elementos(new ArrayList<>())
-                        .build());
+        // config
+        Artefato c = Artefato.builder()
+                .id(3L)
+                .tipo(TipoArtefato.Crud)
+                .nome("Configuração") // não pode usar config, pois já declarado no template
+                .resourceName("configuracoes")
+                .className("Configuracao")
+                .classFolder("configuracao")
+                .elementos(Elemento.getFake4())
+                .build();
+        c.getElementos().forEach(e -> e.setArtefato(c));
+        lista.add(c);
+
+        // template
+        Artefato t = Artefato.builder()
+                .id(5L)
+                .tipo(TipoArtefato.Template)
+                .nome("Gerar App!") // não pode usar config, pois já declarado no template
+                .className("BuildApp")
+                .classFolder("buildapp")
+                .templateTs(template())
+                .templateCss(templateCSS())
+                .elementos(new ArrayList<>())
+                .build();
+        t.getElementos().forEach(e -> e.setArtefato(t));
+        lista.add(t);
 
         return lista;
     }
@@ -248,9 +262,7 @@ public class Artefato
 
     private static String template()
     {
-
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_SHARED;
-
         return FolderHelper.lerTemplate("templates/example/buildapp.component.ts");
     }
 

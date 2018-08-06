@@ -63,6 +63,11 @@
 	      <mat-cell *matCellDef="let row" >{{row.classFolder}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="crudEstilo">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Estilo Entrada de Dados</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.crudEstilo}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="paginaHome">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Página Home</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.paginaHome}}</mat-cell>
@@ -88,12 +93,21 @@
       <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
       <mat-cell *matCellDef="let row"  >
  
-        <button mat-mini-fab color="primary"routerLink="/artefato/edit/{{row.id}}">
-          <mat-icon aria-label="Edit">edit</mat-icon>
-        </button>
-        <button  mat-mini-fab   (click)="deleteItem(row)">
-          <mat-icon aria-label="Delete">delete</mat-icon>
-        </button>
+		<button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+					(click)="$event.stopPropagation();">
+		<mat-icon class="secondary-text">more_vert</mat-icon> 
+		</button>
+		<mat-menu #moreMenu="matMenu">
+			<button mat-menu-item aria-label="edit"routerLink="/artefato/edit/{{row.id}}">
+				<mat-icon>edit</mat-icon>
+				<span>Editar</span>
+		</button>
+		<button mat-menu-item aria-label="remove" (click)="deleteItem(row)">
+					<mat-icon>delete</mat-icon>
+					<span>Remover</span>
+			</button>
+ 	 	</mat-menu>
+ 
 
       </mat-cell>
     </ng-container> 

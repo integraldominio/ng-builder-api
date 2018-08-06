@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit <#if artefato.multiColumn() >, ViewEncapsulation</#if>  } from '@angular/core';
 import { ${artefato.className}Service, ${artefato.className} } from './${artefato.classFolder}.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -38,7 +38,8 @@ import { ${e.nome}Service } from '../${e.nome?lower_case}/${e.nome?lower_case}.s
 @Component({
   selector: 'app-${artefato.classFolder}-form',
   templateUrl: './${artefato.classFolder}-form.component.html',
-  styleUrls: ['./${artefato.classFolder}-form.component.css']
+  styleUrls: ['./${artefato.classFolder}-form.component.css'],
+<#if artefato.multiColumn() >  encapsulation: ViewEncapsulation.None,</#if>
 })
 export class ${artefato.className}FormComponent implements OnInit {
 
@@ -68,12 +69,16 @@ export class ${artefato.className}FormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<${artefato.className}> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
   <#list artefato.elementos as e >
-  <#if e.toForm()>{
-     key: '${e.nome?uncap_first}', type: '${e.toFormly()}',<#if e.inicial??>defaultValue: ${e.getDefault()},</#if>
-     templateOptions: {
+  <#if e.toForm()>
+   <#if e.newGroup() >
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+   </#if>
+    {<#if artefato.multiColumn() >className: 'flex-${e.fieldSize}',</#if> key: '${e.nome?uncap_first}', type: '${e.toFormly()}',<#if e.inicial??>defaultValue: ${e.getDefault()},</#if>
+      templateOptions: {
         label: '${e.rotulo}',
         placeholder: 'Informe ${e.rotulo}',
         required: ${e.requiredToString()},
@@ -90,6 +95,9 @@ export class ${artefato.className}FormComponent implements OnInit {
         </#if>
      }
   },
+  <#if e.lastGroup() >
+   ]},
+  </#if>
   </#if>
   </#list>
   ];

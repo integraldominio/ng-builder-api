@@ -54,6 +54,7 @@ export class Artefato {
   resourceName: string;
   className: string;
   classFolder: string;
+  crudEstilo: string;
   paginaHome: boolean;
   templateTs: string;
   templateHtml: string;

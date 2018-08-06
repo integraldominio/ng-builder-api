@@ -129,6 +129,11 @@ public class ArtefatoResource
     {
         return new ResponseEntity<>(artefatoRepository.findByClassFolder(classFolder), HttpStatus.OK);
     }
+    @GetMapping("/artefatos/search/crudEstilo/{crudEstilo}")
+    public ResponseEntity<?> searchPathVariableCrudEstilo(@PathVariable  String  crudEstilo)
+    {
+        return new ResponseEntity<>(artefatoRepository.findByCrudEstilo(crudEstilo), HttpStatus.OK);
+    }
     @GetMapping("/artefatos/search/paginaHome/{paginaHome}")
     public ResponseEntity<?> searchPathVariablePaginaHome(@PathVariable  Boolean  paginaHome)
     {

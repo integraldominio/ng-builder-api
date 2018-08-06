@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 import { ElementoService, Elemento } from './elemento.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -34,7 +34,8 @@ import { ArtefatoService } from '../artefato/artefato.service';
 @Component({
   selector: 'app-elemento-form',
   templateUrl: './elemento-form.component.html',
-  styleUrls: ['./elemento-form.component.css']
+  styleUrls: ['./elemento-form.component.css'],
+
 })
 export class ElementoFormComponent implements OnInit {
 
@@ -58,11 +59,10 @@ export class ElementoFormComponent implements OnInit {
   'actions'
   ];
   dataSource: Array<Elemento> = [];
-  // Fieds
+  // Fields
   fields: FormlyFieldConfig[] = [
-  {
-     key: 'artefato', type: 'select',
-     templateOptions: {
+    { key: 'artefato', type: 'select',
+      templateOptions: {
         label: 'Artefato',
         placeholder: 'Informe Artefato',
         required: true,
@@ -72,9 +72,8 @@ export class ElementoFormComponent implements OnInit {
         options: this.artefatoService.listAll(),
      }
   },
-  {
-     key: 'tipoElemento', type: 'select',
-     templateOptions: {
+    { key: 'tipoElemento', type: 'select',
+      templateOptions: {
         label: 'Tipo Elemento',
         placeholder: 'Informe Tipo Elemento',
         required: true,
@@ -82,9 +81,8 @@ export class ElementoFormComponent implements OnInit {
         options: [{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} , { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} , { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } , { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] 
      }
   },
-  {
-     key: 'tipoField', type: 'select',
-     templateOptions: {
+    { key: 'tipoField', type: 'select',
+      templateOptions: {
         label: 'Tipo Field',
         placeholder: 'Informe Tipo Field',
         required: true,
@@ -92,153 +90,136 @@ export class ElementoFormComponent implements OnInit {
         options: [ {value: 'Boolean', label: 'Boolean'}, {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} , {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]
      }
   },
-  {
-     key: 'nome', type: 'input',
-     templateOptions: {
+    { key: 'nome', type: 'input',
+      templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
         required: true,
         maxLength: 50,
      }
   },
-  {
-     key: 'rotulo', type: 'input',
-     templateOptions: {
+    { key: 'rotulo', type: 'input',
+      templateOptions: {
         label: 'Rótulo',
         placeholder: 'Informe Rótulo',
         required: true,
         maxLength: 50,
      }
   },
-  {
-     key: 'inicial', type: 'input',
-     templateOptions: {
+    { key: 'inicial', type: 'input',
+      templateOptions: {
         label: 'Valor Inicial',
         placeholder: 'Informe Valor Inicial',
         required: false,
         
      }
   },
-  {
-     key: 'mascara', type: 'input',
-     templateOptions: {
+    { key: 'mascara', type: 'input',
+      templateOptions: {
         label: 'Máscara Edição',
         placeholder: 'Informe Máscara Edição',
         required: false,
         
      }
   },
-  {
-     key: 'pipe', type: 'input',
-     templateOptions: {
+    { key: 'pipe', type: 'input',
+      templateOptions: {
         label: 'Máscara Display',
         placeholder: 'Informe Máscara Display',
         required: false,
         
      }
   },
-  {
-     key: 'dica', type: 'input',
-     templateOptions: {
+    { key: 'dica', type: 'input',
+      templateOptions: {
         label: 'Hint(dica)',
         placeholder: 'Informe Hint(dica)',
         required: false,
         
      }
   },
-  {
-     key: 'requerido', type: 'checkbox',
-     templateOptions: {
+    { key: 'requerido', type: 'checkbox',
+      templateOptions: {
         label: 'Requerido',
         placeholder: 'Informe Requerido',
         required: true,
         
      }
   },
-  {
-     key: 'persistence', type: 'checkbox',
-     templateOptions: {
+    { key: 'persistence', type: 'checkbox',
+      templateOptions: {
         label: 'Persistence',
         placeholder: 'Informe Persistence',
         required: true,
         
      }
   },
-  {
-     key: 'tamanho', type: 'input',
-     templateOptions: {
+    { key: 'tamanho', type: 'input',
+      templateOptions: {
         label: 'Tamanho',
         placeholder: 'Informe Tamanho',
         required: true,
         
      }
   },
-  {
-     key: 'min', type: 'input',
-     templateOptions: {
+    { key: 'min', type: 'input',
+      templateOptions: {
         label: 'Mínimo',
         placeholder: 'Informe Mínimo',
         required: false,
         
      }
   },
-  {
-     key: 'max', type: 'input',
-     templateOptions: {
+    { key: 'max', type: 'input',
+      templateOptions: {
         label: 'Máximo',
         placeholder: 'Informe Máximo',
         required: false,
         
      }
   },
-  {
-     key: 'linhas', type: 'input',
-     templateOptions: {
+    { key: 'linhas', type: 'input',
+      templateOptions: {
         label: 'Número Linhas',
         placeholder: 'Informe Número Linhas',
         required: false,
         
      }
   },
-  {
-     key: 'showcolumn', type: 'checkbox',
-     templateOptions: {
+    { key: 'showcolumn', type: 'checkbox',
+      templateOptions: {
         label: 'Show Column',
         placeholder: 'Informe Show Column',
         required: false,
         
      }
   },
-  {
-     key: 'valueProp', type: 'input',
-     templateOptions: {
+    { key: 'valueProp', type: 'input',
+      templateOptions: {
         label: 'Value Prop',
         placeholder: 'Informe Value Prop',
         required: false,
         
      }
   },
-  {
-     key: 'labelProp', type: 'input',
-     templateOptions: {
+    { key: 'labelProp', type: 'input',
+      templateOptions: {
         label: 'Label Prop',
         placeholder: 'Informe Label Prop',
         required: false,
         
      }
   },
-  {
-     key: 'options', type: 'textarea',
-     templateOptions: {
+    { key: 'options', type: 'textarea',
+      templateOptions: {
         label: 'Opções',
         placeholder: 'Informe Opções',
         required: false,
         
      }
   },
-  {
-     key: 'ordenation', type: 'input',
-     templateOptions: {
+    { key: 'ordenation', type: 'input',
+      templateOptions: {
         label: 'Ordem',
         placeholder: 'Informe Ordem',
         required: false,

@@ -4,6 +4,7 @@ CREATE TABLE `artefato` (
   `class_name` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `pagina_home` bit(1) NOT NULL,
+  `crud_estilo` varchar(255) DEFAULT NULL,
   `resource_name` varchar(255) DEFAULT NULL,
   `template_after_delete` varchar(255) DEFAULT NULL,
   `template_after_insert` varchar(255) DEFAULT NULL,

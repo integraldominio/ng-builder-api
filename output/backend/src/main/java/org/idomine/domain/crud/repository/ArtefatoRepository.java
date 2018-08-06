@@ -40,6 +40,7 @@ public interface ArtefatoRepository extends  CrudRepository<Artefato, Long>
     Artefato findByResourceName(String resourceName);
     Artefato findByClassName(String className);
     Artefato findByClassFolder(String classFolder);
+    Artefato findByCrudEstilo(String crudEstilo);
     Artefato findByPaginaHome(Boolean paginaHome);
     Artefato findByTemplateTs(String templateTs);
     Artefato findByTemplateHtml(String templateHtml);
