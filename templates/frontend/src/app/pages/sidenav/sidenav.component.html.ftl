@@ -22,6 +22,7 @@
         <a mat-list-item  (click)="toggle()" [routerLink]="['/${artefato.classFolder}']" >${artefato.nome}</a>
 	</#list>        
         <a mat-list-item  (click)="toggle()" [routerLink]="['/user']" *ngIf="isAdmin()" >Usuários</a>
+        <a mat-list-item  (click)="toggle()" [routerLink]="['/profile']" >Meu Perfil</a>
         <a mat-list-item  (click)="theme()" >Tema</a>
         <a mat-list-item  (click)="toggle()" [routerLink]="['/sobre']" >Sobre</a>
         <a mat-list-item  (click)="logout()" >Logout</a>

@@ -69,6 +69,7 @@ const routes: Routes =
     { path: '${artefato.classFolder}/add',  component: ${artefato.className}FormComponent, canActivate: [AuthGuard] },
     </#if>
     </#list> 
+    { path: 'profile', component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
     { path: 'user/edit/:id', component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'user/add',  component: UserFormComponent, canActivate: [AdminGuard] },

@@ -79,6 +79,7 @@ const routes: Routes =
     { path: 'configuracao/edit/:id', component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
     { path: 'configuracao/add',  component: ConfiguracaoFormComponent, canActivate: [AuthGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'user', component: UserGridComponent, canActivate: [AdminGuard] },
     { path: 'user/edit/:id', component: UserFormComponent, canActivate: [AdminGuard] },
     { path: 'user/add',  component: UserFormComponent, canActivate: [AdminGuard] },
