@@ -560,6 +560,7 @@ public class Elemento
                         .nome("useLogin")
                         .tamanho(1L)
                         .rotulo("Use Login")
+                        .inicial("true")
                         .requerido(true)
                         .persistence(true)
                         .fieldGroup(5L)
@@ -573,6 +574,7 @@ public class Elemento
                         .tipoField(TipoField.Boolean)
                         .nome("useRoles")
                         .tamanho(1L)
+                        .inicial("true")
                         .rotulo("Use Roles")
                         .requerido(true)
                         .persistence(true)
@@ -750,6 +752,7 @@ public class Elemento
                         .requerido(false)
                         .persistence(true)
                         .showcolumn(false)
+                        .inicial("false")
                         .fieldGroup(4L)
                         .fieldSize(1L)
                         .build());
@@ -829,6 +832,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -851,6 +856,8 @@ public class Elemento
                                         +
                                         " { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] ")
 
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -872,6 +879,8 @@ public class Elemento
                                         " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ,"
                                         +
                                         " {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]")
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -888,6 +897,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -903,6 +914,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -918,6 +931,8 @@ public class Elemento
                         .rotulo("Valor Inicial")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -933,6 +948,8 @@ public class Elemento
                         .rotulo("Máscara Edição")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -948,6 +965,8 @@ public class Elemento
                         .rotulo("Máscara Display")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -962,6 +981,80 @@ public class Elemento
                         .rotulo("Hint(dica)")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("tamanho")
+                        .tamanho(20L)
+                        .rotulo("Tamanho")
+                        .requerido(true)
+                        .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("min")
+                        .tamanho(20L)
+                        .rotulo("Mínimo")
+                        .requerido(false)
+                        .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("max")
+                        .tamanho(20L)
+                        .rotulo("Máximo")
+                        .requerido(false)
+                        .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("linhas")
+                        .tamanho(20L)
+                        .rotulo("Número Linhas")
+                        .requerido(false)
+                        .persistence(true)
+                        .fieldGroup(5L)
+                        .fieldSize(1L)
+                        .build());
+
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("ordenation")
+                        .tamanho(10L)
+                        .rotulo("Ordem")
+                        .persistence(true)
+                        .requerido(false)
+                        .fieldGroup(5L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -976,6 +1069,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(false)
+                        .fieldGroup(6L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -989,56 +1084,8 @@ public class Elemento
                         .rotulo("Persistence")
                         .requerido(true)
                         .persistence(true)
-                        .build());
-
-        lista.add(
-                Elemento.builder()
-                        .id(19L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
-                        .nome("tamanho")
-                        .tamanho(20L)
-                        .rotulo("Tamanho")
-                        .requerido(true)
-                        .persistence(true)
-                        .build());
-
-        lista.add(
-                Elemento.builder()
-                        .id(19L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
-                        .nome("min")
-                        .tamanho(20L)
-                        .rotulo("Mínimo")
-                        .requerido(false)
-                        .persistence(true)
-                        .build());
-        lista.add(
-                Elemento.builder()
-                        .id(19L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
-                        .nome("max")
-                        .tamanho(20L)
-                        .rotulo("Máximo")
-                        .requerido(false)
-                        .persistence(true)
-                        .build());
-        lista.add(
-                Elemento.builder()
-                        .id(19L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
-                        .nome("linhas")
-                        .tamanho(20L)
-                        .rotulo("Número Linhas")
-                        .requerido(false)
-                        .persistence(true)
+                        .fieldGroup(6L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -1052,13 +1099,15 @@ public class Elemento
                         .rotulo("Show Column")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(6L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
                 Elemento.builder()
                         .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
+                        .tipoElemento(TipoElemento.TextArea)
                         .tipoField(TipoField.String)
                         .nome("valueProp")
                         .tamanho(100L)
@@ -1067,13 +1116,16 @@ public class Elemento
                         .rotulo("Value Prop")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(7L)
+                        .fieldSize(1L)
+                        .linhas(3L)
                         .build());
         lista.add(
                 Elemento.builder()
                         .id(19L)
                         .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
+                        .tipoElemento(TipoElemento.TextArea)
+                        .tipoField(TipoField.String)
                         .nome("labelProp")
                         .tamanho(100L)
                         .minimo(1L)
@@ -1081,6 +1133,9 @@ public class Elemento
                         .rotulo("Label Prop")
                         .requerido(false)
                         .persistence(true)
+                        .fieldGroup(8L)
+                        .fieldSize(1L)
+                        .linhas(3L)
                         .build());
 
         lista.add(
@@ -1096,20 +1151,11 @@ public class Elemento
                         .rotulo("Opções")
                         .persistence(true)
                         .requerido(false)
+                        .fieldGroup(9L)
+                        .fieldSize(1L)
+                        .linhas(3L)
                         .build());
 
-        lista.add(
-                Elemento.builder()
-                        .id(19L)
-                        .artefato(Artefato.builder().id(3L).build())
-                        .tipoElemento(TipoElemento.Input)
-                        .tipoField(TipoField.Long)
-                        .nome("ordenation")
-                        .tamanho(5L)
-                        .rotulo("Ordem")
-                        .persistence(true)
-                        .requerido(false)
-                        .build());
 
         return lista;
 

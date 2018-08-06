@@ -82,10 +82,6 @@ public class Elemento
     
     private String dica;
     
-    private Boolean requerido;
-    
-    private Boolean persistence;
-    
     private Long tamanho;
     
     private Long min;
@@ -94,15 +90,19 @@ public class Elemento
     
     private Long linhas;
     
+    private Long ordenation;
+    
+    private Boolean requerido;
+    
+    private Boolean persistence;
+    
     private Boolean showcolumn;
     
     private String valueProp;
     
-    private Long labelProp;
+    private String labelProp;
     
     private String options;
-    
-    private Long ordenation;
     
     
 }

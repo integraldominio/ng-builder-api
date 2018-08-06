@@ -78,16 +78,6 @@
 	      <mat-cell *matCellDef="let row" >{{row.dica}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
-	    <ng-container matColumnDef="requerido">
-	      <mat-header-cell *matHeaderCellDef mat-sort-header>Requerido</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.requerido}}</mat-cell>
-	    </ng-container>
-	    <!-- ID Column -->
-	    <ng-container matColumnDef="persistence">
-	      <mat-header-cell *matHeaderCellDef mat-sort-header>Persistence</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.persistence}}</mat-cell>
-	    </ng-container>
-	    <!-- ID Column -->
 	    <ng-container matColumnDef="tamanho">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Tamanho</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.tamanho}}</mat-cell>
@@ -108,6 +98,21 @@
 	      <mat-cell *matCellDef="let row" >{{row.linhas}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="ordenation">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Ordem</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.ordenation}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="requerido">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Requerido</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.requerido}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="persistence">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Persistence</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.persistence}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="showcolumn">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Show Column</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.showcolumn}}</mat-cell>
@@ -126,11 +131,6 @@
 	    <ng-container matColumnDef="options">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Opções</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.options}}</mat-cell>
-	    </ng-container>
-	    <!-- ID Column -->
-	    <ng-container matColumnDef="ordenation">
-	      <mat-header-cell *matHeaderCellDef mat-sort-header>Ordem</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.ordenation}}</mat-cell>
 	    </ng-container>
   
     <!-- actions -->

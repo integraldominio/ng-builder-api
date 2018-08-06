@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit   } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation  } from '@angular/core';
 import { ElementoService, Elemento } from './elemento.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -35,7 +35,7 @@ import { ArtefatoService } from '../artefato/artefato.service';
   selector: 'app-elemento-form',
   templateUrl: './elemento-form.component.html',
   styleUrls: ['./elemento-form.component.css'],
-
+  encapsulation: ViewEncapsulation.None,
 })
 export class ElementoFormComponent implements OnInit {
 
@@ -61,7 +61,9 @@ export class ElementoFormComponent implements OnInit {
   dataSource: Array<Elemento> = [];
   // Fields
   fields: FormlyFieldConfig[] = [
-    { key: 'artefato', type: 'select',
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'artefato', type: 'select',
       templateOptions: {
         label: 'Artefato',
         placeholder: 'Informe Artefato',
@@ -72,7 +74,7 @@ export class ElementoFormComponent implements OnInit {
         options: this.artefatoService.listAll(),
      }
   },
-    { key: 'tipoElemento', type: 'select',
+    {className: 'flex-1', key: 'tipoElemento', type: 'select',
       templateOptions: {
         label: 'Tipo Elemento',
         placeholder: 'Informe Tipo Elemento',
@@ -81,7 +83,7 @@ export class ElementoFormComponent implements OnInit {
         options: [{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} , { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} , { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } , { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] 
      }
   },
-    { key: 'tipoField', type: 'select',
+    {className: 'flex-1', key: 'tipoField', type: 'select',
       templateOptions: {
         label: 'Tipo Field',
         placeholder: 'Informe Tipo Field',
@@ -90,7 +92,10 @@ export class ElementoFormComponent implements OnInit {
         options: [ {value: 'Boolean', label: 'Boolean'}, {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} , {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]
      }
   },
-    { key: 'nome', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'nome', type: 'input',
       templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
@@ -98,7 +103,7 @@ export class ElementoFormComponent implements OnInit {
         maxLength: 50,
      }
   },
-    { key: 'rotulo', type: 'input',
+    {className: 'flex-1', key: 'rotulo', type: 'input',
       templateOptions: {
         label: 'Rótulo',
         placeholder: 'Informe Rótulo',
@@ -106,7 +111,7 @@ export class ElementoFormComponent implements OnInit {
         maxLength: 50,
      }
   },
-    { key: 'inicial', type: 'input',
+    {className: 'flex-1', key: 'inicial', type: 'input',
       templateOptions: {
         label: 'Valor Inicial',
         placeholder: 'Informe Valor Inicial',
@@ -114,7 +119,10 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'mascara', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'mascara', type: 'input',
       templateOptions: {
         label: 'Máscara Edição',
         placeholder: 'Informe Máscara Edição',
@@ -122,7 +130,7 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'pipe', type: 'input',
+    {className: 'flex-1', key: 'pipe', type: 'input',
       templateOptions: {
         label: 'Máscara Display',
         placeholder: 'Informe Máscara Display',
@@ -130,7 +138,7 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'dica', type: 'input',
+    {className: 'flex-1', key: 'dica', type: 'input',
       templateOptions: {
         label: 'Hint(dica)',
         placeholder: 'Informe Hint(dica)',
@@ -138,23 +146,10 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'requerido', type: 'checkbox',
-      templateOptions: {
-        label: 'Requerido',
-        placeholder: 'Informe Requerido',
-        required: true,
-        
-     }
-  },
-    { key: 'persistence', type: 'checkbox',
-      templateOptions: {
-        label: 'Persistence',
-        placeholder: 'Informe Persistence',
-        required: true,
-        
-     }
-  },
-    { key: 'tamanho', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'tamanho', type: 'input',
       templateOptions: {
         label: 'Tamanho',
         placeholder: 'Informe Tamanho',
@@ -162,7 +157,7 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'min', type: 'input',
+    {className: 'flex-1', key: 'min', type: 'input',
       templateOptions: {
         label: 'Mínimo',
         placeholder: 'Informe Mínimo',
@@ -170,7 +165,7 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'max', type: 'input',
+    {className: 'flex-1', key: 'max', type: 'input',
       templateOptions: {
         label: 'Máximo',
         placeholder: 'Informe Máximo',
@@ -178,7 +173,10 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'linhas', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'linhas', type: 'input',
       templateOptions: {
         label: 'Número Linhas',
         placeholder: 'Informe Número Linhas',
@@ -186,39 +184,7 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    { key: 'showcolumn', type: 'checkbox',
-      templateOptions: {
-        label: 'Show Column',
-        placeholder: 'Informe Show Column',
-        required: false,
-        
-     }
-  },
-    { key: 'valueProp', type: 'input',
-      templateOptions: {
-        label: 'Value Prop',
-        placeholder: 'Informe Value Prop',
-        required: false,
-        
-     }
-  },
-    { key: 'labelProp', type: 'input',
-      templateOptions: {
-        label: 'Label Prop',
-        placeholder: 'Informe Label Prop',
-        required: false,
-        
-     }
-  },
-    { key: 'options', type: 'textarea',
-      templateOptions: {
-        label: 'Opções',
-        placeholder: 'Informe Opções',
-        required: false,
-        
-     }
-  },
-    { key: 'ordenation', type: 'input',
+    {className: 'flex-1', key: 'ordenation', type: 'input',
       templateOptions: {
         label: 'Ordem',
         placeholder: 'Informe Ordem',
@@ -226,6 +192,70 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'requerido', type: 'checkbox',
+      templateOptions: {
+        label: 'Requerido',
+        placeholder: 'Informe Requerido',
+        required: true,
+        
+     }
+  },
+    {className: 'flex-1', key: 'persistence', type: 'checkbox',
+      templateOptions: {
+        label: 'Persistence',
+        placeholder: 'Informe Persistence',
+        required: true,
+        
+     }
+  },
+    {className: 'flex-1', key: 'showcolumn', type: 'checkbox',
+      templateOptions: {
+        label: 'Show Column',
+        placeholder: 'Informe Show Column',
+        required: false,
+        
+     }
+  },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'valueProp', type: 'textarea',
+      templateOptions: {
+        label: 'Value Prop',
+        placeholder: 'Informe Value Prop',
+        required: false,
+        
+        rows: 3,
+     }
+  },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'labelProp', type: 'textarea',
+      templateOptions: {
+        label: 'Label Prop',
+        placeholder: 'Informe Label Prop',
+        required: false,
+        
+        rows: 3,
+     }
+  },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'options', type: 'textarea',
+      templateOptions: {
+        label: 'Opções',
+        placeholder: 'Informe Opções',
+        required: false,
+        
+        rows: 3,
+     }
+  },
+   ]},
   ];
 
   constructor (

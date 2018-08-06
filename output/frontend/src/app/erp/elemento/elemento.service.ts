@@ -57,17 +57,17 @@ export class Elemento {
   mascara: string;
   pipe: string;
   dica: string;
-  requerido: boolean;
-  persistence: boolean;
   tamanho: number;
   min: number;
   max: number;
   linhas: number;
+  ordenation: number;
+  requerido: boolean;
+  persistence: boolean;
   showcolumn: boolean;
   valueProp: string;
-  labelProp: number;
+  labelProp: string;
   options: string;
-  ordenation: number;
 }
 
 // usando json-server

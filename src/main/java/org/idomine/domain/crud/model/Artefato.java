@@ -219,6 +219,7 @@ public class Artefato
                 .className("Elemento")
                 .classFolder("elemento")
                 .elementos(Elemento.getFake3())
+                .crudEstilo("multi")
                 .build();
         els.getElementos().forEach(e -> e.setArtefato(els));
         lista.add(els);

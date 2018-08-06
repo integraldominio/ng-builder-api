@@ -177,7 +177,7 @@ export class ProjetoFormComponent implements OnInit {
    ]},
     { fieldGroupClassName: 'display-flex',
     fieldGroup: [
-    {className: 'flex-1', key: 'useLogin', type: 'checkbox',
+    {className: 'flex-1', key: 'useLogin', type: 'checkbox',defaultValue: true,
       templateOptions: {
         label: 'Use Login',
         placeholder: 'Informe Use Login',
@@ -185,7 +185,7 @@ export class ProjetoFormComponent implements OnInit {
         
      }
   },
-    {className: 'flex-1', key: 'useRoles', type: 'checkbox',
+    {className: 'flex-1', key: 'useRoles', type: 'checkbox',defaultValue: true,
       templateOptions: {
         label: 'Use Roles',
         placeholder: 'Informe Use Roles',

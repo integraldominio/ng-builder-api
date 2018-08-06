@@ -134,7 +134,7 @@ export class ArtefatoFormComponent implements OnInit {
         options: [{ value: 'single', label: 'Coluna Simples'}, {value: 'multi', label: 'Coluna Múltipla'}]
      }
   },
-    {className: 'flex-1', key: 'paginaHome', type: 'checkbox',
+    {className: 'flex-1', key: 'paginaHome', type: 'checkbox',defaultValue: false,
       templateOptions: {
         label: 'Página Home',
         placeholder: 'Informe Página Home',

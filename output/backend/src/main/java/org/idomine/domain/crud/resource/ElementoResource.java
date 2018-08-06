@@ -144,16 +144,6 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByDica(dica), HttpStatus.OK);
     }
-    @GetMapping("/elementos/search/requerido/{requerido}")
-    public ResponseEntity<?> searchPathVariableRequerido(@PathVariable  Boolean  requerido)
-    {
-        return new ResponseEntity<>(elementoRepository.findByRequerido(requerido), HttpStatus.OK);
-    }
-    @GetMapping("/elementos/search/persistence/{persistence}")
-    public ResponseEntity<?> searchPathVariablePersistence(@PathVariable  Boolean  persistence)
-    {
-        return new ResponseEntity<>(elementoRepository.findByPersistence(persistence), HttpStatus.OK);
-    }
     @GetMapping("/elementos/search/tamanho/{tamanho}")
     public ResponseEntity<?> searchPathVariableTamanho(@PathVariable  Long  tamanho)
     {
@@ -174,6 +164,21 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByLinhas(linhas), HttpStatus.OK);
     }
+    @GetMapping("/elementos/search/ordenation/{ordenation}")
+    public ResponseEntity<?> searchPathVariableOrdenation(@PathVariable  Long  ordenation)
+    {
+        return new ResponseEntity<>(elementoRepository.findByOrdenation(ordenation), HttpStatus.OK);
+    }
+    @GetMapping("/elementos/search/requerido/{requerido}")
+    public ResponseEntity<?> searchPathVariableRequerido(@PathVariable  Boolean  requerido)
+    {
+        return new ResponseEntity<>(elementoRepository.findByRequerido(requerido), HttpStatus.OK);
+    }
+    @GetMapping("/elementos/search/persistence/{persistence}")
+    public ResponseEntity<?> searchPathVariablePersistence(@PathVariable  Boolean  persistence)
+    {
+        return new ResponseEntity<>(elementoRepository.findByPersistence(persistence), HttpStatus.OK);
+    }
     @GetMapping("/elementos/search/showcolumn/{showcolumn}")
     public ResponseEntity<?> searchPathVariableShowcolumn(@PathVariable  Boolean  showcolumn)
     {
@@ -185,7 +190,7 @@ public class ElementoResource
         return new ResponseEntity<>(elementoRepository.findByValueProp(valueProp), HttpStatus.OK);
     }
     @GetMapping("/elementos/search/labelProp/{labelProp}")
-    public ResponseEntity<?> searchPathVariableLabelProp(@PathVariable  Long  labelProp)
+    public ResponseEntity<?> searchPathVariableLabelProp(@PathVariable  String  labelProp)
     {
         return new ResponseEntity<>(elementoRepository.findByLabelProp(labelProp), HttpStatus.OK);
     }
@@ -193,11 +198,6 @@ public class ElementoResource
     public ResponseEntity<?> searchPathVariableOptions(@PathVariable  String  options)
     {
         return new ResponseEntity<>(elementoRepository.findByOptions(options), HttpStatus.OK);
-    }
-    @GetMapping("/elementos/search/ordenation/{ordenation}")
-    public ResponseEntity<?> searchPathVariableOrdenation(@PathVariable  Long  ordenation)
-    {
-        return new ResponseEntity<>(elementoRepository.findByOrdenation(ordenation), HttpStatus.OK);
     }
 
 }

@@ -43,17 +43,17 @@ public interface ElementoRepository extends  CrudRepository<Elemento, Long>
     Elemento findByMascara(String mascara);
     Elemento findByPipe(String pipe);
     Elemento findByDica(String dica);
-    Elemento findByRequerido(Boolean requerido);
-    Elemento findByPersistence(Boolean persistence);
     Elemento findByTamanho(Long tamanho);
     Elemento findByMin(Long min);
     Elemento findByMax(Long max);
     Elemento findByLinhas(Long linhas);
+    Elemento findByOrdenation(Long ordenation);
+    Elemento findByRequerido(Boolean requerido);
+    Elemento findByPersistence(Boolean persistence);
     Elemento findByShowcolumn(Boolean showcolumn);
     Elemento findByValueProp(String valueProp);
-    Elemento findByLabelProp(Long labelProp);
+    Elemento findByLabelProp(String labelProp);
     Elemento findByOptions(String options);
-    Elemento findByOrdenation(Long ordenation);
  
 }
 
