@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit   } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation  } from '@angular/core';
 import { ArtefatoService, Artefato } from './artefato.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -35,7 +35,7 @@ import { ProjetoService } from '../projeto/projeto.service';
   selector: 'app-artefato-form',
   templateUrl: './artefato-form.component.html',
   styleUrls: ['./artefato-form.component.css'],
-
+  encapsulation: ViewEncapsulation.None,
 })
 export class ArtefatoFormComponent implements OnInit {
 
@@ -62,7 +62,9 @@ export class ArtefatoFormComponent implements OnInit {
   dataSource: Array<Artefato> = [];
   // Fields
   fields: FormlyFieldConfig[] = [
-    { key: 'projeto', type: 'select',
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'projeto', type: 'select',
       templateOptions: {
         label: 'Projeto',
         placeholder: 'Informe Projeto',
@@ -73,7 +75,7 @@ export class ArtefatoFormComponent implements OnInit {
         options: this.projetoService.listAll(),
      }
   },
-    { key: 'tipo', type: 'select',
+    {className: 'flex-1', key: 'tipo', type: 'select',
       templateOptions: {
         label: 'Tipo',
         placeholder: 'Informe Tipo',
@@ -82,7 +84,10 @@ export class ArtefatoFormComponent implements OnInit {
         options: [{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]
      }
   },
-    { key: 'nome', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'nome', type: 'input',defaultValue: 'Catálogo de Peças',
       templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
@@ -90,7 +95,7 @@ export class ArtefatoFormComponent implements OnInit {
         maxLength: 50,
      }
   },
-    { key: 'resourceName', type: 'input',
+    {className: 'flex-1', key: 'resourceName', type: 'input',defaultValue: 'catalogos',
       templateOptions: {
         label: 'Resource Name',
         placeholder: 'Informe Resource Name',
@@ -98,7 +103,10 @@ export class ArtefatoFormComponent implements OnInit {
         maxLength: 501,
      }
   },
-    { key: 'className', type: 'input',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'className', type: 'input',defaultValue: 'Catalogo',
       templateOptions: {
         label: 'Class Name',
         placeholder: 'Informe Class Name',
@@ -106,7 +114,7 @@ export class ArtefatoFormComponent implements OnInit {
         maxLength: 50,
      }
   },
-    { key: 'classFolder', type: 'input',
+    {className: 'flex-1', key: 'classFolder', type: 'input',defaultValue: 'catalogo',
       templateOptions: {
         label: 'Class Folder',
         placeholder: 'Informe Class Folder',
@@ -114,7 +122,10 @@ export class ArtefatoFormComponent implements OnInit {
         maxLength: 50,
      }
   },
-    { key: 'crudEstilo', type: 'select',defaultValue: 'single',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'crudEstilo', type: 'select',defaultValue: 'single',
       templateOptions: {
         label: 'Estilo Entrada de Dados',
         placeholder: 'Informe Estilo Entrada de Dados',
@@ -123,7 +134,7 @@ export class ArtefatoFormComponent implements OnInit {
         options: [{ value: 'single', label: 'Coluna Simples'}, {value: 'multi', label: 'Coluna Múltipla'}]
      }
   },
-    { key: 'paginaHome', type: 'checkbox',
+    {className: 'flex-1', key: 'paginaHome', type: 'checkbox',
       templateOptions: {
         label: 'Página Home',
         placeholder: 'Informe Página Home',
@@ -131,30 +142,43 @@ export class ArtefatoFormComponent implements OnInit {
         
      }
   },
-    { key: 'templateTs', type: 'textarea',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateTs', type: 'textarea',
       templateOptions: {
         label: 'Template Ts',
         placeholder: 'Informe Template Ts',
         required: false,
         
+        rows: 3,
      }
   },
-    { key: 'templateHtml', type: 'textarea',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateHtml', type: 'textarea',
       templateOptions: {
         label: 'Template Html',
         placeholder: 'Informe Template Html',
         required: false,
         
+        rows: 3,
      }
   },
-    { key: 'templateCss', type: 'textarea',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'templateCss', type: 'textarea',
       templateOptions: {
         label: 'Template Css',
         placeholder: 'Informe Template Css',
         required: false,
         
+        rows: 3,
      }
   },
+   ]},
   ];
 
   constructor (

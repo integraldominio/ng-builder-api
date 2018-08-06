@@ -191,6 +191,7 @@ public class Artefato
                 .className("Projeto")
                 .classFolder("projeto")
                 .elementos(Elemento.getFake1())
+                .crudEstilo("multi")
                 .build();
         projs.getElementos().forEach(e -> e.setArtefato(projs));
         lista.add(projs);
@@ -204,6 +205,7 @@ public class Artefato
                 .className("Artefato")
                 .classFolder("artefato")
                 .elementos(Elemento.getFake2())
+                .crudEstilo("multi")
                 .build();
         art.getElementos().forEach(e -> e.setArtefato(art));
         lista.add(art);

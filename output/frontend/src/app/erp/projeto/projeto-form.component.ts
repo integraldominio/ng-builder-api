@@ -22,7 +22,7 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit   } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation  } from '@angular/core';
 import { ProjetoService, Projeto } from './projeto.service';
 import { MessageService } from '../../infra/security';
 import { FormGroup} from '@angular/forms';
@@ -35,7 +35,7 @@ import { PortalService } from '../portal/portal.service';
   selector: 'app-projeto-form',
   templateUrl: './projeto-form.component.html',
   styleUrls: ['./projeto-form.component.css'],
-
+  encapsulation: ViewEncapsulation.None,
 })
 export class ProjetoFormComponent implements OnInit {
 
@@ -63,7 +63,9 @@ export class ProjetoFormComponent implements OnInit {
   dataSource: Array<Projeto> = [];
   // Fields
   fields: FormlyFieldConfig[] = [
-    { key: 'portal', type: 'select',
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'portal', type: 'select',
       templateOptions: {
         label: 'Portal',
         placeholder: 'Informe Portal',
@@ -74,7 +76,7 @@ export class ProjetoFormComponent implements OnInit {
         options: this.portalService.listAll(),
      }
   },
-    { key: 'nome', type: 'input',
+    {className: 'flex-1', key: 'nome', type: 'input',
       templateOptions: {
         label: 'Nome',
         placeholder: 'Informe Nome',
@@ -82,7 +84,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'descricao', type: 'input',defaultValue: 'Sistema muito legal, gerado com o ngx-buider',
+    {className: 'flex-1', key: 'descricao', type: 'input',defaultValue: 'Sistema muito legal, gerado com o ngx-buider',
       templateOptions: {
         label: 'Descrição',
         placeholder: 'Informe Descrição',
@@ -90,7 +92,10 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'nomeBackendApp', type: 'input',defaultValue: 'app-backend',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'nomeBackendApp', type: 'input',defaultValue: 'app-backend',
       templateOptions: {
         label: 'Nome Backend App',
         placeholder: 'Informe Nome Backend App',
@@ -98,7 +103,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'nomeFrontEndApp', type: 'input',defaultValue: 'app-frontend',
+    {className: 'flex-1', key: 'nomeFrontEndApp', type: 'input',defaultValue: 'app-frontend',
       templateOptions: {
         label: 'Nome Frontend App',
         placeholder: 'Informe Nome Frontend App',
@@ -106,7 +111,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'iconeApp', type: 'input',defaultValue: '/assets/icon.svg',
+    {className: 'flex-1', key: 'iconeApp', type: 'input',defaultValue: '/assets/icon.svg',
       templateOptions: {
         label: 'Ícone App',
         placeholder: 'Informe Ícone App',
@@ -114,7 +119,10 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'imageApp', type: 'input',defaultValue: 'assets/back-image.svg',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'imageApp', type: 'input',defaultValue: 'assets/back-image.svg',
       templateOptions: {
         label: 'Image App',
         placeholder: 'Informe Image App',
@@ -122,7 +130,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'serverLang', type: 'select',defaultValue: 'java',
+    {className: 'flex-1', key: 'serverLang', type: 'select',defaultValue: 'java',
       templateOptions: {
         label: 'Server Language',
         placeholder: 'Informe Server Language',
@@ -131,7 +139,7 @@ export class ProjetoFormComponent implements OnInit {
         options: [{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]
      }
   },
-    { key: 'serverHost', type: 'input',defaultValue: 'localhost',
+    {className: 'flex-1', key: 'serverHost', type: 'input',defaultValue: 'localhost',
       templateOptions: {
         label: 'Server Host',
         placeholder: 'Informe Server Host',
@@ -139,7 +147,10 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'serverPort', type: 'input',defaultValue: 3000,
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'serverPort', type: 'input',defaultValue: 3000,
       templateOptions: {
         label: 'Server port',
         placeholder: 'Informe Server port',
@@ -147,7 +158,7 @@ export class ProjetoFormComponent implements OnInit {
         max: 9999,
      }
   },
-    { key: 'frontHost', type: 'input',defaultValue: 'localhost',
+    {className: 'flex-1', key: 'frontHost', type: 'input',defaultValue: 'localhost',
       templateOptions: {
         label: 'Front Host',
         placeholder: 'Informe Front Host',
@@ -155,7 +166,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-    { key: 'frontPort', type: 'input',defaultValue: 5000,
+    {className: 'flex-1', key: 'frontPort', type: 'input',defaultValue: 5000,
       templateOptions: {
         label: 'Front port',
         placeholder: 'Informe Front port',
@@ -163,7 +174,10 @@ export class ProjetoFormComponent implements OnInit {
         max: 99990,
      }
   },
-    { key: 'useLogin', type: 'checkbox',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'useLogin', type: 'checkbox',
       templateOptions: {
         label: 'Use Login',
         placeholder: 'Informe Use Login',
@@ -171,7 +185,7 @@ export class ProjetoFormComponent implements OnInit {
         
      }
   },
-    { key: 'useRoles', type: 'checkbox',
+    {className: 'flex-1', key: 'useRoles', type: 'checkbox',
       templateOptions: {
         label: 'Use Roles',
         placeholder: 'Informe Use Roles',
@@ -179,7 +193,10 @@ export class ProjetoFormComponent implements OnInit {
         
      }
   },
-    { key: 'outputDirectory', type: 'input',defaultValue: 'sistemax',
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'outputDirectory', type: 'input',defaultValue: 'sistemax',
       templateOptions: {
         label: 'Output Directory',
         placeholder: 'Informe Output Directory',
@@ -187,6 +204,7 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
+   ]},
   ];
 
   constructor (

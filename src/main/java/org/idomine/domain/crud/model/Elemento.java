@@ -354,6 +354,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -370,6 +372,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -386,6 +390,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -401,6 +407,8 @@ public class Elemento
                         .inicial("app-backend")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -416,6 +424,8 @@ public class Elemento
                         .inicial("app-frontend")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -431,6 +441,8 @@ public class Elemento
                         .inicial("/assets/icon.svg")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -446,6 +458,8 @@ public class Elemento
                         .inicial("assets/back-image.svg")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -465,6 +479,8 @@ public class Elemento
                         .showcolumn(true)
                         .options(
                                 "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -481,6 +497,8 @@ public class Elemento
                         .inicial("localhost")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -496,6 +514,8 @@ public class Elemento
                         .inicial("3000")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -511,6 +531,8 @@ public class Elemento
                         .inicial("localhost")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -526,6 +548,8 @@ public class Elemento
                         .inicial("5000")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -538,6 +562,8 @@ public class Elemento
                         .rotulo("Use Login")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(5L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -550,6 +576,8 @@ public class Elemento
                         .rotulo("Use Roles")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(5L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -566,6 +594,8 @@ public class Elemento
                         .persistence(true)
                         .tamanho(100L)
                         .showcolumn(true)
+                        .fieldGroup(6L)
+                        .fieldSize(1L)
                         .build());
 
         return lista;
@@ -593,6 +623,9 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(false)
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
+
                         .build());
         lista.add(
                 Elemento.builder()
@@ -610,6 +643,8 @@ public class Elemento
                         .showcolumn(true)
                         .options(
                                 "[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
+                        .fieldGroup(1L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -623,9 +658,12 @@ public class Elemento
                         .minimo(1L)
                         .maximo(50L)
                         .rotulo("Nome")
+                        .inicial("Catálogo de Peças")
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -638,10 +676,14 @@ public class Elemento
                         .minimo(1L)
                         .maximo(501L)
                         .rotulo("Resource Name")
+                        .inicial("catalogos")
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(2L)
+                        .fieldSize(1L)
                         .build());
+        
         lista.add(
                 Elemento.builder()
                         .id(11L)
@@ -653,9 +695,12 @@ public class Elemento
                         .minimo(1L)
                         .maximo(50L)
                         .rotulo("Class Name")
+                        .inicial("Catalogo")
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -668,8 +713,11 @@ public class Elemento
                         .minimo(1L)
                         .maximo(50L)
                         .rotulo("Class Folder")
+                        .inicial("catalogo")
                         .requerido(true)
                         .persistence(true)
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -686,6 +734,8 @@ public class Elemento
                         .persistence(true)
                         .options(
                                 "[{ value: 'single', label: 'Coluna Simples'}, {value: 'multi', label: 'Coluna Múltipla'}]")
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -700,6 +750,8 @@ public class Elemento
                         .requerido(false)
                         .persistence(true)
                         .showcolumn(false)
+                        .fieldGroup(4L)
+                        .fieldSize(1L)
                         .build());
 
         lista.add(
@@ -715,6 +767,9 @@ public class Elemento
                         .rotulo("Template Ts")
                         .requerido(false)
                         .persistence(true)
+                        .linhas(3L)
+                        .fieldGroup(5L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -729,6 +784,9 @@ public class Elemento
                         .rotulo("Template Html")
                         .requerido(false)
                         .persistence(true)
+                        .linhas(3L)
+                        .fieldGroup(6L)
+                        .fieldSize(1L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -743,6 +801,9 @@ public class Elemento
                         .rotulo("Template Css")
                         .requerido(false)
                         .persistence(true)
+                        .linhas(3L)
+                        .fieldGroup(7L)
+                        .fieldSize(1L)
                         .build());
 
         return lista;
