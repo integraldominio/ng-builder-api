@@ -131,16 +131,14 @@ export class ResourceService<T extends Resource> {
         // console.log('>>> Erro capturado...');
         // console.error(error); // log to console instead
         // TODO: better job of transforming error for user consumption
-  		
-  		let msg: string;
-  		
+        let msg: string;
         if ( error.status === 404) {
           msg = ' Não encontrado!';
         } else if ( error.status === 500) {
           if ( error.error.message.indexOf('UK_') !== -1 ) {
             msg = error.error.message.substring(error.error.message.indexOf('UK_') + 3 , error.error.message.indexOf('_IN')  ) + ' duplicado!' ;
           } else {
-             msg = 'Erro no server';
+             msg = error.error.message; //'Erro no server';
           }
         }
 

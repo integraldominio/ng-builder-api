@@ -26,9 +26,9 @@ CREATE TABLE `elemento` (
   `value_prop` varchar(255) DEFAULT NULL,
   `artefato_id` bigint(20) DEFAULT NULL,
   `field_group` bigint(20) DEFAULT NULL,
-  `field_size` bigint(5) DEFAULT NULL,
-  `unique_key` bit(1) NOT NULL,
-  `unique_group` bigint(2) NOT NULL,
+  `field_size` bigint(5) DEFAULT NULL, 
+  `unique_key` bit(1) NULL,
+  `unique_group` bigint(2) NULL,
   PRIMARY KEY (`id`) ,
   CONSTRAINT UK_NOME_IN_ELEMENTO UNIQUE (`artefato_id`,`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
