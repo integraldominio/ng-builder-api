@@ -140,7 +140,7 @@ export class ${artefato.className}FormComponent implements OnInit {
 	   </#list>
       this.${artefato.classFolder}Service
         .create( this.model as ${artefato.className} )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/${artefato.classFolder}']); });
+        .subscribe(  data => { if ( typeof data !== 'undefined' ) { this.router.navigate(['/${artefato.classFolder}']); } });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

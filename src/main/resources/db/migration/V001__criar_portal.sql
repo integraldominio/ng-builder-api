@@ -5,5 +5,6 @@ CREATE TABLE `portal` (
   `template_css` varchar(255) DEFAULT NULL,
   `template_html` varchar(255) DEFAULT NULL,
   `template_ts` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT UK_NOME UNIQUE (`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

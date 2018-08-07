@@ -126,15 +126,24 @@ export class ResourceService<T extends Resource> {
 
   private handleError<S> (operation = 'operation', result?: S) {
       return (error: any): Observable<S> => {
-        // TODO: send the error to remote logging infrastructure
-        console.log('>>> Erro capturado...');
-        console.error(error); // log to console instead
-        // TODO: better job of transforming error for user consumption
 
-        let msg: string;
+        // TODO: send the error to remote logging infrastructure
+        // console.log('>>> Erro capturado...');
+        // console.error(error); // log to console instead
+        // TODO: better job of transforming error for user consumption
+  		
+  		let msg: string;
+  		
         if ( error.status === 404) {
           msg = ' Não encontrado!';
+        } else if ( error.status === 500) {
+          if ( error.error.message.indexOf('UK_') !== -1 ) {
+            msg = error.error.message.substring(error.error.message.indexOf('UK_') + 3 , error.error.message.indexOf('_IN')  ) + ' duplicado!' ;
+          } else {
+             msg = 'Erro no server';
+          }
         }
+
         this.log(`${operation.toUpperCase()}`, `${msg}`);
         // Let the app keep running by returning an empty result.
         return of(result as S);

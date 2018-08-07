@@ -141,7 +141,7 @@ export class PortalFormComponent implements OnInit {
     if (this.form.valid) {
       this.portalService
         .create( this.model as Portal )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/portal']); });
+        .subscribe(  data => { if ( typeof data !== 'undefined' ) { this.router.navigate(['/portal']); } });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

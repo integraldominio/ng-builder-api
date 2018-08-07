@@ -209,7 +209,7 @@ export class ArtefatoFormComponent implements OnInit {
        this.model = this.projetoToArtefato(this.model);
       this.artefatoService
         .create( this.model as Artefato )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/artefato']); });
+        .subscribe(  data => { if ( typeof data !== 'undefined' ) { this.router.navigate(['/artefato']); } });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

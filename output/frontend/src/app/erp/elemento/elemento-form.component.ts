@@ -286,7 +286,7 @@ export class ElementoFormComponent implements OnInit {
        this.model = this.artefatoToElemento(this.model);
       this.elementoService
         .create( this.model as Elemento )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/elemento']); });
+        .subscribe(  data => { if ( typeof data !== 'undefined' ) { this.router.navigate(['/elemento']); } });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

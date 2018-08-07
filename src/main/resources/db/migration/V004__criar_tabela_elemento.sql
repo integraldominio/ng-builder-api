@@ -19,13 +19,16 @@ CREATE TABLE `elemento` (
   `resource_prop` varchar(255) DEFAULT NULL,
   `rotulo` varchar(255) DEFAULT NULL,
   `showcolumn` bit(1) NOT NULL,
-  `tamanho` bigint(20) DEFAULT NULL,
+  `tamanho` bigint(5) DEFAULT NULL,
   `tipo_elemento` varchar(255) DEFAULT NULL,
   `tipo_field` varchar(255) DEFAULT NULL,
   `url_prop` varchar(255) DEFAULT NULL,
   `value_prop` varchar(255) DEFAULT NULL,
   `artefato_id` bigint(20) DEFAULT NULL,
   `field_group` bigint(20) DEFAULT NULL,
-  `field_size` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `field_size` bigint(5) DEFAULT NULL,
+  `unique_key` bit(1) NOT NULL,
+  `unique_group` bigint(2) NOT NULL,
+  PRIMARY KEY (`id`) ,
+  CONSTRAINT UK_NOME_IN_ELEMENTO UNIQUE (`artefato_id`,`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

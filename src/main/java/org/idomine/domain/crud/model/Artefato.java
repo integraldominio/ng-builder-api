@@ -36,6 +36,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.idomine.domain.crud.model.vo.TipoArtefato;
 import org.idomine.domain.crud.model.vo.TipoElemento;
@@ -61,6 +63,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "id" })
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"projeto_id","nome"})})
 public class Artefato
 {
     @Id

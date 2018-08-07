@@ -235,7 +235,7 @@ export class ProjetoFormComponent implements OnInit {
        this.model = this.portalToProjeto(this.model);
       this.projetoService
         .create( this.model as Projeto )
-        .subscribe(  _ => { console.log(model);  this.router.navigate(['/projeto']); });
+        .subscribe(  data => { if ( typeof data !== 'undefined' ) { this.router.navigate(['/projeto']); } });
     } else {
       this.messageService.info('Informe corretamente dados obrigatórios.');
     }

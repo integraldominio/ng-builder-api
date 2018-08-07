@@ -17,5 +17,6 @@ CREATE TABLE `artefato` (
   `template_ts` varchar(255) DEFAULT NULL,
   `tipo` varchar(255) DEFAULT NULL,
   `projeto_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`) ,
+  CONSTRAINT UK_NOME_IN_ARTEFATO UNIQUE (`projeto_id`,`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
