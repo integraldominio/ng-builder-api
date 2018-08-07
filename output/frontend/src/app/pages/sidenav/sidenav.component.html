@@ -1,3 +1,4 @@
+<ng-progress></ng-progress>
 <mat-sidenav-container [class.dark-theme]="isToggledTheme"  >
   <mat-sidenav
     #sidenav

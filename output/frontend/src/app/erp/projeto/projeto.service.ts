@@ -56,7 +56,7 @@ export class Projeto {
   iconeApp: string;
   imageApp: string;
   serverLang: string;
-  databseFlavor: string;
+  databaseFlavor: string;
   serverHost: string;
   serverPort: number;
   frontHost: string;

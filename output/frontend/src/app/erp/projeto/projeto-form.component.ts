@@ -57,7 +57,7 @@ export class ProjetoFormComponent implements OnInit {
   'nome',
   'descricao',
   'serverLang',
-  'databseFlavor',
+  'databaseFlavor',
   'outputDirectory',
   'actions'
   ];
@@ -140,7 +140,7 @@ export class ProjetoFormComponent implements OnInit {
         options: [{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]
      }
   },
-    {className: 'flex-1', key: 'databseFlavor', type: 'select',defaultValue: 'MySQL',
+    {className: 'flex-1', key: 'databaseFlavor', type: 'select',defaultValue: 'MySQL',
       templateOptions: {
         label: 'Database',
         placeholder: 'Informe Database',

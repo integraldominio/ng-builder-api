@@ -175,8 +175,29 @@ public class Elemento
 
     public String tipoMySQL()
     {
-        return TipoElemento.SelectDB.equals(tipoElemento) ? "`" + StringsHelper.camelToUnderscore(nome) + "_id` bigint(20)" : "`" + StringsHelper.camelToUnderscore(nome) + "` " + TipoField.mysql(getTipoField()).toString();
+        String field="";
+        if (TipoElemento.SelectDB.equals(tipoElemento) )
+        {
+            return "`" + StringsHelper.camelToUnderscore(nome) + "_id` bigint(20)";
+        }
+        field = "`" + StringsHelper.camelToUnderscore(nome) + "` " + TipoField.mysql(getTipoField()).toString();
+        if( requerido)
+        {
+            field = field+" NOT NULL";
+        }
+        return field;
     }
+    
+    public String fkMySQL()
+    {
+        return StringsHelper.camelToUnderscore(nome)+"_id";
+    }
+    
+    public String nameMySQL()
+    {
+        return StringsHelper.camelToUnderscore(nome);
+    }
+    
 
     public boolean toForm()
     {

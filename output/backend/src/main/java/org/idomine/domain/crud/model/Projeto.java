@@ -80,7 +80,7 @@ public class Projeto
     
     private String serverLang;
     
-    private String databseFlavor;
+    private String databaseFlavor;
     
     private String serverHost;
     

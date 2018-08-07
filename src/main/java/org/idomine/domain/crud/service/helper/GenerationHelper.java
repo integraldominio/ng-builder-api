@@ -179,19 +179,20 @@ public class GenerationHelper
         {
             logger.error(">>>NGXB backendMigrationToOutput: " + e.getMessage());
         }
-        
+
         int i = 2;
         for (Artefato a : projeto.getArtefatos())
         {
-            output(d+nameSqlMigra(++i,a.getClassName())  , fm.process(TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA+"script-create", model(a)));  
+            if (TipoArtefato.Crud.equals(a.getTipo()))
+                output(d + nameSqlMigra(++i, a.getClassName()), fm.process(TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA + "script-create", model(a)));
         }
-        
+
     }
-    
-    private static String nameSqlMigra(int i,String table)
+
+    private static String nameSqlMigra(int i, String table)
     {
         String numero = String.format("%03d", i);
-        return "V"+numero+"__create_table_"+table+".sql";
+        return "V" + numero + "__create_table_" + table.toLowerCase() + ".sql";
     }
 
     private static void backendSecurity(Projeto projeto)
@@ -395,7 +396,7 @@ public class GenerationHelper
         catch (IOException e)
         {
             logger.error(">>>NGXB frontendShared: " + e.getMessage());
-       }
+        }
     }
 
     public static void frontendPages(Projeto projeto)
