@@ -62,6 +62,33 @@ public enum TipoField
         }
         return "string";
     }
+    
+    
+    public static String mysql(TipoField t)
+    {
+        if (String.equals(t))
+        {
+            return "varchar(255)";
+        }
+        if (Integer.equals(t) || Long.equals(t) || BigDecimal.equals(t) || BigInteger.equals(t) || Decimal.equals(t))
+        {
+            return "bigint(20)";
+        }
+        if ( BigDecimal.equals(t) || Decimal.equals(t))
+        {
+            return "decimal(10,2)";
+        }
+        if (Date.equals(t) || DateTime.equals(t) || Time.equals(t))
+        {
+            return "datetime";
+        }
+        if (Boolean.equals(t))
+        {
+            return " bit(1)";
+        }
+        return "varchar(255)";
+    }
+    
 
 
 }

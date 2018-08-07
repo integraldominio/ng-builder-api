@@ -1,0 +1,15 @@
+CREATE TABLE `Artefato` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `projeto_id` bigint(20) DEFAULT NULL,
+  `tipo` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `resource_name` varchar(255) DEFAULT NULL,
+  `class_name` varchar(255) DEFAULT NULL,
+  `class_folder` varchar(255) DEFAULT NULL,
+  `crud_estilo` varchar(255) DEFAULT NULL,
+  `pagina_home`  bit(1) DEFAULT NULL,
+  `template_ts` varchar(255) DEFAULT NULL,
+  `template_html` varchar(255) DEFAULT NULL,
+  `template_css` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;

@@ -42,6 +42,7 @@ import javax.persistence.UniqueConstraint;
 import org.idomine.domain.crud.model.vo.TipoElemento;
 import org.idomine.domain.crud.model.vo.TipoField;
 import org.idomine.domain.crud.service.helper.FormlyHelper;
+import org.idomine.domain.crud.service.helper.StringsHelper;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -59,7 +60,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "id" })
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"artefato_id","nome"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "artefato_id", "nome" }) })
 public class Elemento
 {
     @Id
@@ -105,7 +106,7 @@ public class Elemento
 
     private Long fieldGroup;
     private Long fieldSize;
-    
+
     private boolean uniqueKey;
     private Long uniqueGroup;
 
@@ -170,6 +171,11 @@ public class Elemento
     public String tipoJava()
     {
         return TipoElemento.SelectDB.equals(tipoElemento) ? nome : tipoField.toString();
+    }
+
+    public String tipoMySQL()
+    {
+        return TipoElemento.SelectDB.equals(tipoElemento) ? "`" + StringsHelper.camelToUnderscore(nome) + "_id` bigint(20)" : "`" + StringsHelper.camelToUnderscore(nome) + "` " + TipoField.mysql(getTipoField()).toString();
     }
 
     public boolean toForm()
@@ -483,7 +489,7 @@ public class Elemento
                         .inicial("java")
                         .persistence(true)
                         .showcolumn(true)
-                        .options( "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
+                        .options("[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
                         .fieldGroup(3L)
                         .fieldSize(1L)
                         .build());
@@ -493,7 +499,7 @@ public class Elemento
                         .artefato(Artefato.builder().id(2L).build())
                         .tipoElemento(TipoElemento.Select)
                         .tipoField(TipoField.String)
-                        .nome("databseFlavor")
+                        .nome("databaseFlavor")
                         .rotulo("Database")
                         .tamanho(50L)
                         .minimo(1L)
@@ -502,7 +508,7 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options( "[{ value: 'MySQL', label: 'MySQL'}, {value: 'MongoDB', label: 'MongoDB'}, {value: 'PostgreSQL', label: 'PostgreSQL'}, {value: 'Oracle', label: 'Oracle'}]")
+                        .options("[{ value: 'MySQL', label: 'MySQL'}, {value: 'MongoDB', label: 'MongoDB'}, {value: 'PostgreSQL', label: 'PostgreSQL'}, {value: 'Oracle', label: 'Oracle'}]")
                         .fieldGroup(3L)
                         .fieldSize(1L)
                         .build());
@@ -667,7 +673,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
+                        .options(
+                                "[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
                         .inicial("Crud")
                         .fieldGroup(1L)
                         .fieldSize(1L)
@@ -709,7 +716,7 @@ public class Elemento
                         .fieldGroup(2L)
                         .fieldSize(1L)
                         .build());
-        
+
         lista.add(
                 Elemento.builder()
                         .id(11L)
@@ -1199,7 +1206,6 @@ public class Elemento
                         .linhas(2L)
                         .build());
 
-        
         lista.add(
                 Elemento.builder()
                         .id(19L)
@@ -1230,7 +1236,6 @@ public class Elemento
                         .fieldGroup(10L)
                         .fieldSize(1L)
                         .build());
-        
 
         return lista;
 

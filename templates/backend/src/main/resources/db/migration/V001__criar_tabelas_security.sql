@@ -21,7 +21,7 @@ CREATE TABLE `authority` (
 CREATE TABLE `user_authority` (
   `user_id` bigint(20) NOT NULL,
   `authority_id` bigint(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `user_group` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

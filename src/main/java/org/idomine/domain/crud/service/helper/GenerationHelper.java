@@ -67,7 +67,6 @@ public class GenerationHelper
         {
             logger.error(">>>NGXB Portal/Projeto is null");
         }
-
     }
 
     public static void generateProjeto(Projeto projeto)
@@ -173,18 +172,26 @@ public class GenerationHelper
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA;
         try
         {
-            copyFile(new File(o + "V001__criar_portal.sql"), new File(d + "V001__criar_portal.sql"));
-            copyFile(new File(o + "V002__criar_tabela_projeto.sql"), new File(d + "V002__criar_tabela_projeto.sql"));
-            copyFile(new File(o + "V003__criar_tabela_artefato.sql"), new File(d + "V003__criar_tabela_artefato.sql"));
-            copyFile(new File(o + "V004__criar_tabela_elemento.sql"), new File(d + "V004__criar_tabela_elemento.sql"));
-            copyFile(new File(o + "V005__criar_tabela_configuracao.sql"), new File(d + "V005__criar_tabela_configuracao.sql"));
-            copyFile(new File(o + "V006__criar_tabelas_security.sql"), new File(d + "V006__criar_tabelas_security.sql"));
-            copyFile(new File(o + "V007__insert_dados_security.sql"), new File(d + "V007__insert_dados_security.sql"));
+            copyFile(new File(o + "V001__criar_tabelas_security.sql"), new File(d + "V001__criar_tabelas_security.sql"));
+            copyFile(new File(o + "V002__insert_dados_security.sql"), new File(d + "V002__insert_dados_security.sql"));
         }
         catch (IOException e)
         {
             logger.error(">>>NGXB backendMigrationToOutput: " + e.getMessage());
         }
+        
+        int i = 2;
+        for (Artefato a : projeto.getArtefatos())
+        {
+            output(d+nameSqlMigra(++i,a.getClassName())  , fm.process(TemplatePathHelper.BACKEND_APP_RESOURCE_MIGRA+"script-create", model(a)));  
+        }
+        
+    }
+    
+    private static String nameSqlMigra(int i,String table)
+    {
+        String numero = String.format("%03d", i);
+        return "V"+numero+"__create_table_"+table+".sql";
     }
 
     private static void backendSecurity(Projeto projeto)
