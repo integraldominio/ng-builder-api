@@ -204,5 +204,15 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByOptions(options), HttpStatus.OK);
     }
+    @GetMapping("/elementos/search/fieldGroup/{fieldGroup}")
+    public ResponseEntity<?> searchPathVariableFieldGroup(@PathVariable  Long  fieldGroup)
+    {
+        return new ResponseEntity<>(elementoRepository.findByFieldGroup(fieldGroup), HttpStatus.OK);
+    }
+    @GetMapping("/elementos/search/fieldSize/{fieldSize}")
+    public ResponseEntity<?> searchPathVariableFieldSize(@PathVariable  Long  fieldSize)
+    {
+        return new ResponseEntity<>(elementoRepository.findByFieldSize(fieldSize), HttpStatus.OK);
+    }
 
 }

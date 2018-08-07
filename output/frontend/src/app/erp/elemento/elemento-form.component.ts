@@ -236,7 +236,7 @@ export class ElementoFormComponent implements OnInit {
         placeholder: 'Informe Value Prop',
         required: false,
         
-        rows: 3,
+        rows: 2,
      }
   },
    ]},
@@ -248,7 +248,7 @@ export class ElementoFormComponent implements OnInit {
         placeholder: 'Informe Label Prop',
         required: false,
         
-        rows: 3,
+        rows: 2,
      }
   },
    ]},
@@ -260,7 +260,26 @@ export class ElementoFormComponent implements OnInit {
         placeholder: 'Informe Opções',
         required: false,
         
-        rows: 3,
+        rows: 2,
+     }
+  },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
+    {className: 'flex-1', key: 'fieldGroup', type: 'input',defaultValue: 1,
+      templateOptions: {
+        label: 'Field Group',
+        placeholder: 'Informe Field Group',
+        required: false,
+        
+     }
+  },
+    {className: 'flex-1', key: 'fieldSize', type: 'input',defaultValue: 1,
+      templateOptions: {
+        label: 'Field Size',
+        placeholder: 'Informe Field Size',
+        required: false,
+        
      }
   },
    ]},

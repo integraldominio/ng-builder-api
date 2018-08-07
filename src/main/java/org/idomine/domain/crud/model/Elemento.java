@@ -1161,7 +1161,7 @@ public class Elemento
                         .persistence(true)
                         .fieldGroup(7L)
                         .fieldSize(1L)
-                        .linhas(3L)
+                        .linhas(2L)
                         .build());
         lista.add(
                 Elemento.builder()
@@ -1178,7 +1178,7 @@ public class Elemento
                         .persistence(true)
                         .fieldGroup(8L)
                         .fieldSize(1L)
-                        .linhas(3L)
+                        .linhas(2L)
                         .build());
 
         lista.add(
@@ -1196,9 +1196,41 @@ public class Elemento
                         .requerido(false)
                         .fieldGroup(9L)
                         .fieldSize(1L)
-                        .linhas(3L)
+                        .linhas(2L)
                         .build());
 
+        
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("fieldGroup")
+                        .tamanho(10L)
+                        .rotulo("Field Group")
+                        .persistence(true)
+                        .requerido(false)
+                        .inicial("1")
+                        .fieldGroup(10L)
+                        .fieldSize(1L)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(19L)
+                        .artefato(Artefato.builder().id(3L).build())
+                        .tipoElemento(TipoElemento.Input)
+                        .tipoField(TipoField.Long)
+                        .nome("fieldSize")
+                        .tamanho(10L)
+                        .rotulo("Field Size")
+                        .persistence(true)
+                        .requerido(false)
+                        .inicial("1")
+                        .fieldGroup(10L)
+                        .fieldSize(1L)
+                        .build());
+        
 
         return lista;
 

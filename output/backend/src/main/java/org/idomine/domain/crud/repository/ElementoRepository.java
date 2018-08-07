@@ -55,6 +55,8 @@ public interface ElementoRepository extends  CrudRepository<Elemento, Long>
     Elemento findByValueProp(String valueProp);
     Elemento findByLabelProp(String labelProp);
     Elemento findByOptions(String options);
+    Elemento findByFieldGroup(Long fieldGroup);
+    Elemento findByFieldSize(Long fieldSize);
  
 }
 

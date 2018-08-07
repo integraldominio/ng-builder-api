@@ -137,6 +137,16 @@
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Opções</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.options}}</mat-cell>
 	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="fieldGroup">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Field Group</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.fieldGroup}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="fieldSize">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Field Size</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.fieldSize}}</mat-cell>
+	    </ng-container>
   
     <!-- actions -->
     <ng-container matColumnDef="actions">

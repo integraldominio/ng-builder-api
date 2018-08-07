@@ -69,6 +69,8 @@ export class Elemento {
   valueProp: string;
   labelProp: string;
   options: string;
+  fieldGroup: number;
+  fieldSize: number;
 }
 
 // usando json-server

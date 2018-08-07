@@ -106,5 +106,9 @@ public class Elemento
     
     private String options;
     
+    private Long fieldGroup;
+    
+    private Long fieldSize;
+    
     
 }
