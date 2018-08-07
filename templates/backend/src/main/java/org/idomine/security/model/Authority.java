@@ -27,6 +27,9 @@ package org.idomine.security.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -44,6 +47,7 @@ public class Authority
     @Enumerated(EnumType.STRING)
     private AuthorityName name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<User> users;
 
