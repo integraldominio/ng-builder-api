@@ -31,4 +31,4 @@ CREATE TABLE `elemento` (
   `unique_group` bigint(2) NULL,
   PRIMARY KEY (`id`) ,
   CONSTRAINT UK_NOME_IN_ELEMENTO UNIQUE (`artefato_id`,`nome`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;

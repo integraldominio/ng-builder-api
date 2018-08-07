@@ -18,4 +18,4 @@ CREATE TABLE `projeto` (
   `database_flavor` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   CONSTRAINT UK_NOME_IN_PROJETO UNIQUE (`portal_id`,`nome`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;

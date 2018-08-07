@@ -19,4 +19,4 @@ CREATE TABLE `artefato` (
   `projeto_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   CONSTRAINT UK_NOME_IN_ARTEFATO UNIQUE (`projeto_id`,`nome`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;

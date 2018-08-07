@@ -17,4 +17,4 @@ CREATE TABLE `configuracao` (
   `output_directory` varchar(255) DEFAULT NULL,
   `site_empresa` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8MB4;
