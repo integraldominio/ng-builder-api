@@ -103,19 +103,24 @@
 	      <mat-cell *matCellDef="let row" >{{row.ordenation}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
-	    <ng-container matColumnDef="requerido">
-	      <mat-header-cell *matHeaderCellDef mat-sort-header>Requerido</mat-header-cell>
-	      <mat-cell *matCellDef="let row" >{{row.requerido}}</mat-cell>
-	    </ng-container>
-	    <!-- ID Column -->
 	    <ng-container matColumnDef="persistence">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Persistence</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.persistence}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="requerido">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Requerido</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.requerido}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="showcolumn">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Show Column</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.showcolumn}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
+	    <ng-container matColumnDef="uniqueKey">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Chave Única (UK)</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.uniqueKey}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
 	    <ng-container matColumnDef="valueProp">

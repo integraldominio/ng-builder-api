@@ -62,9 +62,10 @@ export class Elemento {
   max: number;
   linhas: number;
   ordenation: number;
-  requerido: boolean;
   persistence: boolean;
+  requerido: boolean;
   showcolumn: boolean;
+  uniqueKey: boolean;
   valueProp: string;
   labelProp: string;
   options: string;

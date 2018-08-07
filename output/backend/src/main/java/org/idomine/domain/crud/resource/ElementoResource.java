@@ -169,20 +169,25 @@ public class ElementoResource
     {
         return new ResponseEntity<>(elementoRepository.findByOrdenation(ordenation), HttpStatus.OK);
     }
-    @GetMapping("/elementos/search/requerido/{requerido}")
-    public ResponseEntity<?> searchPathVariableRequerido(@PathVariable  Boolean  requerido)
-    {
-        return new ResponseEntity<>(elementoRepository.findByRequerido(requerido), HttpStatus.OK);
-    }
     @GetMapping("/elementos/search/persistence/{persistence}")
     public ResponseEntity<?> searchPathVariablePersistence(@PathVariable  Boolean  persistence)
     {
         return new ResponseEntity<>(elementoRepository.findByPersistence(persistence), HttpStatus.OK);
     }
+    @GetMapping("/elementos/search/requerido/{requerido}")
+    public ResponseEntity<?> searchPathVariableRequerido(@PathVariable  Boolean  requerido)
+    {
+        return new ResponseEntity<>(elementoRepository.findByRequerido(requerido), HttpStatus.OK);
+    }
     @GetMapping("/elementos/search/showcolumn/{showcolumn}")
     public ResponseEntity<?> searchPathVariableShowcolumn(@PathVariable  Boolean  showcolumn)
     {
         return new ResponseEntity<>(elementoRepository.findByShowcolumn(showcolumn), HttpStatus.OK);
+    }
+    @GetMapping("/elementos/search/uniqueKey/{uniqueKey}")
+    public ResponseEntity<?> searchPathVariableUniqueKey(@PathVariable  Boolean  uniqueKey)
+    {
+        return new ResponseEntity<>(elementoRepository.findByUniqueKey(uniqueKey), HttpStatus.OK);
     }
     @GetMapping("/elementos/search/valueProp/{valueProp}")
     public ResponseEntity<?> searchPathVariableValueProp(@PathVariable  String  valueProp)

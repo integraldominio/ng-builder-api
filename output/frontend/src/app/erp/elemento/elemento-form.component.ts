@@ -195,15 +195,7 @@ export class ElementoFormComponent implements OnInit {
    ]},
     { fieldGroupClassName: 'display-flex',
     fieldGroup: [
-    {className: 'flex-1', key: 'requerido', type: 'checkbox',
-      templateOptions: {
-        label: 'Requerido',
-        placeholder: 'Informe Requerido',
-        required: true,
-        
-     }
-  },
-    {className: 'flex-1', key: 'persistence', type: 'checkbox',
+    {className: 'flex-1', key: 'persistence', type: 'checkbox',defaultValue: true,
       templateOptions: {
         label: 'Persistence',
         placeholder: 'Informe Persistence',
@@ -211,10 +203,26 @@ export class ElementoFormComponent implements OnInit {
         
      }
   },
-    {className: 'flex-1', key: 'showcolumn', type: 'checkbox',
+    {className: 'flex-1', key: 'requerido', type: 'checkbox',defaultValue: false,
+      templateOptions: {
+        label: 'Requerido',
+        placeholder: 'Informe Requerido',
+        required: true,
+        
+     }
+  },
+    {className: 'flex-1', key: 'showcolumn', type: 'checkbox',defaultValue: false,
       templateOptions: {
         label: 'Show Column',
         placeholder: 'Informe Show Column',
+        required: false,
+        
+     }
+  },
+    {className: 'flex-1', key: 'uniqueKey', type: 'checkbox',defaultValue: false,
+      templateOptions: {
+        label: 'Chave Única (UK)',
+        placeholder: 'Informe Chave Única (UK)',
         required: false,
         
      }

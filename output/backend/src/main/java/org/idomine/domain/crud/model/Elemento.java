@@ -92,11 +92,13 @@ public class Elemento
     
     private Long ordenation;
     
-    private Boolean requerido;
-    
     private Boolean persistence;
     
+    private Boolean requerido;
+    
     private Boolean showcolumn;
+    
+    private Boolean uniqueKey;
     
     private String valueProp;
     
