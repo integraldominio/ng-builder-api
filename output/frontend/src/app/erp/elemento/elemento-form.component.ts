@@ -74,7 +74,7 @@ export class ElementoFormComponent implements OnInit {
         options: this.artefatoService.listAll(),
      }
   },
-    {className: 'flex-1', key: 'tipoElemento', type: 'select',
+    {className: 'flex-1', key: 'tipoElemento', type: 'select',defaultValue: 'Input',
       templateOptions: {
         label: 'Tipo Elemento',
         placeholder: 'Informe Tipo Elemento',
@@ -83,7 +83,7 @@ export class ElementoFormComponent implements OnInit {
         options: [{ value: 'Autocomplete', label: 'Autocomplete'} , {value: 'Checkbox', label: 'Checkbox'}, {value: 'Chips', label: 'Chips'} , { value: 'Datepicker', label: 'Datepicker'} , {value: 'Input', label: 'Input'} , {value: 'RadioButton', label: 'RadioButton'} , { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } , { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] 
      }
   },
-    {className: 'flex-1', key: 'tipoField', type: 'select',
+    {className: 'flex-1', key: 'tipoField', type: 'select',defaultValue: 'String',
       templateOptions: {
         label: 'Tipo Field',
         placeholder: 'Informe Tipo Field',

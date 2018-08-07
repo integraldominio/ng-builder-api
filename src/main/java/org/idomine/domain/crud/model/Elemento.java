@@ -861,7 +861,7 @@ public class Elemento
                                         " { value: 'RadioButton', label: 'RadioButton'} , { value: 'Select', label: 'Select'} , {value: 'SelectMultiple', label: 'SelectMultiple'} , {value:'SelectDB', label: 'SelectDB' } ,"
                                         +
                                         " { value: 'Slidetoggle', label: 'Slidetoggle'} , {value: 'TextArea', label: 'TextArea'} , {value: 'Tooltip', label: 'Tooltip' }] ")
-
+                        .inicial("Input")
                         .fieldGroup(1L)
                         .fieldSize(1L)
                         .build());
@@ -885,6 +885,7 @@ public class Elemento
                                         " {value: 'Date', label: 'Date'} , {value: 'DateTime', label: 'DateTime'} ,  {value: 5, label: 'Decimal'} ,  {value: 'Integer', label: 'Integer'} ,"
                                         +
                                         " {value: 'Long', label: 'Long'} , {value: 'NotAvailable', label: 'NotAvailable'} , {value: 'String', label: 'String'} , {value: 'Time', label: 'Time'}]")
+                        .inicial("String")
                         .fieldGroup(1L)
                         .fieldSize(1L)
                         .build());
