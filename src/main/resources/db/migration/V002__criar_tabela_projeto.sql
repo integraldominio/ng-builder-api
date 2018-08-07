@@ -15,6 +15,7 @@ CREATE TABLE `projeto` (
   `use_login` bit(1) NOT NULL,
   `use_roles` bit(1) NOT NULL,
   `portal_id` bigint(20) DEFAULT NULL,
+  `database_flavor` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   CONSTRAINT UK_NOME_IN_PROJETO UNIQUE (`portal_id`,`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

@@ -75,6 +75,7 @@ public class Projeto
     private boolean useLogin;
     private boolean useRoles;
     private String outputDirectory;
+    private String databaseFlavor;
 
     @ManyToOne
     private Portal portal;

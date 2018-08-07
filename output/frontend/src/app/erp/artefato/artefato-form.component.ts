@@ -75,7 +75,7 @@ export class ArtefatoFormComponent implements OnInit {
         options: this.projetoService.listAll(),
      }
   },
-    {className: 'flex-1', key: 'tipo', type: 'select',
+    {className: 'flex-1', key: 'tipo', type: 'select',defaultValue: 'Crud',
       templateOptions: {
         label: 'Tipo',
         placeholder: 'Informe Tipo',

@@ -45,6 +45,7 @@ export class ProjetoGridComponent implements OnInit {
   'nome',
   'descricao',
   'serverLang',
+  'databseFlavor',
   'outputDirectory',
   'actions'
   ];

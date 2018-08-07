@@ -57,6 +57,7 @@ export class ProjetoFormComponent implements OnInit {
   'nome',
   'descricao',
   'serverLang',
+  'databseFlavor',
   'outputDirectory',
   'actions'
   ];
@@ -139,6 +140,18 @@ export class ProjetoFormComponent implements OnInit {
         options: [{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]
      }
   },
+    {className: 'flex-1', key: 'databseFlavor', type: 'select',defaultValue: 'MySQL',
+      templateOptions: {
+        label: 'Database',
+        placeholder: 'Informe Database',
+        required: true,
+        maxLength: 50,
+        options: [{ value: 'MySQL', label: 'MySQL'}, {value: 'MongoDB', label: 'MongoDB'}, {value: 'PostgreSQL', label: 'PostgreSQL'}, {value: 'Oracle', label: 'Oracle'}]
+     }
+  },
+   ]},
+    { fieldGroupClassName: 'display-flex',
+    fieldGroup: [
     {className: 'flex-1', key: 'serverHost', type: 'input',defaultValue: 'localhost',
       templateOptions: {
         label: 'Server Host',
@@ -147,9 +160,6 @@ export class ProjetoFormComponent implements OnInit {
         maxLength: 100,
      }
   },
-   ]},
-    { fieldGroupClassName: 'display-flex',
-    fieldGroup: [
     {className: 'flex-1', key: 'serverPort', type: 'input',defaultValue: 3000,
       templateOptions: {
         label: 'Server port',

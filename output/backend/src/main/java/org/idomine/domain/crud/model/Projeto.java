@@ -80,6 +80,8 @@ public class Projeto
     
     private String serverLang;
     
+    private String databseFlavor;
+    
     private String serverHost;
     
     private Long serverPort;

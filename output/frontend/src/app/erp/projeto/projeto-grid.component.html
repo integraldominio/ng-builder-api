@@ -73,6 +73,11 @@
 	      <mat-cell *matCellDef="let row" >{{row.serverLang}}</mat-cell>
 	    </ng-container>
 	    <!-- ID Column -->
+	    <ng-container matColumnDef="databseFlavor">
+	      <mat-header-cell *matHeaderCellDef mat-sort-header>Database</mat-header-cell>
+	      <mat-cell *matCellDef="let row" >{{row.databseFlavor}}</mat-cell>
+	    </ng-container>
+	    <!-- ID Column -->
 	    <ng-container matColumnDef="serverHost">
 	      <mat-header-cell *matHeaderCellDef mat-sort-header>Server Host</mat-header-cell>
 	      <mat-cell *matCellDef="let row" >{{row.serverHost}}</mat-cell>

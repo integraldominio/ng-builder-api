@@ -483,8 +483,26 @@ public class Elemento
                         .inicial("java")
                         .persistence(true)
                         .showcolumn(true)
-                        .options(
-                                "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
+                        .options( "[{ value: 'java', label: 'java'}, {value: 'js', label: 'js'}]")
+                        .fieldGroup(3L)
+                        .fieldSize(1L)
+                        .build());
+        lista.add(
+                Elemento.builder()
+                        .id(9L)
+                        .artefato(Artefato.builder().id(2L).build())
+                        .tipoElemento(TipoElemento.Select)
+                        .tipoField(TipoField.String)
+                        .nome("databseFlavor")
+                        .rotulo("Database")
+                        .tamanho(50L)
+                        .minimo(1L)
+                        .maximo(50L)
+                        .inicial("MySQL")
+                        .requerido(true)
+                        .persistence(true)
+                        .showcolumn(true)
+                        .options( "[{ value: 'MySQL', label: 'MySQL'}, {value: 'MongoDB', label: 'MongoDB'}, {value: 'PostgreSQL', label: 'PostgreSQL'}, {value: 'Oracle', label: 'Oracle'}]")
                         .fieldGroup(3L)
                         .fieldSize(1L)
                         .build());
@@ -503,7 +521,7 @@ public class Elemento
                         .inicial("localhost")
                         .requerido(true)
                         .persistence(true)
-                        .fieldGroup(3L)
+                        .fieldGroup(4L)
                         .fieldSize(1L)
                         .build());
         lista.add(
@@ -649,8 +667,8 @@ public class Elemento
                         .requerido(true)
                         .persistence(true)
                         .showcolumn(true)
-                        .options(
-                                "[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
+                        .options("[{ value: 'Crud', label: 'Crud'}, {value: 'MasterDetail', label: 'MasterDetail'}, {value: 'Template', label: 'Template'}, {value: 'Dialogo', label: 'Dialogo'}, {value: 'Report', label: 'Report'}, {value: 'Grafico', label: 'Grafico'}]")
+                        .inicial("Crud")
                         .fieldGroup(1L)
                         .fieldSize(1L)
                         .build());

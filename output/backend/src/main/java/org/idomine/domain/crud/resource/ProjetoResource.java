@@ -139,6 +139,11 @@ public class ProjetoResource
     {
         return new ResponseEntity<>(projetoRepository.findByServerLang(serverLang), HttpStatus.OK);
     }
+    @GetMapping("/projetos/search/databseFlavor/{databseFlavor}")
+    public ResponseEntity<?> searchPathVariableDatabseFlavor(@PathVariable  String  databseFlavor)
+    {
+        return new ResponseEntity<>(projetoRepository.findByDatabseFlavor(databseFlavor), HttpStatus.OK);
+    }
     @GetMapping("/projetos/search/serverHost/{serverHost}")
     public ResponseEntity<?> searchPathVariableServerHost(@PathVariable  String  serverHost)
     {
