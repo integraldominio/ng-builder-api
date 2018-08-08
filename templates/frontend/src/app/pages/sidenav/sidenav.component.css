@@ -41,3 +41,8 @@ md-toolbar {
 md-toolbar md-toolbar-row {
   height: 32px !important;
 }
+
+
+.example-spacer {
+  flex: 1 1 auto;
+}

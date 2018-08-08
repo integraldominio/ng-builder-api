@@ -43,6 +43,22 @@
       </button>
       <img src="./../../../assets/images/logo.svg" style="width: 20px; padding-right: 5px" /> ngx-builder
 
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+      (click)="$event.stopPropagation();">
+      <mat-icon class="secondary-text">person</mat-icon> 
+      </button>
+      <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item aria-label="edit" [routerLink]="['/profile']">
+              <mat-icon>edit</mat-icon>
+              <span>Meu perfil</span>
+          </button>
+      </mat-menu>
+      <button mat-icon-button  (click)="logout()" aria-label="More">
+      <mat-icon class="secondary-text">exit_to_app</mat-icon> 
+      </button>
+
     </mat-toolbar>
 
     <div class="inner-sidenav-content">
