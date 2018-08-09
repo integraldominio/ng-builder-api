@@ -66,6 +66,7 @@ import { UserUploadComponent } from './infra/users/user-upload.component';
 
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
+import { QueryBuilderModule } from 'angular2-query-builder';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { NgProgressHttpModule } from '@ngx-progressbar/http';
       min: 20,
       meteor: false
     }),
-    NgProgressHttpModule,    
+    NgProgressHttpModule,
+    QueryBuilderModule
   ],
   providers: [
     ApiService,

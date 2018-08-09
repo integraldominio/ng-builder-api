@@ -29,6 +29,7 @@
     "@ngx-formly/material": "^4.6.6",
     "@ngx-progressbar/core": "^5.0.1",
     "@ngx-progressbar/http": "^5.0.1",
+    "angular2-query-builder": "^0.3.1",
     "bcrypt": "^3.0.0",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",

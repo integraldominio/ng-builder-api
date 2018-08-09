@@ -26,8 +26,10 @@ import { Component, OnInit, AfterViewInit,  ViewChild, ElementRef } from '@angul
 import { ElementoService, Elemento } from './elemento.service';
 import { MessageService } from '../../infra/security';
 import {MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import * as jspdf from 'jspdf';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { QueryBuilderClassNames, QueryBuilderConfig } from 'angular2-query-builder';
 import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 
 import { ArtefatoService } from '../artefato/artefato.service';
 
@@ -37,6 +39,73 @@ import { ArtefatoService } from '../artefato/artefato.service';
   styleUrls: ['./elemento-grid.component.css']
 })
 export class ElementoGridComponent implements OnInit {
+
+  public queryCtrl: FormControl;
+
+  public bootstrapClassNames: QueryBuilderClassNames = {
+    removeIcon: 'fa fa-minus',
+    addIcon: 'fa fa-plus',
+    button: 'btn',
+    buttonGroup: 'btn-group',
+    rightAlign: 'order-12 ml-auto',
+    switchRow: 'd-flex px-2',
+    switchGroup: 'd-flex align-items-center',
+    switchRadio: 'custom-control-input',
+    switchLabel: 'custom-control-label',
+    switchControl: 'custom-control custom-radio custom-control-inline',
+    row: 'row p-2 m-1',
+    rule: 'border',
+    ruleSet: 'border',
+    invalidRuleSet: 'alert alert-danger',
+    emptyWarning: 'text-danger mx-auto',
+    operatorControl: 'form-control',
+    operatorControlSize: 'col-auto pr-0',
+    fieldControl: 'form-control',
+    fieldControlSize: 'col-auto pr-0',
+    entityControl: 'form-control',
+    entityControlSize: 'col-auto pr-0',
+    inputControl: 'form-control',
+    inputControlSize: 'col-auto'
+  };
+
+  public query = {
+    condition: 'and',
+    rules: [
+    ]
+  };
+
+  public config: QueryBuilderConfig = {
+    fields: {
+      age: {name: 'Age', type: 'number'},
+      gender: {
+        name: 'Gender',
+        type: 'category',
+        options: [
+          {name: 'Male', value: 'm'},
+          {name: 'Female', value: 'f'}
+        ]
+      },
+      name: {name: 'Name', type: 'string'},
+      notes: {name: 'Notes', type: 'textarea', operators: ['=', '!=']},
+      educated: {name: 'College Degree?', type: 'boolean'},
+      birthday: {name: 'Birthday', type: 'date', operators: ['=', '<=', '>'],
+        defaultValue: (() => new Date())
+      },
+      school: {name: 'School', type: 'string', nullable: true},
+      occupation: {
+        name: 'Occupation',
+        type: 'category',
+        options: [
+          {name: 'Student', value: 'student'},
+          {name: 'Teacher', value: 'teacher'},
+          {name: 'Unemployed', value: 'unemployed'},
+          {name: 'Scientist', value: 'scientist'}
+        ]
+      }
+    }
+  };
+
+  public currentConfig: QueryBuilderConfig;
 
   dataSource: MatTableDataSource<Elemento>;
   displayedColumns = [
@@ -52,10 +121,14 @@ export class ElementoGridComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor (
+    private formBuilder: FormBuilder,
     private elementoService: ElementoService,
     private messageService: MessageService,
     private artefatoService: ArtefatoService,
-  ) { }
+  ) {
+    this.queryCtrl = this.formBuilder.control(this.query);
+    this.currentConfig = this.config;
+  }
 
   ngOnInit() {
     this.listAll();
@@ -103,6 +176,13 @@ export class ElementoGridComponent implements OnInit {
       const generatedImage = canvas.toDataURL( 'image/png' ).replace( 'image/png', 'image/octet-stream');
       window.location.href = generatedImage;
     });
+  }
+
+  switchModes(event: Event) {
+  }
+
+  changeDisabled(event: Event) {
+    (<HTMLInputElement>event.target).checked ? this.queryCtrl.disable() : this.queryCtrl.enable();
   }
 
 }

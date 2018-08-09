@@ -37,3 +37,25 @@
    /*  background-color:  #f5f5f5; */
    background-color:rgba(213, 216, 228, 0.219) ; 
   }
+  
+  .mat-form-field {
+  width: 100px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.text-input {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.text-area {
+  width: 300px;
+  height: 100px;
+}
+
+.output {
+  width: 100%;
+  height: 300px;
+}
