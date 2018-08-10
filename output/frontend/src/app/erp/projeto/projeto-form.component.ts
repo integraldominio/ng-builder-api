@@ -152,7 +152,7 @@ export class ProjetoFormComponent implements OnInit {
    ]},
     { fieldGroupClassName: 'display-flex',
     fieldGroup: [
-    {className: 'flex-1', key: 'serverHost', type: 'input',defaultValue: 'localhost',
+    {className: 'flex-1', key: 'serverHost', type: 'input',defaultValue: 'http://localhost',
       templateOptions: {
         label: 'Server Host',
         placeholder: 'Informe Server Host',
@@ -168,7 +168,7 @@ export class ProjetoFormComponent implements OnInit {
         max: 9999,
      }
   },
-    {className: 'flex-1', key: 'frontHost', type: 'input',defaultValue: 'localhost',
+    {className: 'flex-1', key: 'frontHost', type: 'input',defaultValue: 'http://localhost',
       templateOptions: {
         label: 'Front Host',
         placeholder: 'Informe Front Host',

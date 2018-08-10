@@ -1,4 +1,3 @@
-
 /**
  * The MIT License
  *
@@ -22,62 +21,42 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-
-package org.idomine.security.model;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+ 
+package org.idomine.domain.crud.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
 @Entity
-@Table(name = "AUTHORITY")
-public class Authority
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = { "id" })
+public class Catalogo
 {
-
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "NAME", length = 50)
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private AuthorityName name;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
-    private List<User> users;
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public AuthorityName getName()
-    {
-        return name;
-    }
-
-    public void setName(AuthorityName name)
-    {
-        this.name = name;
-    }
-
-    public List<User> getUsers()
-    {
-        return users;
-    }
-
-    public void setUsers(List<User> users)
-    {
-        this.users = users;
-    }
+    
+    private String nome;
+    
+    
 }

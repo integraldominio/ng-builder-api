@@ -1,5 +1,5 @@
 {
-  "name": "${projeto.nome}",
+  "name": "${projeto.nome?lower_case}",
   "descriptioin": "${projeto.descricao}",
   "version": "${ngxbuilder}",
   "scripts": {
