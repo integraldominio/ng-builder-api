@@ -226,13 +226,16 @@ public class GenerationHelper
         }
     }
 
-    private static void frontendInfraComps(Projeto projeto)
+    private static void frontendInfraPipes(Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_PIPES;
         try
         {
             copyFile(new File(o + "MaxCharPipe.ts"), new File(d + "MaxCharPipe.ts"));
+            copyFile(new File(o + "Constants.ts"), new File(d + "Constants.ts"));
+            copyFile(new File(o + "DateFormatPipe.ts"), new File(d + "DateFormatPipe.ts"));
+            copyFile(new File(o + "DateTimeFormatPipe.ts"), new File(d + "DateTimeFormatPipe.ts"));
         }
         catch (IOException e)
         {
@@ -240,7 +243,7 @@ public class GenerationHelper
         }
     }
 
-    private static void frontendInfraPipes(Projeto projeto)
+    private static void frontendInfraComps (Projeto projeto)
     {
         String d = projeto.getOutputDirectory() + "/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
         String o = "templates/" + TemplatePathHelper.FRONTEND_SRC_APP_INFRA_COMPS;
