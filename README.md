@@ -231,7 +231,13 @@ export class CatsController {
 
 ### Analyzer
 
-* https://www.npmjs.com/package/webpack-bundle-analyzer
+#### https://www.npmjs.com/package/webpack-bundle-analyzer
+
+```
+webpack-bundle-analyzer ./dist/ngmaterial2/stats.json
+ng build --stats-json
+webpack-bundle-analyzer ./dist/ngmaterial2/stats.json
+```
 
 ![](docs/analyzer.PNG)
 
