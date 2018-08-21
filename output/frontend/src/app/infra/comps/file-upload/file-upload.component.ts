@@ -32,7 +32,7 @@ export class FileUploadComponent implements OnInit {
       /** Allow you to add handler after its completion. Bubble up response text from remote. */
       @Output() complete = new EventEmitter<string>();
 
-      private files: Array<FileUploadModel> = [];
+      public files: Array<FileUploadModel> = [];
 
       constructor(private _http: HttpClient) { }
 

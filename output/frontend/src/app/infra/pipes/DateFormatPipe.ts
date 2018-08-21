@@ -1,4 +1,4 @@
-import { Constants } from './constants';
+/* import { Constants } from './constants';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
@@ -10,7 +10,7 @@ export class DateFormatPipe extends DatePipe implements PipeTransform {
     return super.transform(value, Constants.DATE_FMT);
   }
 }
-
+ */
 // today | dateFormat
 // 30/Aug/2017
 
