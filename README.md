@@ -229,6 +229,13 @@ export class CatsController {
 
 * Angular (https://angular.io/)
 
+### Analyzer
+
+* https://www.npmjs.com/package/webpack-bundle-analyzer
+
+![](docs/analyzer.PNG)
+
+
 ### Árvore projeto
 
 ```
