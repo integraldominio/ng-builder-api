@@ -1,4 +1,4 @@
-[![license](https://img.shields.io/github/license/tomastrajan/angular-ngrx-material-starter.svg)]
+[![license] 
 
 # NGX-Builder v 0.0.2
 
