@@ -1,5 +1,6 @@
-
 # NGX-Builder v 0.0.2
+
+[![license]()]
 
 ## ngx-builder
 
