@@ -1,6 +1,6 @@
 # NGX-Builder v 0.0.2
 
-![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![license](https://img.shields.io/github/license/integraldominio/ng-builder-api.svg)]
 
 ## ngx-builder
 
