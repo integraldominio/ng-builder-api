@@ -1,4 +1,4 @@
-# NGX-Builder v 0.0.2
+# NGX-Builder v 0.0.3
 
 ## ngx-builder
 

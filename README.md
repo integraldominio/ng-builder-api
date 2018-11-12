@@ -6,7 +6,7 @@
 
 ## ngx-builder
 
-Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 6. 
+Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 7.x. 
 
 ## Pré-requisitos
 
@@ -229,7 +229,7 @@ export class CatsController {
 
 ```
 
-## Frontend - Angular 6
+## Frontend - Angular 7
 
 * Angular (https://angular.io/)
 
@@ -439,7 +439,7 @@ https://freemarker.apache.org/
 
 Tecnologias:
 
-### Angular 6
+### Angular 7.x
 
 - [x] Angular as the application framework- 
 - [x] Angular Material as the UI language and component library
