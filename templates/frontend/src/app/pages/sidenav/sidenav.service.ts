@@ -21,9 +21,10 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- 
+
 import { Injectable } from '@angular/core';
-import { MatSidenav, MatDrawerToggleResult } from '@angular/material';
+import { MatSidenav  } from '@angular/material';
+import {MatDrawerToggleResult} from '@angular/material/sidenav/typings';
 
 @Injectable()
 export class SidenavService {
