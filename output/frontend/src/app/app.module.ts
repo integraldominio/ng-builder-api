@@ -67,8 +67,6 @@ import { UserService, ApiService } from './infra/auth';
 import { FileUploadComponent } from './infra/comps/file-upload/file-upload.component';
 import { UserUploadComponent } from './infra/users/user-upload.component';
 
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { QueryBuilderModule } from 'angular2-query-builder';
 
 @NgModule({
@@ -121,12 +119,6 @@ import { QueryBuilderModule } from 'angular2-query-builder';
       ],
     }),
     Ng2OdometerModule.forRoot(),
-    NgProgressModule.forRoot({
-      color: '#1B95E0',
-      min: 20,
-      meteor: false
-    }),
-    NgProgressHttpModule,
     QueryBuilderModule
   ],
   providers: [
