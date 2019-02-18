@@ -69,6 +69,8 @@ import { UserUploadComponent } from './infra/users/user-upload.component';
 
 import { QueryBuilderModule } from 'angular2-query-builder';
 
+import { NgProgressModule } from '@ngx-progressbar/core';
+
 @NgModule({
   declarations: [
     BaseComponent,
@@ -119,7 +121,8 @@ import { QueryBuilderModule } from 'angular2-query-builder';
       ],
     }),
     Ng2OdometerModule.forRoot(),
-    QueryBuilderModule
+    QueryBuilderModule,
+    NgProgressModule
   ],
   providers: [
     ApiService,
