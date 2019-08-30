@@ -1,36 +1,36 @@
-# NGX-Builder v 0.0.2
-
+# NGX-Builder v 0.0.3
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/integraldominio/ng-builder-api/blob/master/LICENSE)
 
-
 ## ngx-builder
 
-Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 7.x. 
+Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 8.x.
 
 ## Pré-requisitos
 
-* IDE Java Eclipse (http://www.eclipse.org/)
-* Lombok (https://projectlombok.org/download)
-* Visual Code (https://code.visualstudio.com/download)
-* NodeJS (https://nodejs.org/en/download/)
-* MySql (https://www.mysql.com/downloads/)
+- IDE Java Eclipse (http://www.eclipse.org/)
+- Lombok (https://projectlombok.org/download)
+- Visual Code (https://code.visualstudio.com/download)
+- NodeJS (https://nodejs.org/en/download/)
+- MySql (https://www.mysql.com/downloads/)
 
 ## Instalação
 
 ### Passo 1
 
 Clone o repositório:
+
 ```
 git clone https://github.com/integraldominio/ng-builder-api.git
 ```
+
 ### Passo 2
 
 Importe o projeto Maven com IDE Java.
 
 ### Passo 3
 
-Crie o database ngxbuilder no MySql. Configure usuário e senha nos profiles 
+Crie o database ngxbuilder no MySql. Configure usuário e senha nos profiles
 
 #### Selecione do profile
 
@@ -53,7 +53,7 @@ mysql -uroot -p1234
 create database ngxbuilder;
 ```
 
-### Passo 4 
+### Passo 4
 
 Prepare o profile de produção (applicaiton-pro.properties) em run configurations. IDE Eclipse.
 
@@ -61,7 +61,7 @@ Prepare o profile de produção (applicaiton-pro.properties) em run configuratio
 
 Gere o frontend do ngbuilder, executando GenerationBackendFrontend.java
 
-### Passo 6 
+### Passo 6
 
 Abrir projeto Angular em output/frontend usando Visualcode (sugestão).
 Abrir terminal.
@@ -72,7 +72,8 @@ npm i
 ng serve --o
 ```
 
-Acesso: 
+Acesso:
+
 ```
 usuário: admin
 senha: admin
@@ -126,7 +127,7 @@ Por trás do ngx-builder está o conceito de geração de código por template e
 
 ## Backend - Spring Boot
 
-* Spring Boot (https://spring.io/projects/spring-boot)
+- Spring Boot (https://spring.io/projects/spring-boot)
 
 ## Backend - Nestjs
 
@@ -134,20 +135,21 @@ O Nest é uma framework para criar aplicativos do lado do servidor Node.js efici
 
 Nest faz uso do Express, mas também oferece compatibilidade com uma ampla gama de outras bibliotecas, como por exemplo o Fastify, permitindo o uso fácil dos inúmeros plugins de terceiros disponíveis.
 
-* nestjs (https://docs.nestjs.com/)
-* typeorm (http://typeorm.io/#/)
-* GraphQL (https://www.apollographql.com/)
+- nestjs (https://docs.nestjs.com/)
+- typeorm (http://typeorm.io/#/)
+- GraphQL (https://www.apollographql.com/)
 
 ### Iniciando com Nestjs
 
-
 Usando CLI
+
 ```
 npm i -g @nestjs/cli
 nest new project-name
 ```
 
 Usando seed
+
 ```
 git clone https://github.com/nestjs/typescript-starter.git project
 cd project
@@ -156,6 +158,7 @@ npm run start
 ```
 
 Usando npm
+
 ```
 npm i --save @nestjs/core @nestjs/common rxjs reflect-metadata
 ```
@@ -163,8 +166,8 @@ npm i --save @nestjs/core @nestjs/common rxjs reflect-metadata
 Main.js
 
 ```javascript
-import { NestFactory } from '@nestjs/core';
-import { ApplicationModule } from './app.module';
+import { NestFactory } from "@nestjs/core";
+import { ApplicationModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
@@ -174,64 +177,67 @@ bootstrap();
 ```
 
 Iniciando
+
 ```
 npm run start
 ```
 
 #### Controllers
+
 Os controllers são responsáveis ​​por manipular solicitações de entrada e retornar respostas para o cliente.
 
 ![](docs/nest01.PNG)
 
 ```javascript
-cats.controller.ts
+cats.controller.ts;
 
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
-@Controller('cats')
+@Controller("cats")
 export class CatsController {
   @Get()
   findAll() {
-    return 'This action returns all cats';
+    return "This action returns all cats";
   }
 }
 ```
 
 #### Decorators
+
 No exemplo acima, usamos o @Controller('cats')decorador, que é necessário para definir um controlador básico. O catsé um prefixo opcional para cada rota registrada na classe. Usar um prefixo permite que você evite se repetir quando todas as suas rotas compartilharem um prefixo comum. O @Get()decorador próximo ao findAll() método informa ao Nest para criar um nó de extremidade para esse caminho de rota e mapear todas as solicitações correspondentes para esse manipulador. Como declaramos um prefixo para cada rota ( cats), o Nest /cats mapeará cada solicitação GET para esse método.
 
 Quando uma solicitação GET é feita para esse terminal, o Nest retornará um código de status 200 e o JSON analisado , nesse caso apenas uma matriz vazia. Como isso é possível? Geralmente, distinguimos duas abordagens diferentes para manipular a resposta:
 
 ```
-Padrão (recomendado): Quando retornarmos um objeto ou array JavaScript, ele será automaticamente analisado para JSON. Quando retornamos uma string, o Nest enviará apenas uma string sem tentar analisá-la. Além disso, o código de status da resposta é sempre 200 por padrão, exceto para solicitações POST, que usam 201 . Podemos facilmente alterar esse comportamento adicionando o @HttpCode(...)decorador em um nível de manipulador. 
+Padrão (recomendado): Quando retornarmos um objeto ou array JavaScript, ele será automaticamente analisado para JSON. Quando retornamos uma string, o Nest enviará apenas uma string sem tentar analisá-la. Além disso, o código de status da resposta é sempre 200 por padrão, exceto para solicitações POST, que usam 201 . Podemos facilmente alterar esse comportamento adicionando o @HttpCode(...)decorador em um nível de manipulador.
 
 Biblioteca específica: Podemos usar o objeto de resposta específico da biblioteca , que podemos injetar usando o @Res()decorador na assinatura da função, por exemplo findAll(@Res() response).
 
 Aviso É proibido usar as duas abordagens ao mesmo tempo. O Nest detecta se o manipulador está usando um @Res()ou @Next(), se for esse o caso - a maneira padrão é desativada para essa rota única e não funcionará mais conforme o esperado.
 
 ```
+
 #### Solicitar objeto
 
 Muitos endpoints precisam de acesso aos detalhes da solicitação do cliente . Na verdade, o Nest está usando o objeto de solicitação específico da biblioteca (expresso por padrão) . Podemos forçar o Nest a injetar o objeto request no manipulador usando o @Req()decorador.
 
 ```javascript
-cats.controller.ts
+cats.controller.ts;
 
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req } from "@nestjs/common";
 
-@Controller('cats')
+@Controller("cats")
 export class CatsController {
   @Get()
   findAll(@Req() request) {
-    return 'This action returns all cats';
+    return "This action returns all cats";
   }
 }
-
 ```
 
 ## Frontend - Angular 7
 
-* Angular (https://angular.io/)
+- Angular (https://angular.io/)
 
 ### Analyzer
 
@@ -244,7 +250,6 @@ webpack-bundle-analyzer ./dist/ngmaterial2/stats.json
 ```
 
 ![](docs/analyzer.PNG)
-
 
 ### Árvore projeto
 
@@ -432,16 +437,15 @@ app
             environment.ts
 ```
 
-
-
 ## Freemaker
+
 https://freemarker.apache.org/
 
 Tecnologias:
 
 ### Angular 7.x
 
-- [x] Angular as the application framework- 
+- [x] Angular as the application framework-
 - [x] Angular Material as the UI language and component library
 - [ ] Angular Firebase for easy user authentication
 - [x] Angular Flex Layout for dynamic responsive layouts
@@ -456,6 +460,3 @@ Tecnologias:
 - [ ] Built by Angular Universal Consulting
 
 ### Springboot
-
-
-
