@@ -122,9 +122,9 @@ export class ${artefato.className}GridComponent implements OnInit {
   'actions'
   ];
 
-  @ViewChild('content') content: ElementRef;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('content', {static: false}) content: ElementRef;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor (
     private formBuilder: FormBuilder,

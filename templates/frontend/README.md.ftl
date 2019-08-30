@@ -9,7 +9,7 @@ https://freemarker.apache.org/
 
 Tecnologias:
 
-* Angular 6
+* Angular 8
 * Springboot
 
 # License
