@@ -23,7 +23,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { VERSION } from '@angular/material';
+import { VERSION } from '@angular/material/core';
 
 import { PortalService } from '../../erp/portal/portal.service';
 import { ProjetoService } from '../../erp/projeto/projeto.service';

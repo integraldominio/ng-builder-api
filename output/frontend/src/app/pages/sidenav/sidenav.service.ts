@@ -24,7 +24,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { MatSidenav  } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import {MatDrawerToggleResult} from '@angular/material/sidenav/typings';
 
 @Injectable()

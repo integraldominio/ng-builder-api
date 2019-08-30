@@ -22,39 +22,45 @@
  *  THE SOFTWARE.
  */
 
-import { Component, OnInit, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
-import { UsersService, User } from './users.service';
-import { MessageService } from '../security';
-import {MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
-
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef
+} from "@angular/core";
+import { UsersService, User } from "./users.service";
+import { MessageService } from "../security";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+import * as jspdf from "jspdf";
+import html2canvas from "html2canvas";
 
 @Component({
-  selector: 'app-user-grid',
-  templateUrl: './user-grid.component.html',
-  styleUrls: ['./user-grid.component.css']
+  selector: "app-user-grid",
+  templateUrl: "./user-grid.component.html",
+  styleUrls: ["./user-grid.component.css"]
 })
 export class UserGridComponent implements OnInit {
-
   dataSource: MatTableDataSource<User>;
   displayedColumns = [
-  'username',
-  'firstname',
-  'lastname',
-  'email',
-  'enabled',
-  'actions'
+    "username",
+    "firstname",
+    "lastname",
+    "email",
+    "enabled",
+    "actions"
   ];
 
-  @ViewChild('content') content: ElementRef;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild("content", { static: false }) content: ElementRef;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor (
+  constructor(
     private userService: UsersService,
-    private messageService: MessageService,
-  ) { }
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.listAll();
@@ -68,40 +74,38 @@ export class UserGridComponent implements OnInit {
   }
 
   listAll() {
-    this.userService.listAll().subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource<User>(data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }
-    );
-  }
-
-  deleteItem(o: User) {
-    this.userService.delete(o.id)
-    .subscribe( _ => this.listAll() );
-  }
-
-  print()  {
-    const data = document.getElementById('convert');
-    html2canvas(data).then( canvas => {
-      const imgWidth = 208;
-      const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jspdf('p', 'mm', 'a4');
-      const position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('User.pdf');
-  });
-  }
-
-  screenshot() {
-    html2canvas(document.getElementById('convert')).then(function(canvas) {
-      const generatedImage = canvas.toDataURL( 'image/png' ).replace( 'image/png', 'image/octet-stream');
-      window.location.href = generatedImage;
+    this.userService.listAll().subscribe(data => {
+      this.dataSource = new MatTableDataSource<User>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
+  deleteItem(o: User) {
+    this.userService.delete(o.id).subscribe(_ => this.listAll());
+  }
+
+  print() {
+    const data = document.getElementById("convert");
+    html2canvas(data).then(canvas => {
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const heightLeft = imgHeight;
+      const contentDataURL = canvas.toDataURL("image/png");
+      const pdf = new jspdf("p", "mm", "a4");
+      const position = 0;
+      pdf.addImage(contentDataURL, "PNG", 0, position, imgWidth, imgHeight);
+      pdf.save("User.pdf");
+    });
+  }
+
+  screenshot() {
+    html2canvas(document.getElementById("convert")).then(function(canvas) {
+      const generatedImage = canvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+      window.location.href = generatedImage;
+    });
+  }
 }

@@ -27,7 +27,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { UserService } from './user.service';
 import { ConfigService } from '../security/config.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
