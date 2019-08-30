@@ -2,7 +2,7 @@
 
 ## ${projeto.nome}
 
-Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 6. 
+Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 8. 
 
 ## Pré-requisitos
 
